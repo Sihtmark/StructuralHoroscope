@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A03CF2DA29D716CD005BE95D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CF2D929D716CD005BE95D /* Model.swift */; };
+		A0CB9D7529E554B6007C8595 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB9D7429E554B6007C8595 /* Date.swift */; };
+		A0CB9D7729E6908F007C8595 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB9D7629E6908F007C8595 /* ViewModel.swift */; };
+		A0CB9D7929E6A842007C8595 /* VirtualSignsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB9D7829E6A842007C8595 /* VirtualSignsInfo.swift */; };
+		A0CB9D7D29E6C80F007C8595 /* AristocratView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB9D7C29E6C80F007C8595 /* AristocratView.swift */; };
+		A0CB9D7F29E6F602007C8595 /* VectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB9D7E29E6F602007C8595 /* VectorView.swift */; };
+		A0CB9D8129E6F939007C8595 /* ProfessorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB9D8029E6F939007C8595 /* ProfessorView.swift */; };
+		A0CB9D8329E6FC04007C8595 /* KnightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB9D8229E6FC04007C8595 /* KnightView.swift */; };
+		A0CB9D8529E6FEA1007C8595 /* LeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB9D8429E6FEA1007C8595 /* LeaderView.swift */; };
+		A0CB9D8729E700A1007C8595 /* JesterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB9D8629E700A1007C8595 /* JesterView.swift */; };
+		A0CB9D8929E70336007C8595 /* KingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB9D8829E70336007C8595 /* KingView.swift */; };
+		A0E0723129D701BF0010E128 /* StructuralHoroscopeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E0723029D701BF0010E128 /* StructuralHoroscopeApp.swift */; };
+		A0E0723329D701BF0010E128 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E0723229D701BF0010E128 /* ContentView.swift */; };
+		A0E0723529D701C00010E128 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0E0723429D701C00010E128 /* Assets.xcassets */; };
+		A0E0723929D701C00010E128 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0E0723829D701C00010E128 /* Preview Assets.xcassets */; };
+		A0E0724129D702820010E128 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0E0723F29D702820010E128 /* Model.xcdatamodeld */; };
+		A0E53E7C29E8157C0065F227 /* AnnualSignInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E53E7B29E8157C0065F227 /* AnnualSignInstances.swift */; };
+		A0E53E8129E817780065F227 /* AnnualSignInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E53E8029E817780065F227 /* AnnualSignInfo.swift */; };
+		A0E53E8329E8283A0065F227 /* VirtualSignInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E53E8229E8283A0065F227 /* VirtualSignInstances.swift */; };
+		A0E53E8529E82F480065F227 /* VirtualSignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E53E8429E82F480065F227 /* VirtualSignView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A03CF2D929D716CD005BE95D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		A0CB9D7429E554B6007C8595 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		A0CB9D7629E6908F007C8595 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		A0CB9D7829E6A842007C8595 /* VirtualSignsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualSignsInfo.swift; sourceTree = "<group>"; };
+		A0CB9D7C29E6C80F007C8595 /* AristocratView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AristocratView.swift; sourceTree = "<group>"; };
+		A0CB9D7E29E6F602007C8595 /* VectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorView.swift; sourceTree = "<group>"; };
+		A0CB9D8029E6F939007C8595 /* ProfessorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorView.swift; sourceTree = "<group>"; };
+		A0CB9D8229E6FC04007C8595 /* KnightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightView.swift; sourceTree = "<group>"; };
+		A0CB9D8429E6FEA1007C8595 /* LeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderView.swift; sourceTree = "<group>"; };
+		A0CB9D8629E700A1007C8595 /* JesterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JesterView.swift; sourceTree = "<group>"; };
+		A0CB9D8829E70336007C8595 /* KingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingView.swift; sourceTree = "<group>"; };
+		A0E0722D29D701BF0010E128 /* StructuralHoroscope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StructuralHoroscope.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0E0723029D701BF0010E128 /* StructuralHoroscopeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructuralHoroscopeApp.swift; sourceTree = "<group>"; };
+		A0E0723229D701BF0010E128 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A0E0723429D701C00010E128 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A0E0723629D701C00010E128 /* StructuralHoroscope.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StructuralHoroscope.entitlements; sourceTree = "<group>"; };
+		A0E0723829D701C00010E128 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A0E0724029D702820010E128 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		A0E53E7B29E8157C0065F227 /* AnnualSignInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualSignInstances.swift; sourceTree = "<group>"; };
+		A0E53E8029E817780065F227 /* AnnualSignInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualSignInfo.swift; sourceTree = "<group>"; };
+		A0E53E8229E8283A0065F227 /* VirtualSignInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualSignInstances.swift; sourceTree = "<group>"; };
+		A0E53E8429E82F480065F227 /* VirtualSignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualSignView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A0E0722A29D701BF0010E128 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A0CB9D8A29E7073D007C8595 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A0E0723229D701BF0010E128 /* ContentView.swift */,
+				A0E53E8029E817780065F227 /* AnnualSignInfo.swift */,
+				A0E53E8429E82F480065F227 /* VirtualSignView.swift */,
+				A0E53E7D29E817240065F227 /* AnnualGroup */,
+				A0CB9D8B29E70743007C8595 /* VirtualGroup */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A0CB9D8B29E70743007C8595 /* VirtualGroup */ = {
+			isa = PBXGroup;
+			children = (
+				A0CB9D7829E6A842007C8595 /* VirtualSignsInfo.swift */,
+				A0CB9D7C29E6C80F007C8595 /* AristocratView.swift */,
+				A0CB9D7E29E6F602007C8595 /* VectorView.swift */,
+				A0CB9D8029E6F939007C8595 /* ProfessorView.swift */,
+				A0CB9D8229E6FC04007C8595 /* KnightView.swift */,
+				A0CB9D8429E6FEA1007C8595 /* LeaderView.swift */,
+				A0CB9D8629E700A1007C8595 /* JesterView.swift */,
+				A0CB9D8829E70336007C8595 /* KingView.swift */,
+			);
+			path = VirtualGroup;
+			sourceTree = "<group>";
+		};
+		A0CB9D8C29E7076F007C8595 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A0CB9D7629E6908F007C8595 /* ViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A0CB9D8D29E70779007C8595 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A03CF2D929D716CD005BE95D /* Model.swift */,
+				A0E53E7B29E8157C0065F227 /* AnnualSignInstances.swift */,
+				A0E53E8229E8283A0065F227 /* VirtualSignInstances.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A0CB9D8E29E707AE007C8595 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A0CB9D7429E554B6007C8595 /* Date.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A0E0722429D701BF0010E128 = {
+			isa = PBXGroup;
+			children = (
+				A0E0722F29D701BF0010E128 /* StructuralHoroscope */,
+				A0E0722E29D701BF0010E128 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A0E0722E29D701BF0010E128 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A0E0722D29D701BF0010E128 /* StructuralHoroscope.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A0E0722F29D701BF0010E128 /* StructuralHoroscope */ = {
+			isa = PBXGroup;
+			children = (
+				A0E0723029D701BF0010E128 /* StructuralHoroscopeApp.swift */,
+				A0CB9D8E29E707AE007C8595 /* Extensions */,
+				A0CB9D8D29E70779007C8595 /* Models */,
+				A0CB9D8C29E7076F007C8595 /* ViewModels */,
+				A0CB9D8A29E7073D007C8595 /* Views */,
+				A0E0723429D701C00010E128 /* Assets.xcassets */,
+				A0E0723629D701C00010E128 /* StructuralHoroscope.entitlements */,
+				A0E0723729D701C00010E128 /* Preview Content */,
+				A0E0723F29D702820010E128 /* Model.xcdatamodeld */,
+			);
+			path = StructuralHoroscope;
+			sourceTree = "<group>";
+		};
+		A0E0723729D701C00010E128 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A0E0723829D701C00010E128 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A0E53E7D29E817240065F227 /* AnnualGroup */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AnnualGroup;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A0E0722C29D701BF0010E128 /* StructuralHoroscope */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A0E0723C29D701C00010E128 /* Build configuration list for PBXNativeTarget "StructuralHoroscope" */;
+			buildPhases = (
+				A0E0722929D701BF0010E128 /* Sources */,
+				A0E0722A29D701BF0010E128 /* Frameworks */,
+				A0E0722B29D701BF0010E128 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StructuralHoroscope;
+			productName = StructuralHoroscope;
+			productReference = A0E0722D29D701BF0010E128 /* StructuralHoroscope.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A0E0722529D701BF0010E128 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					A0E0722C29D701BF0010E128 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = A0E0722829D701BF0010E128 /* Build configuration list for PBXProject "StructuralHoroscope" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A0E0722429D701BF0010E128;
+			productRefGroup = A0E0722E29D701BF0010E128 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A0E0722C29D701BF0010E128 /* StructuralHoroscope */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A0E0722B29D701BF0010E128 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0E0723929D701C00010E128 /* Preview Assets.xcassets in Resources */,
+				A0E0723529D701C00010E128 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A0E0722929D701BF0010E128 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0E0723329D701BF0010E128 /* ContentView.swift in Sources */,
+				A0CB9D8529E6FEA1007C8595 /* LeaderView.swift in Sources */,
+				A0CB9D8929E70336007C8595 /* KingView.swift in Sources */,
+				A0CB9D7929E6A842007C8595 /* VirtualSignsInfo.swift in Sources */,
+				A0E53E8329E8283A0065F227 /* VirtualSignInstances.swift in Sources */,
+				A0CB9D7529E554B6007C8595 /* Date.swift in Sources */,
+				A0CB9D8129E6F939007C8595 /* ProfessorView.swift in Sources */,
+				A0E53E8529E82F480065F227 /* VirtualSignView.swift in Sources */,
+				A03CF2DA29D716CD005BE95D /* Model.swift in Sources */,
+				A0E53E7C29E8157C0065F227 /* AnnualSignInstances.swift in Sources */,
+				A0CB9D7F29E6F602007C8595 /* VectorView.swift in Sources */,
+				A0CB9D8329E6FC04007C8595 /* KnightView.swift in Sources */,
+				A0CB9D8729E700A1007C8595 /* JesterView.swift in Sources */,
+				A0E53E8129E817780065F227 /* AnnualSignInfo.swift in Sources */,
+				A0E0723129D701BF0010E128 /* StructuralHoroscopeApp.swift in Sources */,
+				A0CB9D7D29E6C80F007C8595 /* AristocratView.swift in Sources */,
+				A0CB9D7729E6908F007C8595 /* ViewModel.swift in Sources */,
+				A0E0724129D702820010E128 /* Model.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A0E0723A29D701C00010E128 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A0E0723B29D701C00010E128 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		A0E0723D29D701C00010E128 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StructuralHoroscope/StructuralHoroscope.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"StructuralHoroscope/Preview Content\"";
+				DEVELOPMENT_TEAM = VB8C9ZVKXH;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sihtmark.StructuralHoroscope;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A0E0723E29D701C00010E128 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StructuralHoroscope/StructuralHoroscope.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"StructuralHoroscope/Preview Content\"";
+				DEVELOPMENT_TEAM = VB8C9ZVKXH;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sihtmark.StructuralHoroscope;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A0E0722829D701BF0010E128 /* Build configuration list for PBXProject "StructuralHoroscope" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0E0723A29D701C00010E128 /* Debug */,
+				A0E0723B29D701C00010E128 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A0E0723C29D701C00010E128 /* Build configuration list for PBXNativeTarget "StructuralHoroscope" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0E0723D29D701C00010E128 /* Debug */,
+				A0E0723E29D701C00010E128 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A0E0723F29D702820010E128 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A0E0724029D702820010E128 /* Model.xcdatamodel */,
+			);
+			currentVersion = A0E0724029D702820010E128 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A0E0722529D701BF0010E128 /* Project object */;
+}
