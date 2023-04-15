@@ -15,7 +15,7 @@ struct VirtualSignView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                ForEach(virtualSign.blocks.sorted(by: >), id: \.key) { key, value in
+                ForEach(virtualSign.blocks.sorted(by: <), id: \.key) { key, value in
                     VStack(alignment: .leading) {
                         Text(key)
                             .font(.headline)

@@ -55,11 +55,11 @@ extension ContentView {
     }
     var typeSection: some View {
         Section("Типы:") {
-            Text("Тип мышления: \(customer.sign.ideologicalType[customer.sex]?.rawValue ?? "")")
-            Text("Социальный тип: \(customer.sign.socialType.rawValue)")
-            Text("Психологический тип: \(customer.sign.psychologicalType.rawValue)")
-            Text("Энергетический тип: \(customer.sign.temperament.rawValue)")
-            Text("Тип судьбы: \(customer.sign.fateType.rawValue)")
+            Text("Тип мышления: \((customer.sign.ideologicalType[customer.sex]!.ideologicalType.rawValue))")
+            Text("Социальный тип: \(customer.sign.socialType.socialType.rawValue)")
+            Text("Психологический тип: \(customer.sign.psychologicalType.psychologicalType.rawValue)")
+            Text("Энергетический тип: \(customer.sign.temperament.energyType.rawValue)")
+            Text("Тип судьбы: \(customer.sign.fateType.fateType.rawValue)")
         }
     }
     var vectorSection: some View {

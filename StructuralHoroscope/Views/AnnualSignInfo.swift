@@ -18,8 +18,9 @@ struct AnnualSignInfo: View {
             vectorSection
             businessSection
             marriageSection
+            descriptionSection
         }
-        .listStyle(.grouped)
+        .listStyle(.plain)
         .navigationTitle(sign.annualSign.rawValue)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -43,12 +44,12 @@ struct AnnualSignInfo_Previews: PreviewProvider {
 extension AnnualSignInfo {
     var typeSection: some View {
         Section("Типы:") {
-            Text("Тип мышления для мужчин: \(sign.ideologicalType[Sex.male]?.rawValue ?? "")")
-            Text("Тип мышления для женщин: \(sign.ideologicalType[Sex.female]?.rawValue ?? "")")
-            Text("Социальный тип: \(sign.socialType.rawValue)")
-            Text("Психологический тип: \(sign.psychologicalType.rawValue)")
-            Text("Энергетический тип: \(sign.temperament.rawValue)")
-            Text("Тип судьбы: \(sign.fateType.rawValue)")
+            Text("Тип мышления для мужчин: \(sign.ideologicalType[Sex.male]!.ideologicalType.rawValue)")
+            Text("Тип мышления для женщин: \(sign.ideologicalType[Sex.female]!.ideologicalType.rawValue)")
+            Text("Социальный тип: \(sign.socialType.socialType.rawValue)")
+            Text("Психологический тип: \(sign.psychologicalType.psychologicalType.rawValue)")
+            Text("Энергетический тип: \(sign.temperament.energyType.rawValue)")
+            Text("Тип судьбы: \(sign.fateType.fateType.rawValue)")
         }
     }
     var vectorSection: some View {
@@ -71,6 +72,13 @@ extension AnnualSignInfo {
             Text("Патриархальный брак: \(VM.patriarchal(sign: sign))")
             Text("Равный брак: \(VM.equal(sign: sign))")
             Text("Духовный брак: \(VM.spiritual(sign: sign))")
+        }
+    }
+    var descriptionSection: some View {
+        ForEach(sign.blocks.sorted(by: <), id: \.key) { title, text in
+            Section(title) {
+                Text(text)
+            }
         }
     }
 }

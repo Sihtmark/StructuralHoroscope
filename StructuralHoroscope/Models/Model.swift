@@ -22,14 +22,14 @@ struct VirtualSignStruct: Hashable {
     let site: String
 }
 
-struct SignStruct: Hashable {
+struct SignStruct {
     let annualSign: AnnualSign
     let site: String
-    let ideologicalType: [Sex:IdeologicalType]
-    let socialType: SocialType
-    let psychologicalType: PsychologicalType
-    let temperament: EnergyType
-    let fateType: FateType
+    let ideologicalType: [Sex: IdeologicalStruct]
+    let socialType: SocialStruct
+    let psychologicalType: PsychologicalStruct
+    let temperament: EnergyStruct
+    let fateType: FateStruct
     let ageType: AgeType
     let vectorHost: AnnualSign
     let vectorServant: AnnualSign
@@ -44,6 +44,35 @@ struct SignStruct: Hashable {
     let virtualSigns: [ZodiacSign:VirtualSignStruct]
     let businessStruct: [AnnualSign: BusinessStruct]
     let blocks: [String:String]
+}
+
+struct IdeologicalStruct {
+    let ideologicalType: IdeologicalType
+    let blocks: [Sex: (String, String)]
+}
+
+struct SocialStruct {
+    let socialType: SocialType
+    let title: String
+    let text: String
+}
+
+struct PsychologicalStruct {
+    let psychologicalType: PsychologicalType
+    let title: String
+    let text: String
+}
+
+struct EnergyStruct {
+    let energyType: EnergyType
+    let title: String
+    let text: String
+}
+
+struct FateStruct {
+    let fateType: FateType
+    let title: String
+    let text: String
 }
 
 enum AnnualSign: String {
@@ -154,5 +183,5 @@ let sampleCustomer = ClientStruct(
     name: "Зинаида",
     birthday: Date(birthdate: "29.06.1991"),
     sex: .female,
-    sign: goatSign,
+    sign: tigerSign,
     zodiacSign: .cancer)
