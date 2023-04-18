@@ -55,7 +55,12 @@ extension ContentView {
     }
     var typeSection: some View {
         Section("Типы:") {
-            Text("Тип мышления: \((customer.sign.ideologicalType[customer.sex]!.ideologicalType.rawValue))")
+            NavigationLink {
+                IdeologicalView(customer: customer)
+            } label: {
+                Text("Тип мышления: \((customer.sign.ideologicalType[customer.sex]!.ideologicalType.rawValue))")
+            }
+            
             Text("Социальный тип: \(customer.sign.socialType.socialType.rawValue)")
             Text("Психологический тип: \(customer.sign.psychologicalType.psychologicalType.rawValue)")
             Text("Энергетический тип: \(customer.sign.temperament.energyType.rawValue)")

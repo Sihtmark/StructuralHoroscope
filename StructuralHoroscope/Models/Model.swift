@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ClientStruct {
+struct ClientStruct: Identifiable {
     let id = UUID()
     let name: String
     let birthday: Date
@@ -16,13 +16,15 @@ struct ClientStruct {
     let zodiacSign: ZodiacEnum
 }
 
-struct VirtualSignStruct: Hashable {
+struct VirtualSignStruct: Identifiable {
+    let id = UUID()
     let virtualSign: String
     let blocks: [String:String]
     let site: String
 }
 
-struct SignStruct {
+struct SignStruct: Identifiable {
+    let id = UUID()
     let annualSign: AnnualEnum
     let site: String
     let ideologicalType: [Sex: IdeologicalStruct]
@@ -46,30 +48,36 @@ struct SignStruct {
     let blocks: [String:String]
 }
 
-struct IdeologicalStruct {
+struct IdeologicalStruct: Identifiable {
+    let id = UUID()
     let ideologicalType: IdeologicalEnum
-    let blocks: [Sex: (String, String)]
+    let title: [Sex: String]
+    let text: [Sex: String]
 }
 
-struct SocialStruct {
+struct SocialStruct: Identifiable {
+    let id = UUID()
     let socialType: SocialEnum
     let title: String
     let text: String
 }
 
-struct PsychologicalStruct {
+struct PsychologicalStruct: Identifiable {
+    let id = UUID()
     let psychologicalType: PsychologicalEnum
     let title: String
     let text: String
 }
 
-struct EnergyStruct {
+struct EnergyStruct: Identifiable {
+    let id = UUID()
     let energyType: EnergyEnum
     let title: String
     let text: String
 }
 
-struct FateStruct {
+struct FateStruct: Identifiable {
+    let id = UUID()
     let fateType: FateEnum
     let title: String
     let text: String
