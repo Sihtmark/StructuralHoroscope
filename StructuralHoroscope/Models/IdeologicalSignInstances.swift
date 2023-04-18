@@ -7,6 +7,15 @@
 
 import Foundation
 
+let mysticMales = [ratSign, monkeySign, dragonSign]
+let mysticFemales = [catSign, goatSign, pigSign]
+let realisticMales = [catSign, goatSign, pigSign]
+let realisticFemales = [ratSign, monkeySign, dragonSign]
+let strongWillMales = [tigerSign, horseSign, dogSign]
+let strongWillFemales = [bullSign, snakeSign, roosterSign]
+let logicMales = [bullSign, snakeSign, roosterSign]
+let logicFemales = [tigerSign, horseSign, dogSign]
+
 let mysticIdeologicalStruct = IdeologicalStruct(
     ideologicalType: .mystical,
     blocks: [.male: (

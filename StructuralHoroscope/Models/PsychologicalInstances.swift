@@ -7,6 +7,11 @@
 
 import Foundation
 
+let maturitySigns = [pigSign, ratSign, bullSign]
+let dreamerSigns = [tigerSign, catSign, dragonSign]
+let sensitiveSigns = [snakeSign, horseSign, goatSign]
+let groundedSigns = [monkeySign, roosterSign, dogSign]
+
 let maturityPsychologicalStruct = PsychologicalStruct(
     psychologicalType: .maturity,
     title: "Знаки возмужания (безжалостные)",

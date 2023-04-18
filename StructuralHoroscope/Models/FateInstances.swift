@@ -7,12 +7,10 @@
 
 import Foundation
 
-/*
- case fatalist = "Фаталист"
- case lucky = "Везунчик"
- case doItYourself = "Самодельщик"
- case pioneer = "Пионер"
- */
+let fatalistSigns = [ratSign, tigerSign, dogSign]
+let luckySigns = [catSign, snakeSign, bullSign]
+let doItYourselfSigns = [horseSign, monkeySign, dragonSign]
+let pioneerSigns = [pigSign, roosterSign, goatSign]
 
 let pioneerFateStruct = FateStruct(
     fateType: .pioneer,

@@ -13,7 +13,7 @@ struct ClientStruct {
     let birthday: Date
     let sex: Sex
     let sign: SignStruct
-    let zodiacSign: ZodiacSign
+    let zodiacSign: ZodiacEnum
 }
 
 struct VirtualSignStruct: Hashable {
@@ -23,59 +23,59 @@ struct VirtualSignStruct: Hashable {
 }
 
 struct SignStruct {
-    let annualSign: AnnualSign
+    let annualSign: AnnualEnum
     let site: String
     let ideologicalType: [Sex: IdeologicalStruct]
     let socialType: SocialStruct
     let psychologicalType: PsychologicalStruct
     let temperament: EnergyStruct
     let fateType: FateStruct
-    let ageType: AgeType
-    let vectorHost: AnnualSign
-    let vectorServant: AnnualSign
-    let romanticMarriage: [AnnualSign]
-    let patriarchalMarriage: [AnnualSign]
-    let equalMarriage: [AnnualSign]
-    let spiritualMarriage: [AnnualSign]
-    let clones: [AnnualSign]
-    let companions: [AnnualSign]
-    let subordinates: [AnnualSign]
-    let advisers: [AnnualSign]
-    let virtualSigns: [ZodiacSign:VirtualSignStruct]
-    let businessStruct: [AnnualSign: BusinessStruct]
+    let ageType: AgeEnum
+    let vectorHost: AnnualEnum
+    let vectorServant: AnnualEnum
+    let romanticMarriage: [AnnualEnum]
+    let patriarchalMarriage: [AnnualEnum]
+    let equalMarriage: [AnnualEnum]
+    let spiritualMarriage: [AnnualEnum]
+    let clones: [AnnualEnum]
+    let companions: [AnnualEnum]
+    let subordinates: [AnnualEnum]
+    let advisers: [AnnualEnum]
+    let virtualSigns: [ZodiacEnum:VirtualSignStruct]
+    let businessStruct: [AnnualEnum: BusinessEnum]
     let blocks: [String:String]
 }
 
 struct IdeologicalStruct {
-    let ideologicalType: IdeologicalType
+    let ideologicalType: IdeologicalEnum
     let blocks: [Sex: (String, String)]
 }
 
 struct SocialStruct {
-    let socialType: SocialType
+    let socialType: SocialEnum
     let title: String
     let text: String
 }
 
 struct PsychologicalStruct {
-    let psychologicalType: PsychologicalType
+    let psychologicalType: PsychologicalEnum
     let title: String
     let text: String
 }
 
 struct EnergyStruct {
-    let energyType: EnergyType
+    let energyType: EnergyEnum
     let title: String
     let text: String
 }
 
 struct FateStruct {
-    let fateType: FateType
+    let fateType: FateEnum
     let title: String
     let text: String
 }
 
-enum AnnualSign: String {
+enum AnnualEnum: String {
     case snake = "Змея"
     case horse = "Лошадь"
     case goat = "Коза"
@@ -90,7 +90,7 @@ enum AnnualSign: String {
     case dragon = "Дракон"
 }
 
-enum ZodiacSign: String {
+enum ZodiacEnum: String {
     case aries = "Овен"
     case taurus = "Телец"
     case gemini = "Близнецы"
@@ -105,7 +105,7 @@ enum ZodiacSign: String {
     case pisces = "Рыбы"
 }
 
-enum VirtualSign: String, CaseIterable {
+enum VirtualEnum: String, CaseIterable {
     case king = "Король"
     case vector = "Вектор"
     case jester = "Шут"
@@ -115,7 +115,7 @@ enum VirtualSign: String, CaseIterable {
     case leader = "Вождь"
 }
 
-enum BusinessStruct: String {
+enum BusinessEnum: String {
     case vectorHost = "Векторный хозяин"
     case vectorServant = "Векторный слуга"
     case clone = "Клон"
@@ -124,7 +124,7 @@ enum BusinessStruct: String {
     case adviser = "Советник"
 }
 
-enum AgeType: String {
+enum AgeEnum: String {
     case newborn = "Новорожденного 0-1"
     case baby = "Младенеца 1-3"
     case preschooler = "Дошкольника 3-7"
@@ -139,34 +139,34 @@ enum AgeType: String {
     case outgoing = "Уходящего 85 - ∞"
 }
 
-enum IdeologicalType: String {
+enum IdeologicalEnum: String {
     case logical = "Логик"
     case strongWilled = "Волевик"
     case mystical = "Мистик"
     case realistic = "Реалист"
 }
 
-enum SocialType: String {
+enum SocialEnum: String {
     case closed = "Закрытый"
     case opened = "Открытый"
     case orthodox = "Ортодокс"
 }
 
-enum PsychologicalType: String {
+enum PsychologicalEnum: String {
     case maturity = "Возмужания"
     case dreamer = "Взлетый"
     case sensitive = "Чувствительный"
     case grounded = "Приземленный"
 }
 
-enum EnergyType: String {
+enum EnergyEnum: String {
     case dramatic = "Драматический (холерик)"
     case sanguine = "Природный оптимист (сангвиник)"
     case phlegmatic = "Космический оптимист (флегматик)"
     case melancholic = "Скептик (меланхолик)"
 }
 
-enum FateType: String {
+enum FateEnum: String {
     case fatalist = "Фаталист"
     case lucky = "Везунчик"
     case doItYourself = "Самодельщик"
@@ -179,7 +179,7 @@ enum Sex: String {
 }
 
 
-let sampleCustomer = ClientStruct(
+let sampleClient = ClientStruct(
     name: "Зинаида",
     birthday: Date(birthdate: "29.06.1991"),
     sex: .female,

@@ -7,6 +7,10 @@
 
 import Foundation
 
+let openedSigns = [ratSign, catSign, horseSign, roosterSign]
+let closedSigns = [tigerSign, snakeSign, monkeySign, pigSign]
+let orthodocsSigns = [bullSign, dragonSign, goatSign, dogSign]
+
 let openedSocialStruct = SocialStruct(
     socialType: .opened,
     title: "Открытые знаки (всенародные, экстраверты)",

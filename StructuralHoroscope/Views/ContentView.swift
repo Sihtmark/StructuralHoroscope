@@ -28,7 +28,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ContentView(customer: sampleCustomer)
+            ContentView(customer: sampleClient)
         }
         .environmentObject(ViewModel())
     }

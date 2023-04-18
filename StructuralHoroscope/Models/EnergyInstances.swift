@@ -7,6 +7,11 @@
 
 import Foundation
 
+let dramaticSigns = [goatSign, ratSign, snakeSign]
+let sanguineSigns = [bullSign, horseSign, pigSign]
+let phlegmaticSigns = [tigerSign, roosterSign, dragonSign]
+let melancholicSigns = [monkeySign, catSign, dogSign]
+
 let dramaticEnergeticStruct = EnergyStruct(
     energyType: .dramatic,
     title: "ДРАМАТИЧЕСКИЙ ТЕМПЕРАМЕНТ (ХОЛЕРИКИ)",
