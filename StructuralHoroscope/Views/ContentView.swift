@@ -60,8 +60,12 @@ extension ContentView {
             } label: {
                 Text("Тип мышления: \((customer.sign.ideologicalType[customer.sex]!.ideologicalType.rawValue))")
             }
+            NavigationLink {
+                SocialView(social: customer.sign.socialType)
+            } label: {
+                Text("Социальный тип: \(customer.sign.socialType.socialType.rawValue)")
+            }
             
-            Text("Социальный тип: \(customer.sign.socialType.socialType.rawValue)")
             Text("Психологический тип: \(customer.sign.psychologicalType.psychologicalType.rawValue)")
             Text("Энергетический тип: \(customer.sign.temperament.energyType.rawValue)")
             Text("Тип судьбы: \(customer.sign.fateType.fateType.rawValue)")

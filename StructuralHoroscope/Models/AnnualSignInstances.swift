@@ -11,7 +11,7 @@ let annualSigns: [SignStruct] = [ratSign, bullSign, tigerSign, catSign, dragonSi
 
 let ratSign = SignStruct(
     annualSign: .rat, site: "https://www.xsp.ru/sh/znaki/znak.php?id=1",
-    ideologicalType: [.male: mysticIdeologicalStruct, .female: realistIdeologicalStruct],
+    ideologicalType: [.male: mysticMale, .female: realistFemale],
     socialType: openedSocialStruct,
     psychologicalType: maturityPsychologicalStruct,
     temperament: dramaticEnergeticStruct,
@@ -68,7 +68,7 @@ let ratSign = SignStruct(
 
 let bullSign = SignStruct(
     annualSign: .bull, site: "https://www.xsp.ru/sh/znaki/znak.php?id=2",
-    ideologicalType: [.male: logicIdeologicalStruct, .female: strongWilledIdeologicalStruct],
+    ideologicalType: [.male: logicMale, .female: strongWilledFemale],
     socialType: orthodocsSocialStruct,
     psychologicalType: maturityPsychologicalStruct,
     temperament: sanguineEnergeticStruct,
@@ -125,7 +125,7 @@ let bullSign = SignStruct(
 
 let tigerSign = SignStruct(
     annualSign: .tiger, site: "https://www.xsp.ru/sh/znaki/znak.php?id=3",
-    ideologicalType: [.male: strongWilledIdeologicalStruct, .female: logicIdeologicalStruct],
+    ideologicalType: [.male: strongWilledMale, .female: logicFemale],
     socialType: closedSocialStruct,
     psychologicalType: dreamerPsychologicalStruct,
     temperament: phlegmaticEnergyStruct,
@@ -182,7 +182,7 @@ let tigerSign = SignStruct(
 
 let catSign = SignStruct(
     annualSign: .cat, site: "https://www.xsp.ru/sh/znaki/znak.php?id=4",
-    ideologicalType: [.male: realistIdeologicalStruct, .female: mysticIdeologicalStruct],
+    ideologicalType: [.male: realistMale, .female: mysticFemale],
     socialType: openedSocialStruct,
     psychologicalType: dreamerPsychologicalStruct,
     temperament: melancholicEnergyStruct,
@@ -240,7 +240,7 @@ let catSign = SignStruct(
 
 let dragonSign = SignStruct(
     annualSign: .dragon, site: "https://www.xsp.ru/sh/znaki/znak.php?id=5",
-    ideologicalType: [.male: mysticIdeologicalStruct, .female: realistIdeologicalStruct],
+    ideologicalType: [.male: mysticMale, .female: realistFemale],
     socialType: orthodocsSocialStruct,
     psychologicalType: dreamerPsychologicalStruct,
     temperament: phlegmaticEnergyStruct,
@@ -299,7 +299,7 @@ let dragonSign = SignStruct(
 
 let snakeSign = SignStruct(
     annualSign: .snake, site: "https://www.xsp.ru/sh/znaki/znak.php?id=6",
-    ideologicalType: [.male: logicIdeologicalStruct, .female: strongWilledIdeologicalStruct],
+    ideologicalType: [.male: logicMale, .female: strongWilledFemale],
     socialType: closedSocialStruct,
     psychologicalType: sensitivePsychologicalStruct,
     temperament: dramaticEnergeticStruct,
@@ -357,7 +357,7 @@ let snakeSign = SignStruct(
 
 let horseSign = SignStruct(
     annualSign: .horse, site: "https://www.xsp.ru/sh/znaki/znak.php?id=7",
-    ideologicalType: [.male: strongWilledIdeologicalStruct, .female: logicIdeologicalStruct],
+    ideologicalType: [.male: strongWilledMale, .female: logicFemale],
     socialType: openedSocialStruct,
     psychologicalType: sensitivePsychologicalStruct,
     temperament: sanguineEnergeticStruct,
@@ -415,7 +415,7 @@ let horseSign = SignStruct(
 
 let goatSign = SignStruct(
     annualSign: .goat, site: "https://www.xsp.ru/sh/znaki/znak.php?id=8",
-    ideologicalType: [.male: realistIdeologicalStruct, .female: mysticIdeologicalStruct],
+    ideologicalType: [.male: realistMale, .female: mysticFemale],
     socialType: orthodocsSocialStruct,
     psychologicalType: sensitivePsychologicalStruct,
     temperament: dramaticEnergeticStruct,
@@ -473,7 +473,7 @@ let goatSign = SignStruct(
 
 let monkeySign = SignStruct(
     annualSign: .monkey, site: "https://www.xsp.ru/sh/znaki/znak.php?id=9",
-    ideologicalType: [.male: mysticIdeologicalStruct, .female: realistIdeologicalStruct],
+    ideologicalType: [.male: mysticMale, .female: realistFemale],
     socialType: closedSocialStruct,
     psychologicalType: groundedPsychologicalStruct,
     temperament: melancholicEnergyStruct,
@@ -530,7 +530,7 @@ let monkeySign = SignStruct(
 
 let roosterSign = SignStruct(
     annualSign: .rooster, site: "https://www.xsp.ru/sh/znaki/znak.php?id=10",
-    ideologicalType: [.male: logicIdeologicalStruct, .female: strongWilledIdeologicalStruct],
+    ideologicalType: [.male: logicMale, .female: strongWilledFemale],
     socialType: openedSocialStruct,
     psychologicalType: groundedPsychologicalStruct,
     temperament: phlegmaticEnergyStruct,
@@ -588,7 +588,7 @@ let roosterSign = SignStruct(
 
 let dogSign = SignStruct(
     annualSign: .dog, site: "https://www.xsp.ru/sh/znaki/znak.php?id=11",
-    ideologicalType: [.male: strongWilledIdeologicalStruct, .female: logicIdeologicalStruct],
+    ideologicalType: [.male: strongWilledMale, .female: logicFemale],
     socialType: orthodocsSocialStruct,
     psychologicalType: groundedPsychologicalStruct,
     temperament: melancholicEnergyStruct,
@@ -646,7 +646,7 @@ let dogSign = SignStruct(
 
 let pigSign = SignStruct(
     annualSign: .pig, site: "https://www.xsp.ru/sh/znaki/znak.php?id=12",
-    ideologicalType: [.male: realistIdeologicalStruct, .female: mysticIdeologicalStruct],
+    ideologicalType: [.male: realistMale, .female: mysticFemale],
     socialType: closedSocialStruct,
     psychologicalType: maturityPsychologicalStruct,
     temperament: sanguineEnergeticStruct,

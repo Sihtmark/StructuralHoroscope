@@ -51,8 +51,8 @@ struct SignStruct: Identifiable {
 struct IdeologicalStruct: Identifiable {
     let id = UUID()
     let ideologicalType: IdeologicalEnum
-    let title: [Sex: String]
-    let text: [Sex: String]
+    let title: String
+    let text: String
 }
 
 struct SocialStruct: Identifiable {
@@ -148,10 +148,14 @@ enum AgeEnum: String {
 }
 
 enum IdeologicalEnum: String {
-    case logical = "Логик"
-    case strongWilled = "Волевик"
-    case mystical = "Мистик"
-    case realistic = "Реалист"
+    case logicalMale = "Логик мужчина"
+    case logicalFemale = "Логик женщина"
+    case strongWilledMale = "Волевик мужчина"
+    case strongWilledFemale = "Волевик женщина"
+    case mysticalMale = "Мистик мужчина"
+    case mysticalFemale = "Мистик женщина"
+    case realisticMale = "Реалист мужчина"
+    case realisticFemale = "Реалист женщина"
 }
 
 enum SocialEnum: String {
