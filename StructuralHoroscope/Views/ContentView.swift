@@ -84,16 +84,40 @@ extension ContentView {
     }
     var vectorSection: some View {
         Section("Векторы:") {
-            Text("Хозяин: \(customer.sign.vectorHost.rawValue)")
-            Text("Слуга: \(customer.sign.vectorServant.rawValue)")
+            NavigationLink {
+                AnnualSignView(sign: annualSigns[customer.sign.vectorHost]!)
+            } label: {
+                Text("Хозяин: \(customer.sign.vectorHost.rawValue)")
+            }
+            NavigationLink {
+                AnnualSignView(sign: annualSigns[customer.sign.vectorServant]!)
+            } label: {
+                Text("Слуга: \(customer.sign.vectorServant.rawValue)")
+            }
         }
     }
     var businessSection: some View {
         Section("Бизнес:") {
-            Text("Клоны: \(VM.clones(sign: customer.sign))")
-            Text("Соратники: \(VM.companions(sign: customer.sign))")
-            Text("Подчиненные: \(VM.subordinates(sign: customer.sign))")
-            Text("Советники: \(VM.advisers(sign: customer.sign))")
+            NavigationLink {
+                BusinessView(business: clone, sign: customer.sign.annualSign)
+            } label: {
+                Text("Клоны: \(VM.clones(sign: customer.sign))")
+            }
+            NavigationLink {
+                BusinessView(business: companion, sign: customer.sign.annualSign)
+            } label: {
+                Text("Соратники: \(VM.companions(sign: customer.sign))")
+            }
+            NavigationLink {
+                BusinessView(business: subordinate, sign: customer.sign.annualSign)
+            } label: {
+                Text("Подчиненные: \(VM.subordinates(sign: customer.sign))")
+            }
+            NavigationLink {
+                BusinessView(business: subordinate, sign: customer.sign.annualSign)
+            } label: {
+                Text("Советники: \(VM.advisers(sign: customer.sign))")
+            }
         }
     }
     var marriageSection: some View {

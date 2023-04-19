@@ -35,7 +35,7 @@ struct AnnualSignView: View {
 struct AnnualSignInfo_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            AnnualSignView(sign: annualSigns[0])
+            AnnualSignView(sign: annualSigns[.rat]!)
         }
         .environmentObject(ViewModel())
     }

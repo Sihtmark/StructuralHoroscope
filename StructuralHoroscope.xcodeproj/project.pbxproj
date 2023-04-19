@@ -10,6 +10,10 @@
 		A03AD25E29F005AB00EE061C /* PsychologicalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD25D29F005AB00EE061C /* PsychologicalView.swift */; };
 		A03AD26029F007B000EE061C /* EnergyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD25F29F007B000EE061C /* EnergyView.swift */; };
 		A03AD26229F00AC200EE061C /* FateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD26129F00AC200EE061C /* FateView.swift */; };
+		A03AD26429F0182500EE061C /* BusinessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD26329F0182500EE061C /* BusinessView.swift */; };
+		A03AD26629F01D1C00EE061C /* BusinessInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD26529F01D1C00EE061C /* BusinessInstances.swift */; };
+		A03AD26829F0348400EE061C /* MarriageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD26729F0348400EE061C /* MarriageView.swift */; };
+		A03AD26A29F03C1F00EE061C /* MarriageInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD26929F03C1F00EE061C /* MarriageInstances.swift */; };
 		A03CF2DA29D716CD005BE95D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CF2D929D716CD005BE95D /* Model.swift */; };
 		A0B2185C29EED63100433B72 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2185B29EED63100433B72 /* SocialView.swift */; };
 		A0CB9D7529E554B6007C8595 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB9D7429E554B6007C8595 /* Date.swift */; };
@@ -35,6 +39,10 @@
 		A03AD25D29F005AB00EE061C /* PsychologicalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychologicalView.swift; sourceTree = "<group>"; };
 		A03AD25F29F007B000EE061C /* EnergyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyView.swift; sourceTree = "<group>"; };
 		A03AD26129F00AC200EE061C /* FateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FateView.swift; sourceTree = "<group>"; };
+		A03AD26329F0182500EE061C /* BusinessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessView.swift; sourceTree = "<group>"; };
+		A03AD26529F01D1C00EE061C /* BusinessInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessInstances.swift; sourceTree = "<group>"; };
+		A03AD26729F0348400EE061C /* MarriageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarriageView.swift; sourceTree = "<group>"; };
+		A03AD26929F03C1F00EE061C /* MarriageInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarriageInstances.swift; sourceTree = "<group>"; };
 		A03CF2D929D716CD005BE95D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A0B2185B29EED63100433B72 /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
 		A0CB9D7429E554B6007C8595 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -80,6 +88,8 @@
 				A03AD25D29F005AB00EE061C /* PsychologicalView.swift */,
 				A03AD25F29F007B000EE061C /* EnergyView.swift */,
 				A03AD26129F00AC200EE061C /* FateView.swift */,
+				A03AD26329F0182500EE061C /* BusinessView.swift */,
+				A03AD26729F0348400EE061C /* MarriageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -103,6 +113,8 @@
 				A0F2FA8C29EAF722002A58BC /* PsychologicalInstances.swift */,
 				A0F2FA8E29EAFB34002A58BC /* EnergyInstances.swift */,
 				A0F2FA9029EB01A3002A58BC /* FateInstances.swift */,
+				A03AD26529F01D1C00EE061C /* BusinessInstances.swift */,
+				A03AD26929F03C1F00EE061C /* MarriageInstances.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -227,8 +239,10 @@
 			files = (
 				A0E0723329D701BF0010E128 /* ContentView.swift in Sources */,
 				A03AD26029F007B000EE061C /* EnergyView.swift in Sources */,
+				A03AD26A29F03C1F00EE061C /* MarriageInstances.swift in Sources */,
 				A0F2FA8B29EAED4C002A58BC /* IdeologicalSignInstances.swift in Sources */,
 				A0F2FA8F29EAFB34002A58BC /* EnergyInstances.swift in Sources */,
+				A03AD26429F0182500EE061C /* BusinessView.swift in Sources */,
 				A03AD26229F00AC200EE061C /* FateView.swift in Sources */,
 				A0F2FA9129EB01A3002A58BC /* FateInstances.swift in Sources */,
 				A0E53E8329E8283A0065F227 /* VirtualSignInstances.swift in Sources */,
@@ -237,7 +251,9 @@
 				A0F2FA8D29EAF722002A58BC /* PsychologicalInstances.swift in Sources */,
 				A0E53E8529E82F480065F227 /* VirtualSignView.swift in Sources */,
 				A03CF2DA29D716CD005BE95D /* Model.swift in Sources */,
+				A03AD26829F0348400EE061C /* MarriageView.swift in Sources */,
 				A0E53E7C29E8157C0065F227 /* AnnualSignInstances.swift in Sources */,
+				A03AD26629F01D1C00EE061C /* BusinessInstances.swift in Sources */,
 				A0E53E8129E817780065F227 /* AnnualSignView.swift in Sources */,
 				A0F2FA9329EB0F36002A58BC /* IdeologicalView.swift in Sources */,
 				A0B2185C29EED63100433B72 /* SocialView.swift in Sources */,

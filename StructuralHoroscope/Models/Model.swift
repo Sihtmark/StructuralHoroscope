@@ -83,6 +83,21 @@ struct FateStruct: Identifiable {
     let text: String
 }
 
+struct BusinessStruct: Identifiable {
+    let id = UUID()
+    let type: BusinessEnum
+    let value: String
+    let text: String
+    let signs: [AnnualEnum: [SignStruct]]
+}
+
+struct MarriageStruct: Identifiable {
+    let id = UUID()
+    let type: MarriageEnum
+    let title: String
+    let text: String
+}
+
 enum AnnualEnum: String {
     case snake = "Змея"
     case horse = "Лошадь"
@@ -126,10 +141,18 @@ enum VirtualEnum: String, CaseIterable {
 enum BusinessEnum: String {
     case vectorHost = "Векторный хозяин"
     case vectorServant = "Векторный слуга"
-    case clone = "Клон"
-    case companion = "Соратник"
-    case subordinate = "Подчиненный"
-    case adviser = "Советник"
+    case clone = "Клоны"
+    case companion = "Соратники"
+    case subordinate = "Подчиненные"
+    case adviser = "Советники"
+}
+
+enum MarriageEnum: String {
+    case vector = "Векторный"
+    case romantic = "Романтический"
+    case patriarchal = "Патриархальный"
+    case equal = "Равный"
+    case spiritual = "Духовный"
 }
 
 enum AgeEnum: String {
@@ -193,7 +216,7 @@ enum Sex: String {
 
 let sampleClient = ClientStruct(
     name: "Зинаида",
-    birthday: Date(birthdate: "29.06.1991"),
-    sex: .female,
+    birthday: Date(birthdate: "25.06.1985"),
+    sex: .male,
     sign: tigerSign,
     zodiacSign: .cancer)
