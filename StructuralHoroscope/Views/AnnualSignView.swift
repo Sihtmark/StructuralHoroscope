@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AnnualSignInfo: View {
+struct AnnualSignView: View {
     
     @EnvironmentObject private var VM: ViewModel
     let sign: SignStruct
@@ -35,13 +35,13 @@ struct AnnualSignInfo: View {
 struct AnnualSignInfo_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            AnnualSignInfo(sign: annualSigns[0])
+            AnnualSignView(sign: annualSigns[0])
         }
         .environmentObject(ViewModel())
     }
 }
 
-extension AnnualSignInfo {
+extension AnnualSignView {
     var typeSection: some View {
         Section("Типы:") {
             Text("Тип мышления для мужчин: \(sign.ideologicalType[Sex.male]!.ideologicalType.rawValue)")

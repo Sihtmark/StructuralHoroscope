@@ -76,7 +76,7 @@ struct SocialView: View {
                 
                 ForEach(VM.socialSigns(socialEnum: social.socialType)) { sign in
                     NavigationLink {
-                        AnnualSignInfo(sign: sign)
+                        AnnualSignView(sign: sign)
                     } label: {
                         HStack {
                             Text(sign.annualSign.rawValue)

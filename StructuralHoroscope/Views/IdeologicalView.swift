@@ -112,7 +112,7 @@ extension IdeologicalView {
             .padding(.top, 40)
             ForEach(VM.ideologicalSigns(ideologicalEnum: customer.sign.ideologicalType[customer.sex]!.ideologicalType)) { sign in
                 NavigationLink {
-                    AnnualSignInfo(sign: sign)
+                    AnnualSignView(sign: sign)
                 } label: {
                     HStack {
                         Text(sign.annualSign.rawValue)

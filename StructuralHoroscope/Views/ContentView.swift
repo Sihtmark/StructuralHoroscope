@@ -38,7 +38,7 @@ extension ContentView {
     var signSection: some View {
         Section("Знаки:") {
             NavigationLink {
-                AnnualSignInfo(sign: customer.sign)
+                AnnualSignView(sign: customer.sign)
             } label: {
                 HStack {
                     Text("Годовой знак: \(customer.sign.annualSign.rawValue)")
@@ -65,10 +65,21 @@ extension ContentView {
             } label: {
                 Text("Социальный тип: \(customer.sign.socialType.socialType.rawValue)")
             }
-            
-            Text("Психологический тип: \(customer.sign.psychologicalType.psychologicalType.rawValue)")
-            Text("Энергетический тип: \(customer.sign.temperament.energyType.rawValue)")
-            Text("Тип судьбы: \(customer.sign.fateType.fateType.rawValue)")
+            NavigationLink {
+                PsychologicalView(psychologicalStruct: customer.sign.psychologicalType)
+            } label: {
+                Text("Психологический тип: \(customer.sign.psychologicalType.psychologicalType.rawValue)")
+            }
+            NavigationLink {
+                EnergyView(energy: customer.sign.temperament)
+            } label: {
+                Text("Энергетический тип: \(customer.sign.temperament.energyType.rawValue)")
+            }
+            NavigationLink {
+                FateView(fate: customer.sign.fateType)
+            } label: {
+                Text("Тип судьбы: \(customer.sign.fateType.fateType.rawValue)")
+            }
         }
     }
     var vectorSection: some View {

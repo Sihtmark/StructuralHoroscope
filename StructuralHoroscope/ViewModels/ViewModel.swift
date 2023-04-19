@@ -72,4 +72,43 @@ class ViewModel: ObservableObject {
             return [ratSign, monkeySign, dragonSign]
         }
     }
+    
+    func psychologicalSigns(psychologicalEnum: PsychologicalEnum) -> [SignStruct] {
+        switch psychologicalEnum {
+        case .maturity:
+            return [pigSign, ratSign, bullSign]
+        case .dreamer:
+            return [tigerSign, catSign, dragonSign]
+        case .sensitive:
+            return [snakeSign, horseSign, goatSign]
+        case .grounded:
+            return [monkeySign, roosterSign, dogSign]
+        }
+    }
+    
+    func energySigns(energy: EnergyEnum) -> [SignStruct] {
+        switch energy {
+        case .dramatic: 
+            return [goatSign, ratSign, snakeSign]
+        case .sanguine:
+            return [bullSign, horseSign, pigSign]
+        case .phlegmatic:
+            return [tigerSign, roosterSign, dragonSign]
+        case .melancholic:
+            return [monkeySign, catSign, dogSign]
+        }
+    }
+    
+    func fateSigns(fate: FateEnum) -> [SignStruct] {
+        switch fate {
+        case .fatalist:
+            return [ratSign, tigerSign, dogSign]
+        case .lucky:
+            return [catSign, snakeSign, bullSign]
+        case .doItYourself:
+            return [horseSign, monkeySign, dragonSign]
+        case .pioneer:
+            return [pigSign, roosterSign, goatSign]
+        }
+    }
 }
