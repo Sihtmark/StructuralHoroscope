@@ -9,22 +9,6 @@ import Foundation
 
 class ViewModel: ObservableObject {
     
-    func romantic(sign: SignStruct) -> String {
-        return sign.romanticMarriage.map{$0.rawValue}.joined(separator: ", ")
-    }
-    
-    func patriarchal(sign: SignStruct) -> String {
-        return sign.patriarchalMarriage.map{$0.rawValue}.joined(separator: ", ")
-    }
-    
-    func equal(sign: SignStruct) -> String {
-        return sign.equalMarriage.map{$0.rawValue}.joined(separator: ", ")
-    }
-    
-    func spiritual(sign: SignStruct) -> String {
-        return sign.spiritualMarriage.map{$0.rawValue}.joined(separator: ", ")
-    }
-    
     func clones(sign: SignStruct) -> String {
         return sign.clones.map{$0.rawValue}.joined(separator: ", ")
     }
@@ -39,6 +23,26 @@ class ViewModel: ObservableObject {
     
     func advisers(sign: SignStruct) -> String {
         return sign.advisers.map{$0.rawValue}.joined(separator: ", ")
+    }
+    
+    func vectorMarriage(sign: SignStruct) -> String {
+        return sign.vectorMarriage.map{$0.rawValue}.joined(separator: ", ")
+    }
+    
+    func romanticMarriage(sign: SignStruct) -> String {
+        return sign.romanticMarriage.map{$0.rawValue}.joined(separator: ", ")
+    }
+    
+    func equalMarriage(sign: SignStruct) -> String {
+        return sign.equalMarriage.map{$0.rawValue}.joined(separator: ", ")
+    }
+    
+    func spiritualMarriage(sign: SignStruct) -> String {
+        return sign.spiritualMarriage.map{$0.rawValue}.joined(separator: ", ")
+    }
+    
+    func patriarchalMarriage(sign: SignStruct) -> String {
+        return sign.patriarchalMarriage.map{$0.rawValue}.joined(separator: ", ")
     }
     
     func socialSigns(socialEnum: SocialEnum) -> [SignStruct] {

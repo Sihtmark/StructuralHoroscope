@@ -35,6 +35,7 @@ struct SignStruct: Identifiable {
     let ageType: AgeEnum
     let vectorHost: AnnualEnum
     let vectorServant: AnnualEnum
+    let vectorMarriage: [AnnualEnum]
     let romanticMarriage: [AnnualEnum]
     let patriarchalMarriage: [AnnualEnum]
     let equalMarriage: [AnnualEnum]
@@ -96,6 +97,7 @@ struct MarriageStruct: Identifiable {
     let type: MarriageEnum
     let title: String
     let text: String
+    let signs: [AnnualEnum: [SignStruct]]
 }
 
 enum AnnualEnum: String {

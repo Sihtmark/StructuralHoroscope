@@ -99,6 +99,16 @@ extension ContentView {
     var businessSection: some View {
         Section("Бизнес:") {
             NavigationLink {
+                BusinessView(business: vectorHost, sign: customer.sign.annualSign)
+            } label: {
+                Text("Векторный хозяин: \(customer.sign.vectorHost.rawValue)")
+            }
+            NavigationLink {
+                BusinessView(business: vectorServant, sign: customer.sign.annualSign)
+            } label: {
+                Text("Векторный слуга: \(customer.sign.vectorServant.rawValue)")
+            }
+            NavigationLink {
                 BusinessView(business: clone, sign: customer.sign.annualSign)
             } label: {
                 Text("Клоны: \(VM.clones(sign: customer.sign))")
@@ -122,10 +132,31 @@ extension ContentView {
     }
     var marriageSection: some View {
         Section("Браки:") {
-            Text("Романтический брак: \(VM.romantic(sign: customer.sign))")
-            Text("Патриархальный брак: \(VM.patriarchal(sign: customer.sign))")
-            Text("Равный брак: \(VM.equal(sign: customer.sign))")
-            Text("Духовный брак: \(VM.spiritual(sign: customer.sign))")
+            NavigationLink {
+                MarriageView(marriage: vectorMarriage, sign: customer.sign.annualSign)
+            } label: {
+                Text("Векторный брак: \(VM.vectorMarriage(sign: customer.sign))")
+            }
+            NavigationLink {
+                MarriageView(marriage: romanticMarriage, sign: customer.sign.annualSign)
+            } label: {
+                Text("Романтический брак: \(VM.romanticMarriage(sign: customer.sign))")
+            }
+            NavigationLink {
+                MarriageView(marriage: patriarchalMarriage, sign: customer.sign.annualSign)
+            } label: {
+                Text("Патриархальный брак: \(VM.patriarchalMarriage(sign: customer.sign))")
+            }
+            NavigationLink {
+                MarriageView(marriage: spiritualMarriage, sign: customer.sign.annualSign)
+            } label: {
+                Text("Духовный брак: \(VM.spiritualMarriage(sign: customer.sign))")
+            }
+            NavigationLink {
+                MarriageView(marriage: equalMarriage, sign: customer.sign.annualSign)
+            } label: {
+                Text("Равный брак: \(VM.equalMarriage(sign: customer.sign))")
+            }
         }
     }
 }

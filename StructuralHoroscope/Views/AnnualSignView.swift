@@ -68,10 +68,10 @@ extension AnnualSignView {
     }
     var marriageSection: some View {
         Section("Браки:") {
-            Text("Романтический брак: \(VM.romantic(sign: sign))")
-            Text("Патриархальный брак: \(VM.patriarchal(sign: sign))")
-            Text("Равный брак: \(VM.equal(sign: sign))")
-            Text("Духовный брак: \(VM.spiritual(sign: sign))")
+            Text("Романтический брак: \(VM.romanticMarriage(sign: sign))")
+            Text("Патриархальный брак: \(VM.patriarchalMarriage(sign: sign))")
+            Text("Равный брак: \(VM.equalMarriage(sign: sign))")
+            Text("Духовный брак: \(VM.spiritualMarriage(sign: sign))")
         }
     }
     var descriptionSection: some View {
