@@ -15,11 +15,12 @@
 		A03AD26829F0348400EE061C /* MarriageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD26729F0348400EE061C /* MarriageView.swift */; };
 		A03AD26A29F03C1F00EE061C /* MarriageInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD26929F03C1F00EE061C /* MarriageInstances.swift */; };
 		A03CF2DA29D716CD005BE95D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CF2D929D716CD005BE95D /* Model.swift */; };
+		A086548929F2F7F600E8300D /* CreateCustomerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A086548829F2F7F600E8300D /* CreateCustomerView.swift */; };
 		A0B2185C29EED63100433B72 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2185B29EED63100433B72 /* SocialView.swift */; };
 		A0CB9D7529E554B6007C8595 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB9D7429E554B6007C8595 /* Date.swift */; };
 		A0CB9D7729E6908F007C8595 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB9D7629E6908F007C8595 /* ViewModel.swift */; };
 		A0E0723129D701BF0010E128 /* StructuralHoroscopeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E0723029D701BF0010E128 /* StructuralHoroscopeApp.swift */; };
-		A0E0723329D701BF0010E128 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E0723229D701BF0010E128 /* ContentView.swift */; };
+		A0E0723329D701BF0010E128 /* CustomerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E0723229D701BF0010E128 /* CustomerView.swift */; };
 		A0E0723529D701C00010E128 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0E0723429D701C00010E128 /* Assets.xcassets */; };
 		A0E0723929D701C00010E128 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0E0723829D701C00010E128 /* Preview Assets.xcassets */; };
 		A0E0724129D702820010E128 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0E0723F29D702820010E128 /* Model.xcdatamodeld */; };
@@ -32,7 +33,7 @@
 		A0F2FA8D29EAF722002A58BC /* PsychologicalInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FA8C29EAF722002A58BC /* PsychologicalInstances.swift */; };
 		A0F2FA8F29EAFB34002A58BC /* EnergyInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FA8E29EAFB34002A58BC /* EnergyInstances.swift */; };
 		A0F2FA9129EB01A3002A58BC /* FateInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FA9029EB01A3002A58BC /* FateInstances.swift */; };
-		A0F2FA9329EB0F36002A58BC /* IdeologicalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FA9229EB0F36002A58BC /* IdeologicalView.swift */; };
+		A0F2FA9329EB0F36002A58BC /* IdeologicalViewFromClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FA9229EB0F36002A58BC /* IdeologicalViewFromClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,12 +45,13 @@
 		A03AD26729F0348400EE061C /* MarriageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarriageView.swift; sourceTree = "<group>"; };
 		A03AD26929F03C1F00EE061C /* MarriageInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarriageInstances.swift; sourceTree = "<group>"; };
 		A03CF2D929D716CD005BE95D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		A086548829F2F7F600E8300D /* CreateCustomerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomerView.swift; sourceTree = "<group>"; };
 		A0B2185B29EED63100433B72 /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
 		A0CB9D7429E554B6007C8595 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		A0CB9D7629E6908F007C8595 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		A0E0722D29D701BF0010E128 /* StructuralHoroscope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StructuralHoroscope.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0E0723029D701BF0010E128 /* StructuralHoroscopeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructuralHoroscopeApp.swift; sourceTree = "<group>"; };
-		A0E0723229D701BF0010E128 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A0E0723229D701BF0010E128 /* CustomerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerView.swift; sourceTree = "<group>"; };
 		A0E0723429D701C00010E128 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0E0723629D701C00010E128 /* StructuralHoroscope.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StructuralHoroscope.entitlements; sourceTree = "<group>"; };
 		A0E0723829D701C00010E128 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -63,7 +65,7 @@
 		A0F2FA8C29EAF722002A58BC /* PsychologicalInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychologicalInstances.swift; sourceTree = "<group>"; };
 		A0F2FA8E29EAFB34002A58BC /* EnergyInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyInstances.swift; sourceTree = "<group>"; };
 		A0F2FA9029EB01A3002A58BC /* FateInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FateInstances.swift; sourceTree = "<group>"; };
-		A0F2FA9229EB0F36002A58BC /* IdeologicalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeologicalView.swift; sourceTree = "<group>"; };
+		A0F2FA9229EB0F36002A58BC /* IdeologicalViewFromClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeologicalViewFromClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,10 +82,11 @@
 		A0CB9D8A29E7073D007C8595 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A0E0723229D701BF0010E128 /* ContentView.swift */,
+				A086548829F2F7F600E8300D /* CreateCustomerView.swift */,
+				A0E0723229D701BF0010E128 /* CustomerView.swift */,
 				A0E53E8029E817780065F227 /* AnnualSignView.swift */,
 				A0E53E8429E82F480065F227 /* VirtualSignView.swift */,
-				A0F2FA9229EB0F36002A58BC /* IdeologicalView.swift */,
+				A0F2FA9229EB0F36002A58BC /* IdeologicalViewFromClient.swift */,
 				A0B2185B29EED63100433B72 /* SocialView.swift */,
 				A03AD25D29F005AB00EE061C /* PsychologicalView.swift */,
 				A03AD25F29F007B000EE061C /* EnergyView.swift */,
@@ -237,7 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0E0723329D701BF0010E128 /* ContentView.swift in Sources */,
+				A0E0723329D701BF0010E128 /* CustomerView.swift in Sources */,
 				A03AD26029F007B000EE061C /* EnergyView.swift in Sources */,
 				A03AD26A29F03C1F00EE061C /* MarriageInstances.swift in Sources */,
 				A0F2FA8B29EAED4C002A58BC /* IdeologicalSignInstances.swift in Sources */,
@@ -255,8 +258,9 @@
 				A0E53E7C29E8157C0065F227 /* AnnualSignInstances.swift in Sources */,
 				A03AD26629F01D1C00EE061C /* BusinessInstances.swift in Sources */,
 				A0E53E8129E817780065F227 /* AnnualSignView.swift in Sources */,
-				A0F2FA9329EB0F36002A58BC /* IdeologicalView.swift in Sources */,
+				A0F2FA9329EB0F36002A58BC /* IdeologicalViewFromClient.swift in Sources */,
 				A0B2185C29EED63100433B72 /* SocialView.swift in Sources */,
+				A086548929F2F7F600E8300D /* CreateCustomerView.swift in Sources */,
 				A0E0723129D701BF0010E128 /* StructuralHoroscopeApp.swift in Sources */,
 				A0CB9D7729E6908F007C8595 /* ViewModel.swift in Sources */,
 				A03AD25E29F005AB00EE061C /* PsychologicalView.swift in Sources */,

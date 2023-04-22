@@ -44,34 +44,99 @@ struct AnnualSignInfo_Previews: PreviewProvider {
 extension AnnualSignView {
     var typeSection: some View {
         Section("Типы:") {
-            Text("Тип мышления для мужчин: \(sign.ideologicalType[Sex.male]!.ideologicalType.rawValue)")
-            Text("Тип мышления для женщин: \(sign.ideologicalType[Sex.female]!.ideologicalType.rawValue)")
-            Text("Социальный тип: \(sign.socialType.socialType.rawValue)")
-            Text("Психологический тип: \(sign.psychologicalType.psychologicalType.rawValue)")
-            Text("Энергетический тип: \(sign.temperament.energyType.rawValue)")
-            Text("Тип судьбы: \(sign.fateType.fateType.rawValue)")
+            NavigationLink {
+                
+            } label: {
+                Text("Тип мышления для мужчин: \(sign.ideologicalType[Sex.male]!.ideologicalType.rawValue)")
+            }
+            NavigationLink {
+                SocialView(social: sign.socialType)
+            } label: {
+                Text("Социальный тип: \(sign.socialType.socialType.rawValue)")
+            }
+            NavigationLink {
+                PsychologicalView(psychologicalStruct: sign.psychologicalType)
+            } label: {
+                Text("Психологический тип: \(sign.psychologicalType.psychologicalType.rawValue)")
+            }
+            NavigationLink {
+                EnergyView(energy: sign.temperament)
+            } label: {
+                Text("Энергетический тип: \(sign.temperament.energyType.rawValue)")
+            }
+            NavigationLink {
+                FateView(fate: sign.fateType)
+            } label: {
+                Text("Тип судьбы: \(sign.fateType.fateType.rawValue)")
+            }
+            
         }
     }
     var vectorSection: some View {
         Section("Векторы:") {
-            Text("Хозяин: \(sign.vectorHost.rawValue)")
-            Text("Слуга: \(sign.vectorServant.rawValue)")
+            NavigationLink {
+                AnnualSignView(sign: annualSigns[sign.vectorHost]!)
+            } label: {
+                Text("Хозяин: \(sign.vectorHost.rawValue)")
+            }
+            NavigationLink {
+                AnnualSignView(sign: annualSigns[sign.vectorServant]!)
+            } label: {
+                Text("Слуга: \(sign.vectorServant.rawValue)")
+            }
         }
     }
     var businessSection: some View {
         Section("Бизнес:") {
-            Text("Клоны: \(VM.clones(sign: sign))")
-            Text("Соратники: \(VM.companions(sign: sign))")
-            Text("Подчиненные: \(VM.subordinates(sign: sign))")
-            Text("Советники: \(VM.advisers(sign: sign))")
+            NavigationLink {
+                BusinessView(business: clone, sign: sign.annualSign)
+            } label: {
+                Text("Клоны: \(VM.clones(sign: sign))")
+            }
+            NavigationLink {
+                BusinessView(business: companion, sign: sign.annualSign)
+            } label: {
+                Text("Соратники: \(VM.companions(sign: sign))")
+            }
+            NavigationLink {
+                BusinessView(business: subordinate, sign: sign.annualSign)
+            } label: {
+                Text("Подчиненные: \(VM.subordinates(sign: sign))")
+            }
+            NavigationLink {
+                BusinessView(business: adviser, sign: sign.annualSign)
+            } label: {
+                Text("Советники: \(VM.advisers(sign: sign))")
+            }
         }
     }
     var marriageSection: some View {
         Section("Браки:") {
-            Text("Романтический брак: \(VM.romanticMarriage(sign: sign))")
-            Text("Патриархальный брак: \(VM.patriarchalMarriage(sign: sign))")
-            Text("Равный брак: \(VM.equalMarriage(sign: sign))")
-            Text("Духовный брак: \(VM.spiritualMarriage(sign: sign))")
+            NavigationLink {
+                MarriageView(marriage: vectorMarriage, sign: sign.annualSign)
+            } label: {
+                Text("Векторный брак: \(VM.vectorMarriage(sign: sign))")
+            }
+            NavigationLink {
+                MarriageView(marriage: romanticMarriage, sign: sign.annualSign)
+            } label: {
+                Text("Романтический брак: \(VM.romanticMarriage(sign: sign))")
+            }
+            NavigationLink {
+                MarriageView(marriage: patriarchalMarriage, sign: sign.annualSign)
+            } label: {
+                Text("Патриархальный брак: \(VM.patriarchalMarriage(sign: sign))")
+            }
+            NavigationLink {
+                MarriageView(marriage: equalMarriage, sign: sign.annualSign)
+            } label: {
+                Text("Равный брак: \(VM.equalMarriage(sign: sign))")
+            }
+            NavigationLink {
+                MarriageView(marriage: spiritualMarriage, sign: sign.annualSign)
+            } label: {
+                Text("Духовный брак: \(VM.spiritualMarriage(sign: sign))")
+            }
         }
     }
     var descriptionSection: some View {

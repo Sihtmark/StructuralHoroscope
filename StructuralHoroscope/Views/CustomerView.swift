@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct CustomerView: View {
     
     @EnvironmentObject var VM: ViewModel
     let customer: ClientStruct
@@ -28,13 +28,13 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ContentView(customer: sampleClient)
+            CustomerView(customer: sampleClient)
         }
         .environmentObject(ViewModel())
     }
 }
 
-extension ContentView {
+extension CustomerView {
     var signSection: some View {
         Section("Знаки:") {
             NavigationLink {
@@ -56,7 +56,7 @@ extension ContentView {
     var typeSection: some View {
         Section("Типы:") {
             NavigationLink {
-                IdeologicalView(customer: customer)
+                IdeologicalViewFromClient(customer: customer)
             } label: {
                 Text("Тип мышления: \((customer.sign.ideologicalType[customer.sex]!.ideologicalType.rawValue))")
             }

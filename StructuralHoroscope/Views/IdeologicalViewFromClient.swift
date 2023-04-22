@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IdeologicalView: View {
+struct IdeologicalViewFromClient: View {
     
     @EnvironmentObject private var VM: ViewModel
     @State private var showFullDescription = false
@@ -29,13 +29,13 @@ struct IdeologicalView: View {
 struct IdeologicalSignView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            IdeologicalView(customer: sampleClient)
+            IdeologicalViewFromClient(customer: sampleClient)
         }
         .environmentObject(ViewModel())
     }
 }
 
-extension IdeologicalView {
+extension IdeologicalViewFromClient {
     
     var ideologicInfoSection: some View {
         VStack(alignment: .leading) {

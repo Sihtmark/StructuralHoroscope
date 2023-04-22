@@ -9,6 +9,19 @@ import Foundation
 
 class ViewModel: ObservableObject {
     
+    @Published var customers = [ClientStruct]()
+    
+    func createNewCustomer(name: String, sex: Sex, birthday: Date) {
+        let newCustomer = ClientStruct(
+            name: name,
+            birthday: birthday,
+            sex: sex,
+            sign: sampleClient.sign,
+            zodiacSign: sampleClient.zodiacSign
+        )
+        customers.append(newCustomer)
+    }
+    
     func clones(sign: SignStruct) -> String {
         return sign.clones.map{$0.rawValue}.joined(separator: ", ")
     }

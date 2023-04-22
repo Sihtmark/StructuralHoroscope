@@ -218,7 +218,7 @@ enum Sex: String {
 
 let sampleClient = ClientStruct(
     name: "Зинаида",
-    birthday: Date(birthdate: "25.06.1985"),
+    birthday: Date(),
     sex: .male,
     sign: tigerSign,
     zodiacSign: .cancer)
