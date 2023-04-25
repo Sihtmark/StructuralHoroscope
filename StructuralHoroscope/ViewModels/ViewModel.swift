@@ -9,14 +9,31 @@ import Foundation
 
 class ViewModel: ObservableObject {
     
-    @Published var customers = [ClientStruct]()
+    @Published var customers: [ClientStruct] = [sampleClient] {
+        didSet {
+            saveItems()
+        }
+    }
     
-    func createNewCustomer(name: String, sex: Sex, birthday: Date) {
+    let itemsKey = "items_list"
+    
+    init() {
+        guard let data = UserDefaults.standard.data(forKey: itemsKey), let savedItems = try? JSONDecoder().decode([ClientStruct].self, from: data) else {return}
+        self.customers = savedItems
+    }
+    
+    func saveItems() {
+        if let encodedData = try? JSONEncoder().encode(customers) {
+            UserDefaults.standard.set(encodedData, forKey: itemsKey)
+        }
+    }
+    
+    func createNewCustomer(name: String, sex: Sex, birthday: Date, sign: AnnualEnum, zodiacSign: ZodiacEnum) {
         let newCustomer = ClientStruct(
             name: name,
             birthday: birthday,
             sex: sex,
-            sign: sampleClient.sign,
+            sign: annualSigns[sign]!,
             zodiacSign: sampleClient.zodiacSign
         )
         customers.append(newCustomer)
@@ -126,6 +143,13 @@ class ViewModel: ObservableObject {
             return [horseSign, monkeySign, dragonSign]
         case .pioneer:
             return [pigSign, roosterSign, goatSign]
+        }
+    }
+    
+    func saveChanges(client: ClientStruct, name: String, sex: Sex, birthday: Date, sign: AnnualEnum, zodiacSign: ZodiacEnum) {
+        if let index = customers.firstIndex(where: {$0.id == client.id}) {
+            customers[index] = client.updateInfo(name: name, sex: sex, birthday: birthday, sign: annualSigns[sign]!, zodiacSign: zodiacSign)
+            saveItems()
         }
     }
 }

@@ -1,15 +1,16 @@
 //
-//  CreateCustomerView.swift
+//  EditCustomerView.swift
 //  StructuralHoroscope
 //
-//  Created by Sergei Poluboiarinov on 21.04.2023.
+//  Created by Sergei Poluboiarinov on 25.04.2023.
 //
 
 import SwiftUI
 
-struct CreateCustomerView: View {
+struct EditCustomerView: View {
     
     @EnvironmentObject private var vm: ViewModel
+    var customer: ClientStruct
     @State private var name = ""
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
@@ -56,19 +57,27 @@ struct CreateCustomerView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Сохранить") {
-                    vm.createNewCustomer(name: name, sex: sex, birthday: selectedDate, sign: annualSign, zodiacSign: zodiacSign)
+                    vm.saveChanges(client: customer, name: name, sex: sex, birthday: selectedDate, sign: annualSign, zodiacSign: zodiacSign)
                     dismiss()
                 }
             }
         }
+        .onAppear {
+            name = customer.name
+            selectedDate = customer.birthday
+            sex = customer.sex
+            annualSign = customer.sign.annualSign
+            zodiacSign = customer.zodiacSign
+        }
     }
 }
 
-struct CreateCustomerView_Previews: PreviewProvider {
+struct EditCustomerView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            CreateCustomerView()
+            EditCustomerView(customer: sampleClient)
         }
         .environmentObject(ViewModel())
     }
 }
+

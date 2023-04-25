@@ -15,7 +15,7 @@ struct StructuralHoroscopeApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                CustomerView(customer: sampleClient)
+                AllCustomersView()
             }
             .environmentObject(VM)
         }

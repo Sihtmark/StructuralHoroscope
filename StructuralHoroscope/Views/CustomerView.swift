@@ -10,18 +10,28 @@ import SwiftUI
 struct CustomerView: View {
     
     @EnvironmentObject var VM: ViewModel
-    let customer: ClientStruct
+    @State var customer: ClientStruct
     
     var body: some View {
         List {
+            customerInfo
             signSection
-            typeSection
-            vectorSection
-            businessSection
-            marriageSection
+            //            typeSection
+            //            vectorSection
+            //            businessSection
+            //            marriageSection
         }
         .listStyle(.grouped)
-        .navigationTitle("Мой тип")
+        .navigationTitle(customer.name)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    EditCustomerView(customer: customer)
+                } label: {
+                    Text("Изменить")
+                }
+            }
+        }
     }
 }
 
@@ -35,6 +45,12 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 extension CustomerView {
+    var customerInfo: some View {
+        Section {
+            Text(customer.name)
+            Text("День рождения: \(customer.birthday)")
+        }
+    }
     var signSection: some View {
         Section("Знаки:") {
             NavigationLink {
