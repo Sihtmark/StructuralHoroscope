@@ -45,9 +45,14 @@ extension AnnualSignView {
     var typeSection: some View {
         Section("Типы:") {
             NavigationLink {
-                
+                IdeologicalView(sign: sign.ideologicalType[.male]!)
             } label: {
                 Text("Тип мышления для мужчин: \(sign.ideologicalType[Sex.male]!.ideologicalType.rawValue)")
+            }
+            NavigationLink {
+                IdeologicalView(sign: sign.ideologicalType[.female]!)
+            } label: {
+                Text("Тип мышления для женщин: \(sign.ideologicalType[Sex.female]!.ideologicalType.rawValue)")
             }
             NavigationLink {
                 SocialView(social: sign.socialType)

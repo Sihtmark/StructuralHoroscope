@@ -12,14 +12,21 @@ struct CustomerView: View {
     @EnvironmentObject var VM: ViewModel
     @State var customer: ClientStruct
     
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        return formatter
+    }
+    
     var body: some View {
         List {
             customerInfo
             signSection
-            //            typeSection
-            //            vectorSection
-            //            businessSection
-            //            marriageSection
+            typeSection
+            vectorSection
+            businessSection
+            marriageSection
         }
         .listStyle(.grouped)
         .navigationTitle(customer.name)
@@ -48,11 +55,13 @@ extension CustomerView {
     var customerInfo: some View {
         Section {
             Text(customer.name)
-            Text("День рождения: \(customer.birthday)")
+            Text(customer.sex == .male ? "Пол: мужской" : "Пол: женский")
+            Text("День рождения: \(dateFormatter.string(from: customer.birthday))")
         }
     }
     var signSection: some View {
         Section("Знаки:") {
+            Text("Знак Зодиака: \(customer.zodiacSign.rawValue)")
             NavigationLink {
                 AnnualSignView(sign: customer.sign)
             } label: {
@@ -72,7 +81,7 @@ extension CustomerView {
     var typeSection: some View {
         Section("Типы:") {
             NavigationLink {
-                IdeologicalViewFromClient(customer: customer)
+                IdeologicalView(sign: customer.sign.ideologicalType[customer.sex]!)
             } label: {
                 Text("Тип мышления: \((customer.sign.ideologicalType[customer.sex]!.ideologicalType.rawValue))")
             }

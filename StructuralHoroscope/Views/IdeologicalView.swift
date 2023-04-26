@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct IdeologicalViewFromClient: View {
+struct IdeologicalView: View {
     
     @EnvironmentObject private var VM: ViewModel
     @State private var showFullDescription = false
     @State private var showFullDescription1 = false
     @State private var showFullDescription2 = false
-    let customer: ClientStruct
+    let sign: IdeologicalStruct
     
     var body: some View {
         ScrollView {
@@ -22,20 +22,20 @@ struct IdeologicalViewFromClient: View {
             signsSection
         }
         .padding(.horizontal)
-        .navigationTitle(customer.sign.ideologicalType[customer.sex]!.ideologicalType.rawValue)
+        .navigationTitle(sign.ideologicalType.rawValue)
     }
 }
 
-struct IdeologicalSignView_Previews: PreviewProvider {
+struct IdeologicalView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            IdeologicalViewFromClient(customer: sampleClient)
+            IdeologicalView(sign: sampleClient.sign.ideologicalType[.male]!)
         }
         .environmentObject(ViewModel())
     }
 }
 
-extension IdeologicalViewFromClient {
+extension IdeologicalView {
     
     var ideologicInfoSection: some View {
         VStack(alignment: .leading) {
@@ -72,7 +72,7 @@ extension IdeologicalViewFromClient {
     var infoSection: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(customer.sign.ideologicalType[customer.sex]!.title)
+                Text(sign.title)
                     .font(.headline)
                 Spacer()
                 Button {
@@ -84,7 +84,7 @@ extension IdeologicalViewFromClient {
                 }
             }
             .padding(.bottom, 5)
-            Text(customer.sign.ideologicalType[customer.sex]!.text)
+            Text(sign.text)
                 .foregroundColor(.secondary)
                 .lineLimit(showFullDescription1 ? nil : 2)
             Button {
@@ -105,12 +105,12 @@ extension IdeologicalViewFromClient {
     var signsSection: some View {
         VStack {
             HStack {
-                Text("\(customer.sign.ideologicalType[customer.sex]!.title):")
+                Text("\(sign.title):")
                     .font(.headline)
                 Spacer()
             }
             .padding(.top, 40)
-            ForEach(VM.ideologicalSigns(ideologicalEnum: customer.sign.ideologicalType[customer.sex]!.ideologicalType)) { sign in
+            ForEach(VM.ideologicalSigns(ideologicalEnum: sign.ideologicalType)) { sign in
                 NavigationLink {
                     AnnualSignView(sign: sign)
                 } label: {

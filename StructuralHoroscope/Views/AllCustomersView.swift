@@ -20,9 +20,14 @@ struct AllCustomersView: View {
                     Text(customer.name)
                 }
             }
+            .onDelete(perform: vm.deleteItem)
+            .onMove(perform: vm.moveItem)
         }
         .navigationTitle("Мой список")
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                EditButton()
+            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
                     CreateCustomerView()

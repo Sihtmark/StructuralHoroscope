@@ -152,4 +152,14 @@ class ViewModel: ObservableObject {
             saveItems()
         }
     }
+    
+    func deleteItem(indexSet: IndexSet) {
+        customers.remove(atOffsets: indexSet)
+    }
+    
+    func moveItem(from: IndexSet, to: Int) {
+        customers.move(fromOffsets: from, toOffset: to)
+    }
+    
+    
 }
