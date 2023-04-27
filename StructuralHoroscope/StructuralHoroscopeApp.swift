@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import SwiftUI
+
 @main
 struct StructuralHoroscopeApp: App {
     
@@ -14,10 +16,9 @@ struct StructuralHoroscopeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                AllCustomersView()
-            }
-            .environmentObject(VM)
+            MainTabView()
+                .environmentObject(VM)
         }
     }
 }
+

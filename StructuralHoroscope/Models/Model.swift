@@ -7,6 +7,13 @@
 
 import Foundation
 
+enum Tab {
+    case home
+    case info
+    case calendar
+    case settings
+}
+
 struct ClientStruct: Identifiable, Codable {
     var id = UUID()
     var name: String

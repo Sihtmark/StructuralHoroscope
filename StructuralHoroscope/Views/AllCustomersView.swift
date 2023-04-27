@@ -12,27 +12,29 @@ struct AllCustomersView: View {
     @EnvironmentObject private var vm: ViewModel
     
     var body: some View {
-        List {
-            ForEach(vm.customers) { customer in
-                NavigationLink {
-                    CustomerView(customer: customer)
-                } label: {
-                    Text(customer.name)
+        NavigationStack {
+            List {
+                ForEach(vm.customers) { customer in
+                    NavigationLink {
+                        CustomerView(customer: customer)
+                    } label: {
+                        Text(customer.name)
+                    }
                 }
+                .onDelete(perform: vm.deleteItem)
+                .onMove(perform: vm.moveItem)
             }
-            .onDelete(perform: vm.deleteItem)
-            .onMove(perform: vm.moveItem)
-        }
-        .navigationTitle("Мой список")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                EditButton()
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    CreateCustomerView()
-                } label: {
-                    Image(systemName: "plus")
+            .navigationTitle("Мой список")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        CreateCustomerView()
+                    } label: {
+                        Image(systemName: "plus")
+                    }
                 }
             }
         }
