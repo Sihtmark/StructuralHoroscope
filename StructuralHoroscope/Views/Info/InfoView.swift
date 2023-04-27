@@ -25,11 +25,6 @@ struct InfoView: View {
                     } label: {
                         Text("Годовые знаки")
                     }
-                    NavigationLink {
-                        
-                    } label: {
-                        Text("Служебный гороскоп")
-                    }
                 }
                 Section {
                     NavigationLink {
@@ -85,6 +80,23 @@ struct InfoView: View {
                 } header: {
                     Text("Зодиакальные структуры")
                         .foregroundColor(.black)
+                }
+                Section {
+                    NavigationLink {
+                        
+                    } label: {
+                        Text("Служебный гороскоп")
+                    }
+                    NavigationLink {
+                        
+                    } label: {
+                        Text("Типы браков")
+                    }
+                    NavigationLink {
+                        
+                    } label: {
+                        Text("Возрасты")
+                    }
                 }
             }
             .navigationTitle("Структуры")

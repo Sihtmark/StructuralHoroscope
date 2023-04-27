@@ -30,6 +30,7 @@
 		A0E0723529D701C00010E128 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0E0723429D701C00010E128 /* Assets.xcassets */; };
 		A0E0723929D701C00010E128 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0E0723829D701C00010E128 /* Preview Assets.xcassets */; };
 		A0E0724129D702820010E128 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0E0723F29D702820010E128 /* Model.xcdatamodeld */; };
+		A0E229A429FAB7680021648C /* VirtualSignsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E229A329FAB7680021648C /* VirtualSignsView.swift */; };
 		A0E53E7C29E8157C0065F227 /* AnnualSignInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E53E7B29E8157C0065F227 /* AnnualSignInstances.swift */; };
 		A0E53E8129E817780065F227 /* AnnualSignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E53E8029E817780065F227 /* AnnualSignView.swift */; };
 		A0E53E8329E8283A0065F227 /* VirtualSignInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E53E8229E8283A0065F227 /* VirtualSignInstances.swift */; };
@@ -68,6 +69,7 @@
 		A0E0723629D701C00010E128 /* StructuralHoroscope.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StructuralHoroscope.entitlements; sourceTree = "<group>"; };
 		A0E0723829D701C00010E128 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A0E0724029D702820010E128 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		A0E229A329FAB7680021648C /* VirtualSignsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualSignsView.swift; sourceTree = "<group>"; };
 		A0E53E7B29E8157C0065F227 /* AnnualSignInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualSignInstances.swift; sourceTree = "<group>"; };
 		A0E53E8029E817780065F227 /* AnnualSignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualSignView.swift; sourceTree = "<group>"; };
 		A0E53E8229E8283A0065F227 /* VirtualSignInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualSignInstances.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				A0576AFC29FA954700F4D9EF /* InfoView.swift */,
+				A0E229A329FAB7680021648C /* VirtualSignsView.swift */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				A0576AFF29FA955F00F4D9EF /* CalendarView.swift in Sources */,
 				A03AD26629F01D1C00EE061C /* BusinessInstances.swift in Sources */,
 				A0E53E8129E817780065F227 /* AnnualSignView.swift in Sources */,
+				A0E229A429FAB7680021648C /* VirtualSignsView.swift in Sources */,
 				A0F2FA9329EB0F36002A58BC /* IdeologicalView.swift in Sources */,
 				A0B2185C29EED63100433B72 /* SocialView.swift in Sources */,
 				A086548929F2F7F600E8300D /* CreateCustomerView.swift in Sources */,
