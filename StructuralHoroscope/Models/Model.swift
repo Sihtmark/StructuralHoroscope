@@ -65,6 +65,7 @@ struct IdeologicalStruct: Identifiable, Codable {
     let ideologicalType: IdeologicalEnum
     let title: String
     let text: String
+    let signs: [AnnualEnum]
 }
 
 struct SocialStruct: Identifiable, Codable {
@@ -183,7 +184,7 @@ enum AgeEnum: String, Codable {
     case outgoing = "Уходящего 85 - ∞"
 }
 
-enum IdeologicalEnum: String, Codable {
+enum IdeologicalEnum: String, Codable, CaseIterable {
     case logicalMale = "Логик мужчина"
     case logicalFemale = "Логик женщина"
     case strongWilledMale = "Волевик мужчина"

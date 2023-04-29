@@ -33,7 +33,7 @@ struct InfoView: View {
                         Text("Векторное кольцо")
                     }
                     NavigationLink {
-                        
+                        IdeologicalStructView()
                     } label: {
                         Text("Идеологическая структура")
                     }
