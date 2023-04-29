@@ -9,6 +9,8 @@ import Foundation
 
 let annualSigns: [AnnualEnum:SignStruct] = [.rat: ratSign, .bull: bullSign, .tiger: tigerSign, .cat: catSign, .dragon: dragonSign, .snake: snakeSign, .horse: horseSign, .goat: goatSign, .monkey: monkeySign, .rooster: roosterSign, .dog: dogSign, .pig: pigSign]
 
+let annualSignArray: [SignStruct] = [ratSign, bullSign, tigerSign, catSign, dragonSign, snakeSign, horseSign, goatSign, monkeySign, roosterSign, dogSign, pigSign]
+
 let ratSign = SignStruct(
     annualSign: .rat, site: "https://www.xsp.ru/sh/znaki/znak.php?id=1",
     ideologicalType: [.male: mysticMale, .female: realistFemale],
