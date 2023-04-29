@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A004B8F429F825A300313B14 /* EditCustomerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A004B8F329F825A300313B14 /* EditCustomerView.swift */; };
 		A0193D0529FD6241007C06A1 /* AnnualSignsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0193D0429FD6241007C06A1 /* AnnualSignsView.swift */; };
+		A0193D0729FD6795007C06A1 /* VectorRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0193D0629FD6795007C06A1 /* VectorRingView.swift */; };
 		A03AD25E29F005AB00EE061C /* PsychologicalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD25D29F005AB00EE061C /* PsychologicalView.swift */; };
 		A03AD26029F007B000EE061C /* EnergyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD25F29F007B000EE061C /* EnergyView.swift */; };
 		A03AD26229F00AC200EE061C /* FateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD26129F00AC200EE061C /* FateView.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		A004B8F329F825A300313B14 /* EditCustomerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomerView.swift; sourceTree = "<group>"; };
 		A0193D0429FD6241007C06A1 /* AnnualSignsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualSignsView.swift; sourceTree = "<group>"; };
+		A0193D0629FD6795007C06A1 /* VectorRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorRingView.swift; sourceTree = "<group>"; };
 		A03AD25D29F005AB00EE061C /* PsychologicalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychologicalView.swift; sourceTree = "<group>"; };
 		A03AD25F29F007B000EE061C /* EnergyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyView.swift; sourceTree = "<group>"; };
 		A03AD26129F00AC200EE061C /* FateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FateView.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				A0576AFC29FA954700F4D9EF /* InfoView.swift */,
 				A0E229A329FAB7680021648C /* VirtualSignsView.swift */,
 				A0193D0429FD6241007C06A1 /* AnnualSignsView.swift */,
+				A0193D0629FD6795007C06A1 /* VectorRingView.swift */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				A0576AFF29FA955F00F4D9EF /* CalendarView.swift in Sources */,
 				A03AD26629F01D1C00EE061C /* BusinessInstances.swift in Sources */,
 				A0E53E8129E817780065F227 /* AnnualSignView.swift in Sources */,
+				A0193D0729FD6795007C06A1 /* VectorRingView.swift in Sources */,
 				A0E229A429FAB7680021648C /* VirtualSignsView.swift in Sources */,
 				A0F2FA9329EB0F36002A58BC /* IdeologicalView.swift in Sources */,
 				A0B2185C29EED63100433B72 /* SocialView.swift in Sources */,

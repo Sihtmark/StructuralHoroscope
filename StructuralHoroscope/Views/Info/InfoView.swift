@@ -16,19 +16,19 @@ struct InfoView: View {
             List {
                 Section {
                     NavigationLink {
-                        
+                        VirtualSignsView()
                     } label: {
                         Text("Виртуальные знаки")
                     }
                     NavigationLink {
-                        
+                        AnnualSignsView()
                     } label: {
                         Text("Годовые знаки")
                     }
                 }
                 Section {
                     NavigationLink {
-                        
+                        VectorRingView()
                     } label: {
                         Text("Векторное кольцо")
                     }
