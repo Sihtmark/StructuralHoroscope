@@ -16,7 +16,16 @@ let strongWillFemales = [bullSign, snakeSign, roosterSign]
 let logicMales = [bullSign, snakeSign, roosterSign]
 let logicFemales = [tigerSign, horseSign, dogSign]
 
-let IdeologicalStructs: [IdeologicalEnum: IdeologicalStruct] = [.mysticalMale: mysticMale, .mysticalFemale: mysticFemale, .realisticMale: realistMale, .realisticFemale: realistFemale, .strongWilledMale: strongWilledMale, .strongWilledFemale: strongWilledFemale, .logicalMale: logicMale, .logicalFemale: logicFemale]
+let ideologicalStructs: [IdeologicalEnum: IdeologicalStruct] = [
+    .mysticalMale: mysticMale,
+    .mysticalFemale: mysticFemale,
+    .realisticMale: realistMale,
+    .realisticFemale: realistFemale,
+    .strongWilledMale: strongWilledMale,
+    .strongWilledFemale: strongWilledFemale,
+    .logicalMale: logicMale,
+    .logicalFemale: logicFemale
+]
 
 let mysticMale = IdeologicalStruct(
     ideologicalType: .mysticalMale,

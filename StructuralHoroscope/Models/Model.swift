@@ -152,7 +152,7 @@ enum VirtualEnum: String, CaseIterable, Codable {
     case leader = "Вождь"
 }
 
-enum BusinessEnum: String, Codable {
+enum BusinessEnum: String, Codable, CaseIterable {
     case vectorHost = "Векторный хозяин"
     case vectorServant = "Векторный слуга"
     case clone = "Клоны"
@@ -161,7 +161,7 @@ enum BusinessEnum: String, Codable {
     case adviser = "Советники"
 }
 
-enum MarriageEnum: String, Codable {
+enum MarriageEnum: String, Codable, CaseIterable {
     case vector = "Векторный"
     case romantic = "Романтический"
     case patriarchal = "Патриархальный"
@@ -169,7 +169,7 @@ enum MarriageEnum: String, Codable {
     case spiritual = "Духовный"
 }
 
-enum AgeEnum: String, Codable {
+enum AgeEnum: String, Codable, CaseIterable {
     case newborn = "Новорожденного 0-1"
     case baby = "Младенеца 1-3"
     case preschooler = "Дошкольника 3-7"
@@ -195,34 +195,34 @@ enum IdeologicalEnum: String, Codable, CaseIterable {
     case realisticFemale = "Реалист женщина"
 }
 
-enum SocialEnum: String, Codable {
+enum SocialEnum: String, Codable, CaseIterable {
     case closed = "Закрытый"
     case opened = "Открытый"
     case orthodox = "Ортодокс"
 }
 
-enum PsychologicalEnum: String, Codable {
+enum PsychologicalEnum: String, Codable, CaseIterable {
     case maturity = "Возмужания"
     case dreamer = "Взлетый"
     case sensitive = "Чувствительный"
     case grounded = "Приземленный"
 }
 
-enum EnergyEnum: String, Codable {
+enum EnergyEnum: String, Codable, CaseIterable {
     case dramatic = "Драматический (холерик)"
     case sanguine = "Природный оптимист (сангвиник)"
     case phlegmatic = "Космический оптимист (флегматик)"
     case melancholic = "Скептик (меланхолик)"
 }
 
-enum FateEnum: String, Codable {
+enum FateEnum: String, Codable, CaseIterable {
     case fatalist = "Фаталист"
     case lucky = "Везунчик"
     case doItYourself = "Самодельщик"
     case pioneer = "Пионер"
 }
 
-enum Sex: String, Codable {
+enum Sex: String, Codable, CaseIterable {
     case male = "мужчины"
     case female = "женщины"
 }
