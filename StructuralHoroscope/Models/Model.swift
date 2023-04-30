@@ -112,6 +112,19 @@ struct MarriageStruct: Identifiable, Codable {
     let signs: [AnnualEnum: [SignStruct]]
 }
 
+struct SensualityStruct: Identifiable, Codable {
+    var id = UUID()
+    let department: SensualityEnum
+    let zodiacs: [ZodiacEnum]
+}
+
+enum SensualityEnum: String, Codable, CaseIterable {
+    case coach = "Тренеры (Садо)"
+    case athlete = "Спортсмены (Мазо)"
+    case altruist = "Альтруисты (Повара)"
+    case sybarite = "Сибариты (Гурманы)"
+}
+
 enum AnnualEnum: String, Codable, CaseIterable {
     case snake = "Змея"
     case horse = "Лошадь"

@@ -27,6 +27,8 @@
 		A07141BE29FE6B190011FB0A /* PsychologicalStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141BD29FE6B190011FB0A /* PsychologicalStructView.swift */; };
 		A07141C029FE98C30011FB0A /* EnergyStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141BF29FE98C30011FB0A /* EnergyStructView.swift */; };
 		A07141C229FE9B550011FB0A /* FateStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141C129FE9B550011FB0A /* FateStructView.swift */; };
+		A07141C429FEA0FC0011FB0A /* SensualityInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141C329FEA0FC0011FB0A /* SensualityInstances.swift */; };
+		A07141C629FEA28C0011FB0A /* SensualityStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141C529FEA28C0011FB0A /* SensualityStructView.swift */; };
 		A086548929F2F7F600E8300D /* CreateCustomerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A086548829F2F7F600E8300D /* CreateCustomerView.swift */; };
 		A08993FC29F6C44600174590 /* AllCustomersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08993FB29F6C44600174590 /* AllCustomersView.swift */; };
 		A0B2185C29EED63100433B72 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2185B29EED63100433B72 /* SocialView.swift */; };
@@ -71,6 +73,8 @@
 		A07141BD29FE6B190011FB0A /* PsychologicalStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychologicalStructView.swift; sourceTree = "<group>"; };
 		A07141BF29FE98C30011FB0A /* EnergyStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyStructView.swift; sourceTree = "<group>"; };
 		A07141C129FE9B550011FB0A /* FateStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FateStructView.swift; sourceTree = "<group>"; };
+		A07141C329FEA0FC0011FB0A /* SensualityInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensualityInstances.swift; sourceTree = "<group>"; };
+		A07141C529FEA28C0011FB0A /* SensualityStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensualityStructView.swift; sourceTree = "<group>"; };
 		A086548829F2F7F600E8300D /* CreateCustomerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomerView.swift; sourceTree = "<group>"; };
 		A08993FB29F6C44600174590 /* AllCustomersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCustomersView.swift; sourceTree = "<group>"; };
 		A0B2185B29EED63100433B72 /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 				A0F2FA9029EB01A3002A58BC /* FateInstances.swift */,
 				A03AD26529F01D1C00EE061C /* BusinessInstances.swift */,
 				A03AD26929F03C1F00EE061C /* MarriageInstances.swift */,
+				A07141C329FEA0FC0011FB0A /* SensualityInstances.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 				A07141BD29FE6B190011FB0A /* PsychologicalStructView.swift */,
 				A07141BF29FE98C30011FB0A /* EnergyStructView.swift */,
 				A07141C129FE9B550011FB0A /* FateStructView.swift */,
+				A07141C529FEA28C0011FB0A /* SensualityStructView.swift */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -325,8 +331,10 @@
 				A0F2FA8F29EAFB34002A58BC /* EnergyInstances.swift in Sources */,
 				A03AD26429F0182500EE061C /* BusinessView.swift in Sources */,
 				A07141BE29FE6B190011FB0A /* PsychologicalStructView.swift in Sources */,
+				A07141C629FEA28C0011FB0A /* SensualityStructView.swift in Sources */,
 				A03AD26229F00AC200EE061C /* FateView.swift in Sources */,
 				A0576AFD29FA954700F4D9EF /* InfoView.swift in Sources */,
+				A07141C429FEA0FC0011FB0A /* SensualityInstances.swift in Sources */,
 				A0F2FA9129EB01A3002A58BC /* FateInstances.swift in Sources */,
 				A0E53E8329E8283A0065F227 /* VirtualSignInstances.swift in Sources */,
 				A0576AFB29FA951700F4D9EF /* MainTabView.swift in Sources */,

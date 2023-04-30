@@ -63,7 +63,7 @@ struct InfoView: View {
                 }
                 Section {
                     NavigationLink {
-                        
+                        SensualityStructView()
                     } label: {
                         Text("Структура чувственности")
                     }
