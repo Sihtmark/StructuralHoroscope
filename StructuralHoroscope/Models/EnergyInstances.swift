@@ -12,6 +12,13 @@ let sanguineSigns = [bullSign, horseSign, pigSign]
 let phlegmaticSigns = [tigerSign, roosterSign, dragonSign]
 let melancholicSigns = [monkeySign, catSign, dogSign]
 
+let energyStructs: [EnergyEnum: EnergyStruct] = [
+    .dramatic: dramaticEnergeticStruct,
+    .sanguine: sanguineEnergeticStruct,
+    .phlegmatic: phlegmaticEnergyStruct,
+    .melancholic: melancholicEnergyStruct
+]
+
 let dramaticEnergeticStruct = EnergyStruct(
     energyType: .dramatic,
     title: "ДРАМАТИЧЕСКИЙ ТЕМПЕРАМЕНТ (ХОЛЕРИКИ)",

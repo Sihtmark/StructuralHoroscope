@@ -48,12 +48,12 @@ struct InfoView: View {
                         Text("Психологическая структура")
                     }
                     NavigationLink {
-                        
+                        EnergyStructView()
                     } label: {
                         Text("Энергетическая структура")
                     }
                     NavigationLink {
-                        
+                        FateStructView()
                     } label: {
                         Text("Структура судьбы")
                     }

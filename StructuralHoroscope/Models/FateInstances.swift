@@ -12,6 +12,13 @@ let luckySigns = [catSign, snakeSign, bullSign]
 let doItYourselfSigns = [horseSign, monkeySign, dragonSign]
 let pioneerSigns = [pigSign, roosterSign, goatSign]
 
+let fateStructs: [FateEnum: FateStruct] = [
+    .doItYourself: doItYourselfFateStruct,
+    .fatalist: fatalistFateStruct,
+    .lucky: luckyFateStruct,
+    .pioneer: pioneerFateStruct
+]
+
 let pioneerFateStruct = FateStruct(
     fateType: .pioneer,
     title: "ПИОНЕРСКИЕ ЗНАКИ (ПИОНЕРЫ)",
