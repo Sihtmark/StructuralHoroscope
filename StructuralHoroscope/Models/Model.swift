@@ -118,6 +118,20 @@ struct SensualityStruct: Identifiable, Codable {
     let zodiacs: [ZodiacEnum]
 }
 
+struct ElementStruct: Identifiable, Codable {
+    var id = UUID()
+    let element: ElementEnum
+    let zodiacs: [ZodiacEnum]
+    let text: String
+}
+
+enum ElementEnum: String, Codable, CaseIterable {
+    case fire = "Революционеры (Огонь)"
+    case water = "Консерваторы (Вода)"
+    case air = "Небожители (Воздух)"
+    case earth = "Землепашцы (Земля)"
+}
+
 enum SensualityEnum: String, Codable, CaseIterable {
     case coach = "Тренеры (Садо)"
     case athlete = "Спортсмены (Мазо)"
