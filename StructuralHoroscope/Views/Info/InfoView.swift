@@ -14,90 +14,10 @@ struct InfoView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section {
-                    NavigationLink {
-                        AnnualSignsView()
-                    } label: {
-                        Text("Годовые знаки")
-                    }
-                    NavigationLink {
-                        VirtualSignsView()
-                    } label: {
-                        Text("Виртуальные знаки")
-                    }
-                }
-                Section {
-                    NavigationLink {
-                        VectorRingView()
-                    } label: {
-                        Text("Векторное кольцо")
-                    }
-                    NavigationLink {
-                        IdeologicalStructView()
-                    } label: {
-                        Text("Идеологическая структура")
-                    }
-                    NavigationLink {
-                        SocialStructView()
-                    } label: {
-                        Text("Социальная структура")
-                    }
-                    NavigationLink {
-                        PsychologicalStructView()
-                    } label: {
-                        Text("Психологическая структура")
-                    }
-                    NavigationLink {
-                        EnergyStructView()
-                    } label: {
-                        Text("Энергетическая структура")
-                    }
-                    NavigationLink {
-                        FateStructView()
-                    } label: {
-                        Text("Структура судьбы")
-                    }
-                } header: {
-                    Text("Годовые структуры")
-                        .foregroundColor(.black)
-                }
-                Section {
-                    NavigationLink {
-                        SensualityStructView()
-                    } label: {
-                        Text("Структура чувственности")
-                    }
-                    NavigationLink {
-                        
-                    } label: {
-                        Text("Структура стихий")
-                    }
-                    NavigationLink {
-                        
-                    } label: {
-                        Text("Малое векторное кольцо")
-                    }
-                } header: {
-                    Text("Зодиакальные структуры")
-                        .foregroundColor(.black)
-                }
-                Section {
-                    NavigationLink {
-                        
-                    } label: {
-                        Text("Служебный гороскоп")
-                    }
-                    NavigationLink {
-                        
-                    } label: {
-                        Text("Типы браков")
-                    }
-                    NavigationLink {
-                        
-                    } label: {
-                        Text("Возрасты")
-                    }
-                }
+                mainView
+                annualStructureSection
+                zodiacStructureSection
+                assistantSection
             }
             .navigationTitle("Структуры")
         }
@@ -110,5 +30,100 @@ struct InfoView_Previews: PreviewProvider {
             InfoView()
         }
         .environmentObject(ViewModel())
+    }
+}
+
+extension InfoView {
+    var mainView: some View {
+        Section {
+            NavigationLink {
+                AnnualSignsView()
+            } label: {
+                Text("Годовые знаки")
+            }
+            NavigationLink {
+                VirtualSignsView()
+            } label: {
+                Text("Виртуальные знаки")
+            }
+        }
+    }
+    var annualStructureSection: some View {
+        Section {
+            NavigationLink {
+                VectorRingView()
+            } label: {
+                Text("Векторное кольцо")
+            }
+            NavigationLink {
+                IdeologicalStructView()
+            } label: {
+                Text("Идеологическая структура")
+            }
+            NavigationLink {
+                SocialStructView()
+            } label: {
+                Text("Социальная структура")
+            }
+            NavigationLink {
+                PsychologicalStructView()
+            } label: {
+                Text("Психологическая структура")
+            }
+            NavigationLink {
+                EnergyStructView()
+            } label: {
+                Text("Энергетическая структура")
+            }
+            NavigationLink {
+                FateStructView()
+            } label: {
+                Text("Структура судьбы")
+            }
+        } header: {
+            Text("Годовые структуры")
+                .foregroundColor(.black)
+        }
+    }
+    var zodiacStructureSection: some View {
+        Section {
+            NavigationLink {
+                SensualityStructView()
+            } label: {
+                Text("Структура чувственности")
+            }
+            NavigationLink {
+                ElementStructView()
+            } label: {
+                Text("Структура стихий")
+            }
+            NavigationLink {
+                
+            } label: {
+                Text("Малое векторное кольцо")
+            }
+        } header: {
+            Text("Зодиакальные структуры")
+                .foregroundColor(.black)
+        }
+    }
+    var assistantSection: some View {
+        Section {
+            NavigationLink {
+                
+            } label: {
+                Text("Служебный гороскоп")
+            }
+            NavigationLink {
+                
+            } label: {
+                Text("Типы браков")
+            }
+            NavigationLink {
+                
+            } label: {
+                Text("Возрасты")
+            }
+        }
     }
 }
