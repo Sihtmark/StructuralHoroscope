@@ -24,6 +24,7 @@
 		A0576AFF29FA955F00F4D9EF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0576AFE29FA955F00F4D9EF /* CalendarView.swift */; };
 		A0576B0129FA957400F4D9EF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0576B0029FA957400F4D9EF /* SettingsView.swift */; };
 		A07141BC29FE59080011FB0A /* SocialStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141BB29FE59080011FB0A /* SocialStructView.swift */; };
+		A07141BE29FE6B190011FB0A /* PsychologicalStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141BD29FE6B190011FB0A /* PsychologicalStructView.swift */; };
 		A086548929F2F7F600E8300D /* CreateCustomerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A086548829F2F7F600E8300D /* CreateCustomerView.swift */; };
 		A08993FC29F6C44600174590 /* AllCustomersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08993FB29F6C44600174590 /* AllCustomersView.swift */; };
 		A0B2185C29EED63100433B72 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2185B29EED63100433B72 /* SocialView.swift */; };
@@ -65,6 +66,7 @@
 		A0576AFE29FA955F00F4D9EF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		A0576B0029FA957400F4D9EF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A07141BB29FE59080011FB0A /* SocialStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialStructView.swift; sourceTree = "<group>"; };
+		A07141BD29FE6B190011FB0A /* PsychologicalStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychologicalStructView.swift; sourceTree = "<group>"; };
 		A086548829F2F7F600E8300D /* CreateCustomerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomerView.swift; sourceTree = "<group>"; };
 		A08993FB29F6C44600174590 /* AllCustomersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCustomersView.swift; sourceTree = "<group>"; };
 		A0B2185B29EED63100433B72 /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				A0193D0629FD6795007C06A1 /* VectorRingView.swift */,
 				A0193D0829FD7475007C06A1 /* IdeologicalStructView.swift */,
 				A07141BB29FE59080011FB0A /* SocialStructView.swift */,
+				A07141BD29FE6B190011FB0A /* PsychologicalStructView.swift */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				A0F2FA8B29EAED4C002A58BC /* IdeologicalSignInstances.swift in Sources */,
 				A0F2FA8F29EAFB34002A58BC /* EnergyInstances.swift in Sources */,
 				A03AD26429F0182500EE061C /* BusinessView.swift in Sources */,
+				A07141BE29FE6B190011FB0A /* PsychologicalStructView.swift in Sources */,
 				A03AD26229F00AC200EE061C /* FateView.swift in Sources */,
 				A0576AFD29FA954700F4D9EF /* InfoView.swift in Sources */,
 				A0F2FA9129EB01A3002A58BC /* FateInstances.swift in Sources */,

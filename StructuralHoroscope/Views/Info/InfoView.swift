@@ -38,12 +38,12 @@ struct InfoView: View {
                         Text("Идеологическая структура")
                     }
                     NavigationLink {
-                        
+                        SocialStructView()
                     } label: {
                         Text("Социальная структура")
                     }
                     NavigationLink {
-                        
+                        PsychologicalStructView()
                     } label: {
                         Text("Психологическая структура")
                     }

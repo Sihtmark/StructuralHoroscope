@@ -12,6 +12,13 @@ let dreamerSigns = [tigerSign, catSign, dragonSign]
 let sensitiveSigns = [snakeSign, horseSign, goatSign]
 let groundedSigns = [monkeySign, roosterSign, dogSign]
 
+let psychologicalStructs: [PsychologicalEnum: PsychologicalStruct] = [
+    .dreamer: dreamerPsychologicalStruct,
+    .maturity: maturityPsychologicalStruct,
+    .sensitive: sensitivePsychologicalStruct,
+    .grounded: groundedPsychologicalStruct
+]
+
 let maturityPsychologicalStruct = PsychologicalStruct(
     psychologicalType: .maturity,
     title: "Знаки возмужания (безжалостные)",
