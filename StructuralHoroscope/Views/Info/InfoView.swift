@@ -110,7 +110,7 @@ extension InfoView {
     var assistantSection: some View {
         Section {
             NavigationLink {
-                
+                BusinessStructview()
             } label: {
                 Text("Служебный гороскоп")
             }

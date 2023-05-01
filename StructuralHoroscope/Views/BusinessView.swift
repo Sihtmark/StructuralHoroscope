@@ -13,24 +13,26 @@ struct BusinessView: View {
     @State private var showFullDescription1 = false
     @State private var showFullDescription2 = false
     let business: BusinessStruct
-    let sign: AnnualEnum
+    let sign: AnnualEnum?
     
     var body: some View {
         ScrollView {
             businessInfo
             businessTypeInfo
-            VStack(alignment: .leading) {
-                Text("Ваши \(business.type.rawValue):")
-                    .font(.headline)
-                ForEach(business.signs[sign]!) { sign in
-                    NavigationLink {
-                        AnnualSignView(sign: sign)
-                    } label: {
-                        HStack {
-                            Text(sign.annualSign.rawValue)
-                            Spacer()
+            if let sign = sign {
+                VStack(alignment: .leading) {
+                    Text("Ваши \(business.type.rawValue):")
+                        .font(.headline)
+                    ForEach(business.signs[sign]!) { sign in
+                        NavigationLink {
+                            AnnualSignView(sign: sign)
+                        } label: {
+                            HStack {
+                                Text(sign.annualSign.rawValue)
+                                Spacer()
+                            }
+                            .padding(.top, -5)
                         }
-                        .padding(.top, -5)
                     }
                 }
             }
