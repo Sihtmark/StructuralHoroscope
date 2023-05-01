@@ -98,7 +98,7 @@ extension InfoView {
                 Text("Структура стихий")
             }
             NavigationLink {
-                
+                SmallVectorRingView()
             } label: {
                 Text("Малое векторное кольцо")
             }
