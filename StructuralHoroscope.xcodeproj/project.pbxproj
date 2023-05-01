@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A004B8F429F825A300313B14 /* EditCustomerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A004B8F329F825A300313B14 /* EditCustomerView.swift */; };
+		A010D0A12A00340000289B8B /* AgeStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010D0A02A00340000289B8B /* AgeStructView.swift */; };
+		A010D0A32A0038E900289B8B /* AgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010D0A22A0038E900289B8B /* AgeView.swift */; };
 		A0193D0529FD6241007C06A1 /* AnnualSignsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0193D0429FD6241007C06A1 /* AnnualSignsView.swift */; };
 		A0193D0729FD6795007C06A1 /* VectorRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0193D0629FD6795007C06A1 /* VectorRingView.swift */; };
 		A0193D0929FD7475007C06A1 /* IdeologicalStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0193D0829FD7475007C06A1 /* IdeologicalStructView.swift */; };
@@ -34,6 +36,8 @@
 		A07141CC29FEB85A0011FB0A /* SmallVectorRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141CB29FEB85A0011FB0A /* SmallVectorRingView.swift */; };
 		A07141CE29FF7A0E0011FB0A /* SmallVectorRingInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141CD29FF7A0E0011FB0A /* SmallVectorRingInstance.swift */; };
 		A07141D029FFB8E70011FB0A /* BusinessStructview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141CF29FFB8E70011FB0A /* BusinessStructview.swift */; };
+		A07141D229FFC8C30011FB0A /* MarriageStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141D129FFC8C30011FB0A /* MarriageStructView.swift */; };
+		A07141D429FFD1C70011FB0A /* AgeInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141D329FFD1C70011FB0A /* AgeInstances.swift */; };
 		A086548929F2F7F600E8300D /* CreateCustomerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A086548829F2F7F600E8300D /* CreateCustomerView.swift */; };
 		A08993FC29F6C44600174590 /* AllCustomersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08993FB29F6C44600174590 /* AllCustomersView.swift */; };
 		A0B2185C29EED63100433B72 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2185B29EED63100433B72 /* SocialView.swift */; };
@@ -59,6 +63,8 @@
 
 /* Begin PBXFileReference section */
 		A004B8F329F825A300313B14 /* EditCustomerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomerView.swift; sourceTree = "<group>"; };
+		A010D0A02A00340000289B8B /* AgeStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeStructView.swift; sourceTree = "<group>"; };
+		A010D0A22A0038E900289B8B /* AgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeView.swift; sourceTree = "<group>"; };
 		A0193D0429FD6241007C06A1 /* AnnualSignsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualSignsView.swift; sourceTree = "<group>"; };
 		A0193D0629FD6795007C06A1 /* VectorRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorRingView.swift; sourceTree = "<group>"; };
 		A0193D0829FD7475007C06A1 /* IdeologicalStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeologicalStructView.swift; sourceTree = "<group>"; };
@@ -85,6 +91,8 @@
 		A07141CB29FEB85A0011FB0A /* SmallVectorRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallVectorRingView.swift; sourceTree = "<group>"; };
 		A07141CD29FF7A0E0011FB0A /* SmallVectorRingInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallVectorRingInstance.swift; sourceTree = "<group>"; };
 		A07141CF29FFB8E70011FB0A /* BusinessStructview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessStructview.swift; sourceTree = "<group>"; };
+		A07141D129FFC8C30011FB0A /* MarriageStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarriageStructView.swift; sourceTree = "<group>"; };
+		A07141D329FFD1C70011FB0A /* AgeInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeInstances.swift; sourceTree = "<group>"; };
 		A086548829F2F7F600E8300D /* CreateCustomerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomerView.swift; sourceTree = "<group>"; };
 		A08993FB29F6C44600174590 /* AllCustomersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCustomersView.swift; sourceTree = "<group>"; };
 		A0B2185B29EED63100433B72 /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
@@ -138,6 +146,7 @@
 				A03AD26129F00AC200EE061C /* FateView.swift */,
 				A03AD26329F0182500EE061C /* BusinessView.swift */,
 				A03AD26729F0348400EE061C /* MarriageView.swift */,
+				A010D0A22A0038E900289B8B /* AgeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -166,6 +175,7 @@
 				A07141C329FEA0FC0011FB0A /* SensualityInstances.swift */,
 				A07141C729FEACA00011FB0A /* ElementInstances.swift */,
 				A07141CD29FF7A0E0011FB0A /* SmallVectorRingInstance.swift */,
+				A07141D329FFD1C70011FB0A /* AgeInstances.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -245,6 +255,8 @@
 				A07141C929FEB02F0011FB0A /* ElementStructView.swift */,
 				A07141CB29FEB85A0011FB0A /* SmallVectorRingView.swift */,
 				A07141CF29FFB8E70011FB0A /* BusinessStructview.swift */,
+				A07141D129FFC8C30011FB0A /* MarriageStructView.swift */,
+				A010D0A02A00340000289B8B /* AgeStructView.swift */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -352,7 +364,9 @@
 				A03AD26229F00AC200EE061C /* FateView.swift in Sources */,
 				A0576AFD29FA954700F4D9EF /* InfoView.swift in Sources */,
 				A07141C429FEA0FC0011FB0A /* SensualityInstances.swift in Sources */,
+				A010D0A12A00340000289B8B /* AgeStructView.swift in Sources */,
 				A07141CC29FEB85A0011FB0A /* SmallVectorRingView.swift in Sources */,
+				A07141D229FFC8C30011FB0A /* MarriageStructView.swift in Sources */,
 				A07141CE29FF7A0E0011FB0A /* SmallVectorRingInstance.swift in Sources */,
 				A0F2FA9129EB01A3002A58BC /* FateInstances.swift in Sources */,
 				A0E53E8329E8283A0065F227 /* VirtualSignInstances.swift in Sources */,
@@ -368,6 +382,7 @@
 				A0576AFF29FA955F00F4D9EF /* CalendarView.swift in Sources */,
 				A03AD26629F01D1C00EE061C /* BusinessInstances.swift in Sources */,
 				A0E53E8129E817780065F227 /* AnnualSignView.swift in Sources */,
+				A07141D429FFD1C70011FB0A /* AgeInstances.swift in Sources */,
 				A0193D0729FD6795007C06A1 /* VectorRingView.swift in Sources */,
 				A0E229A429FAB7680021648C /* VirtualSignsView.swift in Sources */,
 				A0F2FA9329EB0F36002A58BC /* IdeologicalView.swift in Sources */,
@@ -378,6 +393,7 @@
 				A0CB9D7729E6908F007C8595 /* ViewModel.swift in Sources */,
 				A03AD25E29F005AB00EE061C /* PsychologicalView.swift in Sources */,
 				A0576B0129FA957400F4D9EF /* SettingsView.swift in Sources */,
+				A010D0A32A0038E900289B8B /* AgeView.swift in Sources */,
 				A0E0724129D702820010E128 /* Model.xcdatamodeld in Sources */,
 				A0193D0529FD6241007C06A1 /* AnnualSignsView.swift in Sources */,
 				A07141C229FE9B550011FB0A /* FateStructView.swift in Sources */,

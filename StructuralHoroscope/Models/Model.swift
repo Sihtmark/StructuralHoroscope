@@ -118,6 +118,15 @@ struct SensualityStruct: Identifiable, Codable {
     let zodiacs: [ZodiacEnum]
 }
 
+struct AgeStruct: Identifiable, Codable {
+    var id = UUID()
+    let sign: AnnualEnum
+    let title: String
+    let ageTitle: String
+    let ageСommandments: [String]
+    let text: String
+}
+
 struct ElementStruct: Identifiable, Codable {
     var id = UUID()
     let element: ElementEnum

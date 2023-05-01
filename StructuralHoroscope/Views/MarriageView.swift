@@ -12,13 +12,15 @@ struct MarriageView: View {
     @EnvironmentObject private var VM: ViewModel
     @State private var showFullDescription = false
     let marriage: MarriageStruct
-    let sign: AnnualEnum
+    let sign: AnnualEnum?
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 marriageInfoSection
-                signsSection
+                if let sign = sign {
+                    signsSection
+                }
             }
         }
         .padding()
@@ -73,7 +75,7 @@ extension MarriageView {
         VStack(alignment: .leading) {
             Text("Знаки:")
                 .font(.headline)
-            ForEach(marriage.signs[sign]!) { sign in
+            ForEach(marriage.signs[sign!]!) { sign in
                 NavigationLink {
                     AnnualSignView(sign: sign)
                 } label: {

@@ -115,12 +115,12 @@ extension InfoView {
                 Text("Служебный гороскоп")
             }
             NavigationLink {
-                
+                MarriageStructView()
             } label: {
                 Text("Типы браков")
             }
             NavigationLink {
-                
+                AgeStructView()
             } label: {
                 Text("Возрасты")
             }
