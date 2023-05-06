@@ -9,6 +9,11 @@ import Foundation
 
 class ViewModel: ObservableObject {
     
+    // Need for calendar, think later what to add
+    @Published var events: [DayStruct] = [firstDay, secondDay, thirdDay, fourthDay, fifthDay, sixthDay, seventhDay, eighthDay, ninthDay, tenthDay, eleventhDay, twelveDay]
+    @Published var changedEvent: DayStruct?
+    @Published var movedEvent: DayStruct?
+    
     @Published var customers: [ClientStruct] = [sampleClient] {
         didSet {
             saveItems()
@@ -122,7 +127,7 @@ class ViewModel: ObservableObject {
     
     func energySigns(energy: EnergyEnum) -> [SignStruct] {
         switch energy {
-        case .dramatic: 
+        case .dramatic: 4
             return [goatSign, ratSign, snakeSign]
         case .sanguine:
             return [bullSign, horseSign, pigSign]

@@ -10,15 +10,30 @@ import SwiftUI
 struct CalendarView: View {
     
     @EnvironmentObject private var vm: ViewModel
+    @State private var dateSelected: DateComponents?
+    @State private var displayEvents = false
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            ScrollView {
+                CalendarStruct(
+                    interval: DateInterval(start: .distantPast, end: .distantFuture),
+                    vm: vm,
+                    dateSelected: $dateSelected,
+                    displayEvents: $displayEvents
+                )
+                CellView(dateInfo: <#T##DayStruct#>)
+            }
+            .navigationTitle("Calendar view")
+        }
     }
 }
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView()
-            .environmentObject(ViewModel())
+        NavigationStack {
+            CalendarView()
+        }
+        .environmentObject(ViewModel())
     }
 }

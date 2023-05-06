@@ -7,13 +7,6 @@
 
 import Foundation
 
-enum Tab {
-    case home
-    case info
-    case calendar
-    case settings
-}
-
 struct ClientStruct: Identifiable, Codable {
     var id = UUID()
     var name: String
@@ -132,6 +125,42 @@ struct ElementStruct: Identifiable, Codable {
     let element: ElementEnum
     let zodiacs: [ZodiacEnum]
     let text: String
+}
+
+struct DayStruct: Identifiable, Codable {
+    var id = UUID().uuidString
+    let date: Date
+    let signs: [AnnualEnum: DayType]
+    
+    var dateComponents: DateComponents {
+        var dateComponents = Calendar.current.dateComponents(
+            [.month,
+             .day,
+             .year],
+            from: date)
+        dateComponents.timeZone = TimeZone.current
+        dateComponents.calendar = Calendar(identifier: .gregorian)
+        return dateComponents
+    }
+}
+
+enum Tab {
+    case home
+    case info
+    case calendar
+    case settings
+}
+        
+enum DayType: String, Codable, CaseIterable {
+    case blue = "Синий"
+    case red = "Красный"
+    case yellow = "Желтый"
+    case green = "Зеленый"
+    case orange = "Оранжевый"
+    case easier = "Легче"
+    case harder = "Труднее"
+    case rest = "Отдых"
+    case hangOut = "Потусуйтесь"
 }
 
 enum ElementEnum: String, Codable, CaseIterable {
