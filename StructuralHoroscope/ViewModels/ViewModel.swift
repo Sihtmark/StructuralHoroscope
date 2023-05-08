@@ -9,11 +9,9 @@ import Foundation
 
 class ViewModel: ObservableObject {
     
-    // Need for calendar, think later what to add
-    @Published var events: [DayStruct] = [firstDay, secondDay, thirdDay, fourthDay, fifthDay, sixthDay, seventhDay, eighthDay, ninthDay, tenthDay, eleventhDay, twelveDay]
+    @Published var events = [DayStruct]()
     @Published var changedEvent: DayStruct?
     @Published var movedEvent: DayStruct?
-    
     @Published var customers: [ClientStruct] = [sampleClient] {
         didSet {
             saveItems()
@@ -25,6 +23,32 @@ class ViewModel: ObservableObject {
     init() {
         guard let data = UserDefaults.standard.data(forKey: itemsKey), let savedItems = try? JSONDecoder().decode([ClientStruct].self, from: data) else {return}
         self.customers = savedItems
+        asdf()
+    }
+    
+    func startingDate(day: Int) -> Date {
+        var dateComponents = DateComponents()
+        dateComponents.year = 1980
+        dateComponents.month = 1
+        dateComponents.day = day
+        let calendar = Calendar(identifier: .gregorian)
+        return calendar.date(from: dateComponents)!
+    }
+    
+    func asdf() {
+        var dayCount = 1
+        var date = startingDate(day: dayCount)
+        let day = date.day()
+        let endDate = Date().adding(.year, value: 30)
+        for i in days {
+            repeat {
+                date = date.addDate()
+                events.append(DayStruct(date: date, signs: i))
+            } while date <= endDate
+            dayCount += 1
+            date = startingDate(day: dayCount)
+        }
+        
     }
     
     func saveItems() {
@@ -127,7 +151,7 @@ class ViewModel: ObservableObject {
     
     func energySigns(energy: EnergyEnum) -> [SignStruct] {
         switch energy {
-        case .dramatic: 4
+        case .dramatic: 
             return [goatSign, ratSign, snakeSign]
         case .sanguine:
             return [bullSign, horseSign, pigSign]

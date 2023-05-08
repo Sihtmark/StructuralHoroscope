@@ -61,7 +61,6 @@
 		A0F2FA8F29EAFB34002A58BC /* EnergyInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FA8E29EAFB34002A58BC /* EnergyInstances.swift */; };
 		A0F2FA9129EB01A3002A58BC /* FateInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FA9029EB01A3002A58BC /* FateInstances.swift */; };
 		A0F2FA9329EB0F36002A58BC /* IdeologicalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FA9229EB0F36002A58BC /* IdeologicalView.swift */; };
-		A0F522D32A06AC0F00F0F95C /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F522D22A06AC0F00F0F95C /* CellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,7 +120,6 @@
 		A0F2FA8E29EAFB34002A58BC /* EnergyInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyInstances.swift; sourceTree = "<group>"; };
 		A0F2FA9029EB01A3002A58BC /* FateInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FateInstances.swift; sourceTree = "<group>"; };
 		A0F2FA9229EB0F36002A58BC /* IdeologicalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeologicalView.swift; sourceTree = "<group>"; };
-		A0F522D22A06AC0F00F0F95C /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,7 +271,6 @@
 			children = (
 				A0576AFE29FA955F00F4D9EF /* CalendarView.swift */,
 				A09C8BF22A0575BA00893C07 /* CalendarStruct.swift */,
-				A0F522D22A06AC0F00F0F95C /* CellView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -367,7 +364,6 @@
 				A03AD26A29F03C1F00EE061C /* MarriageInstances.swift in Sources */,
 				A09C8BF12A0564BB00893C07 /* CalendarInstances.swift in Sources */,
 				A07141C829FEACA00011FB0A /* ElementInstances.swift in Sources */,
-				A0F522D32A06AC0F00F0F95C /* CellView.swift in Sources */,
 				A0F2FA8B29EAED4C002A58BC /* IdeologicalSignInstances.swift in Sources */,
 				A0F2FA8F29EAFB34002A58BC /* EnergyInstances.swift in Sources */,
 				A03AD26429F0182500EE061C /* BusinessView.swift in Sources */,

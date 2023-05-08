@@ -130,7 +130,7 @@ struct ElementStruct: Identifiable, Codable {
 struct DayStruct: Identifiable, Codable {
     var id = UUID().uuidString
     let date: Date
-    let signs: [AnnualEnum: DayType]
+    let signs: DayTypes
     
     var dateComponents: DateComponents {
         var dateComponents = Calendar.current.dateComponents(
@@ -142,6 +142,11 @@ struct DayStruct: Identifiable, Codable {
         dateComponents.calendar = Calendar(identifier: .gregorian)
         return dateComponents
     }
+}
+
+struct DayTypes: Identifiable, Codable {
+    var id = UUID().uuidString
+    let signs: [AnnualEnum: DayType]
 }
 
 enum Tab {

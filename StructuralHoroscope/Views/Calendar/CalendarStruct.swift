@@ -12,7 +12,6 @@ struct CalendarStruct: UIViewRepresentable {
     let interval: DateInterval
     @ObservedObject var vm: ViewModel
     @Binding var dateSelected: DateComponents?
-    @Binding var displayEvents: Bool
     
     func makeUIView(context: Context) -> some UICalendarView {
         let view = UICalendarView()
@@ -53,7 +52,7 @@ struct CalendarStruct: UIViewRepresentable {
             let singleEvent = foundEvents.first!
             return .customView {
                 let icon = UILabel()
-                icon.text = singleEvent.signs[.bull]!.rawValue
+                icon.text = singleEvent.signs.signs[.bull]!.rawValue
                 return icon
             }
         }
@@ -61,9 +60,6 @@ struct CalendarStruct: UIViewRepresentable {
             parent.dateSelected = dateComponents
             guard let dateComponents else {return}
             let foundEvents = vm.events.filter {$0.date.startOfDay == dateComponents.date?.startOfDay}
-            if !foundEvents.isEmpty {
-                parent.displayEvents.toggle()
-            }
         }
         func dateSelection(_ selection: UICalendarSelectionSingleDate,
                            canSelectDate dateComponents: DateComponents?) -> Bool {
