@@ -12,11 +12,11 @@ struct ClientStruct: Identifiable, Codable {
     var name: String
     var birthday: Date
     var sex: Sex
-    var sign: SignStruct
+    var annualSignStruct: SignStruct
     var zodiacSign: ZodiacEnum
     
     func updateInfo(name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum) -> ClientStruct {
-        return ClientStruct(name: name, birthday: birthday, sex: sex, sign: sign, zodiacSign: zodiacSign)
+        return ClientStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: sign, zodiacSign: zodiacSign)
     }
 }
 
@@ -302,5 +302,5 @@ let sampleClient = ClientStruct(
     name: "Зинаида",
     birthday: Date(),
     sex: .male,
-    sign: tigerSign,
+    annualSignStruct: tigerSign,
     zodiacSign: .cancer)

@@ -97,7 +97,7 @@ struct SocialView: View {
 struct SocialView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            SocialView(social: sampleClient.sign.socialType)
+            SocialView(social: sampleClient.annualSignStruct.socialType)
         }
         .environmentObject(ViewModel())
     }

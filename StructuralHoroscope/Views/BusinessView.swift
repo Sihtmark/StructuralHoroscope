@@ -45,7 +45,7 @@ struct BusinessView: View {
 struct BusinessView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            BusinessView(business: businessSigns[.adviser]!, sign: sampleClient.sign.annualSign)
+            BusinessView(business: businessSigns[.adviser]!, sign: sampleClient.annualSignStruct.annualSign)
         }
         .environmentObject(ViewModel())
     }

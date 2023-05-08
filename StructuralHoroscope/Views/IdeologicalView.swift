@@ -29,7 +29,7 @@ struct IdeologicalView: View {
 struct IdeologicalView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            IdeologicalView(sign: sampleClient.sign.ideologicalType[.male]!)
+            IdeologicalView(sign: sampleClient.annualSignStruct.ideologicalType[.male]!)
         }
         .environmentObject(ViewModel())
     }

@@ -44,7 +44,7 @@ struct EnergyView: View {
 struct Energy_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            EnergyView(energy: sampleClient.sign.temperament)
+            EnergyView(energy: sampleClient.annualSignStruct.temperament)
         }
         .environmentObject(ViewModel())
     }

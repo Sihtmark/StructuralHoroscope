@@ -97,7 +97,7 @@ struct PsychologicalView: View {
 struct Psychological_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            PsychologicalView(psychologicalStruct: sampleClient.sign.psychologicalType)
+            PsychologicalView(psychologicalStruct: sampleClient.annualSignStruct.psychologicalType)
         }
         .environmentObject(ViewModel())
     }

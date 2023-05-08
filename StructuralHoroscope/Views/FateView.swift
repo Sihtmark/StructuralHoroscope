@@ -44,7 +44,7 @@ struct FateView: View {
 struct Fate_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            FateView(fate: sampleClient.sign.fateType)
+            FateView(fate: sampleClient.annualSignStruct.fateType)
         }
         .environmentObject(ViewModel())
     }

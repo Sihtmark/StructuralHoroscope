@@ -78,6 +78,7 @@
 		A03AD26729F0348400EE061C /* MarriageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarriageView.swift; sourceTree = "<group>"; };
 		A03AD26929F03C1F00EE061C /* MarriageInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarriageInstances.swift; sourceTree = "<group>"; };
 		A03CF2D929D716CD005BE95D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		A040A6C72A08FE5400B614D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A0576AFA29FA951700F4D9EF /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A0576AFC29FA954700F4D9EF /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		A0576AFE29FA955F00F4D9EF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -212,6 +213,7 @@
 		A0E0722F29D701BF0010E128 /* StructuralHoroscope */ = {
 			isa = PBXGroup;
 			children = (
+				A040A6C72A08FE5400B614D3 /* Info.plist */,
 				A0E0723029D701BF0010E128 /* StructuralHoroscopeApp.swift */,
 				A0CB9D8E29E707AE007C8595 /* Extensions */,
 				A0CB9D8D29E70779007C8595 /* Models */,
@@ -536,7 +538,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StructuralHoroscope/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "This allows the app to modify the calendar";
+				INFOPLIST_KEY_NSContactsUsageDescription = "This allowas the app to see your contacts";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -576,7 +581,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StructuralHoroscope/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "This allows the app to modify the calendar";
+				INFOPLIST_KEY_NSContactsUsageDescription = "This allowas the app to see your contacts";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

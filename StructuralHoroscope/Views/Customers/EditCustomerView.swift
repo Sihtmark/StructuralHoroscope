@@ -66,7 +66,7 @@ struct EditCustomerView: View {
             name = customer.name
             selectedDate = customer.birthday
             sex = customer.sex
-            annualSign = customer.sign.annualSign
+            annualSign = customer.annualSignStruct.annualSign
             zodiacSign = customer.zodiacSign
         }
     }

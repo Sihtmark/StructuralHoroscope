@@ -28,7 +28,7 @@ class ViewModel: ObservableObject {
     
     func startingDate(day: Int) -> Date {
         var dateComponents = DateComponents()
-        dateComponents.year = 1980
+        dateComponents.year = 2020
         dateComponents.month = 1
         dateComponents.day = day
         let calendar = Calendar(identifier: .gregorian)
@@ -39,7 +39,7 @@ class ViewModel: ObservableObject {
         var dayCount = 1
         var date = startingDate(day: dayCount)
         let day = date.day()
-        let endDate = Date().adding(.year, value: 30)
+        let endDate = Date().adding(.year, value: 12)
         for i in days {
             repeat {
                 date = date.addDate()
@@ -62,7 +62,7 @@ class ViewModel: ObservableObject {
             name: name,
             birthday: birthday,
             sex: sex,
-            sign: annualSigns[sign]!,
+            annualSignStruct: annualSigns[sign]!,
             zodiacSign: sampleClient.zodiacSign
         )
         customers.append(newCustomer)
