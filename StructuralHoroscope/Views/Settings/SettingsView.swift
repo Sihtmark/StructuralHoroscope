@@ -49,7 +49,7 @@ struct SettingsView: View {
                             Text(theme.rawValue)
                         }
                     } label: {
-                        Text("Тёмная тема")
+                        Text("Тема")
                     }
                     .pickerStyle(.menu)
                     Toggle("Уведомления", isOn: $notifications)
