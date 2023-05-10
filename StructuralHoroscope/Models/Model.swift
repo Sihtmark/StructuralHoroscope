@@ -128,7 +128,7 @@ struct ElementStruct: Identifiable, Codable {
 }
 
 struct DayStruct: Identifiable, Codable {
-    var id = UUID().uuidString
+    var id = UUID()
     let date: Date
     let signs: DayTypes
     
@@ -145,7 +145,7 @@ struct DayStruct: Identifiable, Codable {
 }
 
 struct DayTypes: Identifiable, Codable {
-    var id = UUID().uuidString
+    var id = UUID()
     let signs: [AnnualEnum: DayType]
 }
 
@@ -297,6 +297,11 @@ enum Sex: String, Codable, CaseIterable {
     case female = "женщины"
 }
 
+enum ThemeEnum: String, CaseIterable {
+    case light = "Всегда светлая"
+    case dark = "Всегда тёмная"
+    case settings = "Настройки телефона"
+}
 
 let sampleClient = ClientStruct(
     name: "Зинаида",

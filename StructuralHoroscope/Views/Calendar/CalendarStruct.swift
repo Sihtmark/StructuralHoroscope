@@ -58,8 +58,8 @@ struct CalendarStruct: UIViewRepresentable {
         }
         func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
             parent.dateSelected = dateComponents
-            guard let dateComponents else {return}
-            let foundEvents = vm.events.filter {$0.date.startOfDay == dateComponents.date?.startOfDay}
+//            guard let dateComponents else {return}
+//            let foundEvents = vm.events.filter {$0.date.startOfDay == dateComponents.date?.startOfDay}
         }
         func dateSelection(_ selection: UICalendarSelectionSingleDate,
                            canSelectDate dateComponents: DateComponents?) -> Bool {

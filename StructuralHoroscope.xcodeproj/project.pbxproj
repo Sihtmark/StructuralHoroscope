@@ -43,6 +43,7 @@
 		A09C8BF12A0564BB00893C07 /* CalendarInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09C8BF02A0564BB00893C07 /* CalendarInstances.swift */; };
 		A09C8BF32A0575BA00893C07 /* CalendarStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09C8BF22A0575BA00893C07 /* CalendarStruct.swift */; };
 		A0B2185C29EED63100433B72 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2185B29EED63100433B72 /* SocialView.swift */; };
+		A0C1A2372A0A39FD00490239 /* StartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C1A2362A0A39FD00490239 /* StartingView.swift */; };
 		A0CB9D7529E554B6007C8595 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB9D7429E554B6007C8595 /* Date.swift */; };
 		A0CB9D7729E6908F007C8595 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB9D7629E6908F007C8595 /* ViewModel.swift */; };
 		A0E0723129D701BF0010E128 /* StructuralHoroscopeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E0723029D701BF0010E128 /* StructuralHoroscopeApp.swift */; };
@@ -101,6 +102,7 @@
 		A09C8BF02A0564BB00893C07 /* CalendarInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInstances.swift; sourceTree = "<group>"; };
 		A09C8BF22A0575BA00893C07 /* CalendarStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarStruct.swift; sourceTree = "<group>"; };
 		A0B2185B29EED63100433B72 /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
+		A0C1A2362A0A39FD00490239 /* StartingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingView.swift; sourceTree = "<group>"; };
 		A0CB9D7429E554B6007C8595 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		A0CB9D7629E6908F007C8595 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		A0E0722D29D701BF0010E128 /* StructuralHoroscope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StructuralHoroscope.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,7 @@
 		A0CB9D8A29E7073D007C8595 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A0C1A2362A0A39FD00490239 /* StartingView.swift */,
 				A0576AFA29FA951700F4D9EF /* MainTabView.swift */,
 				A0E2299F29FA97EC0021648C /* Customers */,
 				A0E229A029FA98040021648C /* Info */,
@@ -368,6 +371,7 @@
 				A07141C829FEACA00011FB0A /* ElementInstances.swift in Sources */,
 				A0F2FA8B29EAED4C002A58BC /* IdeologicalSignInstances.swift in Sources */,
 				A0F2FA8F29EAFB34002A58BC /* EnergyInstances.swift in Sources */,
+				A0C1A2372A0A39FD00490239 /* StartingView.swift in Sources */,
 				A03AD26429F0182500EE061C /* BusinessView.swift in Sources */,
 				A07141BE29FE6B190011FB0A /* PsychologicalStructView.swift in Sources */,
 				A07141C629FEA28C0011FB0A /* SensualityStructView.swift in Sources */,

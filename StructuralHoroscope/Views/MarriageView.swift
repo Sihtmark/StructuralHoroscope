@@ -18,7 +18,7 @@ struct MarriageView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 marriageInfoSection
-                if let sign = sign {
+                if sign != nil {
                     signsSection
                 }
             }
