@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ClientStruct: Identifiable, Codable {
+struct ClientStruct: Identifiable, Codable, Equatable {
     var id = UUID()
     var name: String
     var birthday: Date
@@ -20,14 +20,14 @@ struct ClientStruct: Identifiable, Codable {
     }
 }
 
-struct VirtualSignStruct: Identifiable, Codable {
+struct VirtualSignStruct: Identifiable, Codable, Equatable {
     var id = UUID()
     let virtualSign: String
     let blocks: [String:String]
     let site: String
 }
 
-struct SignStruct: Identifiable, Codable {
+struct SignStruct: Identifiable, Codable, Equatable {
     var id = UUID()
     let annualSign: AnnualEnum
     let site: String
@@ -53,7 +53,7 @@ struct SignStruct: Identifiable, Codable {
     let blocks: [String:String]
 }
 
-struct IdeologicalStruct: Identifiable, Codable {
+struct IdeologicalStruct: Identifiable, Codable, Equatable {
     var id = UUID()
     let ideologicalType: IdeologicalEnum
     let title: String
@@ -61,35 +61,35 @@ struct IdeologicalStruct: Identifiable, Codable {
     let signs: [AnnualEnum]
 }
 
-struct SocialStruct: Identifiable, Codable {
+struct SocialStruct: Identifiable, Codable, Equatable {
     var id = UUID()
     let socialType: SocialEnum
     let title: String
     let text: String
 }
 
-struct PsychologicalStruct: Identifiable, Codable {
+struct PsychologicalStruct: Identifiable, Codable, Equatable {
     var id = UUID()
     let psychologicalType: PsychologicalEnum
     let title: String
     let text: String
 }
 
-struct EnergyStruct: Identifiable, Codable {
+struct EnergyStruct: Identifiable, Codable, Equatable {
     var id = UUID()
     let energyType: EnergyEnum
     let title: String
     let text: String
 }
 
-struct FateStruct: Identifiable, Codable {
+struct FateStruct: Identifiable, Codable, Equatable {
     var id = UUID()
     let fateType: FateEnum
     let title: String
     let text: String
 }
 
-struct BusinessStruct: Identifiable, Codable {
+struct BusinessStruct: Identifiable, Codable, Equatable {
     var id = UUID()
     let type: BusinessEnum
     let value: String
@@ -97,7 +97,7 @@ struct BusinessStruct: Identifiable, Codable {
     let signs: [AnnualEnum: [SignStruct]]
 }
 
-struct MarriageStruct: Identifiable, Codable {
+struct MarriageStruct: Identifiable, Codable, Equatable {
     var id = UUID()
     let type: MarriageEnum
     let title: String
@@ -105,13 +105,13 @@ struct MarriageStruct: Identifiable, Codable {
     let signs: [AnnualEnum: [SignStruct]]
 }
 
-struct SensualityStruct: Identifiable, Codable {
+struct SensualityStruct: Identifiable, Codable, Equatable {
     var id = UUID()
     let department: SensualityEnum
     let zodiacs: [ZodiacEnum]
 }
 
-struct AgeStruct: Identifiable, Codable {
+struct AgeStruct: Identifiable, Codable, Equatable {
     var id = UUID()
     let sign: AnnualEnum
     let title: String
@@ -120,7 +120,7 @@ struct AgeStruct: Identifiable, Codable {
     let text: String
 }
 
-struct ElementStruct: Identifiable, Codable {
+struct ElementStruct: Identifiable, Codable, Equatable {
     var id = UUID()
     let element: ElementEnum
     let zodiacs: [ZodiacEnum]

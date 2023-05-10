@@ -12,12 +12,15 @@ import SwiftUI
 @main
 struct StructuralHoroscopeApp: App {
     
-    @StateObject private var VM = ViewModel()
+    @StateObject private var vm = ViewModel()
     
     var body: some Scene {
         WindowGroup {
-            MainTabView()
-                .environmentObject(VM)
+            if vm.mainUser == sampleClient {
+                StartingView().environmentObject(vm)
+            } else {
+                MainTabView().environmentObject(vm)
+            }
         }
     }
 }

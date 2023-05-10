@@ -13,6 +13,8 @@ struct SettingsView: View {
     @State private var name = ""
     @State private var sex = Sex.male
     @State private var selectedDate = Date()
+    @State private var annualSign = AnnualEnum.cat
+    @State private var zodiacSign = ZodiacEnum.aquarius
     @State private var theme = ThemeEnum.light
     @State private var notifications = true
     @State private var sync = true
@@ -53,6 +55,13 @@ struct SettingsView: View {
                     Toggle("Уведомления", isOn: $notifications)
                     Toggle("Синхронизация iCloud", isOn: $sync)
                 }
+            }
+            .onAppear {
+                name = vm.mainUser.name
+                sex = vm.mainUser.sex
+                selectedDate = vm.mainUser.birthday
+                annualSign = vm.mainUser.annualSignStruct.annualSign
+                zodiacSign = vm.mainUser.zodiacSign
             }
             .navigationTitle("Настройки")
         }

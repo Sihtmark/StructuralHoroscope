@@ -57,7 +57,7 @@ struct EditCustomerView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Сохранить") {
-                    vm.saveChanges(client: customer, name: name, sex: sex, birthday: selectedDate, sign: annualSign, zodiacSign: zodiacSign)
+                    vm.updateCustomer(client: customer, name: name, sex: sex, birthday: selectedDate, sign: annualSign, zodiacSign: zodiacSign)
                     dismiss()
                 }
             }
