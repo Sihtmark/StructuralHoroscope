@@ -56,7 +56,7 @@ struct CreateCustomerView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Сохранить") {
-                    vm.createNewCustomer(name: name, sex: sex, birthday: selectedDate, sign: annualSign, zodiacSign: zodiacSign)
+                    vm.addCustomer(name: name, sex: sex, birthday: selectedDate, sign: annualSign, zodiacSign: zodiacSign)
                     dismiss()
                 }
             }
