@@ -56,7 +56,7 @@ class ViewModel: ObservableObject {
     func asdf() {
         var dayCount = 1
         var date = startingDate(day: dayCount)
-        let day = date.day()
+//        let day = date.day()
         let endDate = Date().adding(.year, value: 12)
         for i in days {
             repeat {
@@ -104,10 +104,10 @@ class ViewModel: ObservableObject {
     }
     
     func updateMainUser(name: String, sex: Sex, birthday: Date, sign: AnnualEnum, zodiacSign: ZodiacEnum) {
-        if mainUser == nil {
+        if mainUser == sampleClient {
             createMainUser(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign)
         } else {
-            mainUser.updateInfo(name: name, sex: sex, birthday: birthday, sign: annualSigns[sign]!, zodiacSign: zodiacSign)
+            mainUser = mainUser.updateInfo(name: name, sex: sex, birthday: birthday, sign: annualSigns[sign]!, zodiacSign: zodiacSign)
         }
     }
     

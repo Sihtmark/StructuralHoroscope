@@ -64,9 +64,6 @@ struct CustomerView: View {
             annualSign = customer.annualSignStruct.annualSign
             zodiacSign = customer.zodiacSign
         }
-        .sheet(isPresented: $isEditing) {
-            EditCustomerView(customer: customer)
-        }
     }
 }
 
