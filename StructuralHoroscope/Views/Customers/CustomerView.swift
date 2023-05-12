@@ -44,7 +44,6 @@ struct CustomerView: View {
                 marriageSection
             }
         }
-        .listStyle(.grouped)
         .navigationTitle(customer.name)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
