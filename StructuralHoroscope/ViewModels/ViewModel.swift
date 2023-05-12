@@ -6,101 +6,25 @@
 //
 
 import Foundation
-import SwiftUI
-import CoreData
 
 class ViewModel: ObservableObject {
     
-    let container = NSPersistentContainer(name: "Model")
-    @Published var savedEntities = [UserEntity]()
     @Published var events = [DayStruct]()
     @Published var changedEvent: DayStruct?
     @Published var movedEvent: DayStruct?
-    @Published var mainUser: ClientStruct?
-    @Published var customers: [ClientStruct] = [] {
+    @Published var customers: [ClientStruct] = [sampleClient] {
         didSet {
             saveItems()
         }
     }
+    
     let itemsKey = "items_list"
     
     init() {
         guard let data = UserDefaults.standard.data(forKey: itemsKey), let savedItems = try? JSONDecoder().decode([ClientStruct].self, from: data) else {return}
         self.customers = savedItems
-//        asdf()
-        container.loadPersistentStores { description, error in
-            if let error = error {
-                print("Error loading core data. \(error)")
-            } else {
-                print("Successfully loaded core data")
-            }
-        }
-        fetchCustomers()
+        asdf()
     }
-    
-    func fetchCustomers() {
-        let request = NSFetchRequest<UserEntity>(entityName: "UserEntity")
-        do {
-            savedEntities = try container.viewContext.fetch(request)
-            for item in savedEntities {
-                if let index = customers.firstIndex(where: {$0.id == item.id}) {
-                    let decoder = JSONDecoder()
-                    if let decoded = try? decoder.decode(ClientStruct.self, from: item.data!) {
-                        customers[index] = decoded
-                    } else {
-                        print("We couldn't decode data from \(String(describing: item.id))")
-                    }
-                } else {
-                    let decoder = JSONDecoder()
-                    if let decoded = try? decoder.decode(ClientStruct.self, from: item.data!) {
-                        customers.append(decoded)
-                    } else {
-                        print("We couldn't decode data from just added new customer: \(String(describing: item.id))")
-                    }
-                }
-            }
-        } catch let error {
-            print("Error fetching. \(error)")
-        }
-    }
-    
-    func addCustomer(name: String, sex: Sex, birthday: Date, sign: AnnualEnum, zodiacSign: ZodiacEnum) {
-        let clientStruct = createNewCustomer(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign)
-        let newCustomer = UserEntity(context: container.viewContext)
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(clientStruct) {
-            newCustomer.id = clientStruct.id
-            newCustomer.data = encoded
-            fetchCustomers()
-        } else {
-            print("We cannot save new customer because encoding was failed! Please try again or check your code🧐")
-        }
-    }
-    
-    func saveData() {
-        do {
-            try container.viewContext.save()
-            fetchCustomers()
-        } catch let error {
-            print("Error saving: \(error)")
-        }
-    }
-    
-    //this method should be repaired
-//    func deleteCustomer(indexSet: IndexSet) {
-//        guard let index = indexSet.first else {return}
-//        let entity = savedEntities[index]
-//        container.viewContext.delete(entity)
-//        saveData()
-//    }
-    
-    //this method should be repaired
-//    func updateCustomer(entity: UserEntity) {
-//        let currentName = entity.name ?? ""
-//        let newName = currentName + "!"
-//        entity.name = newName
-//        saveData()
-//    }
     
     func startingDate(day: Int) -> Date {
         var dateComponents = DateComponents()
@@ -114,6 +38,7 @@ class ViewModel: ObservableObject {
     func asdf() {
         var dayCount = 1
         var date = startingDate(day: dayCount)
+        let day = date.day()
         let endDate = Date().adding(.year, value: 12)
         for i in days {
             repeat {
@@ -132,15 +57,15 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func createNewCustomer(name: String, sex: Sex, birthday: Date, sign: AnnualEnum, zodiacSign: ZodiacEnum) -> ClientStruct {
-        return ClientStruct(
+    func createNewCustomer(name: String, sex: Sex, birthday: Date, sign: AnnualEnum, zodiacSign: ZodiacEnum) {
+        let newCustomer = ClientStruct(
             name: name,
             birthday: birthday,
             sex: sex,
             annualSignStruct: annualSigns[sign]!,
             zodiacSign: sampleClient.zodiacSign
         )
-//        customers.append(newCustomer)
+        customers.append(newCustomer)
     }
     
     func clones(sign: SignStruct) -> String {
@@ -226,7 +151,7 @@ class ViewModel: ObservableObject {
     
     func energySigns(energy: EnergyEnum) -> [SignStruct] {
         switch energy {
-        case .dramatic: 
+        case .dramatic:
             return [goatSign, ratSign, snakeSign]
         case .sanguine:
             return [bullSign, horseSign, pigSign]
