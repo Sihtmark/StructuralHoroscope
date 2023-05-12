@@ -116,6 +116,7 @@ class ViewModel: ObservableObject {
             customers[index] = client.updateInfo(name: name, sex: sex, birthday: birthday, sign: annualSigns[sign]!, zodiacSign: zodiacSign)
             saveItems()
         }
+        fetchCustomers()
     }
     
     func deleteItem(indexSet: IndexSet) {

@@ -11,10 +11,10 @@ struct EditCustomerView: View {
     
     @EnvironmentObject private var vm: ViewModel
     var customer: ClientStruct
+    @Environment(\.dismiss) var dismiss
     @State private var name = ""
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
-    @Environment(\.dismiss) var dismiss
     @State private var annualSign: AnnualEnum = .snake
     @State private var zodiacSign: ZodiacEnum = .taurus
     
