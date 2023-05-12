@@ -29,7 +29,7 @@ struct VirtualSignView: View {
             }
             .padding(18)
         }
-        .navigationTitle("Аристократ")
+        .navigationTitle(virtualSign.virtualSign)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Link(destination: URL(string: virtualSign.site)!) {

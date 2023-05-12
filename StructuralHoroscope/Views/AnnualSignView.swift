@@ -14,13 +14,13 @@ struct AnnualSignView: View {
     
     var body: some View {
         List {
+            thinkingSection
             typeSection
             vectorSection
             businessSection
             marriageSection
             descriptionSection
         }
-        .listStyle(.plain)
         .navigationTitle(sign.annualSign.rawValue)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -42,18 +42,22 @@ struct AnnualSignInfo_Previews: PreviewProvider {
 }
 
 extension AnnualSignView {
-    var typeSection: some View {
-        Section("Типы:") {
+    var thinkingSection: some View {
+        Section {
             NavigationLink {
                 IdeologicalView(sign: sign.ideologicalType[.male]!)
             } label: {
-                Text("Тип мышления для мужчин: \(sign.ideologicalType[Sex.male]!.ideologicalType.rawValue)")
+                Text(sign.ideologicalType[Sex.male]!.ideologicalType.rawValue)
             }
             NavigationLink {
                 IdeologicalView(sign: sign.ideologicalType[.female]!)
             } label: {
-                Text("Тип мышления для женщин: \(sign.ideologicalType[Sex.female]!.ideologicalType.rawValue)")
+                Text(sign.ideologicalType[Sex.female]!.ideologicalType.rawValue)
             }
+        }
+    }
+    var typeSection: some View {
+        Section("Типы:") {
             NavigationLink {
                 SocialView(social: sign.socialType)
             } label: {

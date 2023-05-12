@@ -10,7 +10,6 @@ import SwiftUI
 struct StartingView: View {
     
     @EnvironmentObject private var vm: ViewModel
-    @State private var mainClient: ClientStruct? = nil
     @State private var name = ""
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
@@ -44,17 +43,23 @@ struct StartingView: View {
                     Text("Picker")
                 }
             }
-            Picker(selection: $sex) {
-                Text("Мужчина").tag(Sex.male)
-                Text("Женщина").tag(Sex.female)
-            } label: {
-                Text("Picker")
-            }
+            HStack {
+                Text("Пол:")
+                    .padding(.trailing, 30)
+                Picker(selection: $sex) {
+                    Text("Мужской").tag(Sex.male)
+                    Text("Женский").tag(Sex.female)
+                } label: {
+                    Text("Пол")
+                }
             .pickerStyle(.segmented)
+            }
             DatePicker("День рождения:", selection: $selectedDate, displayedComponents: .date)
-            Button("Сохранить") {
-                mainClient = ClientStruct(name: name, birthday: selectedDate, sex: sex, annualSignStruct: annualSigns[annualSign]!, zodiacSign: zodiacSign)
-                UserDefaults.standard.set(mainClient, forKey: "mainClient")
+            NavigationLink("Сохранить") {
+                MainTabView()
+            }
+            .onTapGesture {
+                vm.updateMainUser(name: name, sex: sex, birthday: selectedDate, sign: annualSign, zodiacSign: zodiacSign)
             }
             Spacer()
         }

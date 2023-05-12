@@ -9,8 +9,15 @@ import SwiftUI
 
 struct CustomerView: View {
     
-    @EnvironmentObject var VM: ViewModel
+    @EnvironmentObject var vm: ViewModel
     @State var customer: ClientStruct
+    @State private var isEditing = false
+    
+    @State private var name = ""
+    @State private var selectedDate = Date()
+    @State private var sex: Sex = .male
+    @State private var annualSign: AnnualEnum = .snake
+    @State private var zodiacSign: ZodiacEnum = .taurus
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -21,23 +28,41 @@ struct CustomerView: View {
     
     var body: some View {
         List {
-            customerInfo
-            signSection
-            typeSection
-            vectorSection
-            businessSection
-            marriageSection
+            if isEditing {
+                editCustomerInfo
+                editSignSection
+                typeSection
+                vectorSection
+                businessSection
+                marriageSection
+            } else {
+                customerInfo
+                signSection
+                typeSection
+                vectorSection
+                businessSection
+                marriageSection
+            }
         }
         .listStyle(.grouped)
         .navigationTitle(customer.name)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink {
-                    EditCustomerView(customer: customer)
-                } label: {
-                    Text("Изменить")
+                Button(isEditing ? "Сохранить" : "Изменить") {
+                    if isEditing {
+                        vm.updateCustomer(client: customer, name: name, sex: sex, birthday: selectedDate, sign: annualSign, zodiacSign: zodiacSign)
+                        customer = customer.updateInfo(name: name, sex: sex, birthday: selectedDate, sign: annualSigns[annualSign]!, zodiacSign: zodiacSign)
+                    }
+                    isEditing.toggle()
                 }
             }
+        }
+        .onAppear {
+            name = customer.name
+            selectedDate = customer.birthday
+            sex = customer.sex
+            annualSign = customer.annualSignStruct.annualSign
+            zodiacSign = customer.zodiacSign
         }
     }
 }
@@ -59,6 +84,25 @@ extension CustomerView {
             Text("День рождения: \(dateFormatter.string(from: customer.birthday))")
         }
     }
+    
+    var editCustomerInfo: some View {
+        Section {
+            TextField("Введите новое имя", text: $name)
+                .textFieldStyle(.roundedBorder)
+            HStack(spacing: 30) {
+                Text("Пол")
+                Picker(selection: $sex) {
+                    Text("Мужчина").tag(Sex.male)
+                    Text("Женщина").tag(Sex.female)
+                } label: {
+                    Text("Picker")
+                }
+                .pickerStyle(.segmented)
+            }
+            DatePicker("День рождения:", selection: $selectedDate, displayedComponents: .date)
+        }
+    }
+    
     var signSection: some View {
         Section("Знаки:") {
             Text("Знак Зодиака: \(customer.zodiacSign.rawValue)")
@@ -78,6 +122,33 @@ extension CustomerView {
             }
         }
     }
+    
+    var editSignSection: some View {
+        Section("Знаки:") {
+            Picker(selection: $annualSign) {
+                ForEach(AnnualEnum.allCases, id: \.self) { sign in
+                    Text(sign.rawValue).tag(sign)
+                }
+            } label: {
+                Text("Годовой знак:")
+            }
+            Picker(selection: $zodiacSign) {
+                ForEach(ZodiacEnum.allCases, id: \.self) { sign in
+                    Text(sign.rawValue).tag(sign)
+                }
+            } label: {
+                Text("Знак зодиака:")
+            }
+            NavigationLink {
+                VirtualSignView(virtualSign: customer.annualSignStruct.virtualSigns[customer.zodiacSign]!)
+            } label: {
+                HStack {
+                    Text("Виртуальный знак: \(customer.annualSignStruct.virtualSigns[customer.zodiacSign]!.virtualSign)")
+                }
+            }
+        }
+    }
+    
     var typeSection: some View {
         Section("Типы:") {
             NavigationLink {
@@ -136,22 +207,22 @@ extension CustomerView {
             NavigationLink {
                 BusinessView(business: clone, sign: customer.annualSignStruct.annualSign)
             } label: {
-                Text("Клоны: \(VM.clones(sign: customer.annualSignStruct))")
+                Text("Клоны: \(vm.clones(sign: customer.annualSignStruct))")
             }
             NavigationLink {
                 BusinessView(business: companion, sign: customer.annualSignStruct.annualSign)
             } label: {
-                Text("Соратники: \(VM.companions(sign: customer.annualSignStruct))")
+                Text("Соратники: \(vm.companions(sign: customer.annualSignStruct))")
             }
             NavigationLink {
                 BusinessView(business: subordinate, sign: customer.annualSignStruct.annualSign)
             } label: {
-                Text("Подчиненные: \(VM.subordinates(sign: customer.annualSignStruct))")
+                Text("Подчиненные: \(vm.subordinates(sign: customer.annualSignStruct))")
             }
             NavigationLink {
                 BusinessView(business: subordinate, sign: customer.annualSignStruct.annualSign)
             } label: {
-                Text("Советники: \(VM.advisers(sign: customer.annualSignStruct))")
+                Text("Советники: \(vm.advisers(sign: customer.annualSignStruct))")
             }
         }
     }
@@ -160,27 +231,27 @@ extension CustomerView {
             NavigationLink {
                 MarriageView(marriage: vectorMarriage, sign: customer.annualSignStruct.annualSign)
             } label: {
-                Text("Векторный брак: \(VM.vectorMarriage(sign: customer.annualSignStruct))")
+                Text("Векторный брак: \(vm.vectorMarriage(sign: customer.annualSignStruct))")
             }
             NavigationLink {
                 MarriageView(marriage: romanticMarriage, sign: customer.annualSignStruct.annualSign)
             } label: {
-                Text("Романтический брак: \(VM.romanticMarriage(sign: customer.annualSignStruct))")
+                Text("Романтический брак: \(vm.romanticMarriage(sign: customer.annualSignStruct))")
             }
             NavigationLink {
                 MarriageView(marriage: patriarchalMarriage, sign: customer.annualSignStruct.annualSign)
             } label: {
-                Text("Патриархальный брак: \(VM.patriarchalMarriage(sign: customer.annualSignStruct))")
+                Text("Патриархальный брак: \(vm.patriarchalMarriage(sign: customer.annualSignStruct))")
             }
             NavigationLink {
                 MarriageView(marriage: spiritualMarriage, sign: customer.annualSignStruct.annualSign)
             } label: {
-                Text("Духовный брак: \(VM.spiritualMarriage(sign: customer.annualSignStruct))")
+                Text("Духовный брак: \(vm.spiritualMarriage(sign: customer.annualSignStruct))")
             }
             NavigationLink {
                 MarriageView(marriage: equalMarriage, sign: customer.annualSignStruct.annualSign)
             } label: {
-                Text("Равный брак: \(VM.equalMarriage(sign: customer.annualSignStruct))")
+                Text("Равный брак: \(vm.equalMarriage(sign: customer.annualSignStruct))")
             }
         }
     }

@@ -12,18 +12,36 @@ class ViewModel: ObservableObject {
     @Published var events = [DayStruct]()
     @Published var changedEvent: DayStruct?
     @Published var movedEvent: DayStruct?
-    @Published var customers: [ClientStruct] = [sampleClient] {
+    
+    @Published var mainUser: ClientStruct = sampleClient {
+        didSet {
+            saveMainUser()
+        }
+    }
+    
+    @Published var customers = [ClientStruct]() {
         didSet {
             saveItems()
         }
     }
     
     let itemsKey = "items_list"
+    let mainUserKey = "main_user"
     
     init() {
+        fetchMainUser()
+        fetchCustomers()
+        asdf()
+    }
+    
+    func fetchMainUser() {
+        guard let mainUserData = UserDefaults.standard.data(forKey: mainUserKey), let savedMainUser = try? JSONDecoder().decode(ClientStruct.self, from: mainUserData) else {return}
+        self.mainUser = savedMainUser
+    }
+    
+    func fetchCustomers() {
         guard let data = UserDefaults.standard.data(forKey: itemsKey), let savedItems = try? JSONDecoder().decode([ClientStruct].self, from: data) else {return}
         self.customers = savedItems
-        asdf()
     }
     
     func startingDate(day: Int) -> Date {
@@ -38,7 +56,7 @@ class ViewModel: ObservableObject {
     func asdf() {
         var dayCount = 1
         var date = startingDate(day: dayCount)
-        let day = date.day()
+//        let day = date.day()
         let endDate = Date().adding(.year, value: 12)
         for i in days {
             repeat {
@@ -51,10 +69,27 @@ class ViewModel: ObservableObject {
         
     }
     
+    func saveMainUser() {
+        if let encodedData = try? JSONEncoder().encode(mainUser) {
+            UserDefaults.standard.set(encodedData, forKey: mainUserKey)
+        }
+    }
+    
     func saveItems() {
         if let encodedData = try? JSONEncoder().encode(customers) {
             UserDefaults.standard.set(encodedData, forKey: itemsKey)
         }
+    }
+    
+    func createMainUser(name: String, sex: Sex, birthday: Date, sign: AnnualEnum, zodiacSign: ZodiacEnum) {
+        let newMainUser = ClientStruct(
+            name: name,
+            birthday: birthday,
+            sex: sex,
+            annualSignStruct: annualSigns[sign]!,
+            zodiacSign: sampleClient.zodiacSign
+        )
+        mainUser = newMainUser
     }
     
     func createNewCustomer(name: String, sex: Sex, birthday: Date, sign: AnnualEnum, zodiacSign: ZodiacEnum) {
@@ -66,6 +101,30 @@ class ViewModel: ObservableObject {
             zodiacSign: sampleClient.zodiacSign
         )
         customers.append(newCustomer)
+    }
+    
+    func updateMainUser(name: String, sex: Sex, birthday: Date, sign: AnnualEnum, zodiacSign: ZodiacEnum) {
+        if mainUser == sampleClient {
+            createMainUser(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign)
+        } else {
+            mainUser = mainUser.updateInfo(name: name, sex: sex, birthday: birthday, sign: annualSigns[sign]!, zodiacSign: zodiacSign)
+        }
+    }
+    
+    func updateCustomer(client: ClientStruct, name: String, sex: Sex, birthday: Date, sign: AnnualEnum, zodiacSign: ZodiacEnum) {
+        if let index = customers.firstIndex(where: {$0.id == client.id}) {
+            customers[index] = client.updateInfo(name: name, sex: sex, birthday: birthday, sign: annualSigns[sign]!, zodiacSign: zodiacSign)
+            saveItems()
+        }
+        fetchCustomers()
+    }
+    
+    func deleteItem(indexSet: IndexSet) {
+        customers.remove(atOffsets: indexSet)
+    }
+    
+    func moveItem(from: IndexSet, to: Int) {
+        customers.move(fromOffsets: from, toOffset: to)
     }
     
     func clones(sign: SignStruct) -> String {
@@ -174,21 +233,4 @@ class ViewModel: ObservableObject {
             return [pigSign, roosterSign, goatSign]
         }
     }
-    
-    func saveChanges(client: ClientStruct, name: String, sex: Sex, birthday: Date, sign: AnnualEnum, zodiacSign: ZodiacEnum) {
-        if let index = customers.firstIndex(where: {$0.id == client.id}) {
-            customers[index] = client.updateInfo(name: name, sex: sex, birthday: birthday, sign: annualSigns[sign]!, zodiacSign: zodiacSign)
-            saveItems()
-        }
-    }
-    
-    func deleteItem(indexSet: IndexSet) {
-        customers.remove(atOffsets: indexSet)
-    }
-    
-    func moveItem(from: IndexSet, to: Int) {
-        customers.move(fromOffsets: from, toOffset: to)
-    }
-    
-    
 }
