@@ -225,10 +225,10 @@ enum VirtualEnum: String, CaseIterable, Codable {
 enum BusinessEnum: String, Codable, CaseIterable {
     case vectorHost = "Векторный хозяин"
     case vectorServant = "Векторный слуга"
-    case clone = "Клоны"
-    case companion = "Соратники"
-    case subordinate = "Подчиненные"
-    case adviser = "Советники"
+    case clone = "Клон"
+    case companion = "Соратник"
+    case subordinate = "Подчиненный"
+    case adviser = "Начальник"
 }
 
 enum MarriageEnum: String, Codable, CaseIterable {

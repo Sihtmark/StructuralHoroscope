@@ -13,6 +13,7 @@
 		A0193D0529FD6241007C06A1 /* AnnualSignsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0193D0429FD6241007C06A1 /* AnnualSignsView.swift */; };
 		A0193D0729FD6795007C06A1 /* VectorRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0193D0629FD6795007C06A1 /* VectorRingView.swift */; };
 		A0193D0929FD7475007C06A1 /* IdeologicalStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0193D0829FD7475007C06A1 /* IdeologicalStructView.swift */; };
+		A033682C2A0FC66A00F2F597 /* CustomerCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A033682B2A0FC66A00F2F597 /* CustomerCellView.swift */; };
 		A03AD25E29F005AB00EE061C /* PsychologicalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD25D29F005AB00EE061C /* PsychologicalView.swift */; };
 		A03AD26029F007B000EE061C /* EnergyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD25F29F007B000EE061C /* EnergyView.swift */; };
 		A03AD26229F00AC200EE061C /* FateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD26129F00AC200EE061C /* FateView.swift */; };
@@ -71,6 +72,7 @@
 		A0193D0429FD6241007C06A1 /* AnnualSignsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualSignsView.swift; sourceTree = "<group>"; };
 		A0193D0629FD6795007C06A1 /* VectorRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorRingView.swift; sourceTree = "<group>"; };
 		A0193D0829FD7475007C06A1 /* IdeologicalStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeologicalStructView.swift; sourceTree = "<group>"; };
+		A033682B2A0FC66A00F2F597 /* CustomerCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerCellView.swift; sourceTree = "<group>"; };
 		A03AD25D29F005AB00EE061C /* PsychologicalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychologicalView.swift; sourceTree = "<group>"; };
 		A03AD25F29F007B000EE061C /* EnergyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyView.swift; sourceTree = "<group>"; };
 		A03AD26129F00AC200EE061C /* FateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FateView.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				A0C1A2362A0A39FD00490239 /* StartingView.swift */,
 				A0576AFA29FA951700F4D9EF /* MainTabView.swift */,
+				A033682B2A0FC66A00F2F597 /* CustomerCellView.swift */,
 				A0E2299F29FA97EC0021648C /* Customers */,
 				A0E229A029FA98040021648C /* Info */,
 				A0E229A129FA98180021648C /* Calendar */,
@@ -362,6 +365,7 @@
 				A07141D029FFB8E70011FB0A /* BusinessStructview.swift in Sources */,
 				A09C8BF32A0575BA00893C07 /* CalendarStruct.swift in Sources */,
 				A08993FC29F6C44600174590 /* AllCustomersView.swift in Sources */,
+				A033682C2A0FC66A00F2F597 /* CustomerCellView.swift in Sources */,
 				A0E0723329D701BF0010E128 /* CustomerView.swift in Sources */,
 				A03AD26029F007B000EE061C /* EnergyView.swift in Sources */,
 				A0193D0929FD7475007C06A1 /* IdeologicalStructView.swift in Sources */,
@@ -561,7 +565,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sihtmark.StructuralHoroscope;
+				PRODUCT_BUNDLE_IDENTIFIER = SergeiPoluboiarinov.StructuralHoroscope;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -604,7 +608,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sihtmark.StructuralHoroscope;
+				PRODUCT_BUNDLE_IDENTIFIER = SergeiPoluboiarinov.StructuralHoroscope;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";

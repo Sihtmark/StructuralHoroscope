@@ -61,11 +61,11 @@ struct AgeView: View {
     }
 }
 
-//struct AgeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationStack {
-//            AgeView(age: )
-//        }
-//        .environmentObject(ViewModel())
-//    }
-//}
+struct AgeView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            AgeView(age: bullAge)
+        }
+        .environmentObject(ViewModel())
+    }
+}

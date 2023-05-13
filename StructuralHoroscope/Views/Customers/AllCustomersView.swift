@@ -18,7 +18,7 @@ struct AllCustomersView: View {
                     NavigationLink {
                         CustomerView(customer: customer)
                     } label: {
-                        Text(customer.name)
+                        CustomerCellView(customer: customer)
                     }
                 }
                 .onDelete(perform: vm.deleteItem)

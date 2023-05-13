@@ -98,7 +98,7 @@ class ViewModel: ObservableObject {
             birthday: birthday,
             sex: sex,
             annualSignStruct: annualSigns[sign]!,
-            zodiacSign: sampleClient.zodiacSign
+            zodiacSign: zodiacSign
         )
         customers.append(newCustomer)
     }
@@ -232,5 +232,9 @@ class ViewModel: ObservableObject {
         case .pioneer:
             return [pigSign, roosterSign, goatSign]
         }
+    }
+    
+    func ourBusinessRelationship(customer: ClientStruct) -> BusinessEnum {
+        return mainUser.annualSignStruct.businessStruct.filter{$0.key == customer.annualSignStruct.annualSign}.first!.value
     }
 }
