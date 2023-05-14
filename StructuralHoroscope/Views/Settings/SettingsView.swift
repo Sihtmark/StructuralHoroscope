@@ -13,8 +13,8 @@ struct SettingsView: View {
     @State private var name = ""
     @State private var sex = Sex.male
     @State private var selectedDate = Date()
-    @State private var annualSign = AnnualEnum.cat
-    @State private var zodiacSign = ZodiacEnum.aquarius
+//    @State private var annualSign = AnnualEnum.cat
+//    @State private var zodiacSign = ZodiacEnum.aquarius
     @State private var theme = ThemeEnum.light
     @State private var notifications = true
     @State private var sync = true
@@ -23,15 +23,13 @@ struct SettingsView: View {
         NavigationStack {
             List {
                 Section {
-                    HStack {
+                    HStack(spacing: 20) {
                         Text("Имя")
-                            .padding(.trailing, 30)
                         TextField("Напишите ваше имя", text: $name)
                             .textFieldStyle(.roundedBorder)
                     }
-                    HStack {
+                    HStack(spacing: 20) {
                         Text("Пол")
-                            .padding(.trailing, 30)
                         Picker(selection: $sex) {
                             ForEach(Sex.allCases, id: \.self) { sign in
                                 Text(sign == .male ? "Мужской" : "Женский").tag(sign)
@@ -60,8 +58,8 @@ struct SettingsView: View {
                 name = vm.mainUser.name
                 sex = vm.mainUser.sex
                 selectedDate = vm.mainUser.birthday
-                annualSign = vm.mainUser.annualSignStruct.annualSign
-                zodiacSign = vm.mainUser.zodiacSign
+//                annualSign = vm.mainUser.annualSignStruct.annualSign
+//                zodiacSign = vm.mainUser.zodiacSign
             }
             .navigationTitle("Настройки")
         }

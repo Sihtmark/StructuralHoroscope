@@ -51,6 +51,13 @@ struct SignStruct: Identifiable, Codable, Equatable {
     let virtualSigns: [ZodiacEnum:VirtualSignStruct]
     let businessStruct: [AnnualEnum: BusinessEnum]
     let blocks: [String:String]
+    let years: [Int]
+}
+
+struct ZodiacStruct: Identifiable, Codable, Equatable {
+    var id = UUID()
+    let sign: ZodiacEnum
+    let days: [Int: ClosedRange<Int>]
 }
 
 struct IdeologicalStruct: Identifiable, Codable, Equatable {

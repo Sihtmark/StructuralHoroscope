@@ -21,26 +21,6 @@ struct CreateCustomerView: View {
         VStack(alignment: .leading, spacing: 30) {
             TextField("Имя пользователя", text: $name)
                 .textFieldStyle(.roundedBorder)
-            HStack {
-                Text("Годовой знак:")
-                Picker(selection: $annualSign) {
-                    ForEach(AnnualEnum.allCases, id: \.self) { sign in
-                        Text(sign.rawValue).tag(sign)
-                    }
-                } label: {
-                    Text("Picker")
-                }
-            }
-            HStack {
-                Text("Знак зодиака:")
-                Picker(selection: $zodiacSign) {
-                    ForEach(ZodiacEnum.allCases, id: \.self) { sign in
-                        Text(sign.rawValue).tag(sign)
-                    }
-                } label: {
-                    Text("Picker")
-                }
-            }
             Picker(selection: $sex) {
                 Text("Мужчина").tag(Sex.male)
                 Text("Женщина").tag(Sex.female)
@@ -56,7 +36,7 @@ struct CreateCustomerView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Сохранить") {
-                    vm.createNewCustomer(name: name, sex: sex, birthday: selectedDate, sign: annualSign, zodiacSign: zodiacSign)
+                    vm.createNewCustomer(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!)
                     dismiss()
                 }
             }

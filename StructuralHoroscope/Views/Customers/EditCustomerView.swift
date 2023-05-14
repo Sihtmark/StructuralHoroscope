@@ -15,33 +15,11 @@ struct EditCustomerView: View {
     @State private var name = ""
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
-    @State private var annualSign: AnnualEnum = .snake
-    @State private var zodiacSign: ZodiacEnum = .taurus
     
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
             TextField("Имя пользователя", text: $name)
                 .textFieldStyle(.roundedBorder)
-            HStack {
-                Text("Годовой знак:")
-                Picker(selection: $annualSign) {
-                    ForEach(AnnualEnum.allCases, id: \.self) { sign in
-                        Text(sign.rawValue).tag(sign)
-                    }
-                } label: {
-                    Text("Picker")
-                }
-            }
-            HStack {
-                Text("Знак зодиака:")
-                Picker(selection: $zodiacSign) {
-                    ForEach(ZodiacEnum.allCases, id: \.self) { sign in
-                        Text(sign.rawValue).tag(sign)
-                    }
-                } label: {
-                    Text("Picker")
-                }
-            }
             Picker(selection: $sex) {
                 Text("Мужчина").tag(Sex.male)
                 Text("Женщина").tag(Sex.female)
@@ -57,7 +35,7 @@ struct EditCustomerView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Сохранить") {
-                    vm.updateCustomer(client: customer, name: name, sex: sex, birthday: selectedDate, sign: annualSign, zodiacSign: zodiacSign)
+                    vm.updateCustomer(client: customer, name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!)
                     dismiss()
                 }
             }
@@ -66,8 +44,6 @@ struct EditCustomerView: View {
             name = customer.name
             selectedDate = customer.birthday
             sex = customer.sex
-            annualSign = customer.annualSignStruct.annualSign
-            zodiacSign = customer.zodiacSign
         }
     }
 }

@@ -56,7 +56,6 @@ class ViewModel: ObservableObject {
     func asdf() {
         var dayCount = 1
         var date = startingDate(day: dayCount)
-//        let day = date.day()
         let endDate = Date().adding(.year, value: 12)
         for i in days {
             repeat {
@@ -81,39 +80,39 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func createMainUser(name: String, sex: Sex, birthday: Date, sign: AnnualEnum, zodiacSign: ZodiacEnum) {
+    func createMainUser(name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum) {
         let newMainUser = ClientStruct(
             name: name,
             birthday: birthday,
             sex: sex,
-            annualSignStruct: annualSigns[sign]!,
+            annualSignStruct: sign,
             zodiacSign: sampleClient.zodiacSign
         )
         mainUser = newMainUser
     }
     
-    func createNewCustomer(name: String, sex: Sex, birthday: Date, sign: AnnualEnum, zodiacSign: ZodiacEnum) {
+    func createNewCustomer(name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum) {
         let newCustomer = ClientStruct(
             name: name,
             birthday: birthday,
             sex: sex,
-            annualSignStruct: annualSigns[sign]!,
+            annualSignStruct: sign,
             zodiacSign: zodiacSign
         )
         customers.append(newCustomer)
     }
     
-    func updateMainUser(name: String, sex: Sex, birthday: Date, sign: AnnualEnum, zodiacSign: ZodiacEnum) {
+    func updateMainUser(name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum) {
         if mainUser == sampleClient {
             createMainUser(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign)
         } else {
-            mainUser = mainUser.updateInfo(name: name, sex: sex, birthday: birthday, sign: annualSigns[sign]!, zodiacSign: zodiacSign)
+            mainUser = mainUser.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign)
         }
     }
     
-    func updateCustomer(client: ClientStruct, name: String, sex: Sex, birthday: Date, sign: AnnualEnum, zodiacSign: ZodiacEnum) {
+    func updateCustomer(client: ClientStruct, name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum) {
         if let index = customers.firstIndex(where: {$0.id == client.id}) {
-            customers[index] = client.updateInfo(name: name, sex: sex, birthday: birthday, sign: annualSigns[sign]!, zodiacSign: zodiacSign)
+            customers[index] = client.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign)
             saveItems()
         }
         fetchCustomers()
@@ -236,5 +235,31 @@ class ViewModel: ObservableObject {
     
     func ourBusinessRelationship(customer: ClientStruct) -> BusinessEnum {
         return mainUser.annualSignStruct.businessStruct.filter{$0.key == customer.annualSignStruct.annualSign}.first!.value
+    }
+    
+    func getAnnualSign(date: Date) -> SignStruct? {
+        let dateComponents = Calendar.current.dateComponents([.year], from: date)
+        let year = dateComponents.year
+        for i in annualSignArray {
+            if i.years.contains(year!) {
+                return i
+            }
+        }
+        return nil
+    }
+    
+    func getZodiacSign(date: Date) -> ZodiacEnum? {
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
+        let day = dateComponents.day
+        let month = dateComponents.month
+        
+        for i in zodiacArray {
+            for e in i.days {
+                if e.key == month && e.value.contains(day!) {
+                    return i.sign
+                }
+            }
+        }
+        return nil
     }
 }

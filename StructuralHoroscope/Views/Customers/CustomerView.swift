@@ -16,8 +16,6 @@ struct CustomerView: View {
     @State private var name = ""
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
-    @State private var annualSign: AnnualEnum = .snake
-    @State private var zodiacSign: ZodiacEnum = .taurus
     
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -30,7 +28,7 @@ struct CustomerView: View {
         List {
             if isEditing {
                 editCustomerInfo
-                editSignSection
+                signSection
                 typeSection
                 vectorSection
                 businessSection
@@ -49,8 +47,8 @@ struct CustomerView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(isEditing ? "Сохранить" : "Изменить") {
                     if isEditing {
-                        vm.updateCustomer(client: customer, name: name, sex: sex, birthday: selectedDate, sign: annualSign, zodiacSign: zodiacSign)
-                        customer = customer.updateInfo(name: name, sex: sex, birthday: selectedDate, sign: annualSigns[annualSign]!, zodiacSign: zodiacSign)
+                        vm.updateCustomer(client: customer, name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!)
+                        customer = customer.updateInfo(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!)
                     }
                     isEditing.toggle()
                 }
@@ -60,8 +58,6 @@ struct CustomerView: View {
             name = customer.name
             selectedDate = customer.birthday
             sex = customer.sex
-            annualSign = customer.annualSignStruct.annualSign
-            zodiacSign = customer.zodiacSign
         }
     }
 }
@@ -91,8 +87,8 @@ extension CustomerView {
             HStack(spacing: 30) {
                 Text("Пол")
                 Picker(selection: $sex) {
-                    Text("Мужчина").tag(Sex.male)
-                    Text("Женщина").tag(Sex.female)
+                    Text("Мужской").tag(Sex.male)
+                    Text("Женский").tag(Sex.female)
                 } label: {
                     Text("Picker")
                 }
@@ -111,32 +107,6 @@ extension CustomerView {
                 HStack {
                     Text("Годовой знак: \(customer.annualSignStruct.annualSign.rawValue)")
                 }
-            }
-            NavigationLink {
-                VirtualSignView(virtualSign: customer.annualSignStruct.virtualSigns[customer.zodiacSign]!)
-            } label: {
-                HStack {
-                    Text("Виртуальный знак: \(customer.annualSignStruct.virtualSigns[customer.zodiacSign]!.virtualSign)")
-                }
-            }
-        }
-    }
-    
-    var editSignSection: some View {
-        Section("Знаки:") {
-            Picker(selection: $annualSign) {
-                ForEach(AnnualEnum.allCases, id: \.self) { sign in
-                    Text(sign.rawValue).tag(sign)
-                }
-            } label: {
-                Text("Годовой знак:")
-            }
-            Picker(selection: $zodiacSign) {
-                ForEach(ZodiacEnum.allCases, id: \.self) { sign in
-                    Text(sign.rawValue).tag(sign)
-                }
-            } label: {
-                Text("Знак зодиака:")
             }
             NavigationLink {
                 VirtualSignView(virtualSign: customer.annualSignStruct.virtualSigns[customer.zodiacSign]!)

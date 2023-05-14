@@ -13,36 +13,15 @@ struct StartingView: View {
     @State private var name = ""
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
-    @State private var annualSign: AnnualEnum = .snake
+//    @State private var annualSign: AnnualEnum = .snake
     @State private var zodiacSign: ZodiacEnum = .taurus
     
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
             Text("Новый пользователь")
                 .font(.largeTitle)
-                .bold()
             TextField("Введите ваше имя", text: $name)
                 .textFieldStyle(.roundedBorder)
-            HStack {
-                Text("Ваш годовой знак:")
-                Picker(selection: $annualSign) {
-                    ForEach(AnnualEnum.allCases, id: \.self) { sign in
-                        Text(sign.rawValue).tag(sign)
-                    }
-                } label: {
-                    Text("Picker")
-                }
-            }
-            HStack {
-                Text("Ваш знак зодиака:")
-                Picker(selection: $zodiacSign) {
-                    ForEach(ZodiacEnum.allCases, id: \.self) { sign in
-                        Text(sign.rawValue).tag(sign)
-                    }
-                } label: {
-                    Text("Picker")
-                }
-            }
             HStack {
                 Text("Пол:")
                     .padding(.trailing, 30)
@@ -52,14 +31,18 @@ struct StartingView: View {
                 } label: {
                     Text("Пол")
                 }
-            .pickerStyle(.segmented)
+                .pickerStyle(.segmented)
             }
-            DatePicker("День рождения:", selection: $selectedDate, displayedComponents: .date)
-            NavigationLink("Сохранить") {
+            DatePicker("Дата рождения:", selection: $selectedDate, displayedComponents: .date)
+            NavigationLink {
                 MainTabView()
+            } label: {
+                Text("Сохранить")
+                    .foregroundColor(.blue)
             }
             .onTapGesture {
-                vm.updateMainUser(name: name, sex: sex, birthday: selectedDate, sign: annualSign, zodiacSign: zodiacSign)
+                vm.updateMainUser(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!)
+                print(vm.mainUser.zodiacSign.rawValue)
             }
             Spacer()
         }
