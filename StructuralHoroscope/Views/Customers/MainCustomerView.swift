@@ -16,10 +16,9 @@ struct MainCustomerView: View {
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
     
-    var dateFormatter: DateFormatter {
+    private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        formatter.timeStyle = .none
+        formatter.dateFormat = "dd.MM.yyyy"
         return formatter
     }
     
@@ -93,6 +92,7 @@ extension MainCustomerView {
                 .pickerStyle(.segmented)
             }
             DatePicker("День рождения:", selection: $selectedDate, displayedComponents: .date)
+                .environment(\.locale, Locale.init(identifier: "ru"))
         }
     }
     

@@ -16,6 +16,7 @@ struct EditCustomerView: View {
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
     
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
             TextField("Имя пользователя", text: $name)
@@ -28,6 +29,7 @@ struct EditCustomerView: View {
             }
             .pickerStyle(.segmented)
             DatePicker("День рождения:", selection: $selectedDate, displayedComponents: .date)
+                .environment(\.locale, Locale.init(identifier: "ru"))
             Spacer()
         }
         .padding()

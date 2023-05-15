@@ -29,6 +29,7 @@ struct CreateCustomerView: View {
             }
             .pickerStyle(.segmented)
             DatePicker("День рождения:", selection: $selectedDate, displayedComponents: .date)
+                .environment(\.locale, Locale.init(identifier: "ru"))
             Spacer()
         }
         .padding()
