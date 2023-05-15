@@ -32,12 +32,6 @@ struct CustomerCellView: View {
                     .foregroundColor(.secondary)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            Image("\(customer.zodiacSign)Circle")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 35)
-                .padding(.leading, 12)
-                .padding(.trailing, 10)
         }
     }
 }

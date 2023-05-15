@@ -13,8 +13,6 @@ struct StartingView: View {
     @State private var name = ""
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
-//    @State private var annualSign: AnnualEnum = .snake
-    @State private var zodiacSign: ZodiacEnum = .taurus
     
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {

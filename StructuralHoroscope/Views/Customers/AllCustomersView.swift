@@ -14,6 +14,11 @@ struct AllCustomersView: View {
     var body: some View {
         NavigationStack {
             List {
+                NavigationLink {
+                    MainCustomerView()
+                } label: {
+                    MainCustomerCellView()
+                }
                 ForEach(vm.customers) { customer in
                     NavigationLink {
                         CustomerView(customer: customer)
