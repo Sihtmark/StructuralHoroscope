@@ -22,7 +22,8 @@ struct ClientStruct: Identifiable, Codable, Equatable {
 
 struct VirtualSignStruct: Identifiable, Codable, Equatable {
     var id = UUID()
-    let virtualSign: String
+    let virtualSign: VirtualEnum
+    let emoji: VirtualEmojiEnum
     let blocks: [String:String]
     let site: String
 }
@@ -205,18 +206,18 @@ enum AnnualEnum: String, Codable, CaseIterable {
 }
 
 enum ZodiacEnum: String, Codable, CaseIterable {
-    case aries = "Овен"
-    case taurus = "Телец"
-    case gemini = "Близнецы"
-    case cancer = "Рак"
-    case leo = "Лев"
-    case virgo = "Дева"
-    case libra = "Весы"
-    case scorpio = "Скорпион"
-    case sagittarius = "Стрелец"
-    case capricorn = "Козерог"
-    case aquarius = "Водолей"
-    case pisces = "Рыбы"
+    case aries = "Овен ♈︎"
+    case taurus = "Телец ♉︎"
+    case gemini = "Близнецы ♊︎"
+    case cancer = "Рак ♋︎"
+    case leo = "Лев ♌︎"
+    case virgo = "Дева ♍︎"
+    case libra = "Весы ♎︎"
+    case scorpio = "Скорпион ♏︎"
+    case sagittarius = "Стрелец ♐︎"
+    case capricorn = "Козерог ♑︎"
+    case aquarius = "Водолей ♒︎"
+    case pisces = "Рыбы ♓︎"
 }
 
 enum VirtualEnum: String, CaseIterable, Codable {
@@ -227,6 +228,16 @@ enum VirtualEnum: String, CaseIterable, Codable {
     case aristocrat = "Аристократ"
     case professor = "Профессор"
     case leader = "Вождь"
+}
+
+enum VirtualEmojiEnum: String, CaseIterable, Codable {
+    case king = "👑"
+    case vector = "↔️"
+    case jester = "🤡"
+    case knight = "⚔️"
+    case aristocrat = "🎩"
+    case professor = "👨‍🏫"
+    case leader = "🗽"
 }
 
 enum BusinessEnum: String, Codable, CaseIterable {

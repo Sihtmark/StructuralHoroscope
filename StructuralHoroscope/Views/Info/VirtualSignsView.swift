@@ -66,7 +66,7 @@ extension VirtualSignsView {
                     VirtualSignView(virtualSign: sign)
                 } label: {
                     HStack {
-                        Text(sign.virtualSign)
+                        Text(sign.virtualSign.rawValue)
                             .font(.title)
                         Spacer()
                         Image(systemName: "chevron.right")

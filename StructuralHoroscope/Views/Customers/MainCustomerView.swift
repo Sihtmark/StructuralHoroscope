@@ -110,7 +110,7 @@ extension MainCustomerView {
                 VirtualSignView(virtualSign: vm.mainUser.annualSignStruct.virtualSigns[vm.mainUser.zodiacSign]!)
             } label: {
                 HStack {
-                    Text("Виртуальный знак: \(vm.mainUser.annualSignStruct.virtualSigns[vm.mainUser.zodiacSign]!.virtualSign)")
+                    Text("Виртуальный знак: \(vm.mainUser.annualSignStruct.virtualSigns[vm.mainUser.zodiacSign]!.virtualSign.rawValue)")
                 }
             }
         }

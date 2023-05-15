@@ -18,6 +18,7 @@
 		A03385D62A1202C2002153EF /* MainCustomerCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03385D52A1202C2002153EF /* MainCustomerCellView.swift */; };
 		A03385D82A1236F6002153EF /* AnnualSignInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03385D72A1236F6002153EF /* AnnualSignInstances.swift */; };
 		A03385DA2A12372F002153EF /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03385D92A12372F002153EF /* Date.swift */; };
+		A03385DC2A125E44002153EF /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03385DB2A125E44002153EF /* Color.swift */; };
 		A03AD25E29F005AB00EE061C /* PsychologicalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD25D29F005AB00EE061C /* PsychologicalView.swift */; };
 		A03AD26029F007B000EE061C /* EnergyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD25F29F007B000EE061C /* EnergyView.swift */; };
 		A03AD26229F00AC200EE061C /* FateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD26129F00AC200EE061C /* FateView.swift */; };
@@ -80,6 +81,7 @@
 		A03385D52A1202C2002153EF /* MainCustomerCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCustomerCellView.swift; sourceTree = "<group>"; };
 		A03385D72A1236F6002153EF /* AnnualSignInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualSignInstances.swift; sourceTree = "<group>"; };
 		A03385D92A12372F002153EF /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		A03385DB2A125E44002153EF /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		A03AD25D29F005AB00EE061C /* PsychologicalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychologicalView.swift; sourceTree = "<group>"; };
 		A03AD25F29F007B000EE061C /* EnergyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyView.swift; sourceTree = "<group>"; };
 		A03AD26129F00AC200EE061C /* FateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FateView.swift; sourceTree = "<group>"; };
@@ -181,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				A03CF2D929D716CD005BE95D /* Model.swift */,
-				A03385D72A1236F6002153EF /* AnnualSignInstances.swift */,
 				A0E53E8229E8283A0065F227 /* VirtualSignInstances.swift */,
 				A0F2FA8A29EAED4C002A58BC /* IdeologicalSignInstances.swift */,
 				A0F2FA8829EAE709002A58BC /* SocialInstances.swift */,
@@ -190,6 +191,7 @@
 				A0F2FA9029EB01A3002A58BC /* FateInstances.swift */,
 				A03AD26529F01D1C00EE061C /* BusinessInstances.swift */,
 				A03AD26929F03C1F00EE061C /* MarriageInstances.swift */,
+				A03385D72A1236F6002153EF /* AnnualSignInstances.swift */,
 				A07141C329FEA0FC0011FB0A /* SensualityInstances.swift */,
 				A07141C729FEACA00011FB0A /* ElementInstances.swift */,
 				A07141CD29FF7A0E0011FB0A /* SmallVectorRingInstance.swift */,
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				A03385D92A12372F002153EF /* Date.swift */,
+				A03385DB2A125E44002153EF /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				A07141C829FEACA00011FB0A /* ElementInstances.swift in Sources */,
 				A03385D62A1202C2002153EF /* MainCustomerCellView.swift in Sources */,
 				A0F2FA8B29EAED4C002A58BC /* IdeologicalSignInstances.swift in Sources */,
+				A03385DC2A125E44002153EF /* Color.swift in Sources */,
 				A0F2FA8F29EAFB34002A58BC /* EnergyInstances.swift in Sources */,
 				A0C1A2372A0A39FD00490239 /* StartingView.swift in Sources */,
 				A03AD26429F0182500EE061C /* BusinessView.swift in Sources */,

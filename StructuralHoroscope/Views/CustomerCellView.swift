@@ -23,7 +23,7 @@ struct CustomerCellView: View {
                 Text(customer.name)
                     .bold()
                 HStack {
-                    Text("\(customer.annualSignStruct.annualSign.rawValue), \(customer.zodiacSign.rawValue.lowercased()), \(customer.annualSignStruct.virtualSigns[customer.zodiacSign]!.virtualSign.lowercased())")
+                    Text("\(customer.annualSignStruct.annualSign.rawValue), \(customer.zodiacSign.rawValue.lowercased()), \(customer.annualSignStruct.virtualSigns[customer.zodiacSign]!.virtualSign.rawValue.lowercased())")
                         .font(.footnote)
                         .foregroundColor(.secondary)
                 }
