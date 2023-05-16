@@ -59,7 +59,7 @@ extension AgeStructView {
     }
     var signsSection: some View {
         VStack(alignment: .leading, spacing: 15) {
-            ForEach(ages) { age in
+            ForEach(ageArray) { age in
                 NavigationLink {
                     AgeView(age: age)
                 } label: {

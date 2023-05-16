@@ -126,40 +126,132 @@ class ViewModel: ObservableObject {
         customers.move(fromOffsets: from, toOffset: to)
     }
     
+    func hostString(sign: SignStruct) -> String {
+        var str = ""
+        for i in AnnualEmojiEnum.allCases {
+            if "\(i)" == "\(sign.vectorHost)" {
+                str = "\(i.rawValue)\(sign.vectorHost.rawValue)"
+            }
+        }
+        return str
+    }
+    
+    func servantString(sign: SignStruct) -> String {
+        var str = ""
+        for i in AnnualEmojiEnum.allCases {
+            if "\(i)" == "\(sign.vectorServant)" {
+                str = "\(i.rawValue)\(sign.vectorServant.rawValue)"
+            }
+        }
+        return str
+    }
+    
     func clones(sign: SignStruct) -> String {
-        return sign.clones.map{$0.rawValue}.joined(separator: ", ")
+        var dict = [AnnualEmojiEnum: AnnualEnum]()
+        for i in sign.clones {
+            for e in AnnualEmojiEnum.allCases {
+                if "\(e)" == "\(i)" {
+                    dict[e] = i
+                }
+            }
+        }
+        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
     }
     
     func companions(sign: SignStruct) -> String {
-        return sign.companions.map{$0.rawValue}.joined(separator: ", ")
+        var dict = [AnnualEmojiEnum: AnnualEnum]()
+        for i in sign.companions {
+            for e in AnnualEmojiEnum.allCases {
+                if "\(e)" == "\(i)" {
+                    dict[e] = i
+                }
+            }
+        }
+        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
     }
     
     func subordinates(sign: SignStruct) -> String {
-        return sign.subordinates.map{$0.rawValue}.joined(separator: ", ")
+        var dict = [AnnualEmojiEnum: AnnualEnum]()
+        for i in sign.subordinates {
+            for e in AnnualEmojiEnum.allCases {
+                if "\(e)" == "\(i)" {
+                    dict[e] = i
+                }
+            }
+        }
+        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
     }
     
     func advisers(sign: SignStruct) -> String {
-        return sign.advisers.map{$0.rawValue}.joined(separator: ", ")
+        var dict = [AnnualEmojiEnum: AnnualEnum]()
+        for i in sign.advisers {
+            for e in AnnualEmojiEnum.allCases {
+                if "\(e)" == "\(i)" {
+                    dict[e] = i
+                }
+            }
+        }
+        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
     }
     
     func vectorMarriage(sign: SignStruct) -> String {
-        return sign.vectorMarriage.map{$0.rawValue}.joined(separator: ", ")
+        var dict = [AnnualEmojiEnum: AnnualEnum]()
+        for i in sign.vectorMarriage {
+            for e in AnnualEmojiEnum.allCases {
+                if "\(e)" == "\(i)" {
+                    dict[e] = i
+                }
+            }
+        }
+        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
     }
     
     func romanticMarriage(sign: SignStruct) -> String {
-        return sign.romanticMarriage.map{$0.rawValue}.joined(separator: ", ")
+        var dict = [AnnualEmojiEnum: AnnualEnum]()
+        for i in sign.romanticMarriage {
+            for e in AnnualEmojiEnum.allCases {
+                if "\(e)" == "\(i)" {
+                    dict[e] = i
+                }
+            }
+        }
+        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
     }
     
     func equalMarriage(sign: SignStruct) -> String {
-        return sign.equalMarriage.map{$0.rawValue}.joined(separator: ", ")
+        var dict = [AnnualEmojiEnum: AnnualEnum]()
+        for i in sign.equalMarriage {
+            for e in AnnualEmojiEnum.allCases {
+                if "\(e)" == "\(i)" {
+                    dict[e] = i
+                }
+            }
+        }
+        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
     }
     
     func spiritualMarriage(sign: SignStruct) -> String {
-        return sign.spiritualMarriage.map{$0.rawValue}.joined(separator: ", ")
+        var dict = [AnnualEmojiEnum: AnnualEnum]()
+        for i in sign.spiritualMarriage {
+            for e in AnnualEmojiEnum.allCases {
+                if "\(e)" == "\(i)" {
+                    dict[e] = i
+                }
+            }
+        }
+        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
     }
     
     func patriarchalMarriage(sign: SignStruct) -> String {
-        return sign.patriarchalMarriage.map{$0.rawValue}.joined(separator: ", ")
+        var dict = [AnnualEmojiEnum: AnnualEnum]()
+        for i in sign.patriarchalMarriage {
+            for e in AnnualEmojiEnum.allCases {
+                if "\(e)" == "\(i)" {
+                    dict[e] = i
+                }
+            }
+        }
+        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
     }
     
     func socialSigns(socialEnum: SocialEnum) -> [SignStruct] {
@@ -261,5 +353,54 @@ class ViewModel: ObservableObject {
             }
         }
         return nil
+    }
+    
+    func getAge(birthdate: Date) -> Int {
+        let birthDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: birthdate)
+        let actualDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        var age = actualDateComponents.year! - birthDateComponents.year!
+        
+        if birthDateComponents.month! - actualDateComponents.month! < 0 {
+            age += 1
+            return age
+        } else if birthDateComponents.month! - actualDateComponents.month! == 0 {
+            if birthDateComponents.day! - actualDateComponents.day! < 1 {
+                age += 1
+                return age
+            }
+        }
+        return age
+    }
+    
+    func getAgeType(birthdate: Date) -> AgeEnum {
+        let age = getAge(birthdate: birthdate)
+        switch age {
+        case 0...1:
+            return .newborn
+        case 2...3:
+            return .baby
+        case 4...7:
+            return .preschooler
+        case 8...12:
+            return .juniorSchoolStudent
+        case 13...17:
+            return .teacher
+        case 18...24:
+            return .youth
+        case 25...31:
+            return .intellectual
+        case 32...42:
+            return .trailblazer
+        case 43...55:
+            return .success
+        case 56...70:
+            return .teacher
+        case 71...85:
+            return .triumphant
+        case 86...200:
+            return .outgoing
+        default:
+            return .newborn
+        }
     }
 }

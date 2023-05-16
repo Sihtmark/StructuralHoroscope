@@ -7,7 +7,22 @@
 
 import Foundation
 
-let ages: [AgeStruct] = [
+let ages: [AgeEnum: AgeStruct] = [
+    .newborn: roosterAge,
+    .baby: monkeyAge,
+    .preschooler: goatAge,
+    .juniorSchoolStudent: horseAge,
+    .teenager: bullAge,
+    .youth: ratAge,
+    .intellectual: pigAge,
+    .trailblazer: dogAge,
+    .success: snakeAge,
+    .teacher: dragonAge,
+    .triumphant: catAge,
+    .outgoing: tigerAge
+]
+
+let ageArray = [
     roosterAge,
     monkeyAge,
     goatAge,
@@ -23,7 +38,7 @@ let ages: [AgeStruct] = [
 ]
 
 let roosterAge = AgeStruct(
-    sign: .rooster,
+    sign: .newborn,
     title: "ВОЗРАСТ ПЕТУХА\n(от рождения до года)",
     ageTitle: "ЗАПОВЕДИ НОВОРОЖДЕННОГО",
     ageСommandments: [
@@ -50,7 +65,7 @@ let roosterAge = AgeStruct(
 )
 
 let monkeyAge = AgeStruct(
-    sign: .monkey,
+    sign: .baby,
     title: "ВОЗРАСТ ОБЕЗЬЯНЫ\n(от 1 года до 3 лет)",
     ageTitle: "ЗАПОВЕДИ МЛАДЕНЦА",
     ageСommandments: [
@@ -77,7 +92,7 @@ let monkeyAge = AgeStruct(
 )
 
 let goatAge = AgeStruct(
-    sign: .goat,
+    sign: .preschooler,
     title: "ВОЗРАСТ КОЗЫ\n(от 3 до 7 лет)",
     ageTitle: "ЗАПОВЕДИ ДОШКОЛЬНИКА",
     ageСommandments: [
@@ -104,7 +119,7 @@ let goatAge = AgeStruct(
 )
 
 let horseAge = AgeStruct(
-    sign: .horse,
+    sign: .juniorSchoolStudent,
     title: "ВОЗРАСТ ЛОШАДИ\n(от 7 до 12 лет)",
     ageTitle: "ЗАПОВЕДИ МЛАДШЕГО ШКОЛЬНИКА",
     ageСommandments: [
@@ -131,7 +146,7 @@ let horseAge = AgeStruct(
 )
 
 let bullAge = AgeStruct(
-    sign: .bull,
+    sign: .teenager,
     title: "ВОЗРАСТ БЫКА\n(от 12 до 17 лет)",
     ageTitle: "ЗАПОВЕДИ ПОДРОСТКА",
     ageСommandments: [
@@ -158,7 +173,7 @@ let bullAge = AgeStruct(
 )
 
 let ratAge = AgeStruct(
-    sign: .rat,
+    sign: .youth,
     title: "ВОЗРАСТ КРЫСЫ\n(от 17 до 24 лет)",
     ageTitle: "ЗАПОВЕДИ ЮНОСТИ",
     ageСommandments: [
@@ -185,7 +200,7 @@ let ratAge = AgeStruct(
 )
 
 let pigAge = AgeStruct(
-    sign: .pig,
+    sign: .intellectual,
     title: "ВОЗРАСТ КАБАНА\n(от 24 лет до 31 года)",
     ageTitle: "ЗАПОВЕДИ ИНТЕЛЛЕКТУАЛА",
     ageСommandments: [
@@ -212,7 +227,7 @@ let pigAge = AgeStruct(
 )
 
 let dogAge = AgeStruct(
-    sign: .dog,
+    sign: .trailblazer,
     title: "ВОЗРАСТ СОБАКИ\n(от 31 года до 42 лет)",
     ageTitle: "ЗАПОВЕДИ НОВАТОРА",
     ageСommandments: [
@@ -239,7 +254,7 @@ let dogAge = AgeStruct(
 )
 
 let snakeAge = AgeStruct(
-    sign: .snake,
+    sign: .success,
     title: "ВОЗРАСТ ЗМЕИ\n(от 42 до 55 лет)",
     ageTitle: "ЗАПОВЕДИ УСПЕШНОСТИ",
     ageСommandments: [
@@ -266,7 +281,7 @@ let snakeAge = AgeStruct(
 )
 
 let dragonAge = AgeStruct(
-    sign: .dragon,
+    sign: .teacher,
     title: "ВОЗРАСТ ДРАКОНА\n(от 55 до 70 лет)",
     ageTitle: "ЗАПОВЕДИ УЧИТЕЛЯ",
     ageСommandments: [
@@ -293,7 +308,7 @@ let dragonAge = AgeStruct(
 )
 
 let catAge = AgeStruct(
-    sign: .cat,
+    sign: .triumphant,
     title: "ВОЗРАСТ КОТА\n(от 70 до 85 лет)",
     ageTitle: "ЗАПОВЕДИ ТРИУМФАТОРА",
     ageСommandments: [
@@ -320,7 +335,7 @@ let catAge = AgeStruct(
 )
 
 let tigerAge = AgeStruct(
-    sign: .tiger,
+    sign: .outgoing,
     title: "ВОЗРАСТ ТИГРА\n(от 85 лет до отпущенного срока)",
     ageTitle: "ЗАПОВЕДИ УХОДЯЩЕГО",
     ageСommandments: [

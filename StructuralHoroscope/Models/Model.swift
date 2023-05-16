@@ -121,7 +121,7 @@ struct SensualityStruct: Identifiable, Codable, Equatable {
 
 struct AgeStruct: Identifiable, Codable, Equatable {
     var id = UUID()
-    let sign: AnnualEnum
+    let sign: AgeEnum
     let title: String
     let ageTitle: String
     let ageСommandments: [String]
@@ -240,6 +240,21 @@ enum VirtualEmojiEnum: String, CaseIterable, Codable {
     case leader = "🗽"
 }
 
+enum AnnualEmojiEnum: String, CaseIterable, Codable {
+    case rat = "🐀"
+    case bull = "🐂"
+    case tiger = "🐅"
+    case cat = "🐈"
+    case dragon = "🐉"
+    case snake = "🐍"
+    case horse = "🐎"
+    case goat = "🐐"
+    case monkey = "🐒"
+    case rooster = "🐓"
+    case dog = "🐕"
+    case boar = "🐗"
+}
+
 enum BusinessEnum: String, Codable, CaseIterable {
     case vectorHost = "Векторный хозяин"
     case vectorServant = "Векторный слуга"
@@ -273,14 +288,14 @@ enum AgeEnum: String, Codable, CaseIterable {
 }
 
 enum IdeologicalEnum: String, Codable, CaseIterable {
-    case logicalMale = "Логик мужчина"
-    case logicalFemale = "Логик женщина"
-    case strongWilledMale = "Волевик мужчина"
-    case strongWilledFemale = "Волевик женщина"
-    case mysticalMale = "Мистик мужчина"
-    case mysticalFemale = "Мистик женщина"
-    case realisticMale = "Реалист мужчина"
-    case realisticFemale = "Реалист женщина"
+    case logicalMale = "Мужская логика"
+    case logicalFemale = "Женская логика"
+    case strongWilledMale = "Мужская воля"
+    case strongWilledFemale = "Женская воля"
+    case mysticalMale = "Мужская мистика"
+    case mysticalFemale = "Женская мистика"
+    case realisticMale = "Мужской реализм"
+    case realisticFemale = "Женский реализм"
 }
 
 enum SocialEnum: String, Codable, CaseIterable {
@@ -297,10 +312,10 @@ enum PsychologicalEnum: String, Codable, CaseIterable {
 }
 
 enum EnergyEnum: String, Codable, CaseIterable {
-    case dramatic = "Драматический (холерик)"
-    case sanguine = "Природный оптимист (сангвиник)"
-    case phlegmatic = "Космический оптимист (флегматик)"
-    case melancholic = "Скептик (меланхолик)"
+    case dramatic = "Драматический"
+    case sanguine = "Природный оптимист"
+    case phlegmatic = "Космический оптимист"
+    case melancholic = "Скептик"
 }
 
 enum FateEnum: String, Codable, CaseIterable {
