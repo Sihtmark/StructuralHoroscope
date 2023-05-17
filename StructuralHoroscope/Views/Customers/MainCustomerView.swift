@@ -11,8 +11,6 @@ struct MainCustomerView: View {
     
     @EnvironmentObject var vm: ViewModel
     @State private var isEditing = false
-    @State private var showDescription = false
-
     @State private var name = ""
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
@@ -46,9 +44,6 @@ struct MainCustomerView: View {
                     isEditing.toggle()
                 }
             }
-        }
-        .sheet(isPresented: $showDescription) {
-            annualSignDescription
         }
         .onAppear {
             name = vm.mainUser.name
@@ -117,21 +112,19 @@ extension MainCustomerView {
                     .frame(width: 20, height: 20)
                 Text("Знак Зодиака: \(vm.mainUser.zodiacSign.rawValue)")
             }
-            HStack {
-                Image("\(vm.mainUser.annualSignStruct.annualSign)")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20, height: 20)
-                Text("Годовой знак: \(vm.mainUser.annualSignStruct.annualSign.rawValue)")
-                Spacer()
-                Button {
-                    showDescription.toggle()
-                } label: {
-                    Image(systemName: "info.circle")
+            NavigationLink {
+                annualSignDescription
+            } label: {
+                HStack {
+                    Image("\(vm.mainUser.annualSignStruct.annualSign)")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+                    Text("Годовой знак: \(vm.mainUser.annualSignStruct.annualSign.rawValue)")
                 }
             }
             NavigationLink {
-                VirtualSignView(virtualSign: vm.mainUser.annualSignStruct.virtualSigns[vm.mainUser.zodiacSign]!)
+                virtualSignDescription
             } label: {
                 HStack {
                     Text(vm.mainUser.annualSignStruct.virtualSigns[vm.mainUser.zodiacSign]!.emoji.rawValue)
@@ -146,102 +139,104 @@ extension MainCustomerView {
     var typeSection: some View {
         Section("Типы:") {
             NavigationLink {
-                IdeologicalView(sign: vm.mainUser.annualSignStruct.ideologicalType[vm.mainUser.sex]!)
+                ideologicDescription
             } label: {
                 Text("Тип мышления: \((vm.mainUser.annualSignStruct.ideologicalType[vm.mainUser.sex]!.ideologicalType.rawValue))")
             }
             NavigationLink {
-                SocialView(social: vm.mainUser.annualSignStruct.socialType)
+                socialDescription
             } label: {
                 Text("Социальный тип: \(vm.mainUser.annualSignStruct.socialType.socialType.rawValue)")
             }
             NavigationLink {
-                PsychologicalView(psychologicalStruct: vm.mainUser.annualSignStruct.psychologicalType)
+                psychologicalDescription
             } label: {
                 Text("Психологический тип: \(vm.mainUser.annualSignStruct.psychologicalType.psychologicalType.rawValue)")
             }
             NavigationLink {
-                EnergyView(energy: vm.mainUser.annualSignStruct.temperament)
+                energyDescription
             } label: {
                 Text("Энергетический тип:\n\(vm.mainUser.annualSignStruct.temperament.energyType.rawValue)")
             }
             NavigationLink {
-                FateView(fate: vm.mainUser.annualSignStruct.fateType)
+                fateDescription
             } label: {
                 Text("Тип судьбы: \(vm.mainUser.annualSignStruct.fateType.fateType.rawValue)")
             }
         }
     }
+    
     var businessSection: some View {
         Section("Бизнес:") {
             NavigationLink {
-                BusinessView(business: vectorHost, sign: vm.mainUser.annualSignStruct.annualSign)
+                vectorHostDescription
             } label: {
                 Text("Векторный хозяин:\n\(vm.hostString(sign: vm.mainUser.annualSignStruct.vectorHost))")
                     .lineSpacing(6)
             }
             NavigationLink {
-                BusinessView(business: vectorServant, sign: vm.mainUser.annualSignStruct.annualSign)
+                vectorServantDescription
             } label: {
                 Text("Векторный слуга:\n\(vm.servantString(sign: vm.mainUser.annualSignStruct.vectorServant))")
                     .lineSpacing(6)
             }
             NavigationLink {
-                BusinessView(business: clone, sign: vm.mainUser.annualSignStruct.annualSign)
+                cloneDescription
             } label: {
                 Text("Клоны:\n\(vm.clones(sign: vm.mainUser.annualSignStruct))")
                     .lineSpacing(6)
             }
             NavigationLink {
-                BusinessView(business: companion, sign: vm.mainUser.annualSignStruct.annualSign)
+                companionDescription
             } label: {
                 Text("Соратники:\n\(vm.companions(sign: vm.mainUser.annualSignStruct))")
                     .lineSpacing(6)
             }
             NavigationLink {
-                BusinessView(business: subordinate, sign: vm.mainUser.annualSignStruct.annualSign)
+                subordinateDescription
             } label: {
                 Text("Подчиненные:\n\(vm.subordinates(sign: vm.mainUser.annualSignStruct))")
                     .lineSpacing(6)
             }
             NavigationLink {
-                BusinessView(business: subordinate, sign: vm.mainUser.annualSignStruct.annualSign)
+                adviserDescription
             } label: {
                 Text("Советники:\n\(vm.advisers(sign: vm.mainUser.annualSignStruct))")
                     .lineSpacing(6)
             }
         }
     }
+    
     var marriageSection: some View {
         Section("Брак:") {
             NavigationLink {
-                MarriageView(marriage: vectorMarriage, sign: vm.mainUser.annualSignStruct.annualSign)
+                vectorMarriageDescription
             } label: {
-                Text("Векторный брак:\n\(vm.vectorMarriage(sign: vm.mainUser.annualSignStruct))")
+                Text("Векторный:\n\(vm.vectorMarriage(sign: vm.mainUser.annualSignStruct))")
                     .lineSpacing(6)
             }
             NavigationLink {
-                MarriageView(marriage: romanticMarriage, sign: vm.mainUser.annualSignStruct.annualSign)
+                romanticMarriageDescription
             } label: {
-                Text("Романтический брак:\n\(vm.romanticMarriage(sign: vm.mainUser.annualSignStruct))")
+                Text("Романтический:\n\(vm.romanticMarriage(sign: vm.mainUser.annualSignStruct))")
                     .lineSpacing(6)
             }
             NavigationLink {
-                MarriageView(marriage: patriarchalMarriage, sign: vm.mainUser.annualSignStruct.annualSign)
+                patriarchalMarriageDescription
             } label: {
-                Text("Патриархальный брак:\n\(vm.patriarchalMarriage(sign: vm.mainUser.annualSignStruct))")
+                Text("Патриархальный:\n\(vm.patriarchalMarriage(sign: vm.mainUser.annualSignStruct))")
                     .lineSpacing(6)
             }
             NavigationLink {
-                MarriageView(marriage: spiritualMarriage, sign: vm.mainUser.annualSignStruct.annualSign)
+                spiritualMarriageDescription
             } label: {
-                Text("Духовный брак:\n\(vm.spiritualMarriage(sign: vm.mainUser.annualSignStruct))")
+                Text("Духовный:\n\(vm.spiritualMarriage(sign: vm.mainUser.annualSignStruct))")
                     .lineSpacing(6)
             }
             NavigationLink {
-                MarriageView(marriage: equalMarriage, sign: vm.mainUser.annualSignStruct.annualSign)
+                equalMarriageDescription
             } label: {
-                Text("Равный брак:\n\(vm.equalMarriage(sign: vm.mainUser.annualSignStruct))")
+                Text("Равный:\n\(vm.equalMarriage(sign: vm.mainUser.annualSignStruct))")
                     .lineSpacing(6)
             }
         }
@@ -249,25 +244,362 @@ extension MainCustomerView {
     
     var annualSignDescription: some View {
         VStack {
-            HStack {
-                Button {
-                    showDescription.toggle()
-                } label: {
-                    Label("Назад", systemImage: "chevron.left")
-                }
-                Spacer()
-            }
-            .padding()
             ScrollView {
+                HStack {
+                    Image("\(vm.mainUser.annualSignStruct.annualSign)")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 35, height: 35)
+                        .padding(.trailing,12)
+                    Text(vm.mainUser.annualSignStruct.annualSign.rawValue)
+                        .font(.title)
+                        .bold()
+                    Spacer()
+                }
+                .padding(.bottom, 15)
                 ForEach(vm.mainUser.annualSignStruct.blocks.sorted(by: <), id: \.key) { title, text in
                     VStack(alignment: .leading, spacing: 20) {
                         Text(title)
                             .font(.headline)
                             .bold()
                         Text(text)
+                            .foregroundColor(.secondary)
+                    }
+                    .padding(.bottom, 25)
+                }
+            }
+        }
+        .padding()
+    }
+    
+    var virtualSignDescription: some View {
+        VStack(alignment: .leading) {
+            ScrollView {
+                HStack {
+                    Text("\(vm.mainUser.annualSignStruct.virtualSigns[vm.mainUser.zodiacSign]!.emoji.rawValue) \(vm.mainUser.annualSignStruct.virtualSigns[vm.mainUser.zodiacSign]!.virtualSign.rawValue)")
+                        .font(.title)
+                        .bold()
+                    Spacer()
+                }
+                .padding(.bottom, 15)
+                ForEach(vm.mainUser.annualSignStruct.virtualSigns[vm.mainUser.zodiacSign]!.blocks.sorted(by: <), id: \.key) { title, text in
+                    VStack(alignment: .leading) {
+                        Text(title)
+                            .font(.headline)
+                            .bold()
+                        Text(text)
+                            .foregroundColor(.secondary)
+                            .padding(.bottom)
                     }
                 }
             }
+        }
+        .padding()
+    }
+    
+    var ideologicDescription: some View {
+        VStack(alignment: .leading) {
+            ScrollView {
+                HStack {
+                    Text(vm.mainUser.annualSignStruct.ideologicalType[vm.mainUser.sex]!.title)
+                        .font(.headline)
+                        .bold()
+                    Spacer()
+                }
+                .padding(.bottom, 15)
+                Text(vm.mainUser.annualSignStruct.ideologicalType[vm.mainUser.sex]!.text)
+                    .foregroundColor(.secondary)
+                    .padding(.bottom)
+            }
+        }
+        .padding()
+    }
+    
+    var socialDescription: some View {
+        VStack(alignment: .leading) {
+            ScrollView {
+                HStack {
+                    Text(vm.mainUser.annualSignStruct.socialType.title)
+                        .font(.headline)
+                        .bold()
+                    Spacer()
+                }
+                .padding(.bottom, 15)
+                Text(vm.mainUser.annualSignStruct.socialType.text)
+                    .foregroundColor(.secondary)
+                    .padding(.bottom)
+            }
+        }
+        .padding()
+    }
+    
+    var psychologicalDescription: some View {
+        VStack(alignment: .leading) {
+            ScrollView {
+                HStack {
+                    Text(vm.mainUser.annualSignStruct.psychologicalType.title)
+                        .font(.headline)
+                        .bold()
+                    Spacer()
+                }
+                .padding(.bottom, 15)
+                Text(vm.mainUser.annualSignStruct.psychologicalType.text)
+                    .foregroundColor(.secondary)
+                    .padding(.bottom)
+            }
+        }
+        .padding()
+    }
+    
+    var energyDescription: some View {
+        VStack(alignment: .leading) {
+            ScrollView {
+                HStack {
+                    Text(vm.mainUser.annualSignStruct.temperament.title)
+                        .font(.headline)
+                        .bold()
+                    Spacer()
+                }
+                .padding(.bottom, 15)
+                Text(vm.mainUser.annualSignStruct.temperament.text)
+                    .foregroundColor(.secondary)
+                    .padding(.bottom)
+            }
+        }
+        .padding()
+    }
+    
+    var fateDescription: some View {
+        VStack(alignment: .leading) {
+            ScrollView {
+                HStack {
+                    Text(vm.mainUser.annualSignStruct.fateType.title)
+                        .font(.headline)
+                        .bold()
+                    Spacer()
+                }
+                .padding(.bottom, 15)
+                Text(vm.mainUser.annualSignStruct.fateType.text)
+                    .foregroundColor(.secondary)
+                    .padding(.bottom)
+            }
+        }
+        .padding()
+    }
+    
+    var vectorHostDescription: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text(vectorHost.type.rawValue)
+                    .font(.headline)
+                    .bold()
+                Spacer()
+            }
+            .padding(.bottom, 15)
+            HStack {
+                Text(vectorHost.value)
+                    .padding(.bottom,15)
+                Spacer()
+            }
+            Text(vectorHost.text)
+                .foregroundColor(.secondary)
+                .padding(.bottom)
+            Spacer()
+        }
+        .padding()
+    }
+    
+    var vectorServantDescription: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text(vectorServant.type.rawValue)
+                    .font(.headline)
+                    .bold()
+                Spacer()
+            }
+            .padding(.bottom, 15)
+            HStack {
+                Text(vectorServant.value)
+                    .padding(.bottom,15)
+                Spacer()
+            }
+            Text(vectorServant.text)
+                .foregroundColor(.secondary)
+                .padding(.bottom)
+            Spacer()
+        }
+        .padding()
+    }
+    
+    var cloneDescription: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text(clone.type.rawValue)
+                    .font(.headline)
+                    .bold()
+                Spacer()
+            }
+            .padding(.bottom, 15)
+            HStack {
+                Text(clone.value)
+                    .padding(.bottom,15)
+                Spacer()
+            }
+            Text(clone.text)
+                .foregroundColor(.secondary)
+                .padding(.bottom)
+            Spacer()
+        }
+        .padding()
+    }
+    
+    var companionDescription: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text(companion.type.rawValue)
+                    .font(.headline)
+                    .bold()
+                Spacer()
+            }
+            .padding(.bottom, 15)
+            HStack {
+                Text(companion.value)
+                    .padding(.bottom,15)
+                Spacer()
+            }
+            Text(companion.text)
+                .foregroundColor(.secondary)
+                .padding(.bottom)
+            Spacer()
+        }
+        .padding()
+    }
+    
+    var subordinateDescription: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text(subordinate.type.rawValue)
+                    .font(.headline)
+                    .bold()
+                Spacer()
+            }
+            .padding(.bottom, 15)
+            HStack {
+                Text(subordinate.value)
+                    .padding(.bottom,15)
+                Spacer()
+            }
+            Text(subordinate.text)
+                .foregroundColor(.secondary)
+                .padding(.bottom)
+            Spacer()
+        }
+        .padding()
+    }
+    
+    var adviserDescription: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text(adviser.type.rawValue)
+                    .font(.headline)
+                    .bold()
+                Spacer()
+            }
+            .padding(.bottom, 15)
+            HStack {
+                Text(adviser.value)
+                    .padding(.bottom,15)
+                Spacer()
+            }
+            Text(adviser.text)
+                .foregroundColor(.secondary)
+                .padding(.bottom)
+            Spacer()
+        }
+        .padding()
+    }
+    
+    var vectorMarriageDescription: some View {
+        ScrollView {
+            HStack {
+                Text(vectorMarriage.title)
+                    .font(.headline)
+                    .bold()
+                Spacer()
+            }
+            .padding(.bottom, 15)
+            Text(vectorMarriage.text)
+                .foregroundColor(.secondary)
+                .padding(.bottom)
+            Spacer()
+        }
+        .padding()
+    }
+    
+    var romanticMarriageDescription: some View {
+        ScrollView {
+            HStack {
+                Text(romanticMarriage.title)
+                    .font(.headline)
+                    .bold()
+                Spacer()
+            }
+            .padding(.bottom, 15)
+            Text(romanticMarriage.text)
+                .foregroundColor(.secondary)
+                .padding(.bottom)
+            Spacer()
+        }
+        .padding()
+    }
+    
+    var patriarchalMarriageDescription: some View {
+        ScrollView {
+            HStack {
+                Text(patriarchalMarriage.title)
+                    .font(.headline)
+                    .bold()
+                Spacer()
+            }
+            .padding(.bottom, 15)
+            Text(patriarchalMarriage.text)
+                .foregroundColor(.secondary)
+                .padding(.bottom)
+            Spacer()
+        }
+        .padding()
+    }
+    
+    var spiritualMarriageDescription: some View {
+        ScrollView {
+            HStack {
+                Text(spiritualMarriage.title)
+                    .font(.headline)
+                    .bold()
+                Spacer()
+            }
+            .padding(.bottom, 15)
+            Text(spiritualMarriage.text)
+                .foregroundColor(.secondary)
+                .padding(.bottom)
+            Spacer()
+        }
+        .padding()
+    }
+    
+    var equalMarriageDescription: some View {
+        ScrollView {
+            HStack {
+                Text(equalMarriage.title)
+                    .font(.headline)
+                    .bold()
+                Spacer()
+            }
+            .padding(.bottom, 15)
+            Text(equalMarriage.text)
+                .foregroundColor(.secondary)
+                .padding(.bottom)
+            Spacer()
         }
         .padding()
     }

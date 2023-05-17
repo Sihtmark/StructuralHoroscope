@@ -25,7 +25,6 @@ struct VirtualSignView: View {
                             .foregroundColor(.secondary)
                     }
                 }
-                Link("Read more on site", destination: URL(string: virtualSign.site)!)
             }
             .padding(18)
         }

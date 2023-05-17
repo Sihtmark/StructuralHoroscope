@@ -261,7 +261,7 @@ enum BusinessEnum: String, Codable, CaseIterable {
     case clone = "Клон"
     case companion = "Соратник"
     case subordinate = "Подчиненный"
-    case adviser = "Начальник"
+    case adviser = "Советник"
 }
 
 enum MarriageEnum: String, Codable, CaseIterable {

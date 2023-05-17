@@ -12,7 +12,6 @@ struct AgeView: View {
     let age: AgeStruct
     @EnvironmentObject private var VM: ViewModel
     @State private var showFullDescription1 = false
-    @State private var showFullDescription2 = false
     
     var body: some View {
         ScrollView {
@@ -34,25 +33,15 @@ struct AgeView: View {
                     }
                     .accentColor(.blue)
                 }
-                Text(age.ageTitle)
-                    .font(.headline)
-                VStack(alignment: .leading, spacing: 10) {
+                
+                VStack(alignment: .leading, spacing: 20) {
+                    Text(age.ageTitle)
+                        .font(.headline)
                     ForEach(age.ageСommandments, id: \.self) { text in
                         Text(text)
                             .foregroundColor(.secondary)
                     }
                 }
-                    .lineLimit(showFullDescription2 ? nil : 2)
-                Button {
-                    withAnimation(.easeInOut) {
-                        showFullDescription2.toggle()
-                    }
-                } label: {
-                    Text(showFullDescription2 ? "Свернуть" : "Развернуть...")
-                        .font(.caption)
-                        .fontWeight(.bold)
-                }
-                .accentColor(.blue)
             }
         }
         .padding(.horizontal)

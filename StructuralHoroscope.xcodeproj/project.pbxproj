@@ -173,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				A03CF2D929D716CD005BE95D /* Model.swift */,
+				A03385D72A1236F6002153EF /* AnnualSignInstances.swift */,
 				A0E53E8229E8283A0065F227 /* VirtualSignInstances.swift */,
 				A0F2FA8A29EAED4C002A58BC /* IdeologicalSignInstances.swift */,
 				A0F2FA8829EAE709002A58BC /* SocialInstances.swift */,
@@ -181,7 +182,6 @@
 				A0F2FA9029EB01A3002A58BC /* FateInstances.swift */,
 				A03AD26529F01D1C00EE061C /* BusinessInstances.swift */,
 				A03AD26929F03C1F00EE061C /* MarriageInstances.swift */,
-				A03385D72A1236F6002153EF /* AnnualSignInstances.swift */,
 				A07141C329FEA0FC0011FB0A /* SensualityInstances.swift */,
 				A07141C729FEACA00011FB0A /* ElementInstances.swift */,
 				A07141CD29FF7A0E0011FB0A /* SmallVectorRingInstance.swift */,
