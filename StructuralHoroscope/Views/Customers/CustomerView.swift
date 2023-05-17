@@ -12,6 +12,7 @@ struct CustomerView: View {
     @EnvironmentObject var vm: ViewModel
     @State var customer: ClientStruct
     @State private var isEditing = false
+    @State private var showDescription = false
     
     @State private var name = ""
     @State private var selectedDate = Date()
@@ -47,6 +48,9 @@ struct CustomerView: View {
                     isEditing.toggle()
                 }
             }
+        }
+        .sheet(isPresented: $showDescription) {
+            annualSignDescription
         }
         .onAppear {
             name = customer.name
@@ -115,15 +119,17 @@ extension CustomerView {
                     .frame(width: 20, height: 20)
                 Text("Знак Зодиака: \(customer.zodiacSign.rawValue)")
             }
-            NavigationLink {
-                AnnualSignView(sign: customer.annualSignStruct)
-            } label: {
-                HStack {
-                    Image("\(customer.annualSignStruct.annualSign)")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
-                    Text("Годовой знак: \(customer.annualSignStruct.annualSign.rawValue)")
+            HStack {
+                Image("\(customer.annualSignStruct.annualSign)")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                Text("Годовой знак: \(customer.annualSignStruct.annualSign.rawValue)")
+                Spacer()
+                Button {
+                    showDescription.toggle()
+                } label: {
+                    Image(systemName: "info.circle")
                 }
             }
             NavigationLink {
@@ -168,18 +174,19 @@ extension CustomerView {
             }
         }
     }
+    
     var businessSection: some View {
         Section("Бизнес:") {
             NavigationLink {
                 BusinessView(business: vectorHost, sign: customer.annualSignStruct.annualSign)
             } label: {
-                Text("Векторный хозяин:\n\(vm.hostString(sign: customer.annualSignStruct))")
+                Text("Векторный хозяин:\n\(vm.hostString(sign: customer.annualSignStruct.vectorHost))")
                     .lineSpacing(6)
             }
             NavigationLink {
                 BusinessView(business: vectorServant, sign: customer.annualSignStruct.annualSign)
             } label: {
-                Text("Векторный слуга:\n\(vm.servantString(sign: customer.annualSignStruct))")
+                Text("Векторный слуга:\n\(vm.servantString(sign: customer.annualSignStruct.vectorServant))")
                     .lineSpacing(6)
             }
             NavigationLink {
@@ -208,6 +215,7 @@ extension CustomerView {
             }
         }
     }
+    
     var marriageSection: some View {
         Section("Брак:") {
             NavigationLink {
@@ -241,5 +249,29 @@ extension CustomerView {
                     .lineSpacing(6)
             }
         }
+    }
+    
+    var annualSignDescription: some View {
+        VStack {
+            HStack {
+                Button {
+                    showDescription.toggle()
+                } label: {
+                    Label("Назад", systemImage: "chevron.left")
+                }
+                Spacer()
+            }
+            ScrollView {
+                ForEach(customer.annualSignStruct.blocks.sorted(by: <), id: \.key) { title, text in
+                    VStack(alignment: .leading, spacing: 20) {
+                        Text(title)
+                            .font(.headline)
+                            .bold()
+                        Text(text)
+                    }
+                }
+            }
+        }
+        .padding()
     }
 }

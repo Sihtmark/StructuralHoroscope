@@ -25,7 +25,7 @@ let vectorHost = BusinessStruct(
         .monkey: [snakeSign],
         .rooster: [catSign],
         .dog: [roosterSign],
-        .pig: [horseSign]
+        .boar: [horseSign]
     ]
 )
 
@@ -45,7 +45,7 @@ let vectorServant = BusinessStruct(
         .monkey: [ratSign],
         .rooster: [dogSign],
         .dog: [bullSign],
-        .pig: [dragonSign]
+        .boar: [dragonSign]
     ]
 )
 
@@ -65,7 +65,7 @@ let clone = BusinessStruct(
         .monkey: [monkeySign, dragonSign, horseSign],
         .rooster: [roosterSign, dogSign, pigSign],
         .dog: [dogSign, tigerSign, ratSign],
-        .pig: [pigSign, goatSign, roosterSign]
+        .boar: [pigSign, goatSign, roosterSign]
     ]
 )
 
@@ -85,7 +85,7 @@ let companion = BusinessStruct(
         .monkey: [tigerSign, dogSign],
         .rooster: [snakeSign, bullSign],
         .dog: [monkeySign, dragonSign, horseSign],
-        .pig: [snakeSign, bullSign, catSign]
+        .boar: [snakeSign, bullSign, catSign]
     ]
 )
 
@@ -105,7 +105,7 @@ let subordinate = BusinessStruct(
         .monkey: [goatSign, catSign, pigSign],
         .rooster: [dragonSign, ratSign, monkeySign],
         .dog: [snakeSign],
-        .pig: [tigerSign, dogSign]
+        .boar: [tigerSign, dogSign]
     ]
 )
 
@@ -125,6 +125,6 @@ let adviser = BusinessStruct(
         .monkey: [roosterSign, bullSign],
         .rooster: [horseSign, tigerSign],
         .dog: [goatSign, catSign, pigSign],
-        .pig: [monkeySign, ratSign]
+        .boar: [monkeySign, ratSign]
     ]
 )

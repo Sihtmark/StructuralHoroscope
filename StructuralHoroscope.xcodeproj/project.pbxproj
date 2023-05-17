@@ -157,16 +157,6 @@
 				A0E229A029FA98040021648C /* Info */,
 				A0E229A129FA98180021648C /* Calendar */,
 				A0E229A229FA98270021648C /* Settings */,
-				A0E53E8029E817780065F227 /* AnnualSignView.swift */,
-				A0E53E8429E82F480065F227 /* VirtualSignView.swift */,
-				A0F2FA9229EB0F36002A58BC /* IdeologicalView.swift */,
-				A0B2185B29EED63100433B72 /* SocialView.swift */,
-				A03AD25D29F005AB00EE061C /* PsychologicalView.swift */,
-				A03AD25F29F007B000EE061C /* EnergyView.swift */,
-				A03AD26129F00AC200EE061C /* FateView.swift */,
-				A03AD26329F0182500EE061C /* BusinessView.swift */,
-				A03AD26729F0348400EE061C /* MarriageView.swift */,
-				A010D0A22A0038E900289B8B /* AgeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -260,6 +250,16 @@
 				A0E0723229D701BF0010E128 /* CustomerView.swift */,
 				A004B8F329F825A300313B14 /* EditCustomerView.swift */,
 				A03385D32A11FE4A002153EF /* MainCustomerView.swift */,
+				A0E53E8029E817780065F227 /* AnnualSignView.swift */,
+				A0E53E8429E82F480065F227 /* VirtualSignView.swift */,
+				A0F2FA9229EB0F36002A58BC /* IdeologicalView.swift */,
+				A0B2185B29EED63100433B72 /* SocialView.swift */,
+				A03AD25D29F005AB00EE061C /* PsychologicalView.swift */,
+				A03AD25F29F007B000EE061C /* EnergyView.swift */,
+				A03AD26129F00AC200EE061C /* FateView.swift */,
+				A03AD26329F0182500EE061C /* BusinessView.swift */,
+				A03AD26729F0348400EE061C /* MarriageView.swift */,
+				A010D0A22A0038E900289B8B /* AgeView.swift */,
 			);
 			path = Customers;
 			sourceTree = "<group>";
@@ -271,11 +271,11 @@
 				A0193D0429FD6241007C06A1 /* AnnualSignsView.swift */,
 				A0E229A329FAB7680021648C /* VirtualSignsView.swift */,
 				A0193D0629FD6795007C06A1 /* VectorRingView.swift */,
+				A07141C129FE9B550011FB0A /* FateStructView.swift */,
 				A0193D0829FD7475007C06A1 /* IdeologicalStructView.swift */,
 				A07141BB29FE59080011FB0A /* SocialStructView.swift */,
 				A07141BD29FE6B190011FB0A /* PsychologicalStructView.swift */,
 				A07141BF29FE98C30011FB0A /* EnergyStructView.swift */,
-				A07141C129FE9B550011FB0A /* FateStructView.swift */,
 				A07141C529FEA28C0011FB0A /* SensualityStructView.swift */,
 				A07141C929FEB02F0011FB0A /* ElementStructView.swift */,
 				A07141CB29FEB85A0011FB0A /* SmallVectorRingView.swift */,

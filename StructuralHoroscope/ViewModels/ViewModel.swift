@@ -126,21 +126,21 @@ class ViewModel: ObservableObject {
         customers.move(fromOffsets: from, toOffset: to)
     }
     
-    func hostString(sign: SignStruct) -> String {
+    func hostString(sign: AnnualEnum) -> String {
         var str = ""
         for i in AnnualEmojiEnum.allCases {
-            if "\(i)" == "\(sign.vectorHost)" {
-                str = "\(i.rawValue)\(sign.vectorHost.rawValue)"
+            if "\(i)" == "\(sign)" {
+                str = "\(i.rawValue)\(sign.rawValue)"
             }
         }
         return str
     }
     
-    func servantString(sign: SignStruct) -> String {
+    func servantString(sign: AnnualEnum) -> String {
         var str = ""
         for i in AnnualEmojiEnum.allCases {
-            if "\(i)" == "\(sign.vectorServant)" {
-                str = "\(i.rawValue)\(sign.vectorServant.rawValue)"
+            if "\(i)" == "\(sign)" {
+                str = "\(i.rawValue)\(sign.rawValue)"
             }
         }
         return str

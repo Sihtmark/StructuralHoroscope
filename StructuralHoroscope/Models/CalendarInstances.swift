@@ -21,7 +21,7 @@ let firstDay = DayTypes(signs: [
     .monkey: .blue,
     .rooster: .rest,
     .dog: .harder,
-    .pig: .hangOut
+    .boar: .hangOut
 ])
 
 let secondDay = DayTypes(signs: [
@@ -36,7 +36,7 @@ let secondDay = DayTypes(signs: [
     .monkey: .orange,
     .rooster: .harder,
     .dog: .hangOut,
-    .pig: .red
+    .boar: .red
 ])
 
 let thirdDay = DayTypes(signs: [
@@ -51,7 +51,7 @@ let thirdDay = DayTypes(signs: [
     .monkey: .red,
     .rooster: .hangOut,
     .dog: .easier,
-    .pig: .rest
+    .boar: .rest
 ])
 
 let fourthDay = DayTypes(signs: [
@@ -66,7 +66,7 @@ let fourthDay = DayTypes(signs: [
     .monkey: .hangOut,
     .rooster: .blue,
     .dog: .rest,
-    .pig: .green
+    .boar: .green
 ])
 
 let fifthDay = DayTypes(signs: [
@@ -81,7 +81,7 @@ let fifthDay = DayTypes(signs: [
     .monkey: .easier,
     .rooster: .red,
     .dog: .blue,
-    .pig: .orange
+    .boar: .orange
 ])
 
 let sixthDay = DayTypes(signs: [
@@ -96,7 +96,7 @@ let sixthDay = DayTypes(signs: [
     .monkey: .rest,
     .rooster: .harder,
     .dog: .orange,
-    .pig: .easier
+    .boar: .easier
 ])
 
 let seventhDay = DayTypes(signs: [
@@ -111,7 +111,7 @@ let seventhDay = DayTypes(signs: [
     .monkey: .harder,
     .rooster: .orange,
     .dog: .green,
-    .pig: .rest
+    .boar: .rest
 ])
 
 let eighthDay = DayTypes(signs: [
@@ -126,7 +126,7 @@ let eighthDay = DayTypes(signs: [
     .monkey: .green,
     .rooster: .easier,
     .dog: .rest,
-    .pig: .blue
+    .boar: .blue
 ])
 
 let ninthDay = DayTypes(signs: [
@@ -141,7 +141,7 @@ let ninthDay = DayTypes(signs: [
     .monkey: .easier,
     .rooster: .rest,
     .dog: .harder,
-    .pig: .yellow
+    .boar: .yellow
 ])
 
 
@@ -157,7 +157,7 @@ let tenthDay = DayTypes(signs: [
     .monkey: .rest,
     .rooster: .green,
     .dog: .yellow,
-    .pig: .rest
+    .boar: .rest
 ])
 
 let eleventhDay = DayTypes(signs: [
@@ -172,7 +172,7 @@ let eleventhDay = DayTypes(signs: [
     .monkey: .harder,
     .rooster: .yellow,
     .dog: .red,
-    .pig: .rest
+    .boar: .rest
 ])
 
 let twelveDay = DayTypes(signs: [
@@ -187,5 +187,5 @@ let twelveDay = DayTypes(signs: [
     .monkey: .yellow,
     .rooster: .easier,
     .dog: .rest,
-    .pig: .harder
+    .boar: .harder
 ])

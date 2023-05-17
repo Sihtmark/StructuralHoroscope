@@ -197,7 +197,7 @@ enum AnnualEnum: String, Codable, CaseIterable {
     case monkey = "Обезьяна"
     case rooster = "Петух"
     case dog = "Собака"
-    case pig = "Кабан"
+    case boar = "Кабан"
     case rat = "Крыса"
     case bull = "Бык"
     case tiger = "Тигр"

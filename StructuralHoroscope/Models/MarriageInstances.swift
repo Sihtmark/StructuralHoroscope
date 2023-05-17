@@ -25,7 +25,7 @@ let vectorMarriage = MarriageStruct(
         .monkey: [snakeSign, ratSign],
         .rooster: [catSign, dogSign],
         .dog: [roosterSign, bullSign],
-        .pig: [horseSign, dragonSign]
+        .boar: [horseSign, dragonSign]
     ]
 )
 
@@ -45,7 +45,7 @@ let romanticMarriage = MarriageStruct(
         .monkey: [tigerSign, horseSign, dogSign],
         .rooster: [goatSign, pigSign],
         .dog: [ratSign, monkeySign, dragonSign],
-        .pig: [bullSign, snakeSign, roosterSign]
+        .boar: [bullSign, snakeSign, roosterSign]
     ]
 )
 
@@ -65,7 +65,7 @@ let patriarchalMarriage = MarriageStruct(
         .monkey: [monkeySign, dragonSign],
         .rooster: [roosterSign, snakeSign,bullSign],
         .dog: [tigerSign, horseSign, dogSign],
-        .pig: [catSign, goatSign]
+        .boar: [catSign, goatSign]
     ]
 )
 
@@ -85,7 +85,7 @@ let equalMarriage = MarriageStruct(
         .monkey: [catSign, goatSign, pigSign],
         .rooster: [tigerSign, horseSign],
         .dog: [snakeSign],
-        .pig: [ratSign, monkeySign]
+        .boar: [ratSign, monkeySign]
     ]
 )
 
@@ -105,6 +105,6 @@ let spiritualMarriage = MarriageStruct(
         .monkey: [pigSign, roosterSign],
         .rooster: [ratSign, monkeySign, dragonSign],
         .dog: [catSign, goatSign, pigSign],
-        .pig: [tigerSign, dogSign]
+        .boar: [tigerSign, dogSign]
     ]
 )

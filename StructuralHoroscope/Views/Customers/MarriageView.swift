@@ -1,5 +1,5 @@
 //
-//  MerrigeView.swift
+//  MarriageView.swift
 //  StructuralHoroscope
 //
 //  Created by Sergei Poluboiarinov on 19.04.2023.

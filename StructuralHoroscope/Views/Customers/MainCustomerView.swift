@@ -11,6 +11,7 @@ struct MainCustomerView: View {
     
     @EnvironmentObject var vm: ViewModel
     @State private var isEditing = false
+    @State private var showDescription = false
 
     @State private var name = ""
     @State private var selectedDate = Date()
@@ -45,6 +46,9 @@ struct MainCustomerView: View {
                     isEditing.toggle()
                 }
             }
+        }
+        .sheet(isPresented: $showDescription) {
+            annualSignDescription
         }
         .onAppear {
             name = vm.mainUser.name
@@ -113,15 +117,17 @@ extension MainCustomerView {
                     .frame(width: 20, height: 20)
                 Text("Знак Зодиака: \(vm.mainUser.zodiacSign.rawValue)")
             }
-            NavigationLink {
-                AnnualSignView(sign: vm.mainUser.annualSignStruct)
-            } label: {
-                HStack {
-                    Image("\(vm.mainUser.annualSignStruct.annualSign)")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
-                    Text("Годовой знак: \(vm.mainUser.annualSignStruct.annualSign.rawValue)")
+            HStack {
+                Image("\(vm.mainUser.annualSignStruct.annualSign)")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                Text("Годовой знак: \(vm.mainUser.annualSignStruct.annualSign.rawValue)")
+                Spacer()
+                Button {
+                    showDescription.toggle()
+                } label: {
+                    Image(systemName: "info.circle")
                 }
             }
             NavigationLink {
@@ -171,13 +177,13 @@ extension MainCustomerView {
             NavigationLink {
                 BusinessView(business: vectorHost, sign: vm.mainUser.annualSignStruct.annualSign)
             } label: {
-                Text("Векторный хозяин:\n\(vm.hostString(sign: vm.mainUser.annualSignStruct))")
+                Text("Векторный хозяин:\n\(vm.hostString(sign: vm.mainUser.annualSignStruct.vectorHost))")
                     .lineSpacing(6)
             }
             NavigationLink {
                 BusinessView(business: vectorServant, sign: vm.mainUser.annualSignStruct.annualSign)
             } label: {
-                Text("Векторный слуга:\n\(vm.servantString(sign: vm.mainUser.annualSignStruct))")
+                Text("Векторный слуга:\n\(vm.servantString(sign: vm.mainUser.annualSignStruct.vectorServant))")
                     .lineSpacing(6)
             }
             NavigationLink {
@@ -239,5 +245,30 @@ extension MainCustomerView {
                     .lineSpacing(6)
             }
         }
+    }
+    
+    var annualSignDescription: some View {
+        VStack {
+            HStack {
+                Button {
+                    showDescription.toggle()
+                } label: {
+                    Label("Назад", systemImage: "chevron.left")
+                }
+                Spacer()
+            }
+            .padding()
+            ScrollView {
+                ForEach(vm.mainUser.annualSignStruct.blocks.sorted(by: <), id: \.key) { title, text in
+                    VStack(alignment: .leading, spacing: 20) {
+                        Text(title)
+                            .font(.headline)
+                            .bold()
+                        Text(text)
+                    }
+                }
+            }
+        }
+        .padding()
     }
 }
