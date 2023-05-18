@@ -66,7 +66,6 @@ extension VectorRingView {
                             HStack {
                                 Text(sign.emoji.rawValue)
                                 Text(sign.annualSign.rawValue)
-                                    .foregroundColor(.black)
                                 .bold()
                             }
                             .frame(width: 150, height: 40)
@@ -84,7 +83,6 @@ extension VectorRingView {
                             HStack {
                                 Text(annualSigns[sign.vectorServant]!.emoji.rawValue)
                                 Text(sign.vectorServant.rawValue)
-                                    .foregroundColor(.black)
                                 .bold()
                             }
                             .frame(width: 150, height: 40)
