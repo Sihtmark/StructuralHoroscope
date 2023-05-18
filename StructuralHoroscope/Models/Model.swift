@@ -68,9 +68,10 @@ struct IdeologicalStruct: Identifiable, Codable, Equatable, Hashable {
     let signs: [AnnualEnum]
 }
 
-struct SocialStruct: Identifiable, Codable, Equatable {
+struct SocialStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     let socialType: SocialEnum
+    let signs: [AnnualEnum]
     let title: String
     let text: String
 }
