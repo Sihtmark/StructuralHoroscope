@@ -27,6 +27,7 @@
 		A03CF2DA29D716CD005BE95D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CF2D929D716CD005BE95D /* Model.swift */; };
 		A04E66992A166B9300A0B7A9 /* FateStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04E66982A166B9300A0B7A9 /* FateStructView.swift */; };
 		A04E669B2A1674AC00A0B7A9 /* SensualityInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04E669A2A1674AC00A0B7A9 /* SensualityInstances.swift */; };
+		A04E669D2A167D8500A0B7A9 /* SmallVectorRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04E669C2A167D8500A0B7A9 /* SmallVectorRing.swift */; };
 		A0576AFB29FA951700F4D9EF /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0576AFA29FA951700F4D9EF /* MainTabView.swift */; };
 		A0576AFD29FA954700F4D9EF /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0576AFC29FA954700F4D9EF /* InfoView.swift */; };
 		A0576AFF29FA955F00F4D9EF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0576AFE29FA955F00F4D9EF /* CalendarView.swift */; };
@@ -34,7 +35,6 @@
 		A07141C629FEA28C0011FB0A /* SensualityStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141C529FEA28C0011FB0A /* SensualityStructView.swift */; };
 		A07141C829FEACA00011FB0A /* ElementInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141C729FEACA00011FB0A /* ElementInstances.swift */; };
 		A07141CA29FEB02F0011FB0A /* ElementStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141C929FEB02F0011FB0A /* ElementStructView.swift */; };
-		A07141CC29FEB85A0011FB0A /* SmallVectorRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141CB29FEB85A0011FB0A /* SmallVectorRingView.swift */; };
 		A07141CE29FF7A0E0011FB0A /* SmallVectorRingInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141CD29FF7A0E0011FB0A /* SmallVectorRingInstance.swift */; };
 		A07141D029FFB8E70011FB0A /* BusinessStructview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141CF29FFB8E70011FB0A /* BusinessStructview.swift */; };
 		A07141D229FFC8C30011FB0A /* MarriageStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141D129FFC8C30011FB0A /* MarriageStructView.swift */; };
@@ -91,6 +91,7 @@
 		A040A6C72A08FE5400B614D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A04E66982A166B9300A0B7A9 /* FateStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FateStructView.swift; sourceTree = "<group>"; };
 		A04E669A2A1674AC00A0B7A9 /* SensualityInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensualityInstances.swift; sourceTree = "<group>"; };
+		A04E669C2A167D8500A0B7A9 /* SmallVectorRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallVectorRing.swift; sourceTree = "<group>"; };
 		A0576AFA29FA951700F4D9EF /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A0576AFC29FA954700F4D9EF /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		A0576AFE29FA955F00F4D9EF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -98,7 +99,6 @@
 		A07141C529FEA28C0011FB0A /* SensualityStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensualityStructView.swift; sourceTree = "<group>"; };
 		A07141C729FEACA00011FB0A /* ElementInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementInstances.swift; sourceTree = "<group>"; };
 		A07141C929FEB02F0011FB0A /* ElementStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementStructView.swift; sourceTree = "<group>"; };
-		A07141CB29FEB85A0011FB0A /* SmallVectorRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallVectorRingView.swift; sourceTree = "<group>"; };
 		A07141CD29FF7A0E0011FB0A /* SmallVectorRingInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallVectorRingInstance.swift; sourceTree = "<group>"; };
 		A07141CF29FFB8E70011FB0A /* BusinessStructview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessStructview.swift; sourceTree = "<group>"; };
 		A07141D129FFC8C30011FB0A /* MarriageStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarriageStructView.swift; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 				A04E66982A166B9300A0B7A9 /* FateStructView.swift */,
 				A07141C529FEA28C0011FB0A /* SensualityStructView.swift */,
 				A07141C929FEB02F0011FB0A /* ElementStructView.swift */,
-				A07141CB29FEB85A0011FB0A /* SmallVectorRingView.swift */,
+				A04E669C2A167D8500A0B7A9 /* SmallVectorRing.swift */,
 				A07141CF29FFB8E70011FB0A /* BusinessStructview.swift */,
 				A07141D129FFC8C30011FB0A /* MarriageStructView.swift */,
 				A010D0A02A00340000289B8B /* AgeStructView.swift */,
@@ -396,7 +396,6 @@
 				A03AD26229F00AC200EE061C /* FateView.swift in Sources */,
 				A0576AFD29FA954700F4D9EF /* InfoView.swift in Sources */,
 				A010D0A12A00340000289B8B /* AgeStructView.swift in Sources */,
-				A07141CC29FEB85A0011FB0A /* SmallVectorRingView.swift in Sources */,
 				A07141D229FFC8C30011FB0A /* MarriageStructView.swift in Sources */,
 				A07141CE29FF7A0E0011FB0A /* SmallVectorRingInstance.swift in Sources */,
 				A03385D82A1236F6002153EF /* AnnualSignInstances.swift in Sources */,
@@ -428,6 +427,7 @@
 				A098920B2A1657A40060B872 /* PsychologicalStructView.swift in Sources */,
 				A098920D2A165C9E0060B872 /* EnergyStructView.swift in Sources */,
 				A04E669B2A1674AC00A0B7A9 /* SensualityInstances.swift in Sources */,
+				A04E669D2A167D8500A0B7A9 /* SmallVectorRing.swift in Sources */,
 				A04E66992A166B9300A0B7A9 /* FateStructView.swift in Sources */,
 				A0E0724129D702820010E128 /* Model.xcdatamodeld in Sources */,
 				A0193D0529FD6241007C06A1 /* AnnualSignsView.swift in Sources */,
