@@ -29,6 +29,7 @@ struct AllCustomersView: View {
                 .onDelete(perform: vm.deleteItem)
                 .onMove(perform: vm.moveItem)
             }
+            .listStyle(.inset)
             .navigationTitle("Мой список")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

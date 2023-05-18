@@ -19,6 +19,7 @@ struct AnnualSignView: View {
             businessSection
             marriageSection
         }
+        .listStyle(.inset)
         .navigationTitle(sign.annualSign.rawValue)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -51,35 +52,35 @@ extension AnnualSignView {
             NavigationLink {
                 maleIdeologicDescription
             } label: {
-                Text("🕺 \(sign.ideologicalType[Sex.male]!.ideologicalType.rawValue)")
+                Text(sign.ideologicalType[Sex.male]!.ideologicalType.rawValue)
             }
             NavigationLink {
                 femaleIdeologicDescription
             } label: {
-                Text("💃 \(sign.ideologicalType[Sex.female]!.ideologicalType.rawValue)")
+                Text(sign.ideologicalType[Sex.female]!.ideologicalType.rawValue)
             }
             NavigationLink {
                 socialDescription
             } label: {
-                Text("Социальный тип:\n\(sign.socialType.socialType.rawValue)")
+                Text("Социальный тип: \(sign.socialType.socialType.rawValue)")
                     .lineSpacing(6)
             }
             NavigationLink {
                 psychologicalDescription
             } label: {
-                Text("Психологический тип:\n\(sign.psychologicalType.psychologicalType.rawValue)")
+                Text("Психологический тип: \(sign.psychologicalType.psychologicalType.rawValue)")
                     .lineSpacing(6)
             }
             NavigationLink {
                 energyDescription
             } label: {
-                Text("Энергетический тип:\n\(sign.temperament.energyType.rawValue)")
+                Text("Энергетический тип: \(sign.temperament.energyType.rawValue)")
                     .lineSpacing(6)
             }
             NavigationLink {
                 fateDescription
             } label: {
-                Text("Тип судьбы:\n\(sign.fateType.fateType.rawValue)")
+                Text("Тип судьбы: \(sign.fateType.fateType.rawValue)")
                     .lineSpacing(6)
             }
             
@@ -182,6 +183,7 @@ extension AnnualSignView {
                         Text(text)
                             .foregroundColor(.secondary)
                     }
+                    .padding(.bottom, 20)
                 }
             }
         }

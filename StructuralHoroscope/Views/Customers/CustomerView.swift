@@ -34,6 +34,7 @@ struct CustomerView: View {
             businessSection
             marriageSection
         }
+        .listStyle(.inset)
         .navigationTitle(customer.name)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -79,7 +80,7 @@ extension CustomerView {
     }
     
     var editCustomerInfo: some View {
-        Section {
+        Section("Личные данные:") {
             HStack {
                 Text("🪪 Имя:")
                 TextField("Введите новое имя", text: $name)

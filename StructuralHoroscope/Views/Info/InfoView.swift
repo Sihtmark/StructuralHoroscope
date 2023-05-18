@@ -19,7 +19,9 @@ struct InfoView: View {
                 zodiacStructureSection
                 assistantSection
             }
-            .navigationTitle("Структуры")
+            .listStyle(.inset)
+            .navigationTitle("Информация")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
@@ -35,7 +37,7 @@ struct InfoView_Previews: PreviewProvider {
 
 extension InfoView {
     var mainView: some View {
-        Section {
+        Section("Знаки") {
             NavigationLink {
                 AnnualSignsView()
             } label: {
@@ -49,7 +51,7 @@ extension InfoView {
         }
     }
     var annualStructureSection: some View {
-        Section {
+        Section("Годовые структуры") {
             NavigationLink {
                 VectorRingView()
             } label: {
@@ -80,13 +82,10 @@ extension InfoView {
             } label: {
                 Text("Структура судьбы")
             }
-        } header: {
-            Text("Годовые структуры")
-                .foregroundColor(.black)
         }
     }
     var zodiacStructureSection: some View {
-        Section {
+        Section("Зодиакальные структуры") {
             NavigationLink {
                 SensualityStructView()
             } label: {
@@ -102,27 +101,24 @@ extension InfoView {
             } label: {
                 Text("Малое векторное кольцо")
             }
-        } header: {
-            Text("Зодиакальные структуры")
-                .foregroundColor(.black)
         }
     }
     var assistantSection: some View {
-        Section {
+        Section("") {
             NavigationLink {
                 BusinessStructview()
             } label: {
-                Text("Служебный гороскоп")
+                Text("Бизнес")
             }
             NavigationLink {
                 MarriageStructView()
             } label: {
-                Text("Типы браков")
+                Text("Брак")
             }
             NavigationLink {
                 AgeStructView()
             } label: {
-                Text("Возрасты")
+                Text("Возраст")
             }
         }
     }
