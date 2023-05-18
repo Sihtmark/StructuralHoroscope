@@ -133,7 +133,7 @@ struct AgeStruct: Identifiable, Codable, Equatable {
     let text: String
 }
 
-struct ElementStruct: Identifiable, Codable, Equatable {
+struct ElementStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     let element: ElementEnum
     let zodiacs: [ZodiacEnum]
@@ -181,7 +181,7 @@ enum DayType: String, Codable, CaseIterable {
     case hangOut = "Потусуйтесь"
 }
 
-enum ElementEnum: String, Codable, CaseIterable {
+enum ElementEnum: String, Codable, CaseIterable, Hashable {
     case fire = "Революционеры (Огонь)"
     case water = "Консерваторы (Вода)"
     case air = "Небожители (Воздух)"

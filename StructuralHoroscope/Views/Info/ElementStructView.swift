@@ -10,24 +10,29 @@ import SwiftUI
 struct ElementStructView: View {
     
     @EnvironmentObject private var vm: ViewModel
-    @State private var showFullDescription = false
+    @State private var shownStruct: ElementStruct = earthElement
+    @State private var showDescription = false
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 40) {
-                HStack {
-                    Text("Структура стихий")
-                        .font(.title)
-                        .bold()
-                    Spacer()
+            picker
+            infoSection
+        }
+        .padding(.horizontal)
+        .navigationTitle("Социальная структура")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    showDescription = true
+                } label: {
+                    Image(systemName: "info.circle")
                 }
-                infoSection
-                signsSection
             }
         }
-        .navigationTitle("")
-        .navigationBarTitleDisplayMode(.inline)
-        .padding()
+        .sheet(isPresented: $showDescription) {
+            description
+        }
     }
 }
 
@@ -41,53 +46,57 @@ struct ElementStructView_Previews: PreviewProvider {
 }
 
 extension ElementStructView {
-    var infoSection: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Text("Что такое Структура стихий?")
-                .bold()
-            Text("Чувственная структура зодиакальных знаков: тренеры-садисты (Водолей, Овен, Близнецы), спортсмены-мазохисты (Скорпион, Козерог, Рыбы), повара (Лев, Весы, Стрелец) и гурманы (Телец, Рак, Дева)… Из той самой чувственной структуры, в частности, следовало, что главными делателями, людьми, рассчитывающими свои дела на долгий срок, являются так называемые четные знаки: Водолей, Овен, Близнецы, Лев, Весы, Стрелец. Они по праву должны поделить между собой медленные, стабильные стихии: Землю и Воздух, оставив экстренные стихии (Огонь и Воду) нечетным знакам-торопыгам.")
-                .foregroundColor(.secondary)
-                .lineLimit(showFullDescription ? nil : 2)
-            Button {
-                withAnimation(.easeInOut) {
-                    showFullDescription.toggle()
-                }
-            } label: {
-                Text(showFullDescription ? "Свернуть" : "Развернуть...")
-                    .font(.caption)
-                    .fontWeight(.bold)
+    var picker: some View {
+        Picker("asdf", selection: $shownStruct) {
+            ForEach(elements) { item in
+                Text(item.element.rawValue).tag(item)
             }
-            .accentColor(.blue)
         }
     }
-    var signsSection: some View {
-        VStack(alignment: .leading, spacing: 30) {
-            ForEach(elements) { element in
-                VStack(alignment: .leading, spacing: 10) {
-                    Text(element.element.rawValue)
-                        .font(.title3)
-                        .bold()
-                    HStack(spacing: 30) {
-                        ForEach(element.zodiacs, id: \.self) { zodiac in
-                            Text(zodiac.rawValue)
-                        }
-                    }
-                    Text(element.text)
-                        .foregroundColor(.secondary)
-                        .lineLimit(showFullDescription ? nil : 2)
-                    Button {
-                        withAnimation(.easeInOut) {
-                            showFullDescription.toggle()
-                        }
-                    } label: {
-                        Text(showFullDescription ? "Свернуть" : "Развернуть...")
+    
+    var infoSection: some View {
+        VStack {
+            HStack {
+                ForEach(shownStruct.zodiacs, id: \.self) { item in
+                    VStack {
+                        Image("\(item)Circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 60, height: 60)
+                            .shadow(radius: 5)
+                        Text(item.rawValue)
                             .font(.caption)
-                            .fontWeight(.bold)
+                            .foregroundColor(.black)
                     }
-                    .accentColor(.blue)
+                    .padding(10)
                 }
             }
+            Text(shownStruct.text)
+                .foregroundColor(.secondary)
         }
+    }
+    
+    var description: some View {
+        VStack {
+            HStack {
+                Button {
+                    showDescription = false
+                } label: {
+                    Label("Назад", systemImage: "chevron.left")
+                }
+                Spacer()
+            }
+            .padding()
+            VStack {
+                Text("Что такое Структура стихий?")
+                    .font(.headline)
+                    .bold()
+                    .padding(.bottom)
+                Text("Чувственная структура зодиакальных знаков: тренеры-садисты (Водолей, Овен, Близнецы), спортсмены-мазохисты (Скорпион, Козерог, Рыбы), повара (Лев, Весы, Стрелец) и гурманы (Телец, Рак, Дева)… Из той самой чувственной структуры, в частности, следовало, что главными делателями, людьми, рассчитывающими свои дела на долгий срок, являются так называемые четные знаки: Водолей, Овен, Близнецы, Лев, Весы, Стрелец. Они по праву должны поделить между собой медленные, стабильные стихии: Землю и Воздух, оставив экстренные стихии (Огонь и Воду) нечетным знакам-торопыгам.")
+                    .foregroundColor(.secondary)
+                Spacer()
+            }
+        }
+        .padding()
     }
 }
-
