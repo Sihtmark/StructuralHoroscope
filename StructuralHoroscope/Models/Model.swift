@@ -92,9 +92,10 @@ struct EnergyStruct: Identifiable, Codable, Equatable, Hashable {
     let text: String
 }
 
-struct FateStruct: Identifiable, Codable, Equatable {
+struct FateStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     let fateType: FateEnum
+    let signs: [AnnualEnum]
     let title: String
     let text: String
 }
