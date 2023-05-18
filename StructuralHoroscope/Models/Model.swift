@@ -76,9 +76,10 @@ struct SocialStruct: Identifiable, Codable, Equatable, Hashable {
     let text: String
 }
 
-struct PsychologicalStruct: Identifiable, Codable, Equatable {
+struct PsychologicalStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     let psychologicalType: PsychologicalEnum
+    let signs: [AnnualEnum]
     let title: String
     let text: String
 }

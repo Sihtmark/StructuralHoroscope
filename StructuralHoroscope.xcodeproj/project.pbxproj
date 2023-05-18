@@ -29,7 +29,6 @@
 		A0576AFD29FA954700F4D9EF /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0576AFC29FA954700F4D9EF /* InfoView.swift */; };
 		A0576AFF29FA955F00F4D9EF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0576AFE29FA955F00F4D9EF /* CalendarView.swift */; };
 		A0576B0129FA957400F4D9EF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0576B0029FA957400F4D9EF /* SettingsView.swift */; };
-		A07141BE29FE6B190011FB0A /* PsychologicalStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141BD29FE6B190011FB0A /* PsychologicalStructView.swift */; };
 		A07141C029FE98C30011FB0A /* EnergyStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141BF29FE98C30011FB0A /* EnergyStructView.swift */; };
 		A07141C229FE9B550011FB0A /* FateStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141C129FE9B550011FB0A /* FateStructView.swift */; };
 		A07141C429FEA0FC0011FB0A /* SensualityInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141C329FEA0FC0011FB0A /* SensualityInstances.swift */; };
@@ -45,6 +44,8 @@
 		A086548929F2F7F600E8300D /* CreateCustomerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A086548829F2F7F600E8300D /* CreateCustomerView.swift */; };
 		A08993FC29F6C44600174590 /* AllCustomersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08993FB29F6C44600174590 /* AllCustomersView.swift */; };
 		A09892072A16530D0060B872 /* SocialStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09892062A16530D0060B872 /* SocialStructView.swift */; };
+		A09892092A16578B0060B872 /* PsychologicalInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09892082A16578B0060B872 /* PsychologicalInstances.swift */; };
+		A098920B2A1657A40060B872 /* PsychologicalStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A098920A2A1657A40060B872 /* PsychologicalStructView.swift */; };
 		A09C8BF12A0564BB00893C07 /* CalendarInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09C8BF02A0564BB00893C07 /* CalendarInstances.swift */; };
 		A09C8BF32A0575BA00893C07 /* CalendarStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09C8BF22A0575BA00893C07 /* CalendarStruct.swift */; };
 		A0B2185C29EED63100433B72 /* SocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B2185B29EED63100433B72 /* SocialView.swift */; };
@@ -60,7 +61,6 @@
 		A0E53E8529E82F480065F227 /* VirtualSignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E53E8429E82F480065F227 /* VirtualSignView.swift */; };
 		A0F2FA8929EAE709002A58BC /* SocialInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FA8829EAE709002A58BC /* SocialInstances.swift */; };
 		A0F2FA8B29EAED4C002A58BC /* IdeologicalSignInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FA8A29EAED4C002A58BC /* IdeologicalSignInstances.swift */; };
-		A0F2FA8D29EAF722002A58BC /* PsychologicalInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FA8C29EAF722002A58BC /* PsychologicalInstances.swift */; };
 		A0F2FA8F29EAFB34002A58BC /* EnergyInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FA8E29EAFB34002A58BC /* EnergyInstances.swift */; };
 		A0F2FA9129EB01A3002A58BC /* FateInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FA9029EB01A3002A58BC /* FateInstances.swift */; };
 		A0F2FA9329EB0F36002A58BC /* IdeologicalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F2FA9229EB0F36002A58BC /* IdeologicalView.swift */; };
@@ -93,7 +93,6 @@
 		A0576AFC29FA954700F4D9EF /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		A0576AFE29FA955F00F4D9EF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		A0576B0029FA957400F4D9EF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		A07141BD29FE6B190011FB0A /* PsychologicalStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychologicalStructView.swift; sourceTree = "<group>"; };
 		A07141BF29FE98C30011FB0A /* EnergyStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyStructView.swift; sourceTree = "<group>"; };
 		A07141C129FE9B550011FB0A /* FateStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FateStructView.swift; sourceTree = "<group>"; };
 		A07141C329FEA0FC0011FB0A /* SensualityInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensualityInstances.swift; sourceTree = "<group>"; };
@@ -109,6 +108,8 @@
 		A086548829F2F7F600E8300D /* CreateCustomerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomerView.swift; sourceTree = "<group>"; };
 		A08993FB29F6C44600174590 /* AllCustomersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCustomersView.swift; sourceTree = "<group>"; };
 		A09892062A16530D0060B872 /* SocialStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialStructView.swift; sourceTree = "<group>"; };
+		A09892082A16578B0060B872 /* PsychologicalInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychologicalInstances.swift; sourceTree = "<group>"; };
+		A098920A2A1657A40060B872 /* PsychologicalStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychologicalStructView.swift; sourceTree = "<group>"; };
 		A09C8BF02A0564BB00893C07 /* CalendarInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInstances.swift; sourceTree = "<group>"; };
 		A09C8BF22A0575BA00893C07 /* CalendarStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarStruct.swift; sourceTree = "<group>"; };
 		A0B2185B29EED63100433B72 /* SocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialView.swift; sourceTree = "<group>"; };
@@ -126,7 +127,6 @@
 		A0E53E8429E82F480065F227 /* VirtualSignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualSignView.swift; sourceTree = "<group>"; };
 		A0F2FA8829EAE709002A58BC /* SocialInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialInstances.swift; sourceTree = "<group>"; };
 		A0F2FA8A29EAED4C002A58BC /* IdeologicalSignInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeologicalSignInstances.swift; sourceTree = "<group>"; };
-		A0F2FA8C29EAF722002A58BC /* PsychologicalInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychologicalInstances.swift; sourceTree = "<group>"; };
 		A0F2FA8E29EAFB34002A58BC /* EnergyInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyInstances.swift; sourceTree = "<group>"; };
 		A0F2FA9029EB01A3002A58BC /* FateInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FateInstances.swift; sourceTree = "<group>"; };
 		A0F2FA9229EB0F36002A58BC /* IdeologicalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeologicalView.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 				A0E53E8229E8283A0065F227 /* VirtualSignInstances.swift */,
 				A0F2FA8A29EAED4C002A58BC /* IdeologicalSignInstances.swift */,
 				A0F2FA8829EAE709002A58BC /* SocialInstances.swift */,
-				A0F2FA8C29EAF722002A58BC /* PsychologicalInstances.swift */,
+				A09892082A16578B0060B872 /* PsychologicalInstances.swift */,
 				A0F2FA8E29EAFB34002A58BC /* EnergyInstances.swift */,
 				A0F2FA9029EB01A3002A58BC /* FateInstances.swift */,
 				A03AD26529F01D1C00EE061C /* BusinessInstances.swift */,
@@ -273,7 +273,7 @@
 				A0FDF2102A163EF000DD1716 /* VectorRingView.swift */,
 				A0FDF2122A163F1E00DD1716 /* IdeologicalStructView.swift */,
 				A09892062A16530D0060B872 /* SocialStructView.swift */,
-				A07141BD29FE6B190011FB0A /* PsychologicalStructView.swift */,
+				A098920A2A1657A40060B872 /* PsychologicalStructView.swift */,
 				A07141BF29FE98C30011FB0A /* EnergyStructView.swift */,
 				A07141C529FEA28C0011FB0A /* SensualityStructView.swift */,
 				A07141C929FEB02F0011FB0A /* ElementStructView.swift */,
@@ -392,7 +392,6 @@
 				A0F2FA8F29EAFB34002A58BC /* EnergyInstances.swift in Sources */,
 				A0C1A2372A0A39FD00490239 /* StartingView.swift in Sources */,
 				A03AD26429F0182500EE061C /* BusinessView.swift in Sources */,
-				A07141BE29FE6B190011FB0A /* PsychologicalStructView.swift in Sources */,
 				A07141C629FEA28C0011FB0A /* SensualityStructView.swift in Sources */,
 				A03AD26229F00AC200EE061C /* FateView.swift in Sources */,
 				A0576AFD29FA954700F4D9EF /* InfoView.swift in Sources */,
@@ -407,7 +406,6 @@
 				A0576AFB29FA951700F4D9EF /* MainTabView.swift in Sources */,
 				A07141CA29FEB02F0011FB0A /* ElementStructView.swift in Sources */,
 				A0F2FA8929EAE709002A58BC /* SocialInstances.swift in Sources */,
-				A0F2FA8D29EAF722002A58BC /* PsychologicalInstances.swift in Sources */,
 				A0E53E8529E82F480065F227 /* VirtualSignView.swift in Sources */,
 				A03CF2DA29D716CD005BE95D /* Model.swift in Sources */,
 				A03AD26829F0348400EE061C /* MarriageView.swift in Sources */,
@@ -428,6 +426,8 @@
 				A0FDF2112A163EF000DD1716 /* VectorRingView.swift in Sources */,
 				A0FDF2132A163F1E00DD1716 /* IdeologicalStructView.swift in Sources */,
 				A09892072A16530D0060B872 /* SocialStructView.swift in Sources */,
+				A09892092A16578B0060B872 /* PsychologicalInstances.swift in Sources */,
+				A098920B2A1657A40060B872 /* PsychologicalStructView.swift in Sources */,
 				A0E0724129D702820010E128 /* Model.xcdatamodeld in Sources */,
 				A0193D0529FD6241007C06A1 /* AnnualSignsView.swift in Sources */,
 				A07141C229FE9B550011FB0A /* FateStructView.swift in Sources */,
