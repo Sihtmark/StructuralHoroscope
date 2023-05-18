@@ -31,9 +31,7 @@ struct VirtualSignView: View {
         .navigationTitle(virtualSign.virtualSign.rawValue)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Link(destination: URL(string: virtualSign.site)!) {
-                    Image(systemName: "globe")
-                }
+                
             }
         }
     }

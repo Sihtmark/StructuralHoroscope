@@ -10,7 +10,7 @@ import Foundation
 let fatalistSigns = [ratSign, tigerSign, dogSign]
 let luckySigns = [catSign, snakeSign, bullSign]
 let doItYourselfSigns = [horseSign, monkeySign, dragonSign]
-let pioneerSigns = [pigSign, roosterSign, goatSign]
+let pioneerSigns = [boarSign, roosterSign, goatSign]
 
 let fateStructs: [FateEnum: FateStruct] = [
     .doItYourself: doItYourselfFateStruct,

@@ -25,13 +25,12 @@ struct VirtualSignStruct: Identifiable, Codable, Equatable {
     let virtualSign: VirtualEnum
     let emoji: VirtualEmojiEnum
     let blocks: [String:String]
-    let site: String
 }
 
 struct SignStruct: Identifiable, Codable, Equatable {
     var id = UUID()
     let annualSign: AnnualEnum
-    let site: String
+    let emoji: AnnualEmojiEnum
     let ideologicalType: [Sex: IdeologicalStruct]
     let socialType: SocialStruct
     let psychologicalType: PsychologicalStruct

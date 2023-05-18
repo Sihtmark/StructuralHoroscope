@@ -18,7 +18,7 @@ let vectorHost = BusinessStruct(
         .bull: [dogSign],
         .tiger: [bullSign],
         .cat: [dragonSign],
-        .dragon: [pigSign],
+        .dragon: [boarSign],
         .snake: [goatSign],
         .horse: [ratSign],
         .goat: [tigerSign],
@@ -40,7 +40,7 @@ let vectorServant = BusinessStruct(
         .cat: [roosterSign],
         .dragon: [catSign],
         .snake: [monkeySign],
-        .horse: [pigSign],
+        .horse: [boarSign],
         .goat: [snakeSign],
         .monkey: [ratSign],
         .rooster: [dogSign],
@@ -61,11 +61,11 @@ let clone = BusinessStruct(
         .dragon: [dragonSign, monkeySign, horseSign],
         .snake: [snakeSign, bullSign, catSign],
         .horse: [horseSign, monkeySign, dragonSign],
-        .goat: [goatSign, pigSign, roosterSign],
+        .goat: [goatSign, boarSign, roosterSign],
         .monkey: [monkeySign, dragonSign, horseSign],
-        .rooster: [roosterSign, dogSign, pigSign],
+        .rooster: [roosterSign, dogSign, boarSign],
         .dog: [dogSign, tigerSign, ratSign],
-        .boar: [pigSign, goatSign, roosterSign]
+        .boar: [boarSign, goatSign, roosterSign]
     ]
 )
 
@@ -75,11 +75,11 @@ let companion = BusinessStruct(
     text: "Соратники - знаки сопряжённой характеристики в структуре судьбы. В чётных знаках (чётные годы) сопряжены фаталисты и самодельщики, в нечётных - пионеры и фортунщики. Без Соратников никак нельзя, но и они по мере построения коллектива должны количественно уменьшаться. В конечном варианте надо оставить одного-двух соратников.Совсем без Соратника оставаться нельзя, ибо возникает неполноценность в судьбе",
     signs: [
         .rat: [dragonSign],
-        .bull: [roosterSign, goatSign, pigSign],
+        .bull: [roosterSign, goatSign, boarSign],
         .tiger: [horseSign, monkeySign, dragonSign],
-        .cat: [goatSign, pigSign],
+        .cat: [goatSign, boarSign],
         .dragon: [tigerSign, dogSign, ratSign],
-        .snake: [roosterSign, pigSign],
+        .snake: [roosterSign, boarSign],
         .horse: [tigerSign, dogSign],
         .goat: [catSign, bullSign],
         .monkey: [tigerSign, dogSign],
@@ -94,7 +94,7 @@ let subordinate = BusinessStruct(
     value: "Нужны обязательно. Чем больше, тем лучше",
     text: "Подчиненные - это группа знаков из идеологической структуры по кругу подчинения. Волевики (Тигр, Лошадь, Собака) подчиняются реалистам (Коза, Кабан, Кот), те в свою очередь подчинены мистикам (Обезьяна, Крыса, Дракон), а мистики состоят в услужении у логиков (Петух, Змея, Бык), которые подчиняются волевикам. Круг замкнулся. Разумеется, все это минус векторные пары. Подчиненных должно быть много. Это главные работники, основная масса. В начале создания коллектива соратников должно быть мало, ибо они не столь инициативны как надо. Но по мере укрепления дела число подчиненных может увеличиваться многократно. Единственное за чем надо следить, так это за тем, чтобы те, кого мы назвали Подчиненными, подчинялись именно начальнику, а не Клону, или Соратнику.",
     signs: [
-        .rat: [goatSign, catSign, pigSign],
+        .rat: [goatSign, catSign, boarSign],
         .bull: [ratSign, monkeySign, dragonSign],
         .tiger: [roosterSign, snakeSign],
         .cat: [horseSign, tigerSign, dogSign],
@@ -102,7 +102,7 @@ let subordinate = BusinessStruct(
         .snake: [ratSign, dragonSign],
         .horse: [roosterSign, bullSign, snakeSign],
         .goat: [horseSign, dogSign],
-        .monkey: [goatSign, catSign, pigSign],
+        .monkey: [goatSign, catSign, boarSign],
         .rooster: [dragonSign, ratSign, monkeySign],
         .dog: [snakeSign],
         .boar: [tigerSign, dogSign]
@@ -116,7 +116,7 @@ let adviser = BusinessStruct(
     signs: [
         .rat: [roosterSign, snakeSign, bullSign],
         .bull: [horseSign],
-        .tiger: [catSign, pigSign],
+        .tiger: [catSign, boarSign],
         .cat: [ratSign, monkeySign],
         .dragon: [roosterSign, snakeSign, bullSign],
         .snake: [horseSign, dogSign, tigerSign],
@@ -124,7 +124,7 @@ let adviser = BusinessStruct(
         .goat: [monkeySign, ratSign, dragonSign],
         .monkey: [roosterSign, bullSign],
         .rooster: [horseSign, tigerSign],
-        .dog: [goatSign, catSign, pigSign],
+        .dog: [goatSign, catSign, boarSign],
         .boar: [monkeySign, ratSign]
     ]
 )

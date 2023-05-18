@@ -259,7 +259,7 @@ class ViewModel: ObservableObject {
         case .opened:
             return [ratSign, catSign, horseSign, roosterSign]
         case .closed:
-            return [tigerSign, snakeSign, monkeySign, pigSign]
+            return [tigerSign, snakeSign, monkeySign, boarSign]
         case .orthodox:
             return [bullSign, dragonSign, goatSign, dogSign]
         }
@@ -278,9 +278,9 @@ class ViewModel: ObservableObject {
         case .mysticalMale:
             return [ratSign, monkeySign, dragonSign]
         case .mysticalFemale:
-            return [catSign, goatSign, pigSign]
+            return [catSign, goatSign, boarSign]
         case .realisticMale:
-            return [catSign, goatSign, pigSign]
+            return [catSign, goatSign, boarSign]
         case .realisticFemale:
             return [ratSign, monkeySign, dragonSign]
         }
@@ -289,7 +289,7 @@ class ViewModel: ObservableObject {
     func psychologicalSigns(psychologicalEnum: PsychologicalEnum) -> [SignStruct] {
         switch psychologicalEnum {
         case .maturity:
-            return [pigSign, ratSign, bullSign]
+            return [boarSign, ratSign, bullSign]
         case .dreamer:
             return [tigerSign, catSign, dragonSign]
         case .sensitive:
@@ -304,7 +304,7 @@ class ViewModel: ObservableObject {
         case .dramatic:
             return [goatSign, ratSign, snakeSign]
         case .sanguine:
-            return [bullSign, horseSign, pigSign]
+            return [bullSign, horseSign, boarSign]
         case .phlegmatic:
             return [tigerSign, roosterSign, dragonSign]
         case .melancholic:
@@ -321,7 +321,7 @@ class ViewModel: ObservableObject {
         case .doItYourself:
             return [horseSign, monkeySign, dragonSign]
         case .pioneer:
-            return [pigSign, roosterSign, goatSign]
+            return [boarSign, roosterSign, goatSign]
         }
     }
     

@@ -7,12 +7,13 @@
 
 import Foundation
 
-let annualSigns: [AnnualEnum:SignStruct] = [.rat: ratSign, .bull: bullSign, .tiger: tigerSign, .cat: catSign, .dragon: dragonSign, .snake: snakeSign, .horse: horseSign, .goat: goatSign, .monkey: monkeySign, .rooster: roosterSign, .dog: dogSign, .boar: pigSign]
+let annualSigns: [AnnualEnum:SignStruct] = [.rat: ratSign, .bull: bullSign, .tiger: tigerSign, .cat: catSign, .dragon: dragonSign, .snake: snakeSign, .horse: horseSign, .goat: goatSign, .monkey: monkeySign, .rooster: roosterSign, .dog: dogSign, .boar: boarSign]
 
-let annualSignArray: [SignStruct] = [ratSign, bullSign, tigerSign, catSign, dragonSign, snakeSign, horseSign, goatSign, monkeySign, roosterSign, dogSign, pigSign]
+let annualSignArray: [SignStruct] = [ratSign, bullSign, tigerSign, catSign, dragonSign, snakeSign, horseSign, goatSign, monkeySign, roosterSign, dogSign, boarSign]
 
 let ratSign = SignStruct(
-    annualSign: .rat, site: "https://www.xsp.ru/sh/znaki/znak.php?id=1",
+    annualSign: .rat,
+    emoji: .rat,
     ideologicalType: [.male: mysticMale, .female: realistFemale],
     socialType: openedSocialStruct,
     psychologicalType: maturityPsychologicalStruct,
@@ -71,7 +72,8 @@ let ratSign = SignStruct(
 )
 
 let bullSign = SignStruct(
-    annualSign: .bull, site: "https://www.xsp.ru/sh/znaki/znak.php?id=2",
+    annualSign: .bull,
+    emoji: .bull,
     ideologicalType: [.male: logicMale, .female: strongWilledFemale],
     socialType: orthodocsSocialStruct,
     psychologicalType: maturityPsychologicalStruct,
@@ -130,7 +132,8 @@ let bullSign = SignStruct(
 )
 
 let tigerSign = SignStruct(
-    annualSign: .tiger, site: "https://www.xsp.ru/sh/znaki/znak.php?id=3",
+    annualSign: .tiger,
+    emoji: .tiger,
     ideologicalType: [.male: strongWilledMale, .female: logicFemale],
     socialType: closedSocialStruct,
     psychologicalType: dreamerPsychologicalStruct,
@@ -188,7 +191,8 @@ let tigerSign = SignStruct(
 )
 
 let catSign = SignStruct(
-    annualSign: .cat, site: "https://www.xsp.ru/sh/znaki/znak.php?id=4",
+    annualSign: .cat,
+    emoji: .cat,
     ideologicalType: [.male: realistMale, .female: mysticFemale],
     socialType: openedSocialStruct,
     psychologicalType: dreamerPsychologicalStruct,
@@ -247,7 +251,8 @@ let catSign = SignStruct(
 )
 
 let dragonSign = SignStruct(
-    annualSign: .dragon, site: "https://www.xsp.ru/sh/znaki/znak.php?id=5",
+    annualSign: .dragon,
+    emoji: .dragon,
     ideologicalType: [.male: mysticMale, .female: realistFemale],
     socialType: orthodocsSocialStruct,
     psychologicalType: dreamerPsychologicalStruct,
@@ -307,7 +312,8 @@ let dragonSign = SignStruct(
 )
 
 let snakeSign = SignStruct(
-    annualSign: .snake, site: "https://www.xsp.ru/sh/znaki/znak.php?id=6",
+    annualSign: .snake,
+    emoji: .snake,
     ideologicalType: [.male: logicMale, .female: strongWilledFemale],
     socialType: closedSocialStruct,
     psychologicalType: sensitivePsychologicalStruct,
@@ -366,7 +372,8 @@ let snakeSign = SignStruct(
 )
 
 let horseSign = SignStruct(
-    annualSign: .horse, site: "https://www.xsp.ru/sh/znaki/znak.php?id=7",
+    annualSign: .horse,
+    emoji: .horse,
     ideologicalType: [.male: strongWilledMale, .female: logicFemale],
     socialType: openedSocialStruct,
     psychologicalType: sensitivePsychologicalStruct,
@@ -425,7 +432,8 @@ let horseSign = SignStruct(
 )
 
 let goatSign = SignStruct(
-    annualSign: .goat, site: "https://www.xsp.ru/sh/znaki/znak.php?id=8",
+    annualSign: .goat,
+    emoji: .goat,
     ideologicalType: [.male: realistMale, .female: mysticFemale],
     socialType: orthodocsSocialStruct,
     psychologicalType: sensitivePsychologicalStruct,
@@ -484,7 +492,8 @@ let goatSign = SignStruct(
 )
 
 let monkeySign = SignStruct(
-    annualSign: .monkey, site: "https://www.xsp.ru/sh/znaki/znak.php?id=9",
+    annualSign: .monkey,
+    emoji: .monkey,
     ideologicalType: [.male: mysticMale, .female: realistFemale],
     socialType: closedSocialStruct,
     psychologicalType: groundedPsychologicalStruct,
@@ -542,7 +551,8 @@ let monkeySign = SignStruct(
 )
 
 let roosterSign = SignStruct(
-    annualSign: .rooster, site: "https://www.xsp.ru/sh/znaki/znak.php?id=10",
+    annualSign: .rooster,
+    emoji: .rooster,
     ideologicalType: [.male: logicMale, .female: strongWilledFemale],
     socialType: openedSocialStruct,
     psychologicalType: groundedPsychologicalStruct,
@@ -601,7 +611,8 @@ let roosterSign = SignStruct(
 )
 
 let dogSign = SignStruct(
-    annualSign: .dog, site: "https://www.xsp.ru/sh/znaki/znak.php?id=11",
+    annualSign: .dog,
+    emoji: .dog,
     ideologicalType: [.male: strongWilledMale, .female: logicFemale],
     socialType: orthodocsSocialStruct,
     psychologicalType: groundedPsychologicalStruct,
@@ -659,8 +670,9 @@ let dogSign = SignStruct(
     ], years: [1910, 1922, 1934, 1946, 1958, 1970, 1982, 1994, 2006, 2018, 2030, 2042]
 )
 
-let pigSign = SignStruct(
-    annualSign: .boar, site: "https://www.xsp.ru/sh/znaki/znak.php?id=12",
+let boarSign = SignStruct(
+    annualSign: .boar,
+    emoji: .boar,
     ideologicalType: [.male: realistMale, .female: mysticFemale],
     socialType: closedSocialStruct,
     psychologicalType: maturityPsychologicalStruct,

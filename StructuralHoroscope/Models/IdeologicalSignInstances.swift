@@ -8,8 +8,8 @@
 import Foundation
 
 let mysticMales = [ratSign, monkeySign, dragonSign]
-let mysticFemales = [catSign, goatSign, pigSign]
-let realisticMales = [catSign, goatSign, pigSign]
+let mysticFemales = [catSign, goatSign, boarSign]
+let realisticMales = [catSign, goatSign, boarSign]
 let realisticFemales = [ratSign, monkeySign, dragonSign]
 let strongWillMales = [tigerSign, horseSign, dogSign]
 let strongWillFemales = [bullSign, snakeSign, roosterSign]

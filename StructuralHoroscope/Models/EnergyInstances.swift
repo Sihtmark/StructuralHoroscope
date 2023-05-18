@@ -8,7 +8,7 @@
 import Foundation
 
 let dramaticSigns = [goatSign, ratSign, snakeSign]
-let sanguineSigns = [bullSign, horseSign, pigSign]
+let sanguineSigns = [bullSign, horseSign, boarSign]
 let phlegmaticSigns = [tigerSign, roosterSign, dragonSign]
 let melancholicSigns = [monkeySign, catSign, dogSign]
 

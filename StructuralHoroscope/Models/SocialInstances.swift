@@ -8,7 +8,7 @@
 import Foundation
 
 let openedSigns = [ratSign, catSign, horseSign, roosterSign]
-let closedSigns = [tigerSign, snakeSign, monkeySign, pigSign]
+let closedSigns = [tigerSign, snakeSign, monkeySign, boarSign]
 let orthodocsSigns = [bullSign, dragonSign, goatSign, dogSign]
 
 let socialStructs: [SocialEnum: SocialStruct] = [
