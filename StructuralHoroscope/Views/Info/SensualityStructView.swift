@@ -53,7 +53,6 @@ extension SensualityStructView {
                             .shadow(radius: 5)
                         Text(item.rawValue)
                             .font(.caption)
-                            .foregroundColor(.black)
                     }
                     .padding(10)
                 }

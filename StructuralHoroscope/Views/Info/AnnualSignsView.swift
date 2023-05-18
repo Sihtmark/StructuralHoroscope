@@ -50,7 +50,6 @@ extension AnnualSignsView {
                                     .shadow(radius: 5)
                                 Text(sign.annualSign.rawValue)
                                     .font(.caption)
-                                    .foregroundColor(.black)
                             }
                             .padding(10)
                         }

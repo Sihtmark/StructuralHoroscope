@@ -57,7 +57,6 @@ extension EnergyStructView {
                                 .shadow(radius: 5)
                             Text(annualSigns[item]!.annualSign.rawValue)
                                 .font(.caption)
-                                .foregroundColor(.black)
                         }
                         .padding(10)
                     }

@@ -58,7 +58,6 @@ extension VirtualSignsView {
                                 HStack {
                                     Text(sign.emoji.rawValue)
                                     Text(sign.virtualSign.rawValue)
-                                        .foregroundColor(.black)
                                     .bold()
                                 }
                                 .padding(.horizontal)
