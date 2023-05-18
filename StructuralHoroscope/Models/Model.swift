@@ -60,7 +60,7 @@ struct ZodiacStruct: Identifiable, Codable, Equatable {
     let days: [Int: ClosedRange<Int>]
 }
 
-struct IdeologicalStruct: Identifiable, Codable, Equatable {
+struct IdeologicalStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     let ideologicalType: IdeologicalEnum
     let title: String
