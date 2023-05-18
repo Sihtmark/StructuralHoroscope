@@ -84,9 +84,10 @@ struct PsychologicalStruct: Identifiable, Codable, Equatable, Hashable {
     let text: String
 }
 
-struct EnergyStruct: Identifiable, Codable, Equatable {
+struct EnergyStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     let energyType: EnergyEnum
+    let signs: [AnnualEnum]
     let title: String
     let text: String
 }

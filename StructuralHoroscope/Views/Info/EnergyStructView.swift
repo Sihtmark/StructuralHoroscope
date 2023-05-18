@@ -10,23 +10,17 @@ import SwiftUI
 struct EnergyStructView: View {
     
     @EnvironmentObject private var vm: ViewModel
-    @State private var showFullDescription = false
+    @State private var shownStruct: EnergyStruct = dramaticEnergeticStruct
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 40) {
-                HStack {
-                    Text("Энергетическая структура")
-                        .font(.title)
-                        .bold()
-                    Spacer()
-                }
-                signsSection
-            }
+        VStack {
+            picker
+            infoSection
+            Spacer()
         }
-        .navigationTitle("")
+        .navigationTitle("Энергетическая структура")
         .navigationBarTitleDisplayMode(.inline)
-        .padding()
+        .padding(.horizontal)
     }
 }
 
@@ -40,29 +34,42 @@ struct EnergyStructView_Previews: PreviewProvider {
 }
 
 extension EnergyStructView {
+    var picker: some View {
+        Picker("asdf", selection: $shownStruct) {
+            ForEach(energyArray) { item in
+                Text(item.energyType.rawValue).tag(item)
+            }
+        }
+    }
     
-    var signsSection: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            ForEach(EnergyEnum.allCases, id: \.rawValue) { item in
-                HStack(alignment: .top, spacing: 10) {
+    var infoSection: some View {
+        VStack {
+            HStack {
+                ForEach(shownStruct.signs, id: \.self) { item in
                     NavigationLink {
-                        EnergyView(energy: energyStructs[item]!)
+                        AnnualSignView(sign: annualSigns[item]!)
                     } label: {
-                        Text(item.rawValue)
-                            .frame(width: 190, alignment: .leading)
-                            .multilineTextAlignment(.leading)
-                    }
-                    VStack(alignment: .leading, spacing: 0) {
-                        ForEach(vm.energySigns(energy: item)) { sign in
-                            NavigationLink {
-                                AnnualSignView(sign: sign)
-                            } label: {
-                                Text(sign.annualSign.rawValue)
-                            }
+                        VStack {
+                            Image("\(annualSigns[item]!.annualSign)Circle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 60, height: 60)
+                                .shadow(radius: 5)
+                            Text(annualSigns[item]!.annualSign.rawValue)
+                                .font(.caption)
+                                .foregroundColor(.black)
                         }
+                        .padding(10)
                     }
                 }
             }
+            Text(shownStruct.title)
+                .font(.headline)
+                .bold()
+                .multilineTextAlignment(.center)
+                .padding(.bottom)
+            Text(shownStruct.text)
+                .foregroundColor(.secondary)
         }
     }
 }

@@ -11,7 +11,7 @@ struct IdeologicalStructView: View {
     
     @EnvironmentObject private var vm: ViewModel
     @State private var showDescription = false
-    @State private var shownIdeologicalStruct: IdeologicalStruct = mysticMale
+    @State private var shownStruct: IdeologicalStruct = mysticMale
     
     var body: some View {
         ScrollView {
@@ -47,7 +47,7 @@ struct IdeologicalStructView_Previews: PreviewProvider {
 
 extension IdeologicalStructView {
     var picker: some View {
-        Picker("asdf", selection: $shownIdeologicalStruct) {
+        Picker("asdf", selection: $shownStruct) {
             ForEach(ideologicalArray) { item in
                 Text(item.ideologicalType.rawValue).tag(item)
             }
@@ -57,7 +57,7 @@ extension IdeologicalStructView {
     var mainSection: some View {
         VStack {
             HStack {
-                ForEach(shownIdeologicalStruct.signs, id: \.self) { item in
+                ForEach(shownStruct.signs, id: \.self) { item in
                     NavigationLink {
                         AnnualSignView(sign: annualSigns[item]!)
                     } label: {
@@ -75,7 +75,12 @@ extension IdeologicalStructView {
                     }
                 }
             }
-            Text(shownIdeologicalStruct.text)
+            Text(shownStruct.title)
+                .font(.headline)
+                .bold()
+                .multilineTextAlignment(.center)
+                .padding(.bottom)
+            Text(shownStruct.text)
                 .foregroundColor(.secondary)
         }
     }

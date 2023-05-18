@@ -10,7 +10,7 @@ import SwiftUI
 struct PsychologicalStructView: View {
     
     @EnvironmentObject private var vm: ViewModel
-    @State private var shownPsychologicalStruct: PsychologicalStruct = maturityPsychologicalStruct
+    @State private var shownStruct: PsychologicalStruct = maturityPsychologicalStruct
     @State private var showDescription = false
     
     var body: some View {
@@ -47,7 +47,7 @@ struct PsychologicalStructView_Previews: PreviewProvider {
 
 extension PsychologicalStructView {
     var picker: some View {
-        Picker("asdf", selection: $shownPsychologicalStruct) {
+        Picker("asdf", selection: $shownStruct) {
             ForEach(psychologicalArray) { item in
                 Text(item.psychologicalType.rawValue).tag(item)
             }
@@ -57,7 +57,7 @@ extension PsychologicalStructView {
     var infoSection: some View {
         VStack {
             HStack {
-                ForEach(shownPsychologicalStruct.signs, id: \.self) { item in
+                ForEach(shownStruct.signs, id: \.self) { item in
                     NavigationLink {
                         AnnualSignView(sign: annualSigns[item]!)
                     } label: {
@@ -75,7 +75,12 @@ extension PsychologicalStructView {
                     }
                 }
             }
-            Text(shownPsychologicalStruct.text)
+            Text(shownStruct.title)
+                .font(.headline)
+                .bold()
+                .multilineTextAlignment(.center)
+                .padding(.bottom)
+            Text(shownStruct.text)
                 .foregroundColor(.secondary)
         }
     }

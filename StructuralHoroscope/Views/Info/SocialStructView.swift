@@ -11,7 +11,7 @@ struct SocialStructView: View {
     
     @EnvironmentObject private var vm: ViewModel
     @State private var showDescription = false
-    @State private var shownSocialStruct: SocialStruct = openedSocialStruct
+    @State private var shownStruct: SocialStruct = openedSocialStruct
     
     var body: some View {
         ScrollView {
@@ -47,7 +47,7 @@ struct SocialStructView_Previews: PreviewProvider {
 
 extension SocialStructView {
     var picker: some View {
-        Picker("asdf", selection: $shownSocialStruct) {
+        Picker("asdf", selection: $shownStruct) {
             ForEach(socialArray) { item in
                 Text(item.socialType.rawValue).tag(item)
             }
@@ -57,7 +57,7 @@ extension SocialStructView {
     var infoSection: some View {
         VStack {
             HStack {
-                ForEach(shownSocialStruct.signs, id: \.self) { item in
+                ForEach(shownStruct.signs, id: \.self) { item in
                     NavigationLink {
                         AnnualSignView(sign: annualSigns[item]!)
                     } label: {
@@ -75,7 +75,12 @@ extension SocialStructView {
                     }
                 }
             }
-            Text(shownSocialStruct.text)
+            Text(shownStruct.title)
+                .font(.headline)
+                .bold()
+                .multilineTextAlignment(.center)
+                .padding(.bottom)
+            Text(shownStruct.text)
                 .foregroundColor(.secondary)
         }
     }
