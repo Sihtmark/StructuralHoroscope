@@ -67,7 +67,6 @@ extension SmallVectorRingView {
                                 .scaledToFit()
                                 .frame(width: 20, height: 20)
                             Text(sign.rawValue)
-                                .foregroundColor(.black)
                             .bold()
                         }
                         .frame(width: 150, height: 40)
@@ -85,7 +84,6 @@ extension SmallVectorRingView {
                                 .scaledToFit()
                                 .frame(width: 20, height: 20)
                             Text(smallRing[sign]!.rawValue)
-                                .foregroundColor(.black)
                             .bold()
                         }
                         .frame(width: 150, height: 40)
