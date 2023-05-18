@@ -116,10 +116,12 @@ struct MarriageStruct: Identifiable, Codable, Equatable {
     let signs: [AnnualEnum: [SignStruct]]
 }
 
-struct SensualityStruct: Identifiable, Codable, Equatable {
+struct SensualityStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     let department: SensualityEnum
     let zodiacs: [ZodiacEnum]
+    let title: String
+    let text: String
 }
 
 struct AgeStruct: Identifiable, Codable, Equatable {
