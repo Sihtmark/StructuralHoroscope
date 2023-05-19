@@ -99,7 +99,7 @@ extension CustomerView {
             DatePicker("🎂 Дата рождения:", selection: $selectedDate, displayedComponents: .date)
                 .environment(\.locale, Locale.init(identifier: "ru"))
             NavigationLink {
-                
+                AgeView(age: ages[vm.getAgeType(birthdate: selectedDate)]!)
             } label: {
                 Text("💫 Возраст: \(vm.getAgeType(birthdate: selectedDate).rawValue)")
             }
