@@ -270,11 +270,11 @@ enum BusinessEnum: String, Codable, CaseIterable, Hashable {
 }
 
 enum MarriageEnum: String, Codable, CaseIterable, Hashable {
-    case vector = "Векторный"
-    case romantic = "Романтический"
-    case patriarchal = "Патриархальный"
-    case equal = "Равный"
-    case spiritual = "Духовный"
+    case vector = "Векторный брак"
+    case romantic = "Романтический брак"
+    case patriarchal = "Патриархальный брак"
+    case equal = "Равный брак"
+    case spiritual = "Духовный брак"
 }
 
 enum AgeEnum: String, Codable, CaseIterable, Hashable {

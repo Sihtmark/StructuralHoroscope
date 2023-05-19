@@ -16,10 +16,8 @@ struct BusinessStructview: View {
     
     var body: some View {
         ScrollView {
-            HStack(spacing: -5) {
-                Text("Начальник:")
-                signPicker
-            }
+            signPicker
+            mainSignSection
             structPicker
             signSection
             textSection
@@ -77,6 +75,18 @@ extension BusinessStructview {
         }
     }
     
+    var mainSignSection: some View {
+        NavigationLink {
+            AnnualSignView(sign: annualSigns[shownSign]!)
+        } label: {
+            Image("\(shownSign)Circle")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50, height: 50)
+                .shadow(radius: 5)
+        }
+    }
+    
     var signPicker: some View {
         Picker("asdf", selection: $shownSign) {
             ForEach(AnnualEnum.allCases, id: \.self) { item in
@@ -123,19 +133,6 @@ extension BusinessStructview {
                 .padding(.bottom)
             Text(shownStruct.text)
                 .foregroundColor(.secondary)
-        }
-    }
-    
-    var signsSection: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            ForEach(BusinessEnum.allCases, id: \.self) { item in
-                NavigationLink {
-                    BusinessView(business: businessSigns[item]!, sign: nil)
-                } label: {
-                    Text(businessSigns[item]!.type.rawValue)
-                        .font(.title3)
-                }
-            }
         }
     }
     
