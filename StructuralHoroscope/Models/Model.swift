@@ -129,7 +129,7 @@ struct AgeStruct: Identifiable, Codable, Equatable, Hashable {
     let sign: AgeEnum
     let title: String
     let ageTitle: String
-    let ageСommandments: [String]
+    let ageСommandments: String
     let text: String
 }
 
@@ -278,17 +278,17 @@ enum MarriageEnum: String, Codable, CaseIterable, Hashable {
 }
 
 enum AgeEnum: String, Codable, CaseIterable, Hashable {
-    case newborn = "Новорожденного 0-1"
-    case baby = "Младенеца 1-3"
-    case preschooler = "Дошкольника 3-7"
-    case juniorSchoolStudent = "Школьника 7-12"
+    case newborn = "Новорожденного 0"
+    case baby = "Младенеца 1-2"
+    case preschooler = "Дошкольника 3-6"
+    case juniorSchoolStudent = "Школьника 7-11"
     case teenager = "Подростка 12-17"
-    case youth = "Студента 17-24"
-    case intellectual = "Интелектуала 24-31"
-    case trailblazer = "Новатора 31-42"
-    case success = "Успешности 42-55"
+    case youth = "Студента 17-23"
+    case intellectual = "Интелектуала 24-30"
+    case trailblazer = "Новатора 31-41"
+    case success = "Успешности 42-54"
     case teacher = "Учителя 55-70"
-    case triumphant = "Триумфатора 70-85"
+    case triumphant = "Триумфатора 70-84"
     case outgoing = "Уходящего 85 - ∞"
 }
 

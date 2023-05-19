@@ -37,10 +37,8 @@ struct AgeView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     Text(age.ageTitle)
                         .font(.headline)
-                    ForEach(age.ageСommandments, id: \.self) { text in
-                        Text(text)
-                            .foregroundColor(.secondary)
-                    }
+                    Text(age.ageСommandments)
+                        .foregroundColor(.secondary)
                 }
             }
         }
