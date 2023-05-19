@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ClientStruct: Identifiable, Codable, Equatable {
+struct ClientStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     var name: String
     var birthday: Date
@@ -20,14 +20,14 @@ struct ClientStruct: Identifiable, Codable, Equatable {
     }
 }
 
-struct VirtualSignStruct: Identifiable, Codable, Equatable {
+struct VirtualSignStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     let virtualSign: VirtualEnum
     let emoji: VirtualEmojiEnum
     let blocks: [String:String]
 }
 
-struct SignStruct: Identifiable, Codable, Equatable {
+struct SignStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     let annualSign: AnnualEnum
     let emoji: AnnualEmojiEnum
@@ -54,7 +54,7 @@ struct SignStruct: Identifiable, Codable, Equatable {
     let years: [Int]
 }
 
-struct ZodiacStruct: Identifiable, Codable, Equatable {
+struct ZodiacStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     let sign: ZodiacEnum
     let days: [Int: ClosedRange<Int>]
@@ -100,7 +100,7 @@ struct FateStruct: Identifiable, Codable, Equatable, Hashable {
     let text: String
 }
 
-struct BusinessStruct: Identifiable, Codable, Equatable {
+struct BusinessStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     let type: BusinessEnum
     let value: String
@@ -108,7 +108,7 @@ struct BusinessStruct: Identifiable, Codable, Equatable {
     let signs: [AnnualEnum: [SignStruct]]
 }
 
-struct MarriageStruct: Identifiable, Codable, Equatable {
+struct MarriageStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     let type: MarriageEnum
     let title: String
@@ -124,7 +124,7 @@ struct SensualityStruct: Identifiable, Codable, Equatable, Hashable {
     let text: String
 }
 
-struct AgeStruct: Identifiable, Codable, Equatable {
+struct AgeStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     let sign: AgeEnum
     let title: String
@@ -140,7 +140,7 @@ struct ElementStruct: Identifiable, Codable, Equatable, Hashable {
     let text: String
 }
 
-struct DayStruct: Identifiable, Codable {
+struct DayStruct: Identifiable, Codable, Hashable {
     var id = UUID()
     let date: Date
     let signs: DayTypes
@@ -157,7 +157,7 @@ struct DayStruct: Identifiable, Codable {
     }
 }
 
-struct DayTypes: Identifiable, Codable {
+struct DayTypes: Identifiable, Codable, Hashable {
     var id = UUID()
     let signs: [AnnualEnum: DayType]
 }
@@ -169,7 +169,7 @@ enum Tab {
     case settings
 }
         
-enum DayType: String, Codable, CaseIterable {
+enum DayType: String, Codable, CaseIterable, Hashable {
     case blue = "Синий"
     case red = "Красный"
     case yellow = "Желтый"
@@ -188,14 +188,14 @@ enum ElementEnum: String, Codable, CaseIterable, Hashable {
     case earth = "Землепашцы (Земля)"
 }
 
-enum SensualityEnum: String, Codable, CaseIterable {
+enum SensualityEnum: String, Codable, CaseIterable, Hashable {
     case coach = "Тренеры (Садо)"
     case athlete = "Спортсмены (Мазо)"
     case altruist = "Альтруисты (Повара)"
     case sybarite = "Сибариты (Гурманы)"
 }
 
-enum AnnualEnum: String, Codable, CaseIterable {
+enum AnnualEnum: String, Codable, CaseIterable, Hashable {
     case snake = "Змея"
     case horse = "Лошадь"
     case goat = "Коза"
@@ -210,7 +210,7 @@ enum AnnualEnum: String, Codable, CaseIterable {
     case dragon = "Дракон"
 }
 
-enum ZodiacEnum: String, Codable, CaseIterable {
+enum ZodiacEnum: String, Codable, CaseIterable, Hashable {
     case aries = "Овен"
     case taurus = "Телец"
     case gemini = "Близнецы"
@@ -225,7 +225,7 @@ enum ZodiacEnum: String, Codable, CaseIterable {
     case pisces = "Рыбы"
 }
 
-enum VirtualEnum: String, CaseIterable, Codable {
+enum VirtualEnum: String, CaseIterable, Codable, Hashable {
     case king = "Король"
     case vector = "Вектор"
     case jester = "Шут"
@@ -235,7 +235,7 @@ enum VirtualEnum: String, CaseIterable, Codable {
     case leader = "Вождь"
 }
 
-enum VirtualEmojiEnum: String, CaseIterable, Codable {
+enum VirtualEmojiEnum: String, CaseIterable, Codable, Hashable {
     case king = "👑"
     case vector = "↔️"
     case jester = "🤡"
@@ -245,7 +245,7 @@ enum VirtualEmojiEnum: String, CaseIterable, Codable {
     case leader = "🗽"
 }
 
-enum AnnualEmojiEnum: String, CaseIterable, Codable {
+enum AnnualEmojiEnum: String, CaseIterable, Codable, Hashable {
     case rat = "🐀"
     case bull = "🐂"
     case tiger = "🐅"
@@ -260,7 +260,7 @@ enum AnnualEmojiEnum: String, CaseIterable, Codable {
     case boar = "🐗"
 }
 
-enum BusinessEnum: String, Codable, CaseIterable {
+enum BusinessEnum: String, Codable, CaseIterable, Hashable {
     case vectorHost = "Векторный хозяин"
     case vectorServant = "Векторный слуга"
     case clone = "Клон"
@@ -269,7 +269,7 @@ enum BusinessEnum: String, Codable, CaseIterable {
     case adviser = "Советник"
 }
 
-enum MarriageEnum: String, Codable, CaseIterable {
+enum MarriageEnum: String, Codable, CaseIterable, Hashable {
     case vector = "Векторный"
     case romantic = "Романтический"
     case patriarchal = "Патриархальный"
@@ -277,7 +277,7 @@ enum MarriageEnum: String, Codable, CaseIterable {
     case spiritual = "Духовный"
 }
 
-enum AgeEnum: String, Codable, CaseIterable {
+enum AgeEnum: String, Codable, CaseIterable, Hashable {
     case newborn = "Новорожденного 0-1"
     case baby = "Младенеца 1-3"
     case preschooler = "Дошкольника 3-7"
@@ -292,7 +292,7 @@ enum AgeEnum: String, Codable, CaseIterable {
     case outgoing = "Уходящего 85 - ∞"
 }
 
-enum IdeologicalEnum: String, Codable, CaseIterable {
+enum IdeologicalEnum: String, Codable, CaseIterable, Hashable {
     case logicalMale = "Мужская логика"
     case logicalFemale = "Женская логика"
     case strongWilledMale = "Мужская воля"
@@ -303,39 +303,39 @@ enum IdeologicalEnum: String, Codable, CaseIterable {
     case realisticFemale = "Женский реализм"
 }
 
-enum SocialEnum: String, Codable, CaseIterable {
+enum SocialEnum: String, Codable, CaseIterable, Hashable {
     case closed = "Закрытый"
     case opened = "Открытый"
     case orthodox = "Ортодокс"
 }
 
-enum PsychologicalEnum: String, Codable, CaseIterable {
+enum PsychologicalEnum: String, Codable, CaseIterable, Hashable {
     case maturity = "Возмужания"
     case dreamer = "Взлетый"
     case sensitive = "Чувствительный"
     case grounded = "Приземленный"
 }
 
-enum EnergyEnum: String, Codable, CaseIterable {
+enum EnergyEnum: String, Codable, CaseIterable, Hashable {
     case dramatic = "Драматический"
     case sanguine = "Природный оптимист"
     case phlegmatic = "Космический оптимист"
     case melancholic = "Скептик"
 }
 
-enum FateEnum: String, Codable, CaseIterable {
+enum FateEnum: String, Codable, CaseIterable, Hashable {
     case fatalist = "Фаталист"
     case lucky = "Везунчик"
     case doItYourself = "Самодельщик"
     case pioneer = "Пионер"
 }
 
-enum Sex: String, Codable, CaseIterable {
+enum Sex: String, Codable, CaseIterable, Hashable {
     case male = "мужчины"
     case female = "женщины"
 }
 
-enum ThemeEnum: String, CaseIterable {
+enum ThemeEnum: String, CaseIterable, Hashable {
     case light = "Всегда светлая"
     case dark = "Всегда тёмная"
     case settings = "Настройки телефона"

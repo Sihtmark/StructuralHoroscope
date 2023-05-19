@@ -9,6 +9,8 @@ import Foundation
 
 let businessSigns: [BusinessEnum:BusinessStruct] = [.vectorHost: vectorHost, .vectorServant: vectorServant, .clone: clone, .companion: companion, .subordinate: subordinate, .adviser: adviser]
 
+let businessArray = [vectorHost, vectorServant, clone, companion, subordinate, adviser]
+
 let vectorHost = BusinessStruct(
     type: .vectorHost,
     value: "Активный риск",
