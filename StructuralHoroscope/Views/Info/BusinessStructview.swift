@@ -16,7 +16,10 @@ struct BusinessStructview: View {
     
     var body: some View {
         ScrollView {
-            signPicker
+            HStack(spacing: -5) {
+                Text("Начальник:")
+                signPicker
+            }
             structPicker
             signSection
             textSection

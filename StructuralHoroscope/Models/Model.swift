@@ -263,10 +263,10 @@ enum AnnualEmojiEnum: String, CaseIterable, Codable, Hashable {
 enum BusinessEnum: String, Codable, CaseIterable, Hashable {
     case vectorHost = "Векторный хозяин"
     case vectorServant = "Векторный слуга"
-    case clone = "Клон"
-    case companion = "Соратник"
-    case subordinate = "Подчиненный"
-    case adviser = "Советник"
+    case clone = "Клоны"
+    case companion = "Соратники"
+    case subordinate = "Подчиненные"
+    case adviser = "Советники"
 }
 
 enum MarriageEnum: String, Codable, CaseIterable, Hashable {
