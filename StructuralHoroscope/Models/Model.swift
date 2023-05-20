@@ -335,12 +335,6 @@ enum Sex: String, Codable, CaseIterable, Hashable {
     case female = "женщины"
 }
 
-enum ThemeEnum: String, CaseIterable, Hashable {
-    case light = "Всегда светлая"
-    case dark = "Всегда тёмная"
-    case settings = "Настройки телефона"
-}
-
 let sampleClient = ClientStruct(
     name: "Зинаида",
     birthday: Date(),
