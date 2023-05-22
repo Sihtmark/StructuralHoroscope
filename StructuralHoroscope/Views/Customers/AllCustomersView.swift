@@ -36,6 +36,11 @@ struct AllCustomersView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Event") {
+                        vm.addAllEventsToCalendar()
+                    }
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         isDarkMode.toggle()

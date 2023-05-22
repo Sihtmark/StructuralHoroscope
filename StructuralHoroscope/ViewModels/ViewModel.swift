@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import EventKit
+import EventKitUI
 
 class ViewModel: ObservableObject {
     
-    @Published var events = [DayStruct]()
     @Published var changedEvent: DayStruct?
     @Published var movedEvent: DayStruct?
     
@@ -46,8 +47,8 @@ class ViewModel: ObservableObject {
     
     func startingDate(day: Int) -> Date {
         var dateComponents = DateComponents()
-        dateComponents.year = 2020
-        dateComponents.month = 1
+        dateComponents.year = 2023
+        dateComponents.month = 5
         dateComponents.day = day
         let calendar = Calendar(identifier: .gregorian)
         return calendar.date(from: dateComponents)!
@@ -403,4 +404,89 @@ class ViewModel: ObservableObject {
             return .newborn
         }
     }
+    
+    func eventDescription(dayType: DayTypes) -> String {
+        return dayType.signs.map{"\(annualSigns[$0.key]!.emoji.rawValue) \($0.key.rawValue): \($0.value.rawValue)"}.joined(separator: "\n")
+    }
+    
+    func addAllEventsToCalendar() {
+        let endDate = Date().adding(.year, value: 50)
+        addEventToCalendar(title: firstDay.signs[mainUser.annualSignStruct.annualSign]!.rawValue, description: eventDescription(dayType: firstDay), startDate: startingDate(day: 9), endDate: endDate)
+        addEventToCalendar(title: secondDay.signs[mainUser.annualSignStruct.annualSign]!.rawValue, description: eventDescription(dayType: secondDay), startDate: startingDate(day: 10), endDate: endDate)
+        addEventToCalendar(title: thirdDay.signs[mainUser.annualSignStruct.annualSign]!.rawValue, description: eventDescription(dayType: thirdDay), startDate: startingDate(day: 11), endDate: endDate)
+        addEventToCalendar(title: fourthDay.signs[mainUser.annualSignStruct.annualSign]!.rawValue, description: eventDescription(dayType: fourthDay), startDate: startingDate(day: 12), endDate: endDate)
+        addEventToCalendar(title: fifthDay.signs[mainUser.annualSignStruct.annualSign]!.rawValue, description: eventDescription(dayType: fifthDay), startDate: startingDate(day: 13), endDate: endDate)
+        addEventToCalendar(title: sixthDay.signs[mainUser.annualSignStruct.annualSign]!.rawValue, description: eventDescription(dayType: sixthDay), startDate: startingDate(day: 14), endDate: endDate)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.addEventToCalendar(title: seventhDay.signs[self.mainUser.annualSignStruct.annualSign]!.rawValue, description: self.eventDescription(dayType: seventhDay), startDate: self.startingDate(day: 15), endDate: endDate)
+            self.addEventToCalendar(title: eighthDay.signs[self.mainUser.annualSignStruct.annualSign]!.rawValue, description: self.eventDescription(dayType: eighthDay), startDate: self.startingDate(day: 16), endDate: endDate)
+            self.addEventToCalendar(title: ninthDay.signs[self.mainUser.annualSignStruct.annualSign]!.rawValue, description: self.eventDescription(dayType: ninthDay), startDate: self.startingDate(day: 17), endDate: endDate)
+            self.addEventToCalendar(title: tenthDay.signs[self.mainUser.annualSignStruct.annualSign]!.rawValue, description: self.eventDescription(dayType: tenthDay), startDate: self.startingDate(day: 18), endDate: endDate)
+            self.addEventToCalendar(title: eleventhDay.signs[self.mainUser.annualSignStruct.annualSign]!.rawValue, description: self.eventDescription(dayType: eleventhDay), startDate: self.startingDate(day: 19), endDate: endDate)
+            self.addEventToCalendar(title: twelveDay.signs[self.mainUser.annualSignStruct.annualSign]!.rawValue, description: self.eventDescription(dayType: twelveDay), startDate: self.startingDate(day: 20), endDate: endDate)
+        }
+        
+    }
+    
+    func addEventToCalendar(title: String, description: String?, startDate: Date, endDate: Date, completion: ((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
+        let eventStore = EKEventStore()
+        
+        eventStore.requestAccess(to: .event, completion: { (granted, error) in
+            if (granted) && (error == nil) {
+                let event = EKEvent(eventStore: eventStore)
+                event.title = title
+                event.startDate = startDate
+                event.endDate = startDate
+                event.isAllDay = true
+                event.notes = description
+                
+                event.calendar = eventStore.defaultCalendarForNewEvents
+                
+                let recurrenceRule = EKRecurrenceRule.init(
+                    recurrenceWith: .daily,
+                    interval: 12,
+                    daysOfTheWeek: [EKRecurrenceDayOfWeek.init(EKWeekday.monday), EKRecurrenceDayOfWeek.init(EKWeekday.tuesday), EKRecurrenceDayOfWeek.init(EKWeekday.wednesday), EKRecurrenceDayOfWeek.init(EKWeekday.thursday), EKRecurrenceDayOfWeek.init(EKWeekday.friday), EKRecurrenceDayOfWeek.init(EKWeekday.saturday), EKRecurrenceDayOfWeek.init(EKWeekday.sunday)],
+                    daysOfTheMonth: nil,
+                    monthsOfTheYear: nil,
+                    weeksOfTheYear: nil,
+                    daysOfTheYear: nil,
+                    setPositions: nil,
+                    end: EKRecurrenceEnd.init(end:endDate)
+                )
+                
+                event.recurrenceRules = [recurrenceRule]
+                do {
+                    try eventStore.save(event, span: .thisEvent)
+                } catch let e as NSError {
+                    completion?(false, e)
+                    return
+                }
+                completion?(true, nil)
+            } else {
+                completion?(false, error as NSError?)
+            }
+        })
+    }
+    
+//    private func createDate(date: String!, hours: Int!, minutes:Int! ) -> Date{
+//        var fullDateArr = date.components(separatedBy: "-")
+//
+//        let startMonth: Int? = Int(fullDateArr[0])!
+//        let startDay: Int? = Int(fullDateArr[1])!
+//        let startYear: Int = Int(fullDateArr[2])!
+//
+//
+//        var dateComponents = DateComponents()
+//        dateComponents.year = startYear
+//        dateComponents.month = startMonth
+//        dateComponents.day = startDay
+//        dateComponents.timeZone = TimeZone(abbreviation: "MDT") // ELP Standard Time
+//        dateComponents.hour = hours
+//        dateComponents.minute = minutes
+//
+//        let userCalendar = Calendar.current // user calendar
+//        let someDateTime = userCalendar.date(from: dateComponents)
+//
+//        return someDateTime!
+//    }
 }

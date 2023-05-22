@@ -32,9 +32,9 @@ extension Date {
 //        Calendar.current.date(byAdding: .day, value: numDays, to: self)!
 //    }
     
-    var startOfDay: Date {
-        Calendar.current.startOfDay(for: self)
-    }
+//    var startOfDay: Date {
+//        Calendar.current.startOfDay(for: self)
+//    }
 //    func noon(using calendar: Calendar = .current) -> Date {
 //        calendar.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
 //    }
