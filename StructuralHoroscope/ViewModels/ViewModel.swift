@@ -417,7 +417,7 @@ class ViewModel: ObservableObject {
         addEventToCalendar(title: fourthDay.signs[mainUser.annualSignStruct.annualSign]!.rawValue, description: eventDescription(dayType: fourthDay), startDate: startingDate(day: 12), endDate: endDate)
         addEventToCalendar(title: fifthDay.signs[mainUser.annualSignStruct.annualSign]!.rawValue, description: eventDescription(dayType: fifthDay), startDate: startingDate(day: 13), endDate: endDate)
         addEventToCalendar(title: sixthDay.signs[mainUser.annualSignStruct.annualSign]!.rawValue, description: eventDescription(dayType: sixthDay), startDate: startingDate(day: 14), endDate: endDate)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.addEventToCalendar(title: seventhDay.signs[self.mainUser.annualSignStruct.annualSign]!.rawValue, description: self.eventDescription(dayType: seventhDay), startDate: self.startingDate(day: 15), endDate: endDate)
             self.addEventToCalendar(title: eighthDay.signs[self.mainUser.annualSignStruct.annualSign]!.rawValue, description: self.eventDescription(dayType: eighthDay), startDate: self.startingDate(day: 16), endDate: endDate)
             self.addEventToCalendar(title: ninthDay.signs[self.mainUser.annualSignStruct.annualSign]!.rawValue, description: self.eventDescription(dayType: ninthDay), startDate: self.startingDate(day: 17), endDate: endDate)
