@@ -32,7 +32,6 @@ class ViewModel: ObservableObject {
     init() {
         fetchMainUser()
         fetchCustomers()
-        asdf()
     }
     
     func fetchMainUser() {
@@ -52,21 +51,6 @@ class ViewModel: ObservableObject {
         dateComponents.day = day
         let calendar = Calendar(identifier: .gregorian)
         return calendar.date(from: dateComponents)!
-    }
-    
-    func asdf() {
-        var dayCount = 1
-        var date = startingDate(day: dayCount)
-        let endDate = Date().adding(.year, value: 12)
-        for i in days {
-            repeat {
-                date = date.addDate()
-                events.append(DayStruct(date: date, signs: i))
-            } while date <= endDate
-            dayCount += 1
-            date = startingDate(day: dayCount)
-        }
-        
     }
     
     func saveMainUser() {
@@ -405,25 +389,25 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func eventDescription(dayType: DayTypes) -> String {
-        return dayType.signs.map{"\(annualSigns[$0.key]!.emoji.rawValue) \($0.key.rawValue): \($0.value.rawValue)"}.joined(separator: "\n")
+    func eventDescription(dayType: [AnnualEnum: DayType]) -> String {
+        return dayType.map{"\(annualSigns[$0.key]!.emoji.rawValue) \($0.key.rawValue): \($0.value.emoji) \($0.value.title)"}.joined(separator: "\n")
     }
     
     func addAllEventsToCalendar() {
         let endDate = Date().adding(.year, value: 50)
-        addEventToCalendar(title: firstDay.signs[mainUser.annualSignStruct.annualSign]!.rawValue, description: eventDescription(dayType: firstDay), startDate: startingDate(day: 9), endDate: endDate)
-        addEventToCalendar(title: secondDay.signs[mainUser.annualSignStruct.annualSign]!.rawValue, description: eventDescription(dayType: secondDay), startDate: startingDate(day: 10), endDate: endDate)
-        addEventToCalendar(title: thirdDay.signs[mainUser.annualSignStruct.annualSign]!.rawValue, description: eventDescription(dayType: thirdDay), startDate: startingDate(day: 11), endDate: endDate)
-        addEventToCalendar(title: fourthDay.signs[mainUser.annualSignStruct.annualSign]!.rawValue, description: eventDescription(dayType: fourthDay), startDate: startingDate(day: 12), endDate: endDate)
-        addEventToCalendar(title: fifthDay.signs[mainUser.annualSignStruct.annualSign]!.rawValue, description: eventDescription(dayType: fifthDay), startDate: startingDate(day: 13), endDate: endDate)
-        addEventToCalendar(title: sixthDay.signs[mainUser.annualSignStruct.annualSign]!.rawValue, description: eventDescription(dayType: sixthDay), startDate: startingDate(day: 14), endDate: endDate)
+        addEventToCalendar(title: "\(firstDay[mainUser.annualSignStruct.annualSign]!.emoji) \(firstDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: firstDay), startDate: startingDate(day: 9), endDate: endDate)
+        addEventToCalendar(title: "\(secondDay[mainUser.annualSignStruct.annualSign]!.emoji) \(secondDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: secondDay), startDate: startingDate(day: 10), endDate: endDate)
+        addEventToCalendar(title: "\(thirdDay[mainUser.annualSignStruct.annualSign]!.emoji) \(thirdDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: thirdDay), startDate: startingDate(day: 11), endDate: endDate)
+        addEventToCalendar(title: "\(fourthDay[mainUser.annualSignStruct.annualSign]!.emoji) \(fourthDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: fourthDay), startDate: startingDate(day: 12), endDate: endDate)
+        addEventToCalendar(title: "\(fifthDay[mainUser.annualSignStruct.annualSign]!.emoji) \(fifthDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: fifthDay), startDate: startingDate(day: 13), endDate: endDate)
+        addEventToCalendar(title: "\(sixthDay[mainUser.annualSignStruct.annualSign]!.emoji) \(sixthDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: sixthDay), startDate: startingDate(day: 14), endDate: endDate)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.addEventToCalendar(title: seventhDay.signs[self.mainUser.annualSignStruct.annualSign]!.rawValue, description: self.eventDescription(dayType: seventhDay), startDate: self.startingDate(day: 15), endDate: endDate)
-            self.addEventToCalendar(title: eighthDay.signs[self.mainUser.annualSignStruct.annualSign]!.rawValue, description: self.eventDescription(dayType: eighthDay), startDate: self.startingDate(day: 16), endDate: endDate)
-            self.addEventToCalendar(title: ninthDay.signs[self.mainUser.annualSignStruct.annualSign]!.rawValue, description: self.eventDescription(dayType: ninthDay), startDate: self.startingDate(day: 17), endDate: endDate)
-            self.addEventToCalendar(title: tenthDay.signs[self.mainUser.annualSignStruct.annualSign]!.rawValue, description: self.eventDescription(dayType: tenthDay), startDate: self.startingDate(day: 18), endDate: endDate)
-            self.addEventToCalendar(title: eleventhDay.signs[self.mainUser.annualSignStruct.annualSign]!.rawValue, description: self.eventDescription(dayType: eleventhDay), startDate: self.startingDate(day: 19), endDate: endDate)
-            self.addEventToCalendar(title: twelveDay.signs[self.mainUser.annualSignStruct.annualSign]!.rawValue, description: self.eventDescription(dayType: twelveDay), startDate: self.startingDate(day: 20), endDate: endDate)
+            self.addEventToCalendar(title: "\(seventhDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(seventhDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: seventhDay), startDate: self.startingDate(day: 15), endDate: endDate)
+            self.addEventToCalendar(title: "\(eighthDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(eighthDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: eighthDay), startDate: self.startingDate(day: 16), endDate: endDate)
+            self.addEventToCalendar(title: "\(ninthDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(ninthDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: ninthDay), startDate: self.startingDate(day: 17), endDate: endDate)
+            self.addEventToCalendar(title: "\(tenthDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(tenthDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: tenthDay), startDate: self.startingDate(day: 18), endDate: endDate)
+            self.addEventToCalendar(title: "\(eleventhDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(eleventhDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: eleventhDay), startDate: self.startingDate(day: 19), endDate: endDate)
+            self.addEventToCalendar(title: "\(twelveDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(twelveDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: twelveDay), startDate: self.startingDate(day: 20), endDate: endDate)
         }
         
     }
@@ -468,25 +452,66 @@ class ViewModel: ObservableObject {
         })
     }
     
-//    private func createDate(date: String!, hours: Int!, minutes:Int! ) -> Date{
-//        var fullDateArr = date.components(separatedBy: "-")
-//
-//        let startMonth: Int? = Int(fullDateArr[0])!
-//        let startDay: Int? = Int(fullDateArr[1])!
-//        let startYear: Int = Int(fullDateArr[2])!
-//
-//
-//        var dateComponents = DateComponents()
-//        dateComponents.year = startYear
-//        dateComponents.month = startMonth
-//        dateComponents.day = startDay
-//        dateComponents.timeZone = TimeZone(abbreviation: "MDT") // ELP Standard Time
-//        dateComponents.hour = hours
-//        dateComponents.minute = minutes
-//
-//        let userCalendar = Calendar.current // user calendar
-//        let someDateTime = userCalendar.date(from: dateComponents)
-//
-//        return someDateTime!
-//    }
+    func eventsByPickedDate(pickedDate: Date) -> [DayStruct] {
+        var dateComponents = DateComponents()
+        dateComponents.year = 2020
+        dateComponents.month = 1
+        dateComponents.day = 2
+        let calendar = Calendar(identifier: .gregorian)
+        var mainDay = calendar.date(from: dateComponents)!
+        let maxDay = Calendar.current.date(byAdding: .day, value: 3, to: pickedDate)!
+        let minusThree = Calendar.current.date(byAdding: .day, value: -4, to: pickedDate)!
+        let minDay = Calendar.current.date(byAdding: .day, value: -24, to: pickedDate)!
+        
+        
+        repeat {
+            mainDay = Calendar.current.date(byAdding: .day, value: 12, to: mainDay)!
+        } while mainDay < minDay
+        print(mainDay)
+        
+        var arr = [DayStruct]()
+        var count = -1
+        
+        for dayType in days {
+            arr.append(DayStruct(date: Calendar.current.date(byAdding: .day, value: count, to: mainDay)!, signs: dayType))
+            count += 1
+        }
+        for dayType in days {
+            arr.append(DayStruct(date: Calendar.current.date(byAdding: .day, value: count, to: mainDay)!, signs: dayType))
+            count += 1
+        }
+        for dayType in days {
+            arr.append(DayStruct(date: Calendar.current.date(byAdding: .day, value: count, to: mainDay)!, signs: dayType))
+            count += 1
+        }
+        
+        arr = arr.filter { event in
+            event.date <= maxDay && event.date >= minusThree
+        }
+        arr.sort { event1, event2 in
+            event1.date < event2.date
+        }
+        return arr
+    }
+    
+    func extractDate(date: Date, format: String) -> String {
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = format
+        
+        return formatter.string(from: date)
+    }
+    
+    func isToday(date: Date, pickedDate: Date) -> Bool {
+        
+        let calendar = Calendar.current
+        
+        return calendar.isDate(pickedDate, inSameDayAs: date)
+    }
+    
+    func getEventFromEvents(events: [DayStruct], day: Date) -> DayStruct? {
+        return events.filter { event in
+            event.date == day
+        }.first
+    }
 }

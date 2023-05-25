@@ -11,7 +11,6 @@ struct AllCustomersView: View {
     
     @AppStorage("isDarkMode") private var isDarkMode = false
     @EnvironmentObject private var vm: ViewModel
-    @State private var showAlert = false
     
     var body: some View {
         NavigationStack {
@@ -37,11 +36,6 @@ struct AllCustomersView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Sync") {
-                        showAlert.toggle()
-                    }
-                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         isDarkMode.toggle()
@@ -56,18 +50,6 @@ struct AllCustomersView: View {
                         Image(systemName: "plus")
                     }
                 }
-            }
-            .alert("Добавить гороскоп в ваш календарь?", isPresented: $showAlert) {
-                Button("Добавить") {
-                    vm.addAllEventsToCalendar()
-                    HapticManager.instance.notification(type: .success)
-                }
-                Button(role: .cancel) {
-                    HapticManager.instance.notification(type: .error)
-                } label: {
-                    Text("Отменить")
-                }
-
             }
         }
     }

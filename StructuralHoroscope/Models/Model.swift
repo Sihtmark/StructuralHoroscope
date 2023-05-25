@@ -143,7 +143,7 @@ struct ElementStruct: Identifiable, Codable, Equatable, Hashable {
 struct DayStruct: Identifiable, Codable, Hashable {
     var id = UUID()
     let date: Date
-    let signs: DayTypes
+    let signs: [AnnualEnum: DayType]
     
     var dateComponents: DateComponents {
         var dateComponents = Calendar.current.dateComponents(
@@ -157,28 +157,18 @@ struct DayStruct: Identifiable, Codable, Hashable {
     }
 }
 
-struct DayTypes: Identifiable, Codable, Hashable {
-    var id = UUID()
-    let signs: [AnnualEnum: DayType]
-}
-
 enum Tab {
     case home
     case info
     case calendar
     case settings
 }
-        
-enum DayType: String, Codable, CaseIterable, Hashable {
-    case blue = "Синий"
-    case red = "Красный"
-    case yellow = "Желтый"
-    case green = "Зеленый"
-    case orange = "Оранжевый"
-    case easier = "Легче"
-    case harder = "Труднее"
-    case rest = "Отдых"
-    case hangOut = "Потусуйтесь"
+
+struct DayType: Codable, Hashable, Identifiable {
+    var id = UUID()
+    let title: String
+    let emoji: String
+    let text: String?
 }
 
 enum ElementEnum: String, Codable, CaseIterable, Hashable {
