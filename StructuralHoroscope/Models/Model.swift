@@ -14,9 +14,10 @@ struct ClientStruct: Identifiable, Codable, Equatable, Hashable {
     var sex: Sex
     var annualSignStruct: SignStruct
     var zodiacSign: ZodiacEnum
+    var isFavorite: Bool
     
-    func updateInfo(name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum) -> ClientStruct {
-        return ClientStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: sign, zodiacSign: zodiacSign)
+    func updateInfo(name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum, isFavorite: Bool) -> ClientStruct {
+        return ClientStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: sign, zodiacSign: zodiacSign, isFavorite: isFavorite)
     }
 }
 
@@ -330,4 +331,6 @@ let sampleClient = ClientStruct(
     birthday: Date(),
     sex: .male,
     annualSignStruct: tigerSign,
-    zodiacSign: .cancer)
+    zodiacSign: .cancer,
+    isFavorite: false
+)

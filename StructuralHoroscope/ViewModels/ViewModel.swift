@@ -69,7 +69,8 @@ class ViewModel: ObservableObject {
             birthday: birthday,
             sex: sex,
             annualSignStruct: sign,
-            zodiacSign: sampleClient.zodiacSign
+            zodiacSign: sampleClient.zodiacSign,
+            isFavorite: false
         )
         mainUser = newMainUser
     }
@@ -80,7 +81,8 @@ class ViewModel: ObservableObject {
             birthday: birthday,
             sex: sex,
             annualSignStruct: sign,
-            zodiacSign: zodiacSign
+            zodiacSign: zodiacSign,
+            isFavorite: false
         )
         customers.append(newCustomer)
     }
@@ -89,13 +91,13 @@ class ViewModel: ObservableObject {
         if mainUser == sampleClient {
             createMainUser(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign)
         } else {
-            mainUser = mainUser.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign)
+            mainUser = mainUser.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign, isFavorite: false)
         }
     }
     
     func updateCustomer(client: ClientStruct, name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum) {
         if let index = customers.firstIndex(where: {$0.id == client.id}) {
-            customers[index] = client.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign)
+            customers[index] = client.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign, isFavorite: false)
             saveItems()
         }
         fetchCustomers()
