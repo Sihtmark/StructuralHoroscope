@@ -11,15 +11,12 @@ import EventKitUI
 
 class ViewModel: ObservableObject {
     
-    @Published var changedEvent: DayStruct?
-    @Published var movedEvent: DayStruct?
-    
+    @Published var actualDayType: DayStruct?
     @Published var mainUser: ClientStruct = sampleClient {
         didSet {
             saveMainUser()
         }
     }
-    
     @Published var customers = [ClientStruct]() {
         didSet {
             saveItems()
@@ -32,6 +29,7 @@ class ViewModel: ObservableObject {
     init() {
         fetchMainUser()
         fetchCustomers()
+        getActualDayType()
     }
     
     func fetchMainUser() {
@@ -389,6 +387,23 @@ class ViewModel: ObservableObject {
         }
     }
     
+    func returnBusinessSing(sign: BusinessEnum) -> String {
+        switch sign {
+        case .vectorHost:
+            return "Векторный хозяин"
+        case .vectorServant:
+            return "Векторный слуга"
+        case .clone:
+            return "Клон"
+        case .companion:
+            return "Соратник"
+        case .subordinate:
+            return "Подчиненный"
+        case .adviser:
+            return "Советник"
+        }
+    }
+    
     func eventDescription(dayType: [AnnualEnum: DayType]) -> String {
         return dayType.map{"\(annualSigns[$0.key]!.emoji.rawValue) \($0.key.rawValue): \($0.value.emoji) \($0.value.title)"}.joined(separator: "\n")
     }
@@ -452,6 +467,11 @@ class ViewModel: ObservableObject {
         })
     }
     
+    func getActualDayType() {
+        let arr = eventsByPickedDate(pickedDate: Date())
+        actualDayType = arr[3]
+    }
+    
     func eventsByPickedDate(pickedDate: Date) -> [DayStruct] {
         var dateComponents = DateComponents()
         dateComponents.year = 2020
@@ -467,7 +487,6 @@ class ViewModel: ObservableObject {
         repeat {
             mainDay = Calendar.current.date(byAdding: .day, value: 12, to: mainDay)!
         } while mainDay < minDay
-        print(mainDay)
         
         var arr = [DayStruct]()
         var count = -1

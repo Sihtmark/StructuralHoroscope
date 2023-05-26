@@ -28,6 +28,9 @@ struct MainCustomerCellView: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            if let actualDayType = vm.actualDayType {
+                Text(actualDayType.signs[vm.mainUser.annualSignStruct.annualSign]!.emoji)
+            }
         }
     }
 }

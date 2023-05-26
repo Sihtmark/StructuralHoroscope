@@ -27,11 +27,14 @@ struct CustomerCellView: View {
                         .font(.footnote)
                         .foregroundColor(.secondary)
                 }
-                Text("Ваш \(vm.ourBusinessRelationship(customer: customer).rawValue.lowercased())")
+                Text(vm.returnBusinessSing(sign: vm.ourBusinessRelationship(customer: customer)))
                     .font(.footnote)
                     .foregroundColor(.secondary)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            if let actualDayType = vm.actualDayType {
+                Text(actualDayType.signs[customer.annualSignStruct.annualSign]!.emoji)
+            }
         }
     }
 }

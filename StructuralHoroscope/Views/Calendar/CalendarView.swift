@@ -42,6 +42,13 @@ struct CalendarView: View {
                         Image(systemName: "arrow.triangle.2.circlepath.circle")
                     }
                 }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        InfoCalendarView()
+                    } label: {
+                        Image(systemName: "info.circle")
+                    }
+                }
             }
             .alert("Добавить гороскоп в ваш календарь?", isPresented: $showAlert) {
                 Button("Добавить") {
