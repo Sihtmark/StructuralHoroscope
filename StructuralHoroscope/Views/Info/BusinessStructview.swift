@@ -44,6 +44,12 @@ struct BusinessStructview_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             BusinessStructview()
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(ViewModel())
+        NavigationStack {
+            BusinessStructview()
+                .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }
@@ -132,7 +138,7 @@ extension BusinessStructview {
                 .multilineTextAlignment(.center)
                 .padding(.bottom)
             Text(shownStruct.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
         }
     }
     
@@ -153,7 +159,7 @@ extension BusinessStructview {
                     .bold()
                     .padding(.bottom)
                 Text("Актуальность точного формирования коллектива необычайно выросла. Цена ошибки - слабая администрация, провалы в бизнесе. А потому так важно ознакомиться с принципами формирования коллектива.\n\nОбыкновенно работоспособный коллектив создается методом проб и ошибок. Однако такой метод слишком долог и не дает никаких гарантий от случайных и роковых ошибок. А все потому, что жизнь без теории - это гуляние по лесу в полной тьме, дойти-то дойдешь, но шишек много набьешь... Если же к напряженной интуиции добавить хорошую, работающую теорию, то все будет и проще, и надежнее.\n\nТеория проста. Пирамида коллектива выстраивается на одного человека. Он начальник, он глава, все энергетические потоки, все координаты коллектива во времени выстраиваются на него одного. Далее выделяются пять позиций: Вектор, Клон, Соратник, Подчиненный, Советник.")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.theme.secondaryText)
                 Spacer()
             }
         }

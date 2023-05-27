@@ -40,6 +40,12 @@ struct SocialStructView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             SocialStructView()
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(ViewModel())
+        NavigationStack {
+            SocialStructView()
+                .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }
@@ -80,7 +86,7 @@ extension SocialStructView {
                 .multilineTextAlignment(.center)
                 .padding(.bottom)
             Text(shownStruct.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
         }
     }
     
@@ -101,7 +107,7 @@ extension SocialStructView {
                     .bold()
                     .padding(.bottom)
                 Text("Социальная структура объясняет как взаимодействует человек с пространством (сжимается, растекается или желает сохранить сферу обитания стабильной). И второе: как относиться к обществу, быть выше его, подчиняться его запросам, либо быть с ним заодно.\n\nОбщение человека или говоря по-научному социальная и пространственная ориентация, отсылают нас к то ли к социологии, то ли к юнговской соционической доктрине, которые чрезвычайно переоценивают момент общения. На самом же деле социальная ориентация не имеет слишком ярких внешних проявлений, действует в ограниченном спектре творческих занятий. Кроме того, социальность знаков разная на Востоке, на Западе и в государствах с имперским ритмом. Но при всех этих оговорках общение важнее психологии, что само по себе уже не мало.\n\nКлассические наименования введены Юнгом и хорошо известны: интроверт и экстраверт. Однако Юнг прозевал третий вариант - ортодокс. Интроверты, - закрытые знаки, экстраверты - открытые. Ортодоксы - те, кто охраняют ограниченную территорию, стабильность своего положения.")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.theme.secondaryText)
             }
         }
         .padding()

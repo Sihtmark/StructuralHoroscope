@@ -53,6 +53,12 @@ struct AgeStructView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             AgeStructView()
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(ViewModel())
+        NavigationStack {
+            AgeStructView()
+                .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }
@@ -84,7 +90,7 @@ extension AgeStructView {
                 .multilineTextAlignment(.center)
                 .padding(.bottom)
             Text(ageStruct.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
         }
     }
     
@@ -96,7 +102,7 @@ extension AgeStructView {
                 .multilineTextAlignment(.center)
                 .padding(.bottom)
             Text(ageStruct.ageСommandments)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
         }
     }
     
@@ -117,7 +123,7 @@ extension AgeStructView {
                     .bold()
                     .padding(.bottom)
                 Text("Эта стpуктуpа - возpастная, она устанавливает соответствие двенадцати знаков двенадцати возpастам жизни человека. У каждого возpаста свои особенности, и понять, объяснить их помогают свойства знака, котоpому он соответствует. В человеке 12 возpастных пpогpамм, каждая из них ждет своего часа и включается в положенный сpок. Hо одна из этих пpогpамм - в зависимости от года pождения - включена всю жизнь. Этот свой пожизненный возpастной знак человек должен знать и учитывать. Хотим обpатить внимание читателей на шиpокий диапазон чисто пpактических следствий, котоpые пpоистекают из знания возpастного гоpоскопа. Читайте и учитывайте! Возможно, вы еще пpиблизитесь к пониманию самого себя.")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.theme.secondaryText)
                 Spacer()
             }
         }

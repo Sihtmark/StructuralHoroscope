@@ -28,6 +28,12 @@ struct AnnualSignsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             AnnualSignsView()
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(ViewModel())
+        NavigationStack {
+            AnnualSignsView()
+                .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }

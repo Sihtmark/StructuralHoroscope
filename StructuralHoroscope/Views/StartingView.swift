@@ -28,6 +28,7 @@ struct StartingView: View {
                     Text("Женский").tag(Sex.female)
                 } label: {
                     Text("Пол")
+                        .foregroundColor(.theme.accent)
                 }
                 .pickerStyle(.segmented)
             }
@@ -36,7 +37,7 @@ struct StartingView: View {
                 MainTabView()
             } label: {
                 Text("Сохранить")
-                    .foregroundColor(.blue)
+                    .foregroundColor(.theme.accent)
             }
             .onTapGesture {
                 vm.updateMainUser(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!)

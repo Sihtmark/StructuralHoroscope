@@ -70,6 +70,12 @@ struct NewCalendarView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             CalendarView()
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(ViewModel())
+        NavigationStack {
+            CalendarView()
+                .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }
@@ -100,14 +106,13 @@ extension CalendarView {
                     Text(event.signs[vm.mainUser.annualSignStruct.annualSign]!.emoji)
                         .font(.caption)
                 }
-                .foregroundStyle(vm.isToday(date: event.date, pickedDate: day) ? .primary : .secondary)
-                .foregroundColor(vm.isToday(date: event.date, pickedDate: day) ? .white : .black)
+                .foregroundColor(vm.isToday(date: event.date, pickedDate: day) ? .white : .theme.secondaryText)
                 .frame(width: 45, height: 90)
                 .background(
                     ZStack {
                         if vm.isToday(date: event.date, pickedDate: day) {
                             Capsule()
-                                .fill(.black)
+                                .fill(Color.theme.accent)
                         }
                         
                     }

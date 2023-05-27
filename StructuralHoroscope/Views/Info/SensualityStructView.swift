@@ -27,6 +27,12 @@ struct SensualityStructView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             SensualityStructView()
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(ViewModel())
+        NavigationStack {
+            SensualityStructView()
+                .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }
@@ -53,6 +59,7 @@ extension SensualityStructView {
                             .shadow(radius: 5)
                         Text(item.rawValue)
                             .font(.caption)
+                            .foregroundColor(.theme.accent)
                     }
                     .padding(10)
                 }
@@ -63,7 +70,7 @@ extension SensualityStructView {
                 .multilineTextAlignment(.center)
                 .padding(.bottom)
             Text(shownStruct.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
         }
     }
 }

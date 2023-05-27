@@ -22,14 +22,17 @@ struct CustomerCellView: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text(customer.name)
                     .bold()
+                    .foregroundColor(.theme.accent)
                 HStack {
                     Text("\(customer.annualSignStruct.annualSign.rawValue), \(customer.zodiacSign.rawValue.lowercased()), \(customer.annualSignStruct.virtualSigns[customer.zodiacSign]!.virtualSign.rawValue.lowercased())")
                         .font(.footnote)
-                        .foregroundColor(.secondary)
+                        .bold()
+                        .foregroundColor(.theme.secondaryText)
                 }
                 Text(vm.returnBusinessSing(sign: vm.ourBusinessRelationship(customer: customer)))
                     .font(.footnote)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.theme.green)
+                    .bold()
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             if let actualDayType = vm.actualDayType {
@@ -43,5 +46,9 @@ struct CustomerCellView_Previews: PreviewProvider {
     static var previews: some View {
         CustomerCellView(customer: sampleClient)
             .environmentObject(ViewModel())
+            .preferredColorScheme(.dark)
+        CustomerCellView(customer: sampleClient)
+            .environmentObject(ViewModel())
+            .preferredColorScheme(.light)
     }
 }

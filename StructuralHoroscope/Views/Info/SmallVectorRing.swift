@@ -38,6 +38,12 @@ struct SmallVectorRingView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             SmallVectorRingView()
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(ViewModel())
+        NavigationStack {
+            SmallVectorRingView()
+                .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }
@@ -74,7 +80,7 @@ extension SmallVectorRingView {
                             ZStack {
                                 Capsule()
                                     .stroke()
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(.theme.accent)
                             }
                         )
                         .padding(5)
@@ -118,7 +124,7 @@ extension SmallVectorRingView {
                     .bold()
                     .padding(.bottom)
                 Text(smallRingText)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.theme.secondaryText)
             }
         }
         .padding()

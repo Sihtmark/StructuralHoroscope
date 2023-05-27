@@ -49,6 +49,12 @@ struct CreateCustomerView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             CreateCustomerView()
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(ViewModel())
+        NavigationStack {
+            CreateCustomerView()
+                .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }

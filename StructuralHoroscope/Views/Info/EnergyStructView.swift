@@ -28,6 +28,12 @@ struct EnergyStructView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             EnergyStructView()
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(ViewModel())
+        NavigationStack {
+            EnergyStructView()
+                .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }
@@ -68,7 +74,7 @@ extension EnergyStructView {
                 .multilineTextAlignment(.center)
                 .padding(.bottom)
             Text(shownStruct.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
         }
     }
 }

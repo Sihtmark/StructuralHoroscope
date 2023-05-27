@@ -40,6 +40,12 @@ struct AnnualSignInfo_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             AnnualSignView(sign: annualSigns[.rat]!)
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(ViewModel())
+        NavigationStack {
+            AnnualSignView(sign: annualSigns[.rat]!)
+                .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }
@@ -181,7 +187,7 @@ extension AnnualSignView {
                             .font(.headline)
                             .bold()
                         Text(text)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.theme.secondaryText)
                     }
                     .padding(.bottom, 20)
                 }
@@ -201,7 +207,7 @@ extension AnnualSignView {
                 }
                 .padding(.bottom, 15)
                 Text(sign.ideologicalType[.male]!.text)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }
         }
@@ -219,7 +225,7 @@ extension AnnualSignView {
                 }
                 .padding(.bottom, 15)
                 Text(sign.ideologicalType[.female]!.text)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }
         }
@@ -237,7 +243,7 @@ extension AnnualSignView {
                 }
                 .padding(.bottom, 15)
                 Text(sign.socialType.text)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }
         }
@@ -255,7 +261,7 @@ extension AnnualSignView {
                 }
                 .padding(.bottom, 15)
                 Text(sign.psychologicalType.text)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }
         }
@@ -273,7 +279,7 @@ extension AnnualSignView {
                 }
                 .padding(.bottom, 15)
                 Text(sign.temperament.text)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }
         }
@@ -291,7 +297,7 @@ extension AnnualSignView {
                 }
                 .padding(.bottom, 15)
                 Text(sign.fateType.text)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }
         }
@@ -313,7 +319,7 @@ extension AnnualSignView {
                 Spacer()
             }
             Text(vectorHost.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -335,7 +341,7 @@ extension AnnualSignView {
                 Spacer()
             }
             Text(vectorServant.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -357,7 +363,7 @@ extension AnnualSignView {
                 Spacer()
             }
             Text(clone.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -379,7 +385,7 @@ extension AnnualSignView {
                 Spacer()
             }
             Text(companion.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -401,7 +407,7 @@ extension AnnualSignView {
                 Spacer()
             }
             Text(subordinate.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -423,7 +429,7 @@ extension AnnualSignView {
                 Spacer()
             }
             Text(adviser.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -440,7 +446,7 @@ extension AnnualSignView {
             }
             .padding(.bottom, 15)
             Text(vectorMarriage.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -457,7 +463,7 @@ extension AnnualSignView {
             }
             .padding(.bottom, 15)
             Text(romanticMarriage.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -474,7 +480,7 @@ extension AnnualSignView {
             }
             .padding(.bottom, 15)
             Text(patriarchalMarriage.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -491,7 +497,7 @@ extension AnnualSignView {
             }
             .padding(.bottom, 15)
             Text(spiritualMarriage.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -508,7 +514,7 @@ extension AnnualSignView {
             }
             .padding(.bottom, 15)
             Text(equalMarriage.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }

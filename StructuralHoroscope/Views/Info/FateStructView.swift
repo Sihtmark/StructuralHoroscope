@@ -28,6 +28,12 @@ struct FateStructView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             FateStructView()
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(ViewModel())
+        NavigationStack {
+            FateStructView()
+                .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }
@@ -68,7 +74,7 @@ extension FateStructView {
                 .multilineTextAlignment(.center)
                 .padding(.bottom)
             Text(shownStruct.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
         }
     }
 }

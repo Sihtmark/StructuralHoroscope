@@ -315,11 +315,46 @@ class ViewModel: ObservableObject {
     }
     
     func getAnnualSign(date: Date) -> SignStruct? {
-        let dateComponents = Calendar.current.dateComponents([.year], from: date)
-        let year = dateComponents.year
-        for i in annualSignArray {
-            if i.years.contains(year!) {
-                return i
+        let birthDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
+        let year = birthDateComponents.year!
+        let month = birthDateComponents.month!
+        let day = birthDateComponents.day!
+        if Double(year).truncatingRemainder(dividingBy: 2.0) == 0 {
+            for sign in annualSignArray {
+                for e in sign.years {
+                    if e == year {
+                        return sign
+                    }
+                }
+            }
+        } else {
+            if month > 1 {
+                for sign in annualSignArray {
+                    for e in sign.years {
+                        if e == year {
+                            return sign
+                        }
+                    }
+                }
+            } else {
+                if day > 12 {
+                    for sign in annualSignArray {
+                        for e in sign.years {
+                            if e == year {
+                                return sign
+                            }
+                        }
+                    }
+                } else {
+                    let newYear = year - 1
+                    for sign in annualSignArray {
+                        for e in sign.years {
+                            if e == newYear {
+                                return sign
+                            }
+                        }
+                    }
+                }
             }
         }
         return nil

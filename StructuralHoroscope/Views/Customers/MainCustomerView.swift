@@ -58,6 +58,12 @@ struct MainCustomerView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             MainCustomerView()
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(ViewModel())
+        NavigationStack {
+            MainCustomerView()
+                .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }
@@ -264,7 +270,7 @@ extension MainCustomerView {
                             .font(.headline)
                             .bold()
                         Text(text)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.theme.secondaryText)
                     }
                     .padding(.bottom, 25)
                 }
@@ -289,7 +295,7 @@ extension MainCustomerView {
                             .font(.headline)
                             .bold()
                         Text(text)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.theme.secondaryText)
                             .padding(.bottom)
                     }
                 }
@@ -309,7 +315,7 @@ extension MainCustomerView {
                 }
                 .padding(.bottom, 15)
                 Text(vm.mainUser.annualSignStruct.ideologicalType[vm.mainUser.sex]!.text)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }
         }
@@ -327,7 +333,7 @@ extension MainCustomerView {
                 }
                 .padding(.bottom, 15)
                 Text(vm.mainUser.annualSignStruct.socialType.text)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }
         }
@@ -345,7 +351,7 @@ extension MainCustomerView {
                 }
                 .padding(.bottom, 15)
                 Text(vm.mainUser.annualSignStruct.psychologicalType.text)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }
         }
@@ -363,7 +369,7 @@ extension MainCustomerView {
                 }
                 .padding(.bottom, 15)
                 Text(vm.mainUser.annualSignStruct.temperament.text)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }
         }
@@ -381,7 +387,7 @@ extension MainCustomerView {
                 }
                 .padding(.bottom, 15)
                 Text(vm.mainUser.annualSignStruct.fateType.text)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }
         }
@@ -403,7 +409,7 @@ extension MainCustomerView {
                 Spacer()
             }
             Text(vectorHost.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -425,7 +431,7 @@ extension MainCustomerView {
                 Spacer()
             }
             Text(vectorServant.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -447,7 +453,7 @@ extension MainCustomerView {
                 Spacer()
             }
             Text(clone.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -469,7 +475,7 @@ extension MainCustomerView {
                 Spacer()
             }
             Text(companion.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -491,7 +497,7 @@ extension MainCustomerView {
                 Spacer()
             }
             Text(subordinate.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -513,7 +519,7 @@ extension MainCustomerView {
                 Spacer()
             }
             Text(adviser.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -530,7 +536,7 @@ extension MainCustomerView {
             }
             .padding(.bottom, 15)
             Text(vectorMarriage.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -547,7 +553,7 @@ extension MainCustomerView {
             }
             .padding(.bottom, 15)
             Text(romanticMarriage.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -564,7 +570,7 @@ extension MainCustomerView {
             }
             .padding(.bottom, 15)
             Text(patriarchalMarriage.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -581,7 +587,7 @@ extension MainCustomerView {
             }
             .padding(.bottom, 15)
             Text(spiritualMarriage.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }
@@ -598,7 +604,7 @@ extension MainCustomerView {
             }
             .padding(.bottom, 15)
             Text(equalMarriage.text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.theme.secondaryText)
                 .padding(.bottom)
             Spacer()
         }

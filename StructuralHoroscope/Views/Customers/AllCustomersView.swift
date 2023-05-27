@@ -59,6 +59,12 @@ struct AllCustomersView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             AllCustomersView()
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(ViewModel())
+        NavigationStack {
+            AllCustomersView()
+                .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }

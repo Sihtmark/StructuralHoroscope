@@ -20,11 +20,13 @@ struct MainCustomerCellView: View {
                 .padding(.trailing,12)
             VStack(alignment: .leading, spacing: 3) {
                 Text(vm.mainUser.name)
+                    .foregroundColor(.theme.accent)
                     .bold()
                 HStack {
                     Text("\(vm.mainUser.annualSignStruct.annualSign.rawValue), \(vm.mainUser.zodiacSign.rawValue.lowercased()), \(vm.mainUser.annualSignStruct.virtualSigns[vm.mainUser.zodiacSign]!.virtualSign.rawValue.lowercased())")
                         .font(.footnote)
-                        .foregroundColor(.secondary)
+                        .bold()
+                        .foregroundColor(.theme.secondaryText)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -39,5 +41,9 @@ struct MainCustomerCellView_Previews: PreviewProvider {
     static var previews: some View {
         MainCustomerCellView()
             .environmentObject(ViewModel())
+            .preferredColorScheme(.dark)
+        MainCustomerCellView()
+            .environmentObject(ViewModel())
+            .preferredColorScheme(.light)
     }
 }

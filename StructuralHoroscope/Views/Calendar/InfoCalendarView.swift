@@ -23,15 +23,17 @@ struct InfoCalendarView: View {
                             if let text = day.text {
                                 Text(text)
                                     .font(.caption)
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(.theme.secondaryText)
                             }
                         }
                         .listRowSeparator(.hidden)
                     }
                 } header: {
                     Text("Цветные дни:")
+                        .foregroundColor(.theme.secondaryText)
                 } footer: {
                     Text("Цветное изображение здесь разум надо отключить и дать поработать сердцу (душе)")
+                        .foregroundColor(.theme.secondaryText)
                         .font(.caption)
                 }
                 Section {
@@ -44,19 +46,22 @@ struct InfoCalendarView: View {
                     }
                 } header: {
                     Text("Черно-белые дни:")
+                        .foregroundColor(.theme.secondaryText)
                 } footer: {
                     Text("Черно-белое изображение - это сигнал к тому, чтобы прожить день спокойно, благоразумно, по четко разработанному плану")
+                        .foregroundColor(.theme.secondaryText)
                         .font(.caption)
                 }
                 Section {
                     Text(dayTypeInfo)
+                        .foregroundColor(.theme.secondaryText)
                         .font(.callout)
                         .listRowSeparator(.hidden)
                 } header: {
                     HStack {
                         Spacer()
                         Text("Найди свой день удачи")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(.theme.accent)
                             .font(.headline)
                             .bold()
                         .padding(.bottom)
@@ -73,5 +78,8 @@ struct InfoCalendarView: View {
 struct InfoCalendarView_Previews: PreviewProvider {
     static var previews: some View {
         InfoCalendarView()
+            .preferredColorScheme(.dark)
+        InfoCalendarView()
+            .preferredColorScheme(.light)
     }
 }

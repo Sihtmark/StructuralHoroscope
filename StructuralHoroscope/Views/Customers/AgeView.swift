@@ -20,7 +20,7 @@ struct AgeView: View {
                     Text(age.title)
                         .font(.headline)
                     Text(age.text)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.theme.secondaryText)
                         .lineLimit(showFullDescription1 ? nil : 2)
                     Button {
                         withAnimation(.easeInOut) {
@@ -30,6 +30,7 @@ struct AgeView: View {
                         Text(showFullDescription1 ? "Свернуть" : "Развернуть...")
                             .font(.caption)
                             .fontWeight(.bold)
+                            .foregroundColor(.theme.accent)
                     }
                     .accentColor(.blue)
                 }
@@ -38,7 +39,7 @@ struct AgeView: View {
                     Text(age.ageTitle)
                         .font(.headline)
                     Text(age.ageСommandments)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.theme.secondaryText)
                 }
             }
         }
@@ -52,6 +53,12 @@ struct AgeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             AgeView(age: bullAge)
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(ViewModel())
+        NavigationStack {
+            AgeView(age: bullAge)
+                .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }
