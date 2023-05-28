@@ -450,18 +450,22 @@ class ViewModel: ObservableObject {
         addEventToCalendar(title: "\(firstDay[mainUser.annualSignStruct.annualSign]!.emoji) \(firstDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: firstDay), startDate: startingDate(day: 9), endDate: endDate)
         addEventToCalendar(title: "\(secondDay[mainUser.annualSignStruct.annualSign]!.emoji) \(secondDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: secondDay), startDate: startingDate(day: 10), endDate: endDate)
         addEventToCalendar(title: "\(thirdDay[mainUser.annualSignStruct.annualSign]!.emoji) \(thirdDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: thirdDay), startDate: startingDate(day: 11), endDate: endDate)
-        addEventToCalendar(title: "\(fourthDay[mainUser.annualSignStruct.annualSign]!.emoji) \(fourthDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: fourthDay), startDate: startingDate(day: 12), endDate: endDate)
-        addEventToCalendar(title: "\(fifthDay[mainUser.annualSignStruct.annualSign]!.emoji) \(fifthDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: fifthDay), startDate: startingDate(day: 13), endDate: endDate)
-        addEventToCalendar(title: "\(sixthDay[mainUser.annualSignStruct.annualSign]!.emoji) \(sixthDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: sixthDay), startDate: startingDate(day: 14), endDate: endDate)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.addEventToCalendar(title: "\(fourthDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(fourthDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: fourthDay), startDate: self.startingDate(day: 12), endDate: endDate)
+            self.addEventToCalendar(title: "\(fifthDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(fifthDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: fifthDay), startDate: self.startingDate(day: 13), endDate: endDate)
+            self.addEventToCalendar(title: "\(sixthDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(sixthDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: sixthDay), startDate: self.startingDate(day: 14), endDate: endDate)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.addEventToCalendar(title: "\(seventhDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(seventhDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: seventhDay), startDate: self.startingDate(day: 15), endDate: endDate)
             self.addEventToCalendar(title: "\(eighthDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(eighthDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: eighthDay), startDate: self.startingDate(day: 16), endDate: endDate)
             self.addEventToCalendar(title: "\(ninthDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(ninthDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: ninthDay), startDate: self.startingDate(day: 17), endDate: endDate)
+            
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.addEventToCalendar(title: "\(tenthDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(tenthDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: tenthDay), startDate: self.startingDate(day: 18), endDate: endDate)
             self.addEventToCalendar(title: "\(eleventhDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(eleventhDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: eleventhDay), startDate: self.startingDate(day: 19), endDate: endDate)
             self.addEventToCalendar(title: "\(twelveDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(twelveDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: twelveDay), startDate: self.startingDate(day: 20), endDate: endDate)
         }
-        
     }
     
     func addEventToCalendar(title: String, description: String?, startDate: Date, endDate: Date, completion: ((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
