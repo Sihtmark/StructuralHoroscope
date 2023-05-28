@@ -442,7 +442,7 @@ class ViewModel: ObservableObject {
     }
     
     func eventDescription(dayType: [AnnualEnum: DayType]) -> String {
-        return dayType.map{"\(annualSigns[$0.key]!.emoji) \($0.key.rawValue): \($0.value.emoji) \($0.value.title)"}.joined(separator: "\n")
+        return dayType.map{"\($0.value.emoji)   \($0.key.rawValue)"}.joined(separator: "\n")
     }
     
     func addAllEventsToCalendar() {
@@ -535,12 +535,8 @@ class ViewModel: ObservableObject {
             }
         }
         
-//        arr = arr.filter { event in
-//            range.contains(event.date)
-//        }
-        
         arr = arr.filter { event in
-            event.date <= maxDay && event.date >= minusThree
+            range.contains(event.date)
         }
         
         arr.sort { event1, event2 in

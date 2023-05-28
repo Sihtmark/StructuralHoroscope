@@ -15,6 +15,17 @@ struct CalendarView: View {
     @State private var day = Date()
     @State private var showAlert = false
     
+    var dateRange: ClosedRange<Date> {
+        var dateComponents = DateComponents()
+        dateComponents.year = 2020
+        dateComponents.month = 2
+        dateComponents.day = 1
+        let calendar = Calendar(identifier: .gregorian)
+        let min = calendar.date(from: dateComponents)!
+        let max = Calendar.current.date(byAdding: .year, value: 10, to: Date())!
+        return min...max
+    }
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -35,7 +46,7 @@ struct CalendarView: View {
                 day = newValue
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         showAlert.toggle()
                     } label: {
@@ -85,7 +96,7 @@ extension CalendarView {
     var datePicker: some View {
         HStack {
             Spacer()
-            DatePicker("Выбрать дату:", selection: $pickedDate, displayedComponents: .date)
+            DatePicker("Выбрать дату:", selection: $pickedDate, in: dateRange, displayedComponents: .date)
                 .environment(\.locale, Locale.init(identifier: "ru"))
             Spacer()
         }

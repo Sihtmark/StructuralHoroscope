@@ -21,6 +21,17 @@ struct MainCustomerView: View {
         return formatter
     }
     
+    var dateRange: ClosedRange<Date> {
+        var dateComponents = DateComponents()
+        dateComponents.year = 1850
+        dateComponents.month = 1
+        dateComponents.day = 1
+        let calendar = Calendar(identifier: .gregorian)
+        let min = calendar.date(from: dateComponents)!
+        let max = Date()
+        return min...max
+    }
+    
     var body: some View {
         List {
             if isEditing {
@@ -102,7 +113,7 @@ extension MainCustomerView {
                 }
                 .pickerStyle(.segmented)
             }
-            DatePicker("🎂 Дата рождения:", selection: $selectedDate, displayedComponents: .date)
+            DatePicker("🎂 Дата рождения:", selection: $selectedDate, in: dateRange, displayedComponents: .date)
                 .environment(\.locale, Locale.init(identifier: "ru"))
             NavigationLink {
                 AgeView(age: ages[vm.getAgeType(birthdate: selectedDate)]!)

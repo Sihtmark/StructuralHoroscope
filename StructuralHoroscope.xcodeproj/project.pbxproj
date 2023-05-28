@@ -313,10 +313,10 @@
 			};
 			buildConfigurationList = A0E0722829D701BF0010E128 /* Build configuration list for PBXProject "StructuralHoroscope" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				ru,
 				Base,
 			);
 			mainGroup = A0E0722429D701BF0010E128;

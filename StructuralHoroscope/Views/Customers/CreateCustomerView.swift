@@ -17,6 +17,17 @@ struct CreateCustomerView: View {
     @State private var annualSign: AnnualEnum = .snake
     @State private var zodiacSign: ZodiacEnum = .taurus
     
+    var dateRange: ClosedRange<Date> {
+        var dateComponents = DateComponents()
+        dateComponents.year = 1850
+        dateComponents.month = 1
+        dateComponents.day = 1
+        let calendar = Calendar(identifier: .gregorian)
+        let min = calendar.date(from: dateComponents)!
+        let max = Date()
+        return min...max
+    }
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
             TextField("Имя пользователя", text: $name)
@@ -28,7 +39,7 @@ struct CreateCustomerView: View {
                 Text("Picker")
             }
             .pickerStyle(.segmented)
-            DatePicker("День рождения:", selection: $selectedDate, displayedComponents: .date)
+            DatePicker("День рождения:", selection: $selectedDate, in: dateRange, displayedComponents: .date)
                 .environment(\.locale, Locale.init(identifier: "ru"))
             Spacer()
         }
