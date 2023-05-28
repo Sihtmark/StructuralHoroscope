@@ -442,7 +442,7 @@ class ViewModel: ObservableObject {
     }
     
     func eventDescription(dayType: [AnnualEnum: DayType]) -> String {
-        return dayType.map{"\(annualSigns[$0.key]!.emoji.rawValue) \($0.key.rawValue): \($0.value.emoji) \($0.value.title)"}.joined(separator: "\n")
+        return dayType.map{"\(annualSigns[$0.key]!.emoji) \($0.key.rawValue): \($0.value.emoji) \($0.value.title)"}.joined(separator: "\n")
     }
     
     func addAllEventsToCalendar() {
@@ -506,7 +506,7 @@ class ViewModel: ObservableObject {
     
     func getActualDayType() {
         let arr = eventsByPickedDate(pickedDate: Date())
-        actualDayType = arr[3]
+        actualDayType = arr[Int((Double(arr.count) / 2.0).rounded(.up)) - 1]
     }
     
     func eventsByPickedDate(pickedDate: Date) -> [DayStruct] {
@@ -519,7 +519,7 @@ class ViewModel: ObservableObject {
         let maxDay = Calendar.current.date(byAdding: .day, value: 3, to: pickedDate)!
         let minusThree = Calendar.current.date(byAdding: .day, value: -4, to: pickedDate)!
         let minDay = Calendar.current.date(byAdding: .day, value: -24, to: pickedDate)!
-        
+        let range: ClosedRange<Date> = minusThree...maxDay
         
         repeat {
             mainDay = Calendar.current.date(byAdding: .day, value: 12, to: mainDay)!
@@ -528,25 +528,29 @@ class ViewModel: ObservableObject {
         var arr = [DayStruct]()
         var count = -1
         
-        for dayType in days {
-            arr.append(DayStruct(date: Calendar.current.date(byAdding: .day, value: count, to: mainDay)!, signs: dayType))
-            count += 1
+        for _ in 1...3 {
+            for dayType in days {
+                arr.append(DayStruct(date: Calendar.current.date(byAdding: .day, value: count, to: mainDay)!, signs: dayType))
+                count += 1
+            }
         }
-        for dayType in days {
-            arr.append(DayStruct(date: Calendar.current.date(byAdding: .day, value: count, to: mainDay)!, signs: dayType))
-            count += 1
-        }
-        for dayType in days {
-            arr.append(DayStruct(date: Calendar.current.date(byAdding: .day, value: count, to: mainDay)!, signs: dayType))
-            count += 1
-        }
+        
+//        arr = arr.filter { event in
+//            range.contains(event.date)
+//        }
         
         arr = arr.filter { event in
             event.date <= maxDay && event.date >= minusThree
         }
+        
         arr.sort { event1, event2 in
             event1.date < event2.date
         }
+        
+        if arr.count > 7 {
+            arr.removeFirst()
+        }
+        
         return arr
     }
     

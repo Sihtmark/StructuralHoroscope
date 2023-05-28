@@ -12,8 +12,13 @@ import SwiftUI
 @main
 struct StructuralHoroscopeApp: App {
     
-    @AppStorage("isDarkMode") var isDarkMode: Bool = true
+    @AppStorage("isDarkMode") var isDarkMode: Bool = false
     @StateObject private var vm = ViewModel()
+    
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.theme.accent)]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color.theme.accent)]
+    }
     
     var body: some Scene {
         WindowGroup {

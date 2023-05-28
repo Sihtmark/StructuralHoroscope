@@ -13,7 +13,7 @@ let annualSignArray: [SignStruct] = [ratSign, bullSign, tigerSign, catSign, drag
 
 let ratSign = SignStruct(
     annualSign: .rat,
-    emoji: .rat,
+    emoji: "🐀",
     ideologicalType: [.male: mysticMale, .female: realistFemale],
     socialType: openedSocialStruct,
     psychologicalType: maturityPsychologicalStruct,
@@ -73,7 +73,7 @@ let ratSign = SignStruct(
 
 let bullSign = SignStruct(
     annualSign: .bull,
-    emoji: .bull,
+    emoji: "🐂",
     ideologicalType: [.male: logicMale, .female: strongWilledFemale],
     socialType: orthodocsSocialStruct,
     psychologicalType: maturityPsychologicalStruct,
@@ -133,7 +133,7 @@ let bullSign = SignStruct(
 
 let tigerSign = SignStruct(
     annualSign: .tiger,
-    emoji: .tiger,
+    emoji: "🐅",
     ideologicalType: [.male: strongWilledMale, .female: logicFemale],
     socialType: closedSocialStruct,
     psychologicalType: dreamerPsychologicalStruct,
@@ -192,7 +192,7 @@ let tigerSign = SignStruct(
 
 let catSign = SignStruct(
     annualSign: .cat,
-    emoji: .cat,
+    emoji: "🐈",
     ideologicalType: [.male: realistMale, .female: mysticFemale],
     socialType: openedSocialStruct,
     psychologicalType: dreamerPsychologicalStruct,
@@ -252,7 +252,7 @@ let catSign = SignStruct(
 
 let dragonSign = SignStruct(
     annualSign: .dragon,
-    emoji: .dragon,
+    emoji: "🐉",
     ideologicalType: [.male: mysticMale, .female: realistFemale],
     socialType: orthodocsSocialStruct,
     psychologicalType: dreamerPsychologicalStruct,
@@ -313,7 +313,7 @@ let dragonSign = SignStruct(
 
 let snakeSign = SignStruct(
     annualSign: .snake,
-    emoji: .snake,
+    emoji: "🐍",
     ideologicalType: [.male: logicMale, .female: strongWilledFemale],
     socialType: closedSocialStruct,
     psychologicalType: sensitivePsychologicalStruct,
@@ -373,7 +373,7 @@ let snakeSign = SignStruct(
 
 let horseSign = SignStruct(
     annualSign: .horse,
-    emoji: .horse,
+    emoji: "🐎",
     ideologicalType: [.male: strongWilledMale, .female: logicFemale],
     socialType: openedSocialStruct,
     psychologicalType: sensitivePsychologicalStruct,
@@ -433,7 +433,7 @@ let horseSign = SignStruct(
 
 let goatSign = SignStruct(
     annualSign: .goat,
-    emoji: .goat,
+    emoji: "🐐",
     ideologicalType: [.male: realistMale, .female: mysticFemale],
     socialType: orthodocsSocialStruct,
     psychologicalType: sensitivePsychologicalStruct,
@@ -493,7 +493,7 @@ let goatSign = SignStruct(
 
 let monkeySign = SignStruct(
     annualSign: .monkey,
-    emoji: .monkey,
+    emoji: "🐒",
     ideologicalType: [.male: mysticMale, .female: realistFemale],
     socialType: closedSocialStruct,
     psychologicalType: groundedPsychologicalStruct,
@@ -552,7 +552,7 @@ let monkeySign = SignStruct(
 
 let roosterSign = SignStruct(
     annualSign: .rooster,
-    emoji: .rooster,
+    emoji: "🐓",
     ideologicalType: [.male: logicMale, .female: strongWilledFemale],
     socialType: openedSocialStruct,
     psychologicalType: groundedPsychologicalStruct,
@@ -612,7 +612,7 @@ let roosterSign = SignStruct(
 
 let dogSign = SignStruct(
     annualSign: .dog,
-    emoji: .dog,
+    emoji: "🐕",
     ideologicalType: [.male: strongWilledMale, .female: logicFemale],
     socialType: orthodocsSocialStruct,
     psychologicalType: groundedPsychologicalStruct,
@@ -672,7 +672,7 @@ let dogSign = SignStruct(
 
 let boarSign = SignStruct(
     annualSign: .boar,
-    emoji: .boar,
+    emoji: "🐗",
     ideologicalType: [.male: realistMale, .female: mysticFemale],
     socialType: closedSocialStruct,
     psychologicalType: maturityPsychologicalStruct,

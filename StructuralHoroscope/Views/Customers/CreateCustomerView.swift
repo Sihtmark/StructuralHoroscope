@@ -40,6 +40,7 @@ struct CreateCustomerView: View {
                     vm.createNewCustomer(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!)
                     dismiss()
                 }
+                .disabled(name.count < 3)
             }
         }
     }

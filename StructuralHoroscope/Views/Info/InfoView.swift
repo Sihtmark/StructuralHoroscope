@@ -21,7 +21,7 @@ struct InfoView: View {
             }
             .listStyle(.inset)
             .navigationTitle("Информация")
-            .navigationBarTitleDisplayMode(.inline)
+//            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

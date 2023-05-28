@@ -16,7 +16,7 @@ struct MainCustomerCellView: View {
             Image("\(vm.mainUser.annualSignStruct.annualSign)Circle")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 55)
+                .frame(width: 40)
                 .padding(.trailing,12)
             VStack(alignment: .leading, spacing: 3) {
                 Text(vm.mainUser.name)

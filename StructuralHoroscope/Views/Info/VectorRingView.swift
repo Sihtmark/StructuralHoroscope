@@ -16,6 +16,7 @@ struct VectorRingView: View {
         ScrollView {
             signsSection
         }
+        .padding(.horizontal)
         .navigationTitle("Векторные пары")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -53,11 +54,13 @@ extension VectorRingView {
         VStack(alignment: .center) {
             HStack {
                 Text("Хозяин")
+                    .foregroundColor(.theme.red)
                     .font(.title2)
                     .bold()
                 .frame(width: 150, height: 40)
                 .padding(5)
                 Text("Слуга")
+                    .foregroundColor(.theme.blue)
                     .font(.title2)
                     .bold()
                 .frame(width: 150, height: 40)
@@ -69,40 +72,42 @@ extension VectorRingView {
                         NavigationLink {
                             AnnualSignView(sign: sign)
                         } label: {
-                            HStack {
-                                Text(sign.emoji.rawValue)
-                                Text(sign.annualSign.rawValue)
-                                    .foregroundColor(.theme.red)
-                                .bold()
-                            }
-                            .frame(width: 150, height: 40)
-                            .background(
-                                ZStack {
-                                    Capsule()
-                                        .stroke()
-                                        .fill(Color.theme.red)
+                            ZStack {
+                                Capsule()
+                                    .stroke(lineWidth: 0.4)
+                                    .fill(Color.theme.red)
+                                HStack {
+                                    Image("\(sign.annualSign)")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 20, height: 20)
+                                    Text(sign.annualSign.rawValue)
+                                        .foregroundColor(.theme.red)
+                                    .bold()
                                 }
-                            )
+                                .frame(width: 150, height: 40)
                             .padding(5)
+                            }
                         }
                         NavigationLink {
                             AnnualSignView(sign: annualSigns[sign.vectorServant]!)
                         } label: {
-                            HStack {
-                                Text(annualSigns[sign.vectorServant]!.emoji.rawValue)
-                                Text(sign.vectorServant.rawValue)
-                                    .foregroundColor(.theme.green)
-                                .bold()
-                            }
-                            .frame(width: 150, height: 40)
-                            .background(
-                                ZStack {
-                                    Capsule()
-                                        .stroke()
-                                        .fill(Color.theme.green)
+                            ZStack {
+                                Capsule()
+                                    .stroke(lineWidth: 0.4)
+                                    .fill(Color.theme.blue)
+                                HStack {
+                                    Image("\(annualSigns[sign.vectorServant]!.annualSign)")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 20, height: 20)
+                                    Text(sign.vectorServant.rawValue)
+                                        .foregroundColor(.theme.blue)
+                                    .bold()
                                 }
-                            )
+                                .frame(width: 150, height: 40, alignment: .leading)
                             .padding(5)
+                            }
                         }
                     }
                 }

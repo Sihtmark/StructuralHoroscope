@@ -112,7 +112,7 @@ extension CalendarView {
                     ZStack {
                         if vm.isToday(date: event.date, pickedDate: day) {
                             Capsule()
-                                .fill(Color.theme.accent)
+                                .fill(Color.theme.red)
                         }
                         
                     }
@@ -154,10 +154,12 @@ extension CalendarView {
                             .scaledToFit()
                             .frame(width: 30, height: 30)
                         Text(sign.rawValue)
+                            .foregroundColor(.theme.red)
                             .bold()
                             .padding(.leading, 20)
                             .frame(width: 110, alignment: .leading)
                         Text(events[3].signs[sign]!.title)
+                            .foregroundColor(.theme.red)
                         Spacer()
                         Text(events[3].signs[sign]!.emoji)
                             .font(.caption)

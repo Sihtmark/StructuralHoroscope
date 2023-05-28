@@ -73,14 +73,15 @@ extension SmallVectorRingView {
                                 .scaledToFit()
                                 .frame(width: 20, height: 20)
                             Text(sign.rawValue)
+                                .foregroundColor(.theme.red)
                             .bold()
                         }
                         .frame(width: 150, height: 40)
                         .background(
                             ZStack {
                                 Capsule()
-                                    .stroke()
-                                    .foregroundColor(.theme.accent)
+                                    .stroke(lineWidth: 0.4)
+                                    .foregroundColor(.theme.red)
                             }
                         )
                         .padding(5)
@@ -90,14 +91,15 @@ extension SmallVectorRingView {
                                 .scaledToFit()
                                 .frame(width: 20, height: 20)
                             Text(smallRing[sign]!.rawValue)
+                                .foregroundColor(.theme.blue)
                             .bold()
                         }
                         .frame(width: 150, height: 40)
                         .background(
                             ZStack {
                                 Capsule()
-                                    .stroke()
-                                    .foregroundColor(.blue)
+                                    .stroke(lineWidth: 0.4)
+                                    .foregroundColor(.theme.blue)
                             }
                         )
                         .padding(5)

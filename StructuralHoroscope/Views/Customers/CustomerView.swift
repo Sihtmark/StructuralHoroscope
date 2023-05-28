@@ -46,6 +46,7 @@ struct CustomerView: View {
                     }
                     isEditing.toggle()
                 }
+                .disabled(name.count < 3)
             }
         }
         .onAppear {
@@ -83,6 +84,7 @@ extension CustomerView {
                 Text("💫 Возраст: \(vm.getAgeType(birthdate: selectedDate).rawValue)")
             }
         }
+        .listRowSeparator(.hidden)
     }
     
     var editCustomerInfo: some View {
@@ -110,6 +112,7 @@ extension CustomerView {
                 Text("💫 Возраст: \(vm.getAgeType(birthdate: selectedDate).rawValue)")
             }
         }
+        .listRowSeparator(.hidden)
     }
     
     var signSection: some View {
@@ -143,6 +146,7 @@ extension CustomerView {
                 }
             }
         }
+        .listRowSeparator(.hidden)
     }
     
     var typeSection: some View {
@@ -173,6 +177,7 @@ extension CustomerView {
                 Text("Тип судьбы: \(customer.annualSignStruct.fateType.fateType.rawValue)")
             }
         }
+        .listRowSeparator(.hidden)
     }
     
     var businessSection: some View {
@@ -214,6 +219,7 @@ extension CustomerView {
                     .lineSpacing(6)
             }
         }
+        .listRowSeparator(.hidden)
     }
     
     var marriageSection: some View {
@@ -249,6 +255,7 @@ extension CustomerView {
                     .lineSpacing(6)
             }
         }
+        .listRowSeparator(.hidden)
     }
     
     var annualSignDescription: some View {
