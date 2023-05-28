@@ -57,14 +57,14 @@ extension VectorRingView {
                     .foregroundColor(.theme.red)
                     .font(.title2)
                     .bold()
-                .frame(width: 150, height: 40)
-                .padding(5)
+                    .frame(width: 150, height: 40)
+                    .padding(5)
                 Text("Слуга")
                     .foregroundColor(.theme.blue)
                     .font(.title2)
                     .bold()
-                .frame(width: 150, height: 40)
-                .padding(5)
+                    .frame(width: 150, height: 40)
+                    .padding(5)
             }
             ForEach(annualSignArray) { sign in
                 VStack {
@@ -76,6 +76,7 @@ extension VectorRingView {
                                 Capsule()
                                     .stroke(lineWidth: 0.4)
                                     .fill(Color.theme.red)
+                                    .frame(width: 150, height: 40)
                                 HStack {
                                     Image("\(sign.annualSign)")
                                         .resizable()
@@ -83,12 +84,11 @@ extension VectorRingView {
                                         .frame(width: 20, height: 20)
                                     Text(sign.annualSign.rawValue)
                                         .foregroundColor(.theme.red)
-                                    .bold()
+                                        .bold()
                                 }
-                                .frame(width: 150, height: 40)
-                            .padding(5)
                             }
                         }
+                        .padding(.trailing, 20)
                         NavigationLink {
                             AnnualSignView(sign: annualSigns[sign.vectorServant]!)
                         } label: {
@@ -96,6 +96,7 @@ extension VectorRingView {
                                 Capsule()
                                     .stroke(lineWidth: 0.4)
                                     .fill(Color.theme.blue)
+                                    .frame(width: 150, height: 40)
                                 HStack {
                                     Image("\(annualSigns[sign.vectorServant]!.annualSign)")
                                         .resizable()
@@ -103,13 +104,12 @@ extension VectorRingView {
                                         .frame(width: 20, height: 20)
                                     Text(sign.vectorServant.rawValue)
                                         .foregroundColor(.theme.blue)
-                                    .bold()
+                                        .bold()
                                 }
-                                .frame(width: 150, height: 40, alignment: .leading)
-                            .padding(5)
                             }
                         }
                     }
+                    .padding(.bottom, 10)
                 }
             }
         }

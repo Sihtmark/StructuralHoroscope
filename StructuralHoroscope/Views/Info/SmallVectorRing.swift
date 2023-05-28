@@ -67,43 +67,41 @@ extension SmallVectorRingView {
             ForEach(ZodiacEnum.allCases, id: \.self) { sign in
                 VStack {
                     HStack {
-                        HStack {
-                            Image("\(sign)Small")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20, height: 20)
-                            Text(sign.rawValue)
+                        ZStack {
+                            Capsule()
+                                .stroke(lineWidth: 0.4)
                                 .foregroundColor(.theme.red)
-                            .bold()
-                        }
-                        .frame(width: 150, height: 40)
-                        .background(
-                            ZStack {
-                                Capsule()
-                                    .stroke(lineWidth: 0.4)
+                                .frame(width: 150, height: 40)
+                            HStack {
+                                Image("\(sign)Small")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 20, height: 20)
+                                Text(sign.rawValue)
                                     .foregroundColor(.theme.red)
+                                .bold()
                             }
-                        )
                         .padding(5)
-                        HStack {
-                            Image("\(smallRing[sign]!)Small")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 20, height: 20)
-                            Text(smallRing[sign]!.rawValue)
-                                .foregroundColor(.theme.blue)
-                            .bold()
                         }
-                        .frame(width: 150, height: 40)
-                        .background(
-                            ZStack {
-                                Capsule()
-                                    .stroke(lineWidth: 0.4)
+                        .padding(.trailing, 10)
+                        ZStack {
+                            Capsule()
+                                .stroke(lineWidth: 0.4)
+                                .foregroundColor(.theme.blue)
+                                .frame(width: 150, height: 40)
+                            HStack {
+                                Image("\(smallRing[sign]!)Small")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 20, height: 20)
+                                Text(smallRing[sign]!.rawValue)
                                     .foregroundColor(.theme.blue)
+                                .bold()
                             }
-                        )
                         .padding(5)
+                        }
                     }
+                    .padding(.bottom, 10)
                 }
             }
         }
