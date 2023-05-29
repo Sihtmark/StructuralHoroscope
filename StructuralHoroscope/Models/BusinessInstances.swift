@@ -65,7 +65,7 @@ let clone = BusinessStruct(
         .horse: [horseSign, monkeySign, dragonSign],
         .goat: [goatSign, boarSign, roosterSign],
         .monkey: [monkeySign, dragonSign, horseSign],
-        .rooster: [roosterSign, dogSign, boarSign],
+        .rooster: [roosterSign, goatSign, boarSign],
         .dog: [dogSign, tigerSign, ratSign],
         .boar: [boarSign, goatSign, roosterSign]
     ]

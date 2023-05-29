@@ -10,7 +10,7 @@ import SwiftUI
 struct FateStructView: View {
     
     @EnvironmentObject private var vm: ViewModel
-    @State private var shownStruct: EnergyStruct = dramaticEnergeticStruct
+    @State private var shownStruct: FateStruct = pioneerFateStruct
     
     var body: some View {
         VStack {
@@ -42,8 +42,8 @@ struct FateStructView_Previews: PreviewProvider {
 extension FateStructView {
     var picker: some View {
         Picker("asdf", selection: $shownStruct) {
-            ForEach(energyArray) { item in
-                Text(item.energyType.rawValue).tag(item)
+            ForEach(fateArray) { item in
+                Text(item.fateType.rawValue).tag(item)
             }
         }
     }

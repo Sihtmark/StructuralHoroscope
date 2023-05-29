@@ -270,7 +270,7 @@ enum MarriageEnum: String, Codable, CaseIterable, Hashable {
 
 enum AgeEnum: String, Codable, CaseIterable, Hashable {
     case newborn = "Новорожденного 0"
-    case baby = "Младенеца 1-2"
+    case baby = "Младенца 1-2"
     case preschooler = "Дошкольника 3-6"
     case juniorSchoolStudent = "Школьника 7-11"
     case teenager = "Подростка 12-17"

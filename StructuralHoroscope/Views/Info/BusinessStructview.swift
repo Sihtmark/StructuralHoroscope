@@ -10,7 +10,7 @@ import SwiftUI
 struct BusinessStructview: View {
     
     @EnvironmentObject private var vm: ViewModel
-    @State private var shownSign: AnnualEnum = .rat
+    @State private var shownSign: AnnualEnum = .horse
     @State private var shownStruct: BusinessStruct = clone
     @State private var showDescription = false
     
@@ -121,8 +121,6 @@ extension BusinessStructview {
                             .scaledToFit()
                             .frame(width: 60, height: 60)
                             .shadow(radius: 5)
-                        Text(item.annualSign.rawValue)
-                            .font(.caption)
                     }
                     .padding(10)
                 }

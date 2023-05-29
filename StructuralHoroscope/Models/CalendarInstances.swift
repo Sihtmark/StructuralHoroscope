@@ -214,7 +214,7 @@ let tenthDay: [AnnualEnum: DayType] = [
     .monkey: rest,
     .rooster: green,
     .dog: yellow,
-    .boar: rest
+    .boar: easier
 ]
 
 let eleventhDay: [AnnualEnum: DayType] = [
