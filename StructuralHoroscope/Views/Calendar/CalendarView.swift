@@ -114,7 +114,7 @@ extension CalendarView {
             }
             .padding(.leading, 20)
         }
-        .padding(.horizontal, 25)
+        .padding(.horizontal, 15)
         .padding(.top, 30)
         .padding(.bottom)
     }
