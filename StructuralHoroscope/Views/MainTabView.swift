@@ -32,12 +32,6 @@ struct MainTabView: View {
                     Text("Календарь")
                 }
                 .tag(Tab.calendar)
-            //            SettingsView()
-            //                .tabItem {
-            //                    Image(systemName: "gearshape.fill")
-            //                    Text("Настройки")
-            //                }
-            //                .tag(Tab.settings)
         }
     }
 }

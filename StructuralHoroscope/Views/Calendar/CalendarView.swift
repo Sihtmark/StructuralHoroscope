@@ -10,6 +10,7 @@ import SwiftUI
 struct CalendarView: View {
     
     @EnvironmentObject private var vm: ViewModel
+    @AppStorage("isDarkMode") private var isDarkMode = false
     @State private var events = [DayStruct]()
     @State private var pickedDate = Date()
     @State private var day = Date()
@@ -54,6 +55,13 @@ struct CalendarView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isDarkMode.toggle()
+                    } label: {
+                        Image(systemName: isDarkMode ? "sun.max" : "moon.stars")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
                         InfoCalendarView()
                     } label: {
@@ -95,12 +103,20 @@ struct NewCalendarView_Previews: PreviewProvider {
 extension CalendarView {
     var datePicker: some View {
         HStack {
-            Spacer()
             DatePicker("Выбрать дату:", selection: $pickedDate, in: dateRange, displayedComponents: .date)
                 .environment(\.locale, Locale.init(identifier: "ru"))
-            //                .foregroundColor(.theme.standard)
-            Spacer()
+            Button {
+                pickedDate = Date()
+                day = Date()
+            } label: {
+                Image(systemName: "arrowshape.turn.up.backward.circle.fill")
+                    .scaleEffect(1.5)
+            }
+            .padding(.leading, 20)
         }
+        .padding(.horizontal, 25)
+        .padding(.top, 30)
+        .padding(.bottom)
     }
     
     var week: some View {
