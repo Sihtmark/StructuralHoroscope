@@ -64,14 +64,13 @@ extension VirtualSignsView {
                                 HStack {
                                     Text(sign.emoji.rawValue)
                                     Text(sign.virtualSign.rawValue)
-                                    .bold()
                                 }
                                 .padding(.horizontal)
                                 .padding(.vertical, 10)
                                 .background(
                                     ZStack {
                                         Capsule()
-                                            .stroke()
+                                            .stroke(lineWidth: 0.4)
                                     }
                                 )
                                 .padding(10)
@@ -86,11 +85,13 @@ extension VirtualSignsView {
     var virtualSignSection: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text("\(shownVirtualSign.emoji.rawValue) \(shownVirtualSign.virtualSign.rawValue)")
+                .foregroundColor(.theme.standard)
                 .font(.title)
                 .bold()
             ForEach(shownVirtualSign.blocks.sorted(by: <), id: \.key) { key, value in
                 VStack(alignment: .leading) {
                     Text(key)
+                        .foregroundColor(.theme.standard)
                         .font(.headline)
                     Text(value)
                         .foregroundColor(.theme.secondaryText)
@@ -112,6 +113,7 @@ extension VirtualSignsView {
             .padding()
             ScrollView {
                 Text("О виртуальных знаках")
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                     .padding(.bottom)

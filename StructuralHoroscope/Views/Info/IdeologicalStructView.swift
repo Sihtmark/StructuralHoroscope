@@ -73,14 +73,13 @@ extension IdeologicalStructView {
                                 .scaledToFit()
                                 .frame(width: 60, height: 60)
                                 .shadow(radius: 5)
-                            Text(annualSigns[item]!.annualSign.rawValue)
-                                .font(.caption)
                         }
                         .padding(10)
                     }
                 }
             }
             Text(shownStruct.title)
+                .foregroundColor(.theme.standard)
                 .font(.headline)
                 .bold()
                 .multilineTextAlignment(.center)
@@ -103,6 +102,7 @@ extension IdeologicalStructView {
             .padding()
             ScrollView {
                 Text("Что такое идеологическая структура?")
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                     .padding(.bottom)

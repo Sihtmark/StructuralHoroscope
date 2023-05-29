@@ -54,119 +54,147 @@ struct AnnualSignInfo_Previews: PreviewProvider {
 extension AnnualSignView {
     
     var typeSection: some View {
-        Section("Структура:") {
+        Section {
             NavigationLink {
                 maleIdeologicDescription
             } label: {
                 Text(sign.ideologicalType[Sex.male]!.ideologicalType.rawValue)
+                    .foregroundColor(.theme.standard)
             }
             NavigationLink {
                 femaleIdeologicDescription
             } label: {
                 Text(sign.ideologicalType[Sex.female]!.ideologicalType.rawValue)
+                    .foregroundColor(.theme.standard)
             }
             NavigationLink {
                 socialDescription
             } label: {
                 Text("Социальный тип: \(sign.socialType.socialType.rawValue)")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 psychologicalDescription
             } label: {
                 Text("Психологический тип: \(sign.psychologicalType.psychologicalType.rawValue)")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 energyDescription
             } label: {
                 Text("Энергетический тип: \(sign.temperament.energyType.rawValue)")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 fateDescription
             } label: {
                 Text("Тип судьбы: \(sign.fateType.fateType.rawValue)")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
-            
+        } header: {
+            Text("Структура:")
+                .foregroundColor(.theme.accent)
         }
+        .listRowSeparator(.hidden)
     }
     
     var businessSection: some View {
-        Section("Бизнес:") {
+        Section {
             NavigationLink {
                 vectorHostDescription
             } label: {
                 Text("Векторный хозяин:\n\(vm.hostString(sign: sign.vectorHost))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 vectorServantDescription
             } label: {
                 Text("Векторный слуга:\n\(vm.servantString(sign: sign.vectorServant))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 cloneDescription
             } label: {
                 Text("Клоны:\n\(vm.clones(sign: sign))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 companionDescription
             } label: {
                 Text("Соратники:\n\(vm.companions(sign: sign))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 subordinateDescription
             } label: {
                 Text("Подчиненные:\n\(vm.subordinates(sign: sign))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 adviserDescription
             } label: {
                 Text("Советники:\n\(vm.advisers(sign: sign))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
+        } header: {
+            Text("Бизнес:")
+                .foregroundColor(.theme.accent)
         }
+        .listRowSeparator(.hidden)
     }
     
     var marriageSection: some View {
-        Section("Браки:") {
+        Section {
             NavigationLink {
                 vectorMarriageDescription
             } label: {
                 Text("Векторный:\n\(vm.vectorMarriage(sign: sign))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 romanticMarriageDescription
             } label: {
                 Text("Романтический:\n\(vm.romanticMarriage(sign: sign))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 patriarchalMarriageDescription
             } label: {
                 Text("Патриархальный:\n\(vm.patriarchalMarriage(sign: sign))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 equalMarriageDescription
             } label: {
                 Text("Равный:\n\(vm.equalMarriage(sign: sign))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 spiritualMarriageDescription
             } label: {
                 Text("Духовный:\n\(vm.spiritualMarriage(sign: sign))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
+        } header: {
+            Text("Браки:")
+                .foregroundColor(.theme.accent)
         }
+        .listRowSeparator(.hidden)
     }
     
     var annualSignDescription: some View {
@@ -183,9 +211,15 @@ extension AnnualSignView {
             ScrollView {
                 ForEach(sign.blocks.sorted(by: <), id: \.key) { title, text in
                     VStack(alignment: .leading, spacing: 20) {
-                        Text(title)
-                            .font(.headline)
-                            .bold()
+                        HStack {
+                            Spacer()
+                            Text(title)
+                                .foregroundColor(.theme.standard)
+                                .multilineTextAlignment(.center)
+                                .font(.headline)
+                                .bold()
+                            Spacer()
+                        }
                         Text(text)
                             .foregroundColor(.theme.secondaryText)
                     }
@@ -200,7 +234,9 @@ extension AnnualSignView {
         VStack(alignment: .leading) {
             ScrollView {
                 HStack {
+                    Spacer()
                     Text(sign.ideologicalType[.male]!.title)
+                        .foregroundColor(.theme.standard)
                         .font(.headline)
                         .bold()
                     Spacer()
@@ -218,7 +254,9 @@ extension AnnualSignView {
         VStack(alignment: .leading) {
             ScrollView {
                 HStack {
+                    Spacer()
                     Text(sign.ideologicalType[.female]!.title)
+                        .foregroundColor(.theme.standard)
                         .font(.headline)
                         .bold()
                     Spacer()
@@ -236,7 +274,9 @@ extension AnnualSignView {
         VStack(alignment: .leading) {
             ScrollView {
                 HStack {
+                    Spacer()
                     Text(sign.socialType.title)
+                        .foregroundColor(.theme.standard)
                         .font(.headline)
                         .bold()
                     Spacer()
@@ -253,8 +293,10 @@ extension AnnualSignView {
     var psychologicalDescription: some View {
         VStack(alignment: .leading) {
             ScrollView {
+                Spacer()
                 HStack {
                     Text(sign.psychologicalType.title)
+                        .foregroundColor(.theme.standard)
                         .font(.headline)
                         .bold()
                     Spacer()
@@ -272,7 +314,9 @@ extension AnnualSignView {
         VStack(alignment: .leading) {
             ScrollView {
                 HStack {
+                    Spacer()
                     Text(sign.temperament.title)
+                        .foregroundColor(.theme.standard)
                         .font(.headline)
                         .bold()
                     Spacer()
@@ -290,7 +334,9 @@ extension AnnualSignView {
         VStack(alignment: .leading) {
             ScrollView {
                 HStack {
+                    Spacer()
                     Text(sign.fateType.title)
+                        .foregroundColor(.theme.standard)
                         .font(.headline)
                         .bold()
                     Spacer()
@@ -307,7 +353,9 @@ extension AnnualSignView {
     var vectorHostDescription: some View {
         VStack(alignment: .leading) {
             HStack {
+                Spacer()
                 Text(vectorHost.type.rawValue)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -315,6 +363,7 @@ extension AnnualSignView {
             .padding(.bottom, 15)
             HStack {
                 Text(vectorHost.value)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom,15)
                 Spacer()
             }
@@ -329,7 +378,9 @@ extension AnnualSignView {
     var vectorServantDescription: some View {
         VStack(alignment: .leading) {
             HStack {
+                Spacer()
                 Text(vectorServant.type.rawValue)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -337,6 +388,7 @@ extension AnnualSignView {
             .padding(.bottom, 15)
             HStack {
                 Text(vectorServant.value)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom,15)
                 Spacer()
             }
@@ -351,7 +403,9 @@ extension AnnualSignView {
     var cloneDescription: some View {
         VStack(alignment: .leading) {
             HStack {
+                Spacer()
                 Text(clone.type.rawValue)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -359,6 +413,7 @@ extension AnnualSignView {
             .padding(.bottom, 15)
             HStack {
                 Text(clone.value)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom,15)
                 Spacer()
             }
@@ -373,7 +428,9 @@ extension AnnualSignView {
     var companionDescription: some View {
         VStack(alignment: .leading) {
             HStack {
+                Spacer()
                 Text(companion.type.rawValue)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -381,6 +438,7 @@ extension AnnualSignView {
             .padding(.bottom, 15)
             HStack {
                 Text(companion.value)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom,15)
                 Spacer()
             }
@@ -395,7 +453,9 @@ extension AnnualSignView {
     var subordinateDescription: some View {
         VStack(alignment: .leading) {
             HStack {
+                Spacer()
                 Text(subordinate.type.rawValue)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -403,6 +463,7 @@ extension AnnualSignView {
             .padding(.bottom, 15)
             HStack {
                 Text(subordinate.value)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom,15)
                 Spacer()
             }
@@ -417,7 +478,9 @@ extension AnnualSignView {
     var adviserDescription: some View {
         VStack(alignment: .leading) {
             HStack {
+                Spacer()
                 Text(adviser.type.rawValue)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -425,6 +488,7 @@ extension AnnualSignView {
             .padding(.bottom, 15)
             HStack {
                 Text(adviser.value)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom,15)
                 Spacer()
             }
@@ -439,7 +503,9 @@ extension AnnualSignView {
     var vectorMarriageDescription: some View {
         ScrollView {
             HStack {
+                Spacer()
                 Text(vectorMarriage.title)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -456,7 +522,9 @@ extension AnnualSignView {
     var romanticMarriageDescription: some View {
         ScrollView {
             HStack {
+                Spacer()
                 Text(romanticMarriage.title)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -473,7 +541,9 @@ extension AnnualSignView {
     var patriarchalMarriageDescription: some View {
         ScrollView {
             HStack {
+                Spacer()
                 Text(patriarchalMarriage.title)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -490,7 +560,9 @@ extension AnnualSignView {
     var spiritualMarriageDescription: some View {
         ScrollView {
             HStack {
+                Spacer()
                 Text(spiritualMarriage.title)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -507,7 +579,9 @@ extension AnnualSignView {
     var equalMarriageDescription: some View {
         ScrollView {
             HStack {
+                Spacer()
                 Text(equalMarriage.title)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()

@@ -18,39 +18,44 @@ struct InfoCalendarView: View {
                                 HStack(spacing: 10) {
                                     Text(day.emoji)
                                     Text(day.title)
+                                        .foregroundColor(.theme.standard)
                                 }
                             }
                             if let text = day.text {
                                 Text(text)
                                     .font(.caption)
+                                    .bold()
                                     .foregroundColor(.theme.secondaryText)
                             }
                         }
                         .listRowSeparator(.hidden)
                     }
                 } header: {
-                    Text("Цветные дни:")
-                        .foregroundColor(.theme.secondaryText)
+                    Text("Дни сердца:")
+                        .foregroundColor(.theme.accent)
+                        .font(.headline)
                 } footer: {
-                    Text("Цветное изображение здесь разум надо отключить и дать поработать сердцу (душе)")
+                    Text("Цветной круг - здесь разум надо отключить и дать поработать сердцу (душе)")
                         .foregroundColor(.theme.secondaryText)
-                        .font(.caption)
+                        .font(.callout)
                 }
                 Section {
                     ForEach(mindDays, id: \.self) { day in
                         HStack(spacing: 10) {
                             Text(day.emoji)
                             Text(day.title)
+                                .foregroundColor(.theme.standard)
                         }
                         .listRowSeparator(.hidden)
                     }
                 } header: {
-                    Text("Черно-белые дни:")
-                        .foregroundColor(.theme.secondaryText)
+                    Text("Дни разума:")
+                        .foregroundColor(.theme.accent)
+                        .font(.headline)
                 } footer: {
-                    Text("Черно-белое изображение - это сигнал к тому, чтобы прожить день спокойно, благоразумно, по четко разработанному плану")
+                    Text("Emoji - это сигнал к тому, чтобы прожить день спокойно, благоразумно, по четко разработанному плану")
                         .foregroundColor(.theme.secondaryText)
-                        .font(.caption)
+                        .font(.callout)
                 }
                 Section {
                     Text(dayTypeInfo)
@@ -61,14 +66,14 @@ struct InfoCalendarView: View {
                     HStack {
                         Spacer()
                         Text("Найди свой день удачи")
-                            .foregroundColor(.theme.accent)
+                            .foregroundColor(.theme.standard)
                             .font(.headline)
                             .bold()
-                        .padding(.bottom)
+                            .padding(.bottom)
                         Spacer()
                     }
                 }
-
+                
             }
             .listStyle(.inset)
         }

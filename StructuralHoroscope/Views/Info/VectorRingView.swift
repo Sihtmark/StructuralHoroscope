@@ -54,13 +54,13 @@ extension VectorRingView {
         VStack(alignment: .center) {
             HStack {
                 Text("Хозяин")
-                    .foregroundColor(.theme.red)
+                    .foregroundColor(.theme.standard)
                     .font(.title2)
                     .bold()
                     .frame(width: 150, height: 40)
                     .padding(5)
                 Text("Слуга")
-                    .foregroundColor(.theme.blue)
+                    .foregroundColor(.theme.standard)
                     .font(.title2)
                     .bold()
                     .frame(width: 150, height: 40)
@@ -128,6 +128,7 @@ extension VectorRingView {
             .padding()
             ScrollView {
                 Text("О векторных парах")
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                     .padding(.bottom)

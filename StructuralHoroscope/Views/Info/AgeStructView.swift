@@ -85,6 +85,7 @@ extension AgeStructView {
     var textSection: some View {
         VStack {
             Text(ageStruct.title)
+                .foregroundColor(.theme.standard)
                 .font(.headline)
                 .bold()
                 .multilineTextAlignment(.center)
@@ -97,6 +98,7 @@ extension AgeStructView {
     var ageСommandmentsSection: some View {
         VStack {
             Text(ageStruct.ageTitle)
+                .foregroundColor(.theme.standard)
                 .font(.headline)
                 .bold()
                 .multilineTextAlignment(.center)
@@ -119,6 +121,7 @@ extension AgeStructView {
             .padding()
             VStack {
                 Text("Что такое структура возрастов?")
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                     .padding(.bottom)

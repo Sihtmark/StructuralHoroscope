@@ -54,15 +54,17 @@ extension SmallVectorRingView {
         VStack(alignment: .center) {
             HStack {
                 Text("Хозяин")
+                    .foregroundColor(.theme.standard)
                     .font(.title2)
                     .bold()
-                .frame(width: 150, height: 40)
-                .padding(5)
+                    .frame(width: 150, height: 40)
+                    .padding(5)
                 Text("Слуга")
+                    .foregroundColor(.theme.standard)
                     .font(.title2)
                     .bold()
-                .frame(width: 150, height: 40)
-                .padding(5)
+                    .frame(width: 150, height: 40)
+                    .padding(5)
             }
             ForEach(ZodiacEnum.allCases, id: \.self) { sign in
                 VStack {
@@ -79,9 +81,9 @@ extension SmallVectorRingView {
                                     .frame(width: 20, height: 20)
                                 Text(sign.rawValue)
                                     .foregroundColor(.theme.red)
-                                .bold()
+                                    .bold()
                             }
-                        .padding(5)
+                            .padding(5)
                         }
                         .padding(.trailing, 10)
                         ZStack {
@@ -96,9 +98,9 @@ extension SmallVectorRingView {
                                     .frame(width: 20, height: 20)
                                 Text(smallRing[sign]!.rawValue)
                                     .foregroundColor(.theme.blue)
-                                .bold()
+                                    .bold()
                             }
-                        .padding(5)
+                            .padding(5)
                         }
                     }
                     .padding(.bottom, 10)
@@ -120,6 +122,7 @@ extension SmallVectorRingView {
             .padding()
             ScrollView {
                 Text("О малом векторном кольце")
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                     .padding(.bottom)

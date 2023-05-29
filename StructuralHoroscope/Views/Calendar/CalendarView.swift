@@ -71,7 +71,7 @@ struct CalendarView: View {
                 } label: {
                     Text("Отменить")
                 }
-
+                
             }
         }
     }
@@ -98,6 +98,7 @@ extension CalendarView {
             Spacer()
             DatePicker("Выбрать дату:", selection: $pickedDate, in: dateRange, displayedComponents: .date)
                 .environment(\.locale, Locale.init(identifier: "ru"))
+            //                .foregroundColor(.theme.standard)
             Spacer()
         }
     }
@@ -123,7 +124,7 @@ extension CalendarView {
                     ZStack {
                         if vm.isToday(date: event.date, pickedDate: day) {
                             Capsule()
-                                .fill(Color.theme.red)
+                                .fill(Color.theme.accent)
                         }
                         
                     }
@@ -165,18 +166,19 @@ extension CalendarView {
                             .scaledToFit()
                             .frame(width: 30, height: 30)
                         Text(sign.rawValue)
-                            .foregroundColor(.theme.red)
+                            .foregroundColor(.theme.standard)
                             .bold()
                             .padding(.leading, 20)
                             .frame(width: 110, alignment: .leading)
                         Text(events[3].signs[sign]!.title)
-                            .foregroundColor(.theme.red)
+                            .foregroundColor(.theme.standard)
                         Spacer()
                         Text(events[3].signs[sign]!.emoji)
                             .font(.caption)
                     }
                 }
             }
+            .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
     }

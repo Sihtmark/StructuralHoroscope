@@ -65,6 +65,7 @@ extension SensualityStructView {
                 }
             }
             Text(shownStruct.title)
+                .foregroundColor(.theme.standard)
                 .font(.headline)
                 .bold()
                 .multilineTextAlignment(.center)

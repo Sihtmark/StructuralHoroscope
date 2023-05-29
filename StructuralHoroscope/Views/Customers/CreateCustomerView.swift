@@ -31,6 +31,7 @@ struct CreateCustomerView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
             TextField("Имя пользователя", text: $name)
+                .foregroundColor(.theme.standard)
                 .textFieldStyle(.roundedBorder)
             Picker(selection: $sex) {
                 Text("Мужчина").tag(Sex.male)
@@ -41,6 +42,7 @@ struct CreateCustomerView: View {
             .pickerStyle(.segmented)
             DatePicker("День рождения:", selection: $selectedDate, in: dateRange, displayedComponents: .date)
                 .environment(\.locale, Locale.init(identifier: "ru"))
+                .foregroundColor(.theme.standard)
             Spacer()
         }
         .padding()

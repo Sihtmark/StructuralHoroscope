@@ -85,55 +85,72 @@ struct ContentView_Previews: PreviewProvider {
 
 extension CustomerView {
     var customerInfo: some View {
-        Section("Личные данные:") {
+        Section {
             Text("🪪 Имя: \(customer.name)")
+                .foregroundColor(.theme.standard)
             Text(customer.sex == .male ? "⚧️ Пол: мужской" : "⚧️ Пол: женский")
+                .foregroundColor(.theme.standard)
             Text("🎂 Дата рождения: \(dateFormatter.string(from: customer.birthday))")
+                .foregroundColor(.theme.standard)
             NavigationLink {
-                AgeView(age: ages[vm.getAgeType(birthdate: selectedDate)]!)
+                AgeView(ageStruct: ages[vm.getAgeType(birthdate: selectedDate)]!)
             } label: {
                 Text("💫 Возраст: \(vm.getAgeType(birthdate: selectedDate).rawValue)")
+                    .foregroundColor(.theme.standard)
             }
+        } header: {
+            Text("Личные данные:")
+                .foregroundColor(.theme.accent)
         }
         .listRowSeparator(.hidden)
     }
     
     var editCustomerInfo: some View {
-        Section("Личные данные:") {
+        Section {
             HStack {
                 Text("🪪 Имя:")
+                    .foregroundColor(.theme.standard)
                 TextField("Введите новое имя", text: $name)
+                    .foregroundColor(.theme.standard)
                     .textFieldStyle(.roundedBorder)
             }
             HStack(spacing: 30) {
                 Text("⚧️ Пол:")
+                    .foregroundColor(.theme.standard)
                 Picker(selection: $sex) {
                     Text("Мужской").tag(Sex.male)
                     Text("Женский").tag(Sex.female)
                 } label: {
                     Text("asdf")
+                        .foregroundColor(.theme.standard)
                 }
                 .pickerStyle(.segmented)
             }
             DatePicker("🎂 Дата рождения:", selection: $selectedDate, in: dateRange, displayedComponents: .date)
+                .foregroundColor(.theme.standard)
                 .environment(\.locale, Locale.init(identifier: "ru"))
             NavigationLink {
-                AgeView(age: ages[vm.getAgeType(birthdate: selectedDate)]!)
+                AgeView(ageStruct: ages[vm.getAgeType(birthdate: selectedDate)]!)
             } label: {
                 Text("💫 Возраст: \(vm.getAgeType(birthdate: selectedDate).rawValue)")
+                    .foregroundColor(.theme.standard)
             }
+        } header: {
+            Text("Личные данные:")
+                .foregroundColor(.theme.accent)
         }
         .listRowSeparator(.hidden)
     }
     
     var signSection: some View {
-        Section("Знаки:") {
+        Section {
             HStack {
                 Image("\(customer.zodiacSign)Small")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 20, height: 20)
                 Text("Знак Зодиака: \(customer.zodiacSign.rawValue)")
+                    .foregroundColor(.theme.standard)
             }
             NavigationLink {
                 annualSignDescription
@@ -144,6 +161,7 @@ extension CustomerView {
                         .scaledToFit()
                         .frame(width: 20, height: 20)
                     Text("Годовой знак: \(customer.annualSignStruct.annualSign.rawValue)")
+                        .foregroundColor(.theme.standard)
                 }
             }
             NavigationLink {
@@ -151,120 +169,150 @@ extension CustomerView {
             } label: {
                 HStack {
                     Text(customer.annualSignStruct.virtualSigns[customer.zodiacSign]!.emoji.rawValue)
+                        .foregroundColor(.theme.standard)
                         .fixedSize()
                         .frame(width: 20, height: 20)
                     Text("Виртуальный знак: \(customer.annualSignStruct.virtualSigns[customer.zodiacSign]!.virtualSign.rawValue)")
+                        .foregroundColor(.theme.standard)
                 }
             }
+        } header: {
+            Text("Знаки:")
+                .foregroundColor(.theme.accent)
         }
         .listRowSeparator(.hidden)
     }
     
     var typeSection: some View {
-        Section("Типы:") {
+        Section {
             NavigationLink {
                 ideologicDescription
             } label: {
                 Text("Тип мышления: \((customer.annualSignStruct.ideologicalType[customer.sex]!.ideologicalType.rawValue))")
+                    .foregroundColor(.theme.standard)
             }
             NavigationLink {
                 socialDescription
             } label: {
                 Text("Социальный тип: \(customer.annualSignStruct.socialType.socialType.rawValue)")
+                    .foregroundColor(.theme.standard)
             }
             NavigationLink {
                 psychologicalDescription
             } label: {
                 Text("Психологический тип: \(customer.annualSignStruct.psychologicalType.psychologicalType.rawValue)")
+                    .foregroundColor(.theme.standard)
             }
             NavigationLink {
                 energyDescription
             } label: {
                 Text("Энергетический тип:\n\(customer.annualSignStruct.temperament.energyType.rawValue)")
+                    .foregroundColor(.theme.standard)
             }
             NavigationLink {
                 fateDescription
             } label: {
                 Text("Тип судьбы: \(customer.annualSignStruct.fateType.fateType.rawValue)")
+                    .foregroundColor(.theme.standard)
             }
+        } header: {
+            Text("Типы:")
+                .foregroundColor(.theme.accent)
         }
         .listRowSeparator(.hidden)
     }
     
     var businessSection: some View {
-        Section("Бизнес:") {
+        Section {
             NavigationLink {
                 vectorHostDescription
             } label: {
                 Text("Векторный хозяин:\n\(vm.hostString(sign: customer.annualSignStruct.vectorHost))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 vectorServantDescription
             } label: {
                 Text("Векторный слуга:\n\(vm.servantString(sign: customer.annualSignStruct.vectorServant))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 cloneDescription
             } label: {
                 Text("Клоны:\n\(vm.clones(sign: customer.annualSignStruct))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 companionDescription
             } label: {
                 Text("Соратники:\n\(vm.companions(sign: customer.annualSignStruct))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 subordinateDescription
             } label: {
                 Text("Подчиненные:\n\(vm.subordinates(sign: customer.annualSignStruct))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 adviserDescription
             } label: {
                 Text("Советники:\n\(vm.advisers(sign: customer.annualSignStruct))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
+        } header: {
+            Text("Бизнес:")
+                .foregroundColor(.theme.accent)
         }
         .listRowSeparator(.hidden)
     }
     
     var marriageSection: some View {
-        Section("Брак:") {
+        Section {
             NavigationLink {
                 vectorMarriageDescription
             } label: {
                 Text("Векторный:\n\(vm.vectorMarriage(sign: customer.annualSignStruct))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 romanticMarriageDescription
             } label: {
                 Text("Романтический:\n\(vm.romanticMarriage(sign: customer.annualSignStruct))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 patriarchalMarriageDescription
             } label: {
                 Text("Патриархальный:\n\(vm.patriarchalMarriage(sign: customer.annualSignStruct))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 spiritualMarriageDescription
             } label: {
                 Text("Духовный:\n\(vm.spiritualMarriage(sign: customer.annualSignStruct))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 equalMarriageDescription
             } label: {
                 Text("Равный:\n\(vm.equalMarriage(sign: customer.annualSignStruct))")
+                    .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
+        } header: {
+            Text("Брак:")
+                .foregroundColor(.theme.accent)
         }
         .listRowSeparator(.hidden)
     }
@@ -273,12 +321,14 @@ extension CustomerView {
         VStack {
             ScrollView {
                 HStack {
+                    Spacer()
                     Image("\(customer.annualSignStruct.annualSign)")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 35, height: 35)
                         .padding(.trailing,12)
                     Text(customer.annualSignStruct.annualSign.rawValue)
+                        .foregroundColor(.theme.standard)
                         .font(.title)
                         .bold()
                     Spacer()
@@ -286,9 +336,15 @@ extension CustomerView {
                 .padding(.bottom, 15)
                 ForEach(customer.annualSignStruct.blocks.sorted(by: <), id: \.key) { title, text in
                     VStack(alignment: .leading, spacing: 20) {
-                        Text(title)
-                            .font(.headline)
-                            .bold()
+                        HStack {
+                            Spacer()
+                            Text(title)
+                                .foregroundColor(.theme.standard)
+                                .font(.headline)
+                                .bold()
+                                .multilineTextAlignment(.center)
+                            Spacer()
+                        }
                         Text(text)
                             .foregroundColor(.theme.secondaryText)
                     }
@@ -303,17 +359,26 @@ extension CustomerView {
         VStack(alignment: .leading) {
             ScrollView {
                 HStack {
+                    Spacer()
                     Text("\(customer.annualSignStruct.virtualSigns[customer.zodiacSign]!.emoji.rawValue) \(customer.annualSignStruct.virtualSigns[customer.zodiacSign]!.virtualSign.rawValue)")
+                        .foregroundColor(.theme.standard)
                         .font(.title)
                         .bold()
+                        .multilineTextAlignment(.center)
                     Spacer()
                 }
                 .padding(.bottom, 15)
                 ForEach(customer.annualSignStruct.virtualSigns[customer.zodiacSign]!.blocks.sorted(by: <), id: \.key) { title, text in
                     VStack(alignment: .leading) {
-                        Text(title)
-                            .font(.headline)
-                            .bold()
+                        HStack {
+                            Spacer()
+                            Text(title)
+                                .foregroundColor(.theme.standard)
+                                .font(.headline)
+                                .bold()
+                                .multilineTextAlignment(.center)
+                            Spacer()
+                        }
                         Text(text)
                             .foregroundColor(.theme.secondaryText)
                             .padding(.bottom)
@@ -328,9 +393,12 @@ extension CustomerView {
         VStack(alignment: .leading) {
             ScrollView {
                 HStack {
+                    Spacer()
                     Text(customer.annualSignStruct.ideologicalType[customer.sex]!.title)
+                        .foregroundColor(.theme.standard)
                         .font(.headline)
                         .bold()
+                        .multilineTextAlignment(.center)
                     Spacer()
                 }
                 .padding(.bottom, 15)
@@ -346,9 +414,12 @@ extension CustomerView {
         VStack(alignment: .leading) {
             ScrollView {
                 HStack {
+                    Spacer()
                     Text(customer.annualSignStruct.socialType.title)
+                        .foregroundColor(.theme.standard)
                         .font(.headline)
                         .bold()
+                        .multilineTextAlignment(.center)
                     Spacer()
                 }
                 .padding(.bottom, 15)
@@ -364,9 +435,12 @@ extension CustomerView {
         VStack(alignment: .leading) {
             ScrollView {
                 HStack {
+                    Spacer()
                     Text(customer.annualSignStruct.psychologicalType.title)
+                        .foregroundColor(.theme.standard)
                         .font(.headline)
                         .bold()
+                        .multilineTextAlignment(.center)
                     Spacer()
                 }
                 .padding(.bottom, 15)
@@ -382,9 +456,12 @@ extension CustomerView {
         VStack(alignment: .leading) {
             ScrollView {
                 HStack {
+                    Spacer()
                     Text(customer.annualSignStruct.temperament.title)
+                        .foregroundColor(.theme.standard)
                         .font(.headline)
                         .bold()
+                        .multilineTextAlignment(.center)
                     Spacer()
                 }
                 .padding(.bottom, 15)
@@ -400,9 +477,12 @@ extension CustomerView {
         VStack(alignment: .leading) {
             ScrollView {
                 HStack {
+                    Spacer()
                     Text(customer.annualSignStruct.fateType.title)
+                        .foregroundColor(.theme.standard)
                         .font(.headline)
                         .bold()
+                        .multilineTextAlignment(.center)
                     Spacer()
                 }
                 .padding(.bottom, 15)
@@ -417,7 +497,9 @@ extension CustomerView {
     var vectorHostDescription: some View {
         VStack(alignment: .leading) {
             HStack {
+                Spacer()
                 Text(vectorHost.type.rawValue)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -425,6 +507,7 @@ extension CustomerView {
             .padding(.bottom, 15)
             HStack {
                 Text(vectorHost.value)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom,15)
                 Spacer()
             }
@@ -439,7 +522,9 @@ extension CustomerView {
     var vectorServantDescription: some View {
         VStack(alignment: .leading) {
             HStack {
+                Spacer()
                 Text(vectorServant.type.rawValue)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -447,6 +532,7 @@ extension CustomerView {
             .padding(.bottom, 15)
             HStack {
                 Text(vectorServant.value)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom,15)
                 Spacer()
             }
@@ -461,7 +547,9 @@ extension CustomerView {
     var cloneDescription: some View {
         VStack(alignment: .leading) {
             HStack {
+                Spacer()
                 Text(clone.type.rawValue)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -469,6 +557,7 @@ extension CustomerView {
             .padding(.bottom, 15)
             HStack {
                 Text(clone.value)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom,15)
                 Spacer()
             }
@@ -483,7 +572,9 @@ extension CustomerView {
     var companionDescription: some View {
         VStack(alignment: .leading) {
             HStack {
+                Spacer()
                 Text(companion.type.rawValue)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -491,6 +582,7 @@ extension CustomerView {
             .padding(.bottom, 15)
             HStack {
                 Text(companion.value)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom,15)
                 Spacer()
             }
@@ -505,7 +597,9 @@ extension CustomerView {
     var subordinateDescription: some View {
         VStack(alignment: .leading) {
             HStack {
+                Spacer()
                 Text(subordinate.type.rawValue)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -513,6 +607,7 @@ extension CustomerView {
             .padding(.bottom, 15)
             HStack {
                 Text(subordinate.value)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom,15)
                 Spacer()
             }
@@ -527,7 +622,9 @@ extension CustomerView {
     var adviserDescription: some View {
         VStack(alignment: .leading) {
             HStack {
+                Spacer()
                 Text(adviser.type.rawValue)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -535,6 +632,7 @@ extension CustomerView {
             .padding(.bottom, 15)
             HStack {
                 Text(adviser.value)
+                    .foregroundColor(.theme.secondaryText)
                     .padding(.bottom,15)
                 Spacer()
             }
@@ -549,7 +647,9 @@ extension CustomerView {
     var vectorMarriageDescription: some View {
         ScrollView {
             HStack {
+                Spacer()
                 Text(vectorMarriage.title)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -566,7 +666,9 @@ extension CustomerView {
     var romanticMarriageDescription: some View {
         ScrollView {
             HStack {
+                Spacer()
                 Text(romanticMarriage.title)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -583,7 +685,9 @@ extension CustomerView {
     var patriarchalMarriageDescription: some View {
         ScrollView {
             HStack {
+                Spacer()
                 Text(patriarchalMarriage.title)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -600,7 +704,9 @@ extension CustomerView {
     var spiritualMarriageDescription: some View {
         ScrollView {
             HStack {
+                Spacer()
                 Text(spiritualMarriage.title)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()
@@ -617,7 +723,9 @@ extension CustomerView {
     var equalMarriageDescription: some View {
         ScrollView {
             HStack {
+                Spacer()
                 Text(equalMarriage.title)
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                 Spacer()

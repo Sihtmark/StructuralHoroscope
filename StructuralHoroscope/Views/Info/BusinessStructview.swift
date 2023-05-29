@@ -133,6 +133,7 @@ extension BusinessStructview {
     var textSection: some View {
         VStack {
             Text(shownStruct.value)
+                .foregroundColor(.theme.standard)
                 .font(.headline)
                 .bold()
                 .multilineTextAlignment(.center)
@@ -155,6 +156,7 @@ extension BusinessStructview {
             .padding()
             VStack {
                 Text("Что такое построение коллектива")
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                     .padding(.bottom)

@@ -238,8 +238,8 @@
 			children = (
 				A08993FB29F6C44600174590 /* AllCustomersView.swift */,
 				A086548829F2F7F600E8300D /* CreateCustomerView.swift */,
-				A0E0723229D701BF0010E128 /* CustomerView.swift */,
 				A03385D32A11FE4A002153EF /* MainCustomerView.swift */,
+				A0E0723229D701BF0010E128 /* CustomerView.swift */,
 				A010D0A22A0038E900289B8B /* AgeView.swift */,
 			);
 			path = Customers;
@@ -527,8 +527,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StructuralHoroscope/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Structural horoscope";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_CFBundleDisplayName = "Структурный гороскоп";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "This allows the app to modify the calendar";
 				INFOPLIST_KEY_NSContactsUsageDescription = "This allowas the app to see your contacts";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -571,8 +570,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StructuralHoroscope/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Structural horoscope";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_CFBundleDisplayName = "Структурный гороскоп";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "This allows the app to modify the calendar";
 				INFOPLIST_KEY_NSContactsUsageDescription = "This allowas the app to see your contacts";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;

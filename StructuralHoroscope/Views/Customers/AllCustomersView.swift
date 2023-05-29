@@ -20,12 +20,14 @@ struct AllCustomersView: View {
                 } label: {
                     MainCustomerCellView()
                 }
+                .listRowSeparator(.hidden)
                 ForEach(vm.customers) { customer in
                     NavigationLink {
                         CustomerView(customer: customer)
                     } label: {
                         CustomerCellView(customer: customer)
                     }
+                    .listRowSeparator(.hidden)
                 }
                 .onDelete(perform: vm.deleteItem)
                 .onMove(perform: vm.moveItem)

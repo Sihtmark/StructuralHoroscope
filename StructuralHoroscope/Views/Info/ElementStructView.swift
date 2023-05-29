@@ -95,6 +95,7 @@ extension ElementStructView {
             .padding()
             VStack {
                 Text("Что такое Структура стихий?")
+                    .foregroundColor(.theme.standard)
                     .font(.headline)
                     .bold()
                     .padding(.bottom)

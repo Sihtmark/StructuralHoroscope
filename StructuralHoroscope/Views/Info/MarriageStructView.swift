@@ -120,6 +120,7 @@ extension MarriageStructView {
     var textSection: some View {
         VStack {
             Text(shownStruct.title)
+                .foregroundColor(.theme.standard)
                 .font(.headline)
                 .bold()
                 .multilineTextAlignment(.center)

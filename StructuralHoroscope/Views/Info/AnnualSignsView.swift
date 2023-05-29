@@ -42,7 +42,7 @@ struct AnnualSignsView_Previews: PreviewProvider {
 extension AnnualSignsView {
     var annualSigns: some View {
         LazyVStack {
-            ScrollView(.horizontal, showsIndicators: true) {
+            ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack {
                     ForEach(annualSignArray) { sign in
                         Button {
@@ -52,10 +52,8 @@ extension AnnualSignsView {
                                 Image("\(sign.annualSign)Circle")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 50, height: 50)
+                                    .frame(width: 55, height: 55)
                                     .shadow(radius: 5)
-                                Text(sign.annualSign.rawValue)
-                                    .font(.caption)
                             }
                             .padding(10)
                         }
