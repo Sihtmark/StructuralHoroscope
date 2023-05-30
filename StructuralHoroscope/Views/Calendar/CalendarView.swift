@@ -132,7 +132,7 @@ extension CalendarView {
                     Text(vm.extractDate(date: event.date, format: "EEE"))
                         .environment(\.locale, Locale.init(identifier: "ru"))
                         .font(.system(size: 14))
-                    Text(event.signs[vm.mainUser.annualSignStruct.annualSign]!.emoji)
+                    Text(event.signs[vm.mainUser!.annualSignStruct.annualSign]!.emoji)
                         .font(.caption)
                 }
                 .foregroundColor(vm.isToday(date: event.date, pickedDate: day) ? .white : .theme.secondaryText)

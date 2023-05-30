@@ -326,11 +326,11 @@ enum Sex: String, Codable, CaseIterable, Hashable {
     case female = "женщины"
 }
 
-let sampleClient = ClientStruct(
+var sampleClient = ClientStruct(
     name: "Зинаида",
     birthday: Date(),
     sex: .male,
-    annualSignStruct: tigerSign,
-    zodiacSign: .cancer,
+    annualSignStruct: ViewModel().getAnnualSign(date: Date()) ?? horseSign,
+    zodiacSign: ViewModel().getZodiacSign(date: Date()) ?? .cancer,
     isFavorite: false
 )

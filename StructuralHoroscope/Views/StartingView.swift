@@ -62,7 +62,6 @@ struct StartingView: View {
             }
             .onTapGesture {
                 vm.updateMainUser(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!)
-                print(vm.mainUser.zodiacSign.rawValue)
             }
             .disabled(name.count < 3)
             Spacer()

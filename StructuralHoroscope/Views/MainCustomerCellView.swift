@@ -13,17 +13,17 @@ struct MainCustomerCellView: View {
     
     var body: some View {
         HStack {
-            Image("\(vm.mainUser.annualSignStruct.annualSign)Circle")
+            Image("\(vm.mainUser!.annualSignStruct.annualSign)Circle")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 40)
                 .padding(.trailing,12)
             VStack(alignment: .leading, spacing: 3) {
-                Text(vm.mainUser.name)
+                Text(vm.mainUser!.name)
                     .foregroundColor(.theme.accent)
                     .bold()
                 HStack {
-                    Text("\(vm.mainUser.annualSignStruct.annualSign.rawValue), \(vm.mainUser.zodiacSign.rawValue.lowercased()), \(vm.mainUser.annualSignStruct.virtualSigns[vm.mainUser.zodiacSign]!.virtualSign.rawValue.lowercased())")
+                    Text("\(vm.mainUser!.annualSignStruct.annualSign.rawValue), \(vm.mainUser!.zodiacSign.rawValue.lowercased()), \(vm.mainUser!.annualSignStruct.virtualSigns[vm.mainUser!.zodiacSign]!.virtualSign.rawValue.lowercased())")
                         .font(.footnote)
                         .bold()
                         .foregroundColor(.theme.secondaryText)
@@ -31,7 +31,7 @@ struct MainCustomerCellView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             if let actualDayType = vm.actualDayType {
-                Text(actualDayType.signs[vm.mainUser.annualSignStruct.annualSign]!.emoji)
+                Text(actualDayType.signs[vm.mainUser!.annualSignStruct.annualSign]!.emoji)
             }
         }
     }

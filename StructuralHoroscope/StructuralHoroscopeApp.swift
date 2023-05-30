@@ -22,7 +22,7 @@ struct StructuralHoroscopeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if vm.mainUser == sampleClient {
+            if vm.mainUser == nil {
                 StartingView().environmentObject(vm)
                     .preferredColorScheme(isDarkMode ? .dark : .light)
             } else {

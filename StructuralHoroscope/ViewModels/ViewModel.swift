@@ -11,7 +11,7 @@ import EventKit
 class ViewModel: ObservableObject {
     
     @Published var actualDayType: DayStruct?
-    @Published var mainUser: ClientStruct = sampleClient {
+    @Published var mainUser: ClientStruct? = nil {
         didSet {
             saveMainUser()
         }
@@ -87,10 +87,10 @@ class ViewModel: ObservableObject {
     }
     
     func updateMainUser(name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum) {
-        if mainUser == sampleClient {
+        if mainUser == nil {
             createMainUser(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign)
         } else {
-            mainUser = mainUser.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign, isFavorite: false)
+            mainUser = mainUser!.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign, isFavorite: false)
         }
     }
     
@@ -310,7 +310,7 @@ class ViewModel: ObservableObject {
     }
     
     func ourBusinessRelationship(customer: ClientStruct) -> BusinessEnum {
-        return mainUser.annualSignStruct.businessStruct.filter{$0.key == customer.annualSignStruct.annualSign}.first!.value
+        return mainUser!.annualSignStruct.businessStruct.filter{$0.key == customer.annualSignStruct.annualSign}.first!.value
     }
     
     func getAnnualSign(date: Date) -> SignStruct? {
@@ -446,19 +446,19 @@ class ViewModel: ObservableObject {
     
     func addAllEventsToCalendar() {
         let endDate = Date().adding(.year, value: 50)
-        addEventToCalendar(title: "\(firstDay[mainUser.annualSignStruct.annualSign]!.emoji) \(firstDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: firstDay), startDate: startingDate(day: 9), endDate: endDate)
-        addEventToCalendar(title: "\(secondDay[mainUser.annualSignStruct.annualSign]!.emoji) \(secondDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: secondDay), startDate: startingDate(day: 10), endDate: endDate)
-        addEventToCalendar(title: "\(thirdDay[mainUser.annualSignStruct.annualSign]!.emoji) \(thirdDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: thirdDay), startDate: startingDate(day: 11), endDate: endDate)
-        addEventToCalendar(title: "\(fourthDay[mainUser.annualSignStruct.annualSign]!.emoji) \(fourthDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: fourthDay), startDate: startingDate(day: 12), endDate: endDate)
-        addEventToCalendar(title: "\(fifthDay[mainUser.annualSignStruct.annualSign]!.emoji) \(fifthDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: fifthDay), startDate: startingDate(day: 13), endDate: endDate)
-        addEventToCalendar(title: "\(sixthDay[mainUser.annualSignStruct.annualSign]!.emoji) \(sixthDay[mainUser.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: sixthDay), startDate: startingDate(day: 14), endDate: endDate)
+        addEventToCalendar(title: "\(firstDay[mainUser!.annualSignStruct.annualSign]!.emoji) \(firstDay[mainUser!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: firstDay), startDate: startingDate(day: 9), endDate: endDate)
+        addEventToCalendar(title: "\(secondDay[mainUser!.annualSignStruct.annualSign]!.emoji) \(secondDay[mainUser!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: secondDay), startDate: startingDate(day: 10), endDate: endDate)
+        addEventToCalendar(title: "\(thirdDay[mainUser!.annualSignStruct.annualSign]!.emoji) \(thirdDay[mainUser!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: thirdDay), startDate: startingDate(day: 11), endDate: endDate)
+        addEventToCalendar(title: "\(fourthDay[mainUser!.annualSignStruct.annualSign]!.emoji) \(fourthDay[mainUser!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: fourthDay), startDate: startingDate(day: 12), endDate: endDate)
+        addEventToCalendar(title: "\(fifthDay[mainUser!.annualSignStruct.annualSign]!.emoji) \(fifthDay[mainUser!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: fifthDay), startDate: startingDate(day: 13), endDate: endDate)
+        addEventToCalendar(title: "\(sixthDay[mainUser!.annualSignStruct.annualSign]!.emoji) \(sixthDay[mainUser!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: sixthDay), startDate: startingDate(day: 14), endDate: endDate)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.addEventToCalendar(title: "\(seventhDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(seventhDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: seventhDay), startDate: self.startingDate(day: 15), endDate: endDate)
-            self.addEventToCalendar(title: "\(eighthDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(eighthDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: eighthDay), startDate: self.startingDate(day: 16), endDate: endDate)
-            self.addEventToCalendar(title: "\(ninthDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(ninthDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: ninthDay), startDate: self.startingDate(day: 17), endDate: endDate)
-            self.addEventToCalendar(title: "\(tenthDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(tenthDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: tenthDay), startDate: self.startingDate(day: 18), endDate: endDate)
-            self.addEventToCalendar(title: "\(eleventhDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(eleventhDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: eleventhDay), startDate: self.startingDate(day: 19), endDate: endDate)
-            self.addEventToCalendar(title: "\(twelveDay[self.mainUser.annualSignStruct.annualSign]!.emoji) \(twelveDay[self.mainUser.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: twelveDay), startDate: self.startingDate(day: 20), endDate: endDate)
+            self.addEventToCalendar(title: "\(seventhDay[self.mainUser!.annualSignStruct.annualSign]!.emoji) \(seventhDay[self.mainUser!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: seventhDay), startDate: self.startingDate(day: 15), endDate: endDate)
+            self.addEventToCalendar(title: "\(eighthDay[self.mainUser!.annualSignStruct.annualSign]!.emoji) \(eighthDay[self.mainUser!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: eighthDay), startDate: self.startingDate(day: 16), endDate: endDate)
+            self.addEventToCalendar(title: "\(ninthDay[self.mainUser!.annualSignStruct.annualSign]!.emoji) \(ninthDay[self.mainUser!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: ninthDay), startDate: self.startingDate(day: 17), endDate: endDate)
+            self.addEventToCalendar(title: "\(tenthDay[self.mainUser!.annualSignStruct.annualSign]!.emoji) \(tenthDay[self.mainUser!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: tenthDay), startDate: self.startingDate(day: 18), endDate: endDate)
+            self.addEventToCalendar(title: "\(eleventhDay[self.mainUser!.annualSignStruct.annualSign]!.emoji) \(eleventhDay[self.mainUser!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: eleventhDay), startDate: self.startingDate(day: 19), endDate: endDate)
+            self.addEventToCalendar(title: "\(twelveDay[self.mainUser!.annualSignStruct.annualSign]!.emoji) \(twelveDay[self.mainUser!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: twelveDay), startDate: self.startingDate(day: 20), endDate: endDate)
         }
     }
     
