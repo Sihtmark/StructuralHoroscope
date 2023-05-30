@@ -354,7 +354,7 @@ extension CustomerView {
                 }
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var virtualSignDescription: some View {
@@ -388,7 +388,7 @@ extension CustomerView {
                 }
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var ideologicDescription: some View {
@@ -409,7 +409,7 @@ extension CustomerView {
                     .padding(.bottom)
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var socialDescription: some View {
@@ -430,7 +430,7 @@ extension CustomerView {
                     .padding(.bottom)
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var psychologicalDescription: some View {
@@ -451,7 +451,7 @@ extension CustomerView {
                     .padding(.bottom)
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var energyDescription: some View {
@@ -472,7 +472,7 @@ extension CustomerView {
                     .padding(.bottom)
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var fateDescription: some View {
@@ -493,7 +493,7 @@ extension CustomerView {
                     .padding(.bottom)
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var vectorHostDescription: some View {
@@ -518,7 +518,7 @@ extension CustomerView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var vectorServantDescription: some View {
@@ -543,7 +543,7 @@ extension CustomerView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var cloneDescription: some View {
@@ -568,7 +568,7 @@ extension CustomerView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var companionDescription: some View {
@@ -593,7 +593,7 @@ extension CustomerView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var subordinateDescription: some View {
@@ -618,7 +618,7 @@ extension CustomerView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var adviserDescription: some View {
@@ -643,7 +643,7 @@ extension CustomerView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var vectorMarriageDescription: some View {
@@ -662,7 +662,7 @@ extension CustomerView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var romanticMarriageDescription: some View {
@@ -681,7 +681,7 @@ extension CustomerView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var patriarchalMarriageDescription: some View {
@@ -700,7 +700,7 @@ extension CustomerView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var spiritualMarriageDescription: some View {
@@ -719,7 +719,7 @@ extension CustomerView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var equalMarriageDescription: some View {
@@ -738,6 +738,6 @@ extension CustomerView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
 }

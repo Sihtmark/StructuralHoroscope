@@ -9,7 +9,8 @@ import SwiftUI
 
 struct AllCustomersView: View {
     
-    @AppStorage("isDarkMode") private var isDarkMode = false
+    @Environment(\.colorScheme) var colorScheme
+//    @AppStorage("isDarkMode") private var isDarkMode = false
     @EnvironmentObject private var vm: ViewModel
     
     var body: some View {
@@ -41,13 +42,13 @@ struct AllCustomersView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isDarkMode.toggle()
-                    } label: {
-                        Image(systemName: isDarkMode ? "sun.max" : "moon.stars")
-                    }
-                }
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    Button {
+//                        isDarkMode.toggle()
+//                    } label: {
+//                        Image(systemName: isDarkMode ? "sun.max" : "moon.stars")
+//                    }
+//                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
                         CreateCustomerView()

@@ -230,7 +230,7 @@ extension AnnualSignView {
                 }
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var maleIdeologicDescription: some View {
@@ -250,7 +250,7 @@ extension AnnualSignView {
                     .padding(.bottom)
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var femaleIdeologicDescription: some View {
@@ -270,7 +270,7 @@ extension AnnualSignView {
                     .padding(.bottom)
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var socialDescription: some View {
@@ -290,7 +290,7 @@ extension AnnualSignView {
                     .padding(.bottom)
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var psychologicalDescription: some View {
@@ -310,7 +310,7 @@ extension AnnualSignView {
                     .padding(.bottom)
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var energyDescription: some View {
@@ -330,7 +330,7 @@ extension AnnualSignView {
                     .padding(.bottom)
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var fateDescription: some View {
@@ -350,7 +350,7 @@ extension AnnualSignView {
                     .padding(.bottom)
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var vectorHostDescription: some View {
@@ -375,7 +375,7 @@ extension AnnualSignView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var vectorServantDescription: some View {
@@ -400,7 +400,7 @@ extension AnnualSignView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var cloneDescription: some View {
@@ -425,7 +425,7 @@ extension AnnualSignView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var companionDescription: some View {
@@ -450,7 +450,7 @@ extension AnnualSignView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var subordinateDescription: some View {
@@ -475,7 +475,7 @@ extension AnnualSignView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var adviserDescription: some View {
@@ -500,7 +500,7 @@ extension AnnualSignView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var vectorMarriageDescription: some View {
@@ -519,7 +519,7 @@ extension AnnualSignView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var romanticMarriageDescription: some View {
@@ -538,7 +538,7 @@ extension AnnualSignView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var patriarchalMarriageDescription: some View {
@@ -557,7 +557,7 @@ extension AnnualSignView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var spiritualMarriageDescription: some View {
@@ -576,7 +576,7 @@ extension AnnualSignView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
     
     var equalMarriageDescription: some View {
@@ -595,7 +595,7 @@ extension AnnualSignView {
                 .padding(.bottom)
             Spacer()
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 
