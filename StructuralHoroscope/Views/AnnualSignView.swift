@@ -211,7 +211,7 @@ extension AnnualSignView {
                 Spacer()
             }
             .padding()
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 ForEach(sign.blocks.sorted(by: <), id: \.key) { title, text in
                     VStack(alignment: .leading, spacing: 20) {
                         HStack {
@@ -235,7 +235,7 @@ extension AnnualSignView {
     
     var maleIdeologicDescription: some View {
         VStack(alignment: .leading) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
                     Text(sign.ideologicalType[.male]!.title)
@@ -255,7 +255,7 @@ extension AnnualSignView {
     
     var femaleIdeologicDescription: some View {
         VStack(alignment: .leading) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
                     Text(sign.ideologicalType[.female]!.title)
@@ -275,7 +275,7 @@ extension AnnualSignView {
     
     var socialDescription: some View {
         VStack(alignment: .leading) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
                     Text(sign.socialType.title)
@@ -295,7 +295,7 @@ extension AnnualSignView {
     
     var psychologicalDescription: some View {
         VStack(alignment: .leading) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 Spacer()
                 HStack {
                     Text(sign.psychologicalType.title)
@@ -315,7 +315,7 @@ extension AnnualSignView {
     
     var energyDescription: some View {
         VStack(alignment: .leading) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
                     Text(sign.temperament.title)
@@ -335,7 +335,7 @@ extension AnnualSignView {
     
     var fateDescription: some View {
         VStack(alignment: .leading) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
                     Text(sign.fateType.title)
@@ -504,7 +504,7 @@ extension AnnualSignView {
     }
     
     var vectorMarriageDescription: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             HStack {
                 Spacer()
                 Text(vectorMarriage.title)
@@ -523,7 +523,7 @@ extension AnnualSignView {
     }
     
     var romanticMarriageDescription: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             HStack {
                 Spacer()
                 Text(romanticMarriage.title)
@@ -542,7 +542,7 @@ extension AnnualSignView {
     }
     
     var patriarchalMarriageDescription: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             HStack {
                 Spacer()
                 Text(patriarchalMarriage.title)
@@ -561,7 +561,7 @@ extension AnnualSignView {
     }
     
     var spiritualMarriageDescription: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             HStack {
                 Spacer()
                 Text(spiritualMarriage.title)
@@ -580,7 +580,7 @@ extension AnnualSignView {
     }
     
     var equalMarriageDescription: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             HStack {
                 Spacer()
                 Text(equalMarriage.title)

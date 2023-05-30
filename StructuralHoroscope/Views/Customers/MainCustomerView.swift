@@ -320,7 +320,7 @@ extension MainCustomerView {
     
     var annualSignDescription: some View {
         VStack {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
                     Image("\(vm.mainUser.annualSignStruct.annualSign)")
@@ -357,7 +357,7 @@ extension MainCustomerView {
     
     var virtualSignDescription: some View {
         VStack(alignment: .leading) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
                     Text("\(vm.mainUser.annualSignStruct.virtualSigns[vm.mainUser.zodiacSign]!.emoji.rawValue) \(vm.mainUser.annualSignStruct.virtualSigns[vm.mainUser.zodiacSign]!.virtualSign.rawValue)")
@@ -389,7 +389,7 @@ extension MainCustomerView {
     
     var ideologicDescription: some View {
         VStack(alignment: .leading) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
                     Text(vm.mainUser.annualSignStruct.ideologicalType[vm.mainUser.sex]!.title)
@@ -410,7 +410,7 @@ extension MainCustomerView {
     
     var socialDescription: some View {
         VStack(alignment: .leading) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
                     Text(vm.mainUser.annualSignStruct.socialType.title)
@@ -431,7 +431,7 @@ extension MainCustomerView {
     
     var psychologicalDescription: some View {
         VStack(alignment: .leading) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
                     Text(vm.mainUser.annualSignStruct.psychologicalType.title)
@@ -452,7 +452,7 @@ extension MainCustomerView {
     
     var energyDescription: some View {
         VStack(alignment: .leading) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
                     Text(vm.mainUser.annualSignStruct.temperament.title)
@@ -473,7 +473,7 @@ extension MainCustomerView {
     
     var fateDescription: some View {
         VStack(alignment: .leading) {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
                     Text(vm.mainUser.annualSignStruct.fateType.title)
@@ -643,7 +643,7 @@ extension MainCustomerView {
     }
     
     var vectorMarriageDescription: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             HStack {
                 Spacer()
                 Text(vectorMarriage.title)
@@ -662,7 +662,7 @@ extension MainCustomerView {
     }
     
     var romanticMarriageDescription: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             HStack {
                 Spacer()
                 Text(romanticMarriage.title)
@@ -681,7 +681,7 @@ extension MainCustomerView {
     }
     
     var patriarchalMarriageDescription: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             HStack {
                 Spacer()
                 Text(patriarchalMarriage.title)
@@ -700,7 +700,7 @@ extension MainCustomerView {
     }
     
     var spiritualMarriageDescription: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             HStack {
                 Spacer()
                 Text(spiritualMarriage.title)
@@ -719,7 +719,7 @@ extension MainCustomerView {
     }
     
     var equalMarriageDescription: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             HStack {
                 Spacer()
                 Text(equalMarriage.title)
