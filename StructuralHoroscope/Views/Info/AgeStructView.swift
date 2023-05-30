@@ -20,7 +20,7 @@ struct AgeStructView: View {
     }
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
                 structPicker
                 textPicker
@@ -30,6 +30,7 @@ struct AgeStructView: View {
                     ageСommandmentsSection
                 }
             }
+            .frame(maxWidth: 900)
         }
         .padding(.horizontal)
         .navigationTitle("Возрасты")

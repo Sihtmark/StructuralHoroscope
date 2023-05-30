@@ -76,6 +76,7 @@ struct InfoCalendarView: View {
                 
             }
             .listStyle(.inset)
+            .scrollIndicators(ScrollIndicatorVisibility.hidden)
         }
     }
 }

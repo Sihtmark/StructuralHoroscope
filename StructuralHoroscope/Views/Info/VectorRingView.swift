@@ -13,7 +13,7 @@ struct VectorRingView: View {
     @State private var showVectorDescription = false
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             signsSection
         }
         .padding(.horizontal)
@@ -126,7 +126,7 @@ extension VectorRingView {
                 Spacer()
             }
             .padding()
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 Text("О векторных парах")
                     .foregroundColor(.theme.standard)
                     .font(.headline)

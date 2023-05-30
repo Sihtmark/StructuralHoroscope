@@ -32,8 +32,11 @@ struct AllCustomersView: View {
                 .onDelete(perform: vm.deleteItem)
                 .onMove(perform: vm.moveItem)
             }
+            .scrollIndicators(ScrollIndicatorVisibility.hidden)
+            .frame(maxWidth: 550)
             .listStyle(.inset)
             .navigationTitle("Мой список")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()

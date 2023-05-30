@@ -14,10 +14,11 @@ struct PsychologicalStructView: View {
     @State private var showDescription = false
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             picker
             infoSection
         }
+        .frame(maxWidth: 900)
         .padding(.horizontal)
         .navigationTitle("Социальная структура")
         .navigationBarTitleDisplayMode(.inline)
@@ -100,7 +101,7 @@ extension PsychologicalStructView {
                 Spacer()
             }
             .padding()
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 Text("Что такое психологическая структура?")
                     .foregroundColor(.theme.standard)
                     .font(.headline)

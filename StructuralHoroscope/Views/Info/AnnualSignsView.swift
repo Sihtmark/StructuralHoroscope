@@ -18,6 +18,7 @@ struct AnnualSignsView: View {
             annualSigns
                 .padding(.top, 15)
             AnnualSignView(sign: shownAnnualSign)
+                .frame(maxWidth: 550)
         }
         .navigationTitle("Годовые знаки")
         .navigationBarTitleDisplayMode(.inline)

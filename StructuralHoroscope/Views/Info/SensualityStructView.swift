@@ -13,10 +13,11 @@ struct SensualityStructView: View {
     @State private var shownStruct: SensualityStruct = coach
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             picker
             infoSection
         }
+        .frame(maxWidth: 900)
         .navigationTitle("Структура чувственности")
         .navigationBarTitleDisplayMode(.inline)
         .padding(.horizontal)

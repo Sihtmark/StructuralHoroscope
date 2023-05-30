@@ -19,8 +19,11 @@ struct AnnualSignView: View {
             businessSection
             marriageSection
         }
+        .scrollIndicators(ScrollIndicatorVisibility.hidden)
+        .frame(maxWidth: 550)
         .listStyle(.inset)
         .navigationTitle(sign.annualSign.rawValue)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {

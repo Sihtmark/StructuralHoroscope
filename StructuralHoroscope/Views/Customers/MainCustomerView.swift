@@ -44,6 +44,8 @@ struct MainCustomerView: View {
             businessSection
             marriageSection
         }
+        .scrollIndicators(ScrollIndicatorVisibility.hidden)
+        .frame(maxWidth: 550)
         .listStyle(.inset)
         .navigationTitle("Структура знака")
         .navigationBarTitleDisplayMode(.inline)

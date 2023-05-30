@@ -14,9 +14,10 @@ struct VirtualSignsView: View {
     @State private var shownVirtualSign: VirtualSignStruct = kingSign
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             signsSection
             virtualSignSection
+                .frame(maxWidth: 900)
                 .padding()
         }
         .navigationTitle("Виртуальные знаки")
@@ -111,7 +112,7 @@ extension VirtualSignsView {
                 Spacer()
             }
             .padding()
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 Text("О виртуальных знаках")
                     .foregroundColor(.theme.standard)
                     .font(.headline)

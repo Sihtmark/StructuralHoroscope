@@ -21,7 +21,7 @@ struct AgeView: View {
     }
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
                 textPicker
                     .padding(.top)
@@ -32,6 +32,7 @@ struct AgeView: View {
                 }
             }
         }
+        .frame(maxWidth: 900)
         .padding(.horizontal)
         .navigationTitle("Возрасты")
         .navigationBarTitleDisplayMode(.inline)

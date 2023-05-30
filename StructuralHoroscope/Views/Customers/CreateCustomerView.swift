@@ -45,8 +45,10 @@ struct CreateCustomerView: View {
                 .foregroundColor(.theme.standard)
             Spacer()
         }
+        .frame(maxWidth: 550)
         .padding()
         .navigationTitle("Новый пользователь")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Сохранить") {

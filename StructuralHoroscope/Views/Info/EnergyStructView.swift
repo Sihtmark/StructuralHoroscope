@@ -18,6 +18,7 @@ struct EnergyStructView: View {
             infoSection
             Spacer()
         }
+        .frame(maxWidth: 550)
         .navigationTitle("Энергетическая структура")
         .navigationBarTitleDisplayMode(.inline)
         .padding(.horizontal)

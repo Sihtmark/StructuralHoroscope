@@ -14,10 +14,11 @@ struct SocialStructView: View {
     @State private var shownStruct: SocialStruct = openedSocialStruct
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             picker
             infoSection
         }
+        .frame(maxWidth: 900)
         .padding(.horizontal)
         .navigationTitle("Социальная структура")
         .navigationBarTitleDisplayMode(.inline)
@@ -100,7 +101,7 @@ extension SocialStructView {
                 Spacer()
             }
             .padding()
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 Text("Что такое социальная структура?")
                     .foregroundColor(.theme.standard)
                     .font(.headline)

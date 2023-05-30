@@ -13,7 +13,7 @@ struct SmallVectorRingView: View {
     @State private var showDescription = false
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             signsSection
         }
         .padding(.horizontal)
@@ -120,7 +120,7 @@ extension SmallVectorRingView {
                 Spacer()
             }
             .padding()
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 Text("О малом векторном кольце")
                     .foregroundColor(.theme.standard)
                     .font(.headline)

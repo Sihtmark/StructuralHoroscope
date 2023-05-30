@@ -14,10 +14,11 @@ struct ElementStructView: View {
     @State private var showDescription = false
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             picker
             infoSection
         }
+        .frame(maxWidth: 900)
         .padding(.horizontal)
         .navigationTitle("Социальная структура")
         .navigationBarTitleDisplayMode(.inline)

@@ -36,6 +36,7 @@ struct CalendarView: View {
                     signDayType
                 }
             }
+            .frame(maxWidth: 550)
             .navigationTitle("Календарь")
             .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal)
@@ -197,5 +198,6 @@ extension CalendarView {
             .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
+        .scrollIndicators(ScrollIndicatorVisibility.hidden)
     }
 }

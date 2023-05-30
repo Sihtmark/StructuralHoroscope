@@ -45,6 +45,8 @@ struct CustomerView: View {
             businessSection
             marriageSection
         }
+        .scrollIndicators(ScrollIndicatorVisibility.hidden)
+        .frame(maxWidth: 550)
         .listStyle(.inset)
         .navigationTitle(customer.name)
         .navigationBarTitleDisplayMode(.inline)

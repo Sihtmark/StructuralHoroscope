@@ -15,13 +15,15 @@ struct BusinessStructview: View {
     @State private var showDescription = false
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             signPicker
             mainSignSection
             structPicker
             signSection
             textSection
         }
+        
+        .frame(maxWidth: 550)
         .padding(.horizontal)
         .navigationTitle("Построение коллектива")
         .navigationBarTitleDisplayMode(.inline)

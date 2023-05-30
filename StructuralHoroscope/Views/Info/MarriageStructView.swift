@@ -14,13 +14,14 @@ struct MarriageStructView: View {
     @State private var shownStruct: MarriageStruct = vectorMarriage
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             signPicker
             mainSignSection
             structPicker
             signSection
             textSection
         }
+        .frame(maxWidth: 900)
         .padding(.horizontal)
         .navigationTitle("Построение брака")
         .navigationBarTitleDisplayMode(.inline)
@@ -108,8 +109,6 @@ extension MarriageStructView {
                             .scaledToFit()
                             .frame(width: 60, height: 60)
                             .shadow(radius: 5)
-                        Text(item.annualSign.rawValue)
-                            .font(.caption)
                     }
                     .padding(10)
                 }

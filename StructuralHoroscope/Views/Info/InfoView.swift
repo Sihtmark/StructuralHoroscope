@@ -20,8 +20,11 @@ struct InfoView: View {
                 zodiacStructureSection
                 assistantSection
             }
+            .scrollIndicators(ScrollIndicatorVisibility.hidden)
+            .frame(maxWidth: 550)
             .listStyle(.inset)
             .navigationTitle("Информация")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {

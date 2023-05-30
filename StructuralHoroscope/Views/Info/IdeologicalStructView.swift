@@ -14,10 +14,11 @@ struct IdeologicalStructView: View {
     @State private var shownStruct: IdeologicalStruct = mysticMale
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             picker
             mainSection
         }
+        .frame(maxWidth: 900)
         .padding(.horizontal)
         .navigationTitle("Идеологическая структура")
         .navigationBarTitleDisplayMode(.inline)
@@ -100,7 +101,7 @@ extension IdeologicalStructView {
                 Spacer()
             }
             .padding()
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 Text("Что такое идеологическая структура?")
                     .foregroundColor(.theme.standard)
                     .font(.headline)

@@ -10,6 +10,7 @@ import SwiftUI
 struct StartingView: View {
     
     @EnvironmentObject private var vm: ViewModel
+    @AppStorage("isDarkMode") private var isDarkMode = false
     @State private var name = ""
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
@@ -27,8 +28,17 @@ struct StartingView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
-            Text("Новый пользователь")
-                .font(.largeTitle)
+            HStack {
+                Text("Новый пользователь")
+                    .font(.largeTitle)
+                Spacer()
+                Button {
+                    isDarkMode.toggle()
+                } label: {
+                    Image(systemName: isDarkMode ? "sun.max" : "moon.stars")
+                }
+                .padding(.trailing)
+            }
             TextField("Введите ваше имя", text: $name)
                 .textFieldStyle(.roundedBorder)
             HStack {
@@ -57,6 +67,7 @@ struct StartingView: View {
             .disabled(name.count < 3)
             Spacer()
         }
+        .frame(maxWidth: 550)
         .padding()
     }
 }
