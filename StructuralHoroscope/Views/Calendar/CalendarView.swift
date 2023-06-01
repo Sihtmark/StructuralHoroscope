@@ -157,45 +157,35 @@ extension CalendarView {
     }
     
     var signDayType: some View {
-        List {
-            ForEach(AnnualEnum.allCases, id: \.self) { sign in
-                if events.contains(where: { event in
-                    event.date == day
-                }) {
-                    HStack {
-                        Image("\(sign)Circle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 30, height: 30)
-                        Text(sign.rawValue)
-                            .bold()
-                            .padding(.leading, 20)
-                            .frame(width: 110, alignment: .leading)
-                        Text(events.first(where: {$0.date == day})!.signs[sign]!.title)
-                        Spacer()
-                        Text(events.first(where: {$0.date == day})!.signs[sign]!.emoji)
-                            .font(.caption)
-                    }
-                } else {
-                    HStack {
-                        Image("\(sign)Circle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 30, height: 30)
-                        Text(sign.rawValue)
-                            .foregroundColor(.theme.standard)
-                            .bold()
-                            .padding(.leading, 20)
-                            .frame(width: 110, alignment: .leading)
-                        Text(events[3].signs[sign]!.title)
-                            .foregroundColor(.theme.standard)
-                        Spacer()
-                        Text(events[3].signs[sign]!.emoji)
-                            .font(.caption)
+            List {
+                ForEach(vm.customers, id: \.self) { customer in
+                    if events.contains(where: { event in
+                        event.date == day
+                    }) {
+                        HStack {
+                            Text(events.first(where: {$0.date == day})!.signs[customer.annualSignStruct.annualSign]!.emoji)
+                            Text(customer.name)
+                                .foregroundColor(.theme.standard)
+                                .bold()
+                            Spacer()
+                            Text(events.first(where: {$0.date == day})!.signs[customer.annualSignStruct.annualSign]!.title)
+                                .foregroundColor(.theme.standard)
+                                .frame(width: 100, alignment: .leading)
+                        }
+                    } else {
+                        HStack {
+                            Text(events[3].signs[customer.annualSignStruct.annualSign]!.emoji)
+                            Text(customer.name)
+                                .foregroundColor(.theme.standard)
+                                .bold()
+                            Spacer()
+                            Text(events[3].signs[customer.annualSignStruct.annualSign]!.title)
+                                .foregroundColor(.theme.standard)
+                                .frame(width: 100, alignment: .leading)
+                        }
                     }
                 }
-            }
-            .listRowSeparator(.hidden)
+                .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
