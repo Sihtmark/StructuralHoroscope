@@ -7,6 +7,8 @@
 
 import Foundation
 
+let sampleUser = ClientStruct(name: "Ганибал Лектор", birthday: Date(), sex: .male, annualSignStruct: horseSign, zodiacSign: .aquarius, isFavorite: false)
+
 struct ClientStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     var name: String

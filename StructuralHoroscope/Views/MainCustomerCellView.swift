@@ -13,17 +13,12 @@ struct MainCustomerCellView: View {
     
     var body: some View {
         HStack {
-            Image("\(vm.mainUser!.annualSignStruct.annualSign)Circle")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 40)
-                .padding(.trailing,12)
             VStack(alignment: .leading, spacing: 3) {
                 Text(vm.mainUser!.name)
-                    .foregroundColor(.theme.accent)
+                    .foregroundColor(.theme.standard)
                     .bold()
                 HStack {
-                    Text("\(vm.mainUser!.annualSignStruct.annualSign.rawValue), \(vm.mainUser!.zodiacSign.rawValue.lowercased()), \(vm.mainUser!.annualSignStruct.virtualSigns[vm.mainUser!.zodiacSign]!.virtualSign.rawValue.lowercased())")
+                    Text("\(vm.mainUser!.annualSignStruct.virtualSigns[vm.mainUser!.zodiacSign]!.virtualSign.rawValue.lowercased())")
                         .font(.footnote)
                         .bold()
                         .foregroundColor(.theme.secondaryText)

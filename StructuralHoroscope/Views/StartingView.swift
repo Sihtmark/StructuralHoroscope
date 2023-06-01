@@ -74,5 +74,6 @@ struct StartingView: View {
 struct StartingView_Previews: PreviewProvider {
     static var previews: some View {
         StartingView()
+            .environmentObject(ViewModel())
     }
 }
