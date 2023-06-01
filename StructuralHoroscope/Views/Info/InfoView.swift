@@ -10,7 +10,6 @@ import SwiftUI
 struct InfoView: View {
     
     @EnvironmentObject private var vm: ViewModel
-    @AppStorage("isDarkMode") private var isDarkMode = false
     
     var body: some View {
         NavigationStack {
@@ -25,15 +24,6 @@ struct InfoView: View {
             .listStyle(.inset)
             .navigationTitle("Информация")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isDarkMode.toggle()
-                    } label: {
-                        Image(systemName: isDarkMode ? "sun.max" : "moon.stars")
-                    }
-                }
-            }
         }
     }
 }

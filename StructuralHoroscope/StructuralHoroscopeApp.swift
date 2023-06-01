@@ -12,7 +12,6 @@ import SwiftUI
 @main
 struct StructuralHoroscopeApp: App {
     
-    @AppStorage("isDarkMode") var isDarkMode: Bool = false
     @StateObject private var vm = ViewModel()
     
     init() {
@@ -24,10 +23,8 @@ struct StructuralHoroscopeApp: App {
         WindowGroup {
             if vm.mainUser == nil {
                 StartingView().environmentObject(vm)
-                    .preferredColorScheme(isDarkMode ? .dark : .light)
             } else {
                 MainTabView().environmentObject(vm)
-                    .preferredColorScheme(isDarkMode ? .dark : .light)
             }
         }
     }

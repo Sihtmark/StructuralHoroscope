@@ -10,7 +10,6 @@ import SwiftUI
 struct CalendarView: View {
     
     @EnvironmentObject private var vm: ViewModel
-    @AppStorage("isDarkMode") private var isDarkMode = false
     @State private var events = [DayStruct]()
     @State private var pickedDate = Date()
     @State private var day = Date()
@@ -53,13 +52,6 @@ struct CalendarView: View {
                         showAlert.toggle()
                     } label: {
                         Image(systemName: "arrow.triangle.2.circlepath.circle")
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isDarkMode.toggle()
-                    } label: {
-                        Image(systemName: isDarkMode ? "sun.max" : "moon.stars")
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -170,7 +162,7 @@ extension CalendarView {
                             Spacer()
                             Text(events.first(where: {$0.date == day})!.signs[customer.annualSignStruct.annualSign]!.title)
                                 .foregroundColor(.theme.standard)
-                                .frame(width: 100, alignment: .leading)
+                                .frame(width: 110, alignment: .leading)
                         }
                     } else {
                         HStack {
@@ -181,7 +173,7 @@ extension CalendarView {
                             Spacer()
                             Text(events[3].signs[customer.annualSignStruct.annualSign]!.title)
                                 .foregroundColor(.theme.standard)
-                                .frame(width: 100, alignment: .leading)
+                                .frame(width: 110, alignment: .leading)
                         }
                     }
                 }

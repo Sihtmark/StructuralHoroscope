@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AllCustomersView: View {
     
-    @AppStorage("isDarkMode") private var isDarkMode = false
     @EnvironmentObject private var vm: ViewModel
     
     var body: some View {
@@ -40,13 +39,6 @@ struct AllCustomersView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isDarkMode.toggle()
-                    } label: {
-                        Image(systemName: isDarkMode ? "sun.max" : "moon.stars")
-                    }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
