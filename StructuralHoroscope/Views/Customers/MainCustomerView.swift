@@ -149,7 +149,11 @@ extension MainCustomerView {
                 annualSignDescription
             } label: {
                 HStack {
-                    Text("\(vm.mainUser!.annualSignStruct.emoji) Годовой знак: \(vm.mainUser!.annualSignStruct.annualSign.rawValue)")
+                    Image("\(vm.mainUser!.annualSignStruct.annualSign)")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+                    Text("Годовой знак: \(vm.mainUser!.annualSignStruct.annualSign.rawValue)")
                         .foregroundColor(.theme.standard)
                 }
             }
@@ -157,11 +161,11 @@ extension MainCustomerView {
                 virtualSignDescription
             } label: {
                 HStack {
-                    Text(vm.mainUser!.annualSignStruct.virtualSigns[vm.mainUser!.zodiacSign]!.emoji.rawValue)
+                    Text(vm.mainUser!.annualSignStruct.socialSigns[vm.mainUser!.month]!.emoji.rawValue)
                         .foregroundColor(.theme.standard)
                         .fixedSize()
                         .frame(width: 20, height: 20)
-                    Text("Виртуальный знак: \(vm.mainUser!.annualSignStruct.virtualSigns[vm.mainUser!.zodiacSign]!.virtualSign.rawValue)")
+                    Text("Виртуальный знак: \(vm.mainUser!.annualSignStruct.socialSigns[vm.mainUser!.month]!.socialSign.rawValue)")
                         .foregroundColor(.theme.standard)
                 }
             }
@@ -348,14 +352,14 @@ extension MainCustomerView {
             ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
-                    Text("\(vm.mainUser!.annualSignStruct.virtualSigns[vm.mainUser!.zodiacSign]!.emoji.rawValue) \(vm.mainUser!.annualSignStruct.virtualSigns[vm.mainUser!.zodiacSign]!.virtualSign.rawValue)")
+                    Text("\(vm.mainUser!.annualSignStruct.socialSigns[vm.mainUser!.month]!.emoji.rawValue) \(vm.mainUser!.annualSignStruct.socialSigns[vm.mainUser!.month]!.socialSign.rawValue)")
                         .foregroundColor(.theme.standard)
                         .font(.title)
                         .bold()
                     Spacer()
                 }
                 .padding(.bottom, 15)
-                ForEach(vm.mainUser!.annualSignStruct.virtualSigns[vm.mainUser!.zodiacSign]!.blocks.sorted(by: <), id: \.key) { title, text in
+                ForEach(vm.mainUser!.annualSignStruct.socialSigns[vm.mainUser!.month]!.blocks.sorted(by: <), id: \.key) { title, text in
                     VStack(alignment: .leading) {
                         HStack {
                             Spacer()

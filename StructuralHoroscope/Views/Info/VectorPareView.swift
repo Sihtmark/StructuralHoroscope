@@ -1,5 +1,5 @@
 //
-//  VectorRingView.swift
+//  VectorPareView.swift
 //  StructuralHoroscope
 //
 //  Created by Sergei Poluboiarinov on 29.04.2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct VectorRingView: View {
+struct VectorPareView: View {
     
     @EnvironmentObject private var vm: ViewModel
     @State private var showVectorDescription = false
@@ -37,19 +37,19 @@ struct VectorRingView: View {
 struct VectorRingView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            VectorRingView()
+            VectorPareView()
                 .preferredColorScheme(.dark)
         }
         .environmentObject(ViewModel())
         NavigationStack {
-            VectorRingView()
+            VectorPareView()
                 .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }
 }
 
-extension VectorRingView {
+extension VectorPareView {
     var signsSection: some View {
         VStack(alignment: .center) {
             HStack {

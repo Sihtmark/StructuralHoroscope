@@ -18,7 +18,7 @@ struct MainCustomerCellView: View {
                     .foregroundColor(.theme.standard)
                     .bold()
                 HStack {
-                    Text("\(vm.mainUser!.annualSignStruct.virtualSigns[vm.mainUser!.zodiacSign]!.virtualSign.rawValue.lowercased())")
+                    Text("\(vm.mainUser!.annualSignStruct.socialSigns[vm.mainUser!.month]!.socialSign.rawValue.lowercased())")
                         .font(.footnote)
                         .bold()
                         .foregroundColor(.theme.secondaryText)

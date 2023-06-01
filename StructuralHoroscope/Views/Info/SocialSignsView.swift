@@ -1,5 +1,5 @@
 //
-//  VirtualSignsView.swift
+//  SocialSignsView.swift
 //  StructuralHoroscope
 //
 //  Created by Sergei Poluboiarinov on 27.04.2023.
@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct VirtualSignsView: View {
+struct SocialSignsView: View {
     
     @EnvironmentObject private var VM: ViewModel
     @State private var showVirtualSignDescription = false
-    @State private var shownVirtualSign: VirtualSignStruct = kingSign
+    @State private var shownVirtualSign: SocialSignStruct = kingSign
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -40,31 +40,31 @@ struct VirtualSignsView: View {
 struct VirtualSignsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            VirtualSignsView()
+            SocialSignsView()
                 .preferredColorScheme(.dark)
         }
         .environmentObject(ViewModel())
         NavigationStack {
-            VirtualSignsView()
+            SocialSignsView()
                 .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }
 }
 
-extension VirtualSignsView {
+extension SocialSignsView {
     var signsSection: some View {
         ScrollView {
             LazyVStack {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack {
-                        ForEach(virtualSigns) { sign in
+                        ForEach(socialSigns) { sign in
                             Button {
                                 shownVirtualSign = sign
                             } label: {
                                 HStack {
                                     Text(sign.emoji.rawValue)
-                                    Text(sign.virtualSign.rawValue)
+                                    Text(sign.socialSign.rawValue)
                                 }
                                 .padding(.horizontal)
                                 .padding(.vertical, 10)
@@ -85,7 +85,7 @@ extension VirtualSignsView {
     
     var virtualSignSection: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text("\(shownVirtualSign.emoji.rawValue) \(shownVirtualSign.virtualSign.rawValue)")
+            Text("\(shownVirtualSign.emoji.rawValue) \(shownVirtualSign.socialSign.rawValue)")
                 .foregroundColor(.theme.standard)
                 .font(.title)
                 .bold()

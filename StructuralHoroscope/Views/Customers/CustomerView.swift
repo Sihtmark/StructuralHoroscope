@@ -55,7 +55,7 @@ struct CustomerView: View {
                 Button(isEditing ? "Сохранить" : "Изменить") {
                     if isEditing {
                         vm.updateCustomer(client: customer, name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!)
-                        customer = customer.updateInfo(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!, isFavorite: false)
+                        customer = customer.updateInfo(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getZodiacSign(date: selectedDate)!, isFavorite: false)
                     }
                     isEditing.toggle()
                 }
@@ -150,7 +150,11 @@ extension CustomerView {
                 annualSignDescription
             } label: {
                 HStack {
-                    Text("\(customer.annualSignStruct.emoji) Годовой знак: \(customer.annualSignStruct.annualSign.rawValue)")
+                    Image("\(customer.annualSignStruct.annualSign)")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+                    Text("Годовой знак: \(customer.annualSignStruct.annualSign.rawValue)")
                         .foregroundColor(.theme.standard)
                 }
             }
@@ -158,11 +162,11 @@ extension CustomerView {
                 virtualSignDescription
             } label: {
                 HStack {
-                    Text(customer.annualSignStruct.virtualSigns[customer.zodiacSign]!.emoji.rawValue)
+                    Text(customer.annualSignStruct.socialSigns[customer.month]!.emoji.rawValue)
                         .foregroundColor(.theme.standard)
                         .fixedSize()
                         .frame(width: 20, height: 20)
-                    Text("Виртуальный знак: \(customer.annualSignStruct.virtualSigns[customer.zodiacSign]!.virtualSign.rawValue)")
+                    Text("Виртуальный знак: \(customer.annualSignStruct.socialSigns[customer.month]!.socialSign.rawValue)")
                         .foregroundColor(.theme.standard)
                 }
             }
@@ -348,7 +352,7 @@ extension CustomerView {
             ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
-                    Text("\(customer.annualSignStruct.virtualSigns[customer.zodiacSign]!.emoji.rawValue) \(customer.annualSignStruct.virtualSigns[customer.zodiacSign]!.virtualSign.rawValue)")
+                    Text("\(customer.annualSignStruct.socialSigns[customer.month]!.emoji.rawValue) \(customer.annualSignStruct.socialSigns[customer.month]!.socialSign.rawValue)")
                         .foregroundColor(.theme.standard)
                         .font(.title)
                         .bold()
@@ -356,7 +360,7 @@ extension CustomerView {
                     Spacer()
                 }
                 .padding(.bottom, 15)
-                ForEach(customer.annualSignStruct.virtualSigns[customer.zodiacSign]!.blocks.sorted(by: <), id: \.key) { title, text in
+                ForEach(customer.annualSignStruct.socialSigns[customer.month]!.blocks.sorted(by: <), id: \.key) { title, text in
                     VStack(alignment: .leading) {
                         HStack {
                             Spacer()

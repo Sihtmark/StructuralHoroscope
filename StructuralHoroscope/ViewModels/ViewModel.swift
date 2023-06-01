@@ -62,41 +62,41 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func createMainUser(name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum) {
+    func createMainUser(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum) {
         let newMainUser = ClientStruct(
             name: name,
             birthday: birthday,
             sex: sex,
             annualSignStruct: sign,
-            zodiacSign: sampleClient.zodiacSign,
+            month: sampleClient.month,
             isFavorite: false
         )
         mainUser = newMainUser
     }
     
-    func createNewCustomer(name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum) {
+    func createNewCustomer(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum) {
         let newCustomer = ClientStruct(
             name: name,
             birthday: birthday,
             sex: sex,
             annualSignStruct: sign,
-            zodiacSign: zodiacSign,
+            month: zodiacSign,
             isFavorite: false
         )
         customers.append(newCustomer)
     }
     
-    func updateMainUser(name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum) {
+    func updateMainUser(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum) {
         if mainUser == nil {
             createMainUser(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign)
         } else {
-            mainUser = mainUser!.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign, isFavorite: false)
+            mainUser = mainUser!.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: false)
         }
     }
     
-    func updateCustomer(client: ClientStruct, name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum) {
+    func updateCustomer(client: ClientStruct, name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum) {
         if let index = customers.firstIndex(where: {$0.id == client.id}) {
-            customers[index] = client.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign, isFavorite: false)
+            customers[index] = client.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: false)
             saveItems()
         }
         fetchCustomers()
@@ -110,7 +110,7 @@ class ViewModel: ObservableObject {
         customers.move(fromOffsets: from, toOffset: to)
     }
     
-    func socialSigns(socialEnum: SocialEnum) -> [SignStruct] {
+    func socialSigns(socialEnum: SocialEnum) -> [AnnualSignStruct] {
         switch socialEnum {
         case .opened:
             return [ratSign, catSign, horseSign, roosterSign]
@@ -121,7 +121,7 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func ideologicalSigns(ideologicalEnum: IdeologicalEnum) -> [SignStruct] {
+    func ideologicalSigns(ideologicalEnum: IdeologicalEnum) -> [AnnualSignStruct] {
         switch ideologicalEnum {
         case .logicalMale:
             return [bullSign, snakeSign, roosterSign]
@@ -142,7 +142,7 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func psychologicalSigns(psychologicalEnum: PsychologicalEnum) -> [SignStruct] {
+    func psychologicalSigns(psychologicalEnum: PsychologicalEnum) -> [AnnualSignStruct] {
         switch psychologicalEnum {
         case .maturity:
             return [boarSign, ratSign, bullSign]
@@ -155,7 +155,7 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func energySigns(energy: EnergyEnum) -> [SignStruct] {
+    func energySigns(energy: EnergyEnum) -> [AnnualSignStruct] {
         switch energy {
         case .dramatic:
             return [goatSign, ratSign, snakeSign]
@@ -168,7 +168,7 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func fateSigns(fate: FateEnum) -> [SignStruct] {
+    func fateSigns(fate: FateEnum) -> [AnnualSignStruct] {
         switch fate {
         case .fatalist:
             return [ratSign, tigerSign, dogSign]
@@ -185,7 +185,7 @@ class ViewModel: ObservableObject {
         return mainUser!.annualSignStruct.businessStruct.filter{$0.key == customer.annualSignStruct.annualSign}.first!.value
     }
     
-    func getAnnualSign(date: Date) -> SignStruct? {
+    func getAnnualSign(date: Date) -> AnnualSignStruct? {
         let birthDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
         let year = birthDateComponents.year!
         let month = birthDateComponents.month!
@@ -231,12 +231,12 @@ class ViewModel: ObservableObject {
         return nil
     }
     
-    func getZodiacSign(date: Date) -> ZodiacEnum? {
+    func getZodiacSign(date: Date) -> MonthEnum? {
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
         let day = dateComponents.day
         let month = dateComponents.month
         
-        for i in zodiacArray {
+        for i in months {
             for e in i.days {
                 if e.key == month && e.value.contains(day!) {
                     return i.sign

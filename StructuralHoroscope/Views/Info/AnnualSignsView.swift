@@ -11,7 +11,7 @@ struct AnnualSignsView: View {
     
     @EnvironmentObject private var VM: ViewModel
     @State private var showFullDescription = false
-    @State private var shownAnnualSign: SignStruct = ratSign
+    @State private var shownAnnualSign: AnnualSignStruct = ratSign
     
     var body: some View {
         VStack {

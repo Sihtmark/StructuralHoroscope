@@ -15,9 +15,8 @@ struct InfoView: View {
         NavigationStack {
             List {
                 mainView
-                annualStructureSection
-                zodiacStructureSection
                 assistantSection
+                annualStructureSection
             }
             .scrollIndicators(ScrollIndicatorVisibility.hidden)
             .frame(maxWidth: 550)
@@ -53,7 +52,7 @@ extension InfoView {
                     .foregroundColor(.theme.standard)
             }
             NavigationLink {
-                VirtualSignsView()
+                SocialSignsView()
             } label: {
                 Text("Виртуальные знаки")
                     .foregroundColor(.theme.standard)
@@ -67,9 +66,9 @@ extension InfoView {
     var annualStructureSection: some View {
         Section {
             NavigationLink {
-                VectorRingView()
+                VectorPareView()
             } label: {
-                Text("Векторное кольцо")
+                Text("Векторные пары")
                     .foregroundColor(.theme.standard)
             }
             NavigationLink {
@@ -103,33 +102,7 @@ extension InfoView {
                     .foregroundColor(.theme.standard)
             }
         } header: {
-            Text("Годовые структуры")
-                .foregroundColor(.theme.accent)
-        }
-        .listRowSeparator(.hidden)
-    }
-    var zodiacStructureSection: some View {
-        Section {
-            NavigationLink {
-                SensualityStructView()
-            } label: {
-                Text("Структура чувственности")
-                    .foregroundColor(.theme.standard)
-            }
-            NavigationLink {
-                ElementStructView()
-            } label: {
-                Text("Структура стихий")
-                    .foregroundColor(.theme.standard)
-            }
-            NavigationLink {
-                SmallVectorRingView()
-            } label: {
-                Text("Малое векторное кольцо")
-                    .foregroundColor(.theme.standard)
-            }
-        } header: {
-            Text("Зодиакальные структуры")
+            Text("Cтруктуры")
                 .foregroundColor(.theme.accent)
         }
         .listRowSeparator(.hidden)
@@ -155,7 +128,7 @@ extension InfoView {
                     .foregroundColor(.theme.standard)
             }
         } header: {
-            Text("Структура отношений")
+            Text("Отношения")
                 .foregroundColor(.theme.accent)
         }
         .listRowSeparator(.hidden)

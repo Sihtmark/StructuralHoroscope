@@ -10,7 +10,7 @@ import SwiftUI
 struct AnnualSignView: View {
     
     @EnvironmentObject private var vm: ViewModel
-    let sign: SignStruct
+    let sign: AnnualSignStruct
     @State private var showAnnualSignDescription = false
     
     var body: some View {

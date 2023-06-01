@@ -7,33 +7,32 @@
 
 import Foundation
 
-let sampleUser = ClientStruct(name: "Ганибал Лектор", birthday: Date(), sex: .male, annualSignStruct: horseSign, zodiacSign: .aquarius, isFavorite: false)
+let sampleUser = ClientStruct(name: "Ганибал Лектор", birthday: Date(), sex: .male, annualSignStruct: horseSign, month: .february, isFavorite: false)
 
 struct ClientStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     var name: String
     var birthday: Date
     var sex: Sex
-    var annualSignStruct: SignStruct
-    var zodiacSign: ZodiacEnum
+    var annualSignStruct: AnnualSignStruct
+    var month: MonthEnum
     var isFavorite: Bool
     
-    func updateInfo(name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum, isFavorite: Bool) -> ClientStruct {
-        return ClientStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: sign, zodiacSign: zodiacSign, isFavorite: isFavorite)
+    func updateInfo(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum, isFavorite: Bool) -> ClientStruct {
+        return ClientStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: sign, month: month, isFavorite: isFavorite)
     }
 }
 
-struct VirtualSignStruct: Identifiable, Codable, Equatable, Hashable {
+struct SocialSignStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
-    let virtualSign: VirtualEnum
-    let emoji: VirtualEmojiEnum
+    let socialSign: SocialSignEnum
+    let emoji: SocialEmojiEnum
     let blocks: [String:String]
 }
 
-struct SignStruct: Identifiable, Codable, Equatable, Hashable {
+struct AnnualSignStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     let annualSign: AnnualEnum
-    let emoji: String
     let ideologicalType: [Sex: IdeologicalStruct]
     let socialType: SocialStruct
     let psychologicalType: PsychologicalStruct
@@ -51,15 +50,15 @@ struct SignStruct: Identifiable, Codable, Equatable, Hashable {
     let companions: [AnnualEnum]
     let subordinates: [AnnualEnum]
     let advisers: [AnnualEnum]
-    let virtualSigns: [ZodiacEnum:VirtualSignStruct]
+    let socialSigns: [MonthEnum:SocialSignStruct]
     let businessStruct: [AnnualEnum: BusinessEnum]
     let blocks: [String:String]
     let years: [Int]
 }
 
-struct ZodiacStruct: Identifiable, Codable, Equatable, Hashable {
+struct MonthStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
-    let sign: ZodiacEnum
+    let sign: MonthEnum
     let days: [Int: ClosedRange<Int>]
 }
 
@@ -108,7 +107,7 @@ struct BusinessStruct: Identifiable, Codable, Equatable, Hashable {
     let type: BusinessEnum
     let value: String
     let text: String
-    let signs: [AnnualEnum: [SignStruct]]
+    let signs: [AnnualEnum: [AnnualSignStruct]]
 }
 
 struct MarriageStruct: Identifiable, Codable, Equatable, Hashable {
@@ -116,15 +115,7 @@ struct MarriageStruct: Identifiable, Codable, Equatable, Hashable {
     let type: MarriageEnum
     let title: String
     let text: String
-    let signs: [AnnualEnum: [SignStruct]]
-}
-
-struct SensualityStruct: Identifiable, Codable, Equatable, Hashable {
-    var id = UUID()
-    let department: SensualityEnum
-    let zodiacs: [ZodiacEnum]
-    let title: String
-    let text: String
+    let signs: [AnnualEnum: [AnnualSignStruct]]
 }
 
 struct AgeStruct: Identifiable, Codable, Equatable, Hashable {
@@ -133,13 +124,6 @@ struct AgeStruct: Identifiable, Codable, Equatable, Hashable {
     let title: String
     let ageTitle: String
     let ageСommandments: String
-    let text: String
-}
-
-struct ElementStruct: Identifiable, Codable, Equatable, Hashable {
-    var id = UUID()
-    let element: ElementEnum
-    let zodiacs: [ZodiacEnum]
     let text: String
 }
 
@@ -164,7 +148,6 @@ enum Tab {
     case home
     case info
     case calendar
-    case settings
 }
 
 struct DayType: Codable, Hashable, Identifiable {
@@ -172,20 +155,6 @@ struct DayType: Codable, Hashable, Identifiable {
     let title: String
     let emoji: String
     let text: String?
-}
-
-enum ElementEnum: String, Codable, CaseIterable, Hashable {
-    case fire = "Революционеры (Огонь)"
-    case water = "Консерваторы (Вода)"
-    case air = "Небожители (Воздух)"
-    case earth = "Землепашцы (Земля)"
-}
-
-enum SensualityEnum: String, Codable, CaseIterable, Hashable {
-    case coach = "Тренеры (Садо)"
-    case athlete = "Спортсмены (Мазо)"
-    case altruist = "Альтруисты (Повара)"
-    case sybarite = "Сибариты (Гурманы)"
 }
 
 enum AnnualEnum: String, Codable, CaseIterable, Hashable {
@@ -203,22 +172,22 @@ enum AnnualEnum: String, Codable, CaseIterable, Hashable {
     case dragon = "Дракон"
 }
 
-enum ZodiacEnum: String, Codable, CaseIterable, Hashable {
-    case aries = "Овен"
-    case taurus = "Телец"
-    case gemini = "Близнецы"
-    case cancer = "Рак"
-    case leo = "Лев"
-    case virgo = "Дева"
-    case libra = "Весы"
-    case scorpio = "Скорпион"
-    case sagittarius = "Стрелец"
-    case capricorn = "Козерог"
-    case aquarius = "Водолей"
-    case pisces = "Рыбы"
+enum MonthEnum: Codable, CaseIterable, Hashable {
+    case april
+    case may
+    case june
+    case july
+    case augest
+    case september
+    case october
+    case november
+    case december
+    case january
+    case february
+    case march
 }
 
-enum VirtualEnum: String, CaseIterable, Codable, Hashable {
+enum SocialSignEnum: String, CaseIterable, Codable, Hashable {
     case king = "Король"
     case vector = "Вектор"
     case jester = "Шут"
@@ -228,7 +197,7 @@ enum VirtualEnum: String, CaseIterable, Codable, Hashable {
     case leader = "Вождь"
 }
 
-enum VirtualEmojiEnum: String, CaseIterable, Codable, Hashable {
+enum SocialEmojiEnum: String, CaseIterable, Codable, Hashable {
     case king = "👑"
     case vector = "↔️"
     case jester = "🤡"
@@ -236,21 +205,6 @@ enum VirtualEmojiEnum: String, CaseIterable, Codable, Hashable {
     case aristocrat = "🎩"
     case professor = "👨‍🏫"
     case leader = "🗽"
-}
-
-enum AnnualEmojiEnum: String, CaseIterable, Codable, Hashable {
-    case rat = "🐀"
-    case bull = "🐂"
-    case tiger = "🐅"
-    case cat = "🐈"
-    case dragon = "🐉"
-    case snake = "🐍"
-    case horse = "🐎"
-    case goat = "🐐"
-    case monkey = "🐒"
-    case rooster = "🐓"
-    case dog = "🐕"
-    case boar = "🐗"
 }
 
 enum BusinessEnum: String, Codable, CaseIterable, Hashable {
@@ -333,6 +287,6 @@ var sampleClient = ClientStruct(
     birthday: Date(),
     sex: .male,
     annualSignStruct: ViewModel().getAnnualSign(date: Date()) ?? horseSign,
-    zodiacSign: ViewModel().getZodiacSign(date: Date()) ?? .cancer,
+    month: ViewModel().getZodiacSign(date: Date()) ?? .february,
     isFavorite: false
 )
