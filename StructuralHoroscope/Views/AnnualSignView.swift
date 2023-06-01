@@ -110,42 +110,40 @@ extension AnnualSignView {
             NavigationLink {
                 vectorHostDescription
             } label: {
-                Text("Векторный хозяин:\n\(vm.hostString(sign: sign.vectorHost))")
+                Text("Векторный хозяин:\n\(sign.vectorHost.rawValue)")
                     .foregroundColor(.theme.standard)
-                    .lineSpacing(6)
             }
             NavigationLink {
                 vectorServantDescription
             } label: {
-                Text("Векторный слуга:\n\(vm.servantString(sign: sign.vectorServant))")
+                Text("Векторный слуга:\n\(sign.vectorServant.rawValue)")
                     .foregroundColor(.theme.standard)
-                    .lineSpacing(6)
             }
             NavigationLink {
                 cloneDescription
             } label: {
-                Text("Клоны:\n\(vm.clones(sign: sign))")
+                Text("Клоны:\n\(sign.clones.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 companionDescription
             } label: {
-                Text("Соратники:\n\(vm.companions(sign: sign))")
+                Text("Соратники:\n\(sign.companions.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 subordinateDescription
             } label: {
-                Text("Подчиненные:\n\(vm.subordinates(sign: sign))")
+                Text("Подчиненные:\n\(sign.subordinates.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 adviserDescription
             } label: {
-                Text("Советники:\n\(vm.advisers(sign: sign))")
+                Text("Советники:\n\(sign.advisers.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
@@ -161,35 +159,35 @@ extension AnnualSignView {
             NavigationLink {
                 vectorMarriageDescription
             } label: {
-                Text("Векторный:\n\(vm.vectorMarriage(sign: sign))")
+                Text("Векторный брак:\n\(sign.vectorHost.rawValue), \(sign.vectorServant.rawValue)")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 romanticMarriageDescription
             } label: {
-                Text("Романтический:\n\(vm.romanticMarriage(sign: sign))")
+                Text("Романтический брак:\n\(sign.romanticMarriage.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 patriarchalMarriageDescription
             } label: {
-                Text("Патриархальный:\n\(vm.patriarchalMarriage(sign: sign))")
+                Text("Патриархальный брак:\n\(sign.patriarchalMarriage.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 equalMarriageDescription
             } label: {
-                Text("Равный:\n\(vm.equalMarriage(sign: sign))")
+                Text("Равный брак:\n\(sign.equalMarriage.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 spiritualMarriageDescription
             } label: {
-                Text("Духовный:\n\(vm.spiritualMarriage(sign: sign))")
+                Text("Духовный брак:\n\(sign.spiritualMarriage.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }

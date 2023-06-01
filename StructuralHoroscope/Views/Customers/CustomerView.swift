@@ -146,23 +146,11 @@ extension CustomerView {
     
     var signSection: some View {
         Section {
-            HStack {
-                Image("\(customer.zodiacSign)Small")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20, height: 20)
-                Text("Знак Зодиака: \(customer.zodiacSign.rawValue)")
-                    .foregroundColor(.theme.standard)
-            }
             NavigationLink {
                 annualSignDescription
             } label: {
                 HStack {
-                    Image("\(customer.annualSignStruct.annualSign)")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
-                    Text("Годовой знак: \(customer.annualSignStruct.annualSign.rawValue)")
+                    Text("\(customer.annualSignStruct.emoji) Годовой знак: \(customer.annualSignStruct.annualSign.rawValue)")
                         .foregroundColor(.theme.standard)
                 }
             }
@@ -229,42 +217,40 @@ extension CustomerView {
             NavigationLink {
                 vectorHostDescription
             } label: {
-                Text("Векторный хозяин:\n\(vm.hostString(sign: customer.annualSignStruct.vectorHost))")
+                Text("Векторный хозяин: \(customer.annualSignStruct.vectorHost.rawValue)")
                     .foregroundColor(.theme.standard)
-                    .lineSpacing(6)
             }
             NavigationLink {
                 vectorServantDescription
             } label: {
-                Text("Векторный слуга:\n\(vm.servantString(sign: customer.annualSignStruct.vectorServant))")
+                Text("Векторный слуга:\(customer.annualSignStruct.vectorServant.rawValue)")
                     .foregroundColor(.theme.standard)
-                    .lineSpacing(6)
             }
             NavigationLink {
                 cloneDescription
             } label: {
-                Text("Клоны:\n\(vm.clones(sign: customer.annualSignStruct))")
+                Text("Клоны:\n\(customer.annualSignStruct.clones.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 companionDescription
             } label: {
-                Text("Соратники:\n\(vm.companions(sign: customer.annualSignStruct))")
+                Text("Соратники:\n\(customer.annualSignStruct.companions.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 subordinateDescription
             } label: {
-                Text("Подчиненные:\n\(vm.subordinates(sign: customer.annualSignStruct))")
+                Text("Подчиненные:\n\(customer.annualSignStruct.subordinates.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 adviserDescription
             } label: {
-                Text("Советники:\n\(vm.advisers(sign: customer.annualSignStruct))")
+                Text("Советники:\n\(customer.annualSignStruct.advisers.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
@@ -280,35 +266,35 @@ extension CustomerView {
             NavigationLink {
                 vectorMarriageDescription
             } label: {
-                Text("Векторный:\n\(vm.vectorMarriage(sign: customer.annualSignStruct))")
+                Text("Векторный:\n\(customer.annualSignStruct.vectorHost.rawValue), \(customer.annualSignStruct.vectorServant.rawValue)")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 romanticMarriageDescription
             } label: {
-                Text("Романтический:\n\(vm.romanticMarriage(sign: customer.annualSignStruct))")
+                Text("Романтический:\n\(customer.annualSignStruct.romanticMarriage.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 patriarchalMarriageDescription
             } label: {
-                Text("Патриархальный:\n\(vm.patriarchalMarriage(sign: customer.annualSignStruct))")
+                Text("Патриархальный:\n\(customer.annualSignStruct.patriarchalMarriage.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 spiritualMarriageDescription
             } label: {
-                Text("Духовный:\n\(vm.spiritualMarriage(sign: customer.annualSignStruct))")
+                Text("Духовный:\n\(customer.annualSignStruct.spiritualMarriage.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 equalMarriageDescription
             } label: {
-                Text("Равный:\n\(vm.equalMarriage(sign: customer.annualSignStruct))")
+                Text("Равный:\n\(customer.annualSignStruct.equalMarriage.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }

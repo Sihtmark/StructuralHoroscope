@@ -47,7 +47,7 @@ struct MainCustomerView: View {
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
         .frame(maxWidth: 550)
         .listStyle(.inset)
-        .navigationTitle("Структура знака")
+        .navigationTitle("Обо мне")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -145,23 +145,11 @@ extension MainCustomerView {
     
     var signSection: some View {
         Section {
-            HStack {
-                Image("\(vm.mainUser!.zodiacSign)Small")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20, height: 20)
-                Text("Знак Зодиака: \(vm.mainUser!.zodiacSign.rawValue)")
-                    .foregroundColor(.theme.standard)
-            }
             NavigationLink {
                 annualSignDescription
             } label: {
                 HStack {
-                    Image("\(vm.mainUser!.annualSignStruct.annualSign)")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
-                    Text("Годовой знак: \(vm.mainUser!.annualSignStruct.annualSign.rawValue)")
+                    Text("\(vm.mainUser!.annualSignStruct.emoji) Годовой знак: \(vm.mainUser!.annualSignStruct.annualSign.rawValue)")
                         .foregroundColor(.theme.standard)
                 }
             }
@@ -228,42 +216,42 @@ extension MainCustomerView {
             NavigationLink {
                 vectorHostDescription
             } label: {
-                Text("Векторный хозяин:\n\(vm.hostString(sign: vm.mainUser!.annualSignStruct.vectorHost))")
+                Text("Векторный хозяин:\n\(vm.mainUser!.annualSignStruct.vectorHost.rawValue)")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 vectorServantDescription
             } label: {
-                Text("Векторный слуга:\n\(vm.servantString(sign: vm.mainUser!.annualSignStruct.vectorServant))")
+                Text("Векторный слуга:\n\(vm.mainUser!.annualSignStruct.vectorServant.rawValue)")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 cloneDescription
             } label: {
-                Text("Клоны:\n\(vm.clones(sign: vm.mainUser!.annualSignStruct))")
+                Text("Клоны:\n\(vm.mainUser!.annualSignStruct.clones.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 companionDescription
             } label: {
-                Text("Соратники:\n\(vm.companions(sign: vm.mainUser!.annualSignStruct))")
+                Text("Соратники:\n\(vm.mainUser!.annualSignStruct.companions.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 subordinateDescription
             } label: {
-                Text("Подчиненные:\n\(vm.subordinates(sign: vm.mainUser!.annualSignStruct))")
+                Text("Подчиненные:\n\(vm.mainUser!.annualSignStruct.subordinates.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 adviserDescription
             } label: {
-                Text("Советники:\n\(vm.advisers(sign: vm.mainUser!.annualSignStruct))")
+                Text("Советники:\n\(vm.mainUser!.annualSignStruct.advisers.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
@@ -279,35 +267,35 @@ extension MainCustomerView {
             NavigationLink {
                 vectorMarriageDescription
             } label: {
-                Text("Векторный:\n\(vm.vectorMarriage(sign: vm.mainUser!.annualSignStruct))")
+                Text("Векторный брак:\n\(vm.mainUser!.annualSignStruct.vectorHost.rawValue), \(vm.mainUser!.annualSignStruct.vectorServant.rawValue)")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 romanticMarriageDescription
             } label: {
-                Text("Романтический:\n\(vm.romanticMarriage(sign: vm.mainUser!.annualSignStruct))")
+                Text("Романтический брак:\n\(vm.mainUser!.annualSignStruct.romanticMarriage.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 patriarchalMarriageDescription
             } label: {
-                Text("Патриархальный:\n\(vm.patriarchalMarriage(sign: vm.mainUser!.annualSignStruct))")
+                Text("Патриархальный брак:\n\(vm.mainUser!.annualSignStruct.patriarchalMarriage.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 spiritualMarriageDescription
             } label: {
-                Text("Духовный:\n\(vm.spiritualMarriage(sign: vm.mainUser!.annualSignStruct))")
+                Text("Духовный брак:\n\(vm.mainUser!.annualSignStruct.spiritualMarriage.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 equalMarriageDescription
             } label: {
-                Text("Равный:\n\(vm.equalMarriage(sign: vm.mainUser!.annualSignStruct))")
+                Text("Равный брак:\n\(vm.mainUser!.annualSignStruct.equalMarriage.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
