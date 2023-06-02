@@ -14,23 +14,41 @@ struct AllCustomersView: View {
     var body: some View {
         NavigationStack {
             List {
-                NavigationLink {
-                    MainCustomerView()
-                } label: {
+                ZStack(alignment: .leading) {
                     MainCustomerCellView()
-                }
-                .listRowSeparator(.hidden)
-                ForEach(vm.customers) { customer in
                     NavigationLink {
-                        CustomerView(customer: customer)
+                        MainCustomerView()
                     } label: {
-                        CustomerCellView(customer: customer)
+                        EmptyView()
                     }
-                    .listRowSeparator(.hidden)
+                    .opacity(0.0)
+                }
+                ForEach(vm.customers) { customer in
+                    ZStack(alignment: .leading) {
+                        CustomerCellView(customer: customer)
+                        NavigationLink {
+                            CustomerView(customer: customer)
+                        } label: {
+                            EmptyView()
+                        }
+                        .opacity(0.0)
+                    }
+                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                        if customer.contact != nil {
+                            Button {
+                                vm.updateCustomersContact(customer: customer)
+                            } label: {
+                                Label("Общение", systemImage: "checkmark.square")
+                            }
+                            .tint(.green)
+                        }
+                    }
+//                    .listRowSeparator(.hidden)
                 }
                 .onDelete(perform: vm.deleteItem)
                 .onMove(perform: vm.moveItem)
             }
+            .padding(.horizontal, 10)
             .scrollIndicators(ScrollIndicatorVisibility.hidden)
             .frame(maxWidth: 550)
             .listStyle(.inset)

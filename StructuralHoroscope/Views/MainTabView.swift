@@ -32,6 +32,11 @@ struct MainTabView: View {
                     Text("Календарь")
                 }
                 .tag(Tab.calendar)
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "circle")
+                    Text("Настройки")
+                }
         }
     }
 }
@@ -40,6 +45,12 @@ struct TabView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             MainTabView()
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(ViewModel())
+        NavigationStack {
+            MainTabView()
+                .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }

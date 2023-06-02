@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A00BFEBD2A29B5CD00590374 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00BFEBC2A29B5CD00590374 /* SettingsView.swift */; };
 		A010D0A12A00340000289B8B /* AgeStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010D0A02A00340000289B8B /* AgeStructView.swift */; };
 		A010D0A32A0038E900289B8B /* AgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010D0A22A0038E900289B8B /* AgeView.swift */; };
 		A0193D0529FD6241007C06A1 /* AnnualSignsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0193D0429FD6241007C06A1 /* AnnualSignsView.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A00BFEBC2A29B5CD00590374 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A010D0A02A00340000289B8B /* AgeStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeStructView.swift; sourceTree = "<group>"; };
 		A010D0A22A0038E900289B8B /* AgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeView.swift; sourceTree = "<group>"; };
 		A0193D0429FD6241007C06A1 /* AnnualSignsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualSignsView.swift; sourceTree = "<group>"; };
@@ -116,6 +118,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A00BFEBB2A29B59900590374 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A00BFEBC2A29B5CD00590374 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		A02990702A1C92DF00B850DB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,12 +139,11 @@
 			children = (
 				A0C1A2362A0A39FD00490239 /* StartingView.swift */,
 				A0576AFA29FA951700F4D9EF /* MainTabView.swift */,
-				A033682B2A0FC66A00F2F597 /* CustomerCellView.swift */,
-				A03385D52A1202C2002153EF /* MainCustomerCellView.swift */,
 				A08600532A1525C800B69FDF /* AnnualSignView.swift */,
 				A0E2299F29FA97EC0021648C /* Customers */,
 				A0E229A029FA98040021648C /* Info */,
 				A0E229A129FA98180021648C /* Calendar */,
+				A00BFEBB2A29B59900590374 /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -222,6 +231,8 @@
 			isa = PBXGroup;
 			children = (
 				A08993FB29F6C44600174590 /* AllCustomersView.swift */,
+				A03385D52A1202C2002153EF /* MainCustomerCellView.swift */,
+				A033682B2A0FC66A00F2F597 /* CustomerCellView.swift */,
 				A086548829F2F7F600E8300D /* CreateCustomerView.swift */,
 				A03385D32A11FE4A002153EF /* MainCustomerView.swift */,
 				A0E0723229D701BF0010E128 /* CustomerView.swift */,
@@ -349,6 +360,7 @@
 				A07141D229FFC8C30011FB0A /* MarriageStructView.swift in Sources */,
 				A03385D82A1236F6002153EF /* AnnualSignInstances.swift in Sources */,
 				A0F2FA9129EB01A3002A58BC /* FateInstances.swift in Sources */,
+				A00BFEBD2A29B5CD00590374 /* SettingsView.swift in Sources */,
 				A0E53E8329E8283A0065F227 /* SocialSignInstances.swift in Sources */,
 				A0576AFB29FA951700F4D9EF /* MainTabView.swift in Sources */,
 				A0F2FA8929EAE709002A58BC /* SocialInstances.swift in Sources */,

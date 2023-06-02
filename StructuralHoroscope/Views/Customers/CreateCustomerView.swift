@@ -14,8 +14,17 @@ struct CreateCustomerView: View {
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
     @Environment(\.dismiss) var dismiss
-    @State private var annualSign: AnnualEnum = .snake
-    @State private var zodiacSign: MonthEnum = .february
+    @State private var lastMeeting = Date()
+    @State private var meetingTracker = true
+    @State private var component = Components.week
+    @State private var distance = 2
+    @State private var reminder = true
+    
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        return formatter
+    }
     
     var dateRange: ClosedRange<Date> {
         var dateComponents = DateComponents()
@@ -30,19 +39,11 @@ struct CreateCustomerView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
-            TextField("Имя пользователя", text: $name)
-                .foregroundColor(.theme.standard)
-                .textFieldStyle(.roundedBorder)
-            Picker(selection: $sex) {
-                Text("Мужчина").tag(Sex.male)
-                Text("Женщина").tag(Sex.female)
-            } label: {
-                Text("Picker")
+            mainSection
+            if meetingTracker {
+                meetingTrackerSection
             }
-            .pickerStyle(.segmented)
-            DatePicker("День рождения:", selection: $selectedDate, in: dateRange, displayedComponents: .date)
-                .environment(\.locale, Locale.init(identifier: "ru"))
-                .foregroundColor(.theme.standard)
+            saveButton
             Spacer()
         }
         .frame(maxWidth: 550)
@@ -51,11 +52,7 @@ struct CreateCustomerView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Сохранить") {
-                    vm.createNewCustomer(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!)
-                    dismiss()
-                }
-                .disabled(name.count < 3)
+                
             }
         }
     }
@@ -73,5 +70,74 @@ struct CreateCustomerView_Previews: PreviewProvider {
                 .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
+    }
+}
+
+extension CreateCustomerView {
+    var mainSection: some View {
+        VStack(alignment: .leading, spacing: 30) {
+            TextField("Имя", text: $name)
+                .foregroundColor(.theme.standard)
+                .textFieldStyle(.roundedBorder)
+                .autocorrectionDisabled()
+            Picker(selection: $sex) {
+                Text("Мужчина").tag(Sex.male)
+                Text("Женщина").tag(Sex.female)
+            } label: {
+                Text("Picker")
+            }
+            .pickerStyle(.segmented)
+            DatePicker("День рождения:", selection: $selectedDate, in: dateRange, displayedComponents: .date)
+                .environment(\.locale, Locale.init(identifier: "ru"))
+                .foregroundColor(.theme.standard)
+            Toggle("Следить как часто общаетесь?", isOn: $meetingTracker)
+                .foregroundColor(.theme.standard)
+        }
+    }
+    var meetingTrackerSection: some View {
+        VStack(alignment: .leading, spacing: 30) {
+            DatePicker("Последнее ваше общение:", selection: $lastMeeting, in: dateRange, displayedComponents: .date)
+                .environment(\.locale, Locale.init(identifier: "ru"))
+                .foregroundColor(.theme.standard)
+            HStack(spacing: 15) {
+                Picker("", selection: $distance) {
+                    ForEach(1..<31) { item in
+                        Text(String(item)).tag(item)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .padding(.horizontal, 5)
+                .background(
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color(uiColor: .secondarySystemFill))
+                )
+                Picker("", selection: $component) {
+                    ForEach(Components.allCases, id: \.hashValue) { item in
+                        Text(item.rawValue).tag(item)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .padding(.horizontal, 5)
+                .background(
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color(uiColor: .secondarySystemFill))
+                )
+            }
+            .frame(height: 120)
+            Toggle("Отправлять напоминание", isOn: $reminder)
+                .foregroundColor(.theme.standard)
+        }
+    }
+    var saveButton: some View {
+        HStack {
+            Spacer()
+            Button("Сохранить") {
+                vm.createNewCustomer(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, meetingTracker: meetingTracker)
+                dismiss()
+            }
+            .buttonStyle(.borderedProminent)
+        .disabled(name.count < 1)
+            Spacer()
+        }
     }
 }

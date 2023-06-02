@@ -11,7 +11,6 @@ struct MainCustomerView: View {
     
     @EnvironmentObject var vm: ViewModel
     @State private var isEditing = false
-    @State private var name = ""
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
     
@@ -47,21 +46,19 @@ struct MainCustomerView: View {
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
         .frame(maxWidth: 550)
         .listStyle(.inset)
-        .navigationTitle("Обо мне")
+        .navigationTitle("Мой профиль")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(isEditing ? "Сохранить" : "Изменить") {
                     if isEditing {
-                        vm.updateMainUser(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!)
+                        vm.updateMainUser(sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!)
                     }
                     isEditing.toggle()
                 }
-                .disabled(name.count < 3)
             }
         }
         .onAppear {
-            name = vm.mainUser!.name
             selectedDate = vm.mainUser!.birthday
             sex = vm.mainUser!.sex
         }
@@ -86,8 +83,6 @@ struct MainCustomerView_Previews: PreviewProvider {
 extension MainCustomerView {
     var customerInfo: some View {
         Section {
-            Text("🪪 Имя: \(vm.mainUser!.name)")
-                .foregroundColor(.theme.standard)
             Text(vm.mainUser!.sex == .male ? "⚧️ Пол: мужской" : "⚧️ Пол: женский")
                 .foregroundColor(.theme.standard)
             Text("🎂 Дата рождения: \(dateFormatter.string(from: vm.mainUser!.birthday))")
@@ -107,13 +102,6 @@ extension MainCustomerView {
     
     var editCustomerInfo: some View {
         Section {
-            HStack {
-                Text("🪪 Имя:")
-                    .foregroundColor(.theme.standard)
-                TextField("Введите новое имя", text: $name)
-                    .foregroundColor(.theme.standard)
-                    .textFieldStyle(.roundedBorder)
-            }
             HStack(spacing: 30) {
                 Text("⚧️ Пол:")
                 Picker(selection: $sex) {
@@ -122,7 +110,7 @@ extension MainCustomerView {
                     Text("Женский").tag(Sex.female)
                         .foregroundColor(.theme.standard)
                 } label: {
-                    Text("asdf")
+                    Text("")
                         .foregroundColor(.theme.standard)
                 }
                 .pickerStyle(.segmented)

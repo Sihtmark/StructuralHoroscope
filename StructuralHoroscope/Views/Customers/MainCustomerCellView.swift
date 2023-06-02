@@ -13,20 +13,16 @@ struct MainCustomerCellView: View {
     
     var body: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 3) {
-                Text(vm.mainUser!.name)
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Мой профиль")
                     .foregroundColor(.theme.standard)
                     .bold()
-                HStack {
-                    Text("\(vm.mainUser!.annualSignStruct.socialSigns[vm.mainUser!.month]!.socialSign.rawValue.lowercased())")
-                        .font(.footnote)
-                        .bold()
-                        .foregroundColor(.theme.secondaryText)
-                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            Spacer()
             if let actualDayType = vm.actualDayType {
-                Text(actualDayType.signs[vm.mainUser!.annualSignStruct.annualSign]!.emoji)
+                Text("\(actualDayType.signs[vm.mainUser!.annualSignStruct.annualSign]!.emoji)")
+                    .foregroundColor(.theme.secondaryText)
             }
         }
     }

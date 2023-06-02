@@ -11,7 +11,7 @@ import EventKit
 class ViewModel: ObservableObject {
     
     @Published var actualDayType: DayStruct?
-    @Published var mainUser: ClientStruct? = nil {
+    @Published var mainUser: MainCustomerStruct? = nil {
         didSet {
             saveMainUser()
         }
@@ -32,7 +32,7 @@ class ViewModel: ObservableObject {
     }
     
     func fetchMainUser() {
-        guard let mainUserData = UserDefaults.standard.data(forKey: mainUserKey), let savedMainUser = try? JSONDecoder().decode(ClientStruct.self, from: mainUserData) else {return}
+        guard let mainUserData = UserDefaults.standard.data(forKey: mainUserKey), let savedMainUser = try? JSONDecoder().decode(MainCustomerStruct.self, from: mainUserData) else {return}
         self.mainUser = savedMainUser
     }
     
@@ -62,35 +62,35 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func createMainUser(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum) {
-        let newMainUser = ClientStruct(
-            name: name,
+    func createMainUser(sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum) {
+        let newMainUser = MainCustomerStruct(
             birthday: birthday,
             sex: sex,
             annualSignStruct: sign,
-            month: sampleClient.month,
-            isFavorite: false
+            month: sampleClient.month
         )
         mainUser = newMainUser
     }
     
-    func createNewCustomer(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum) {
+    func createNewCustomer(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum, distance: Int, component: Components, lastContact: Date, reminder: Bool, meetingTracker: Bool) {
+        let newContact = Contact(distance: distance, component: component, lastContact: lastContact, reminder: reminder)
         let newCustomer = ClientStruct(
             name: name,
             birthday: birthday,
             sex: sex,
             annualSignStruct: sign,
             month: zodiacSign,
-            isFavorite: false
+            isFavorite: false,
+            contact: meetingTracker ? newContact : nil
         )
         customers.append(newCustomer)
     }
     
-    func updateMainUser(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum) {
+    func updateMainUser(sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum) {
         if mainUser == nil {
-            createMainUser(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign)
+            createMainUser(sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign)
         } else {
-            mainUser = mainUser!.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: false)
+            mainUser = mainUser!.updateInfo(sex: sex, birthday: birthday, sign: sign, month: zodiacSign)
         }
     }
     
@@ -100,6 +100,12 @@ class ViewModel: ObservableObject {
             saveItems()
         }
         fetchCustomers()
+    }
+    
+    func updateCustomersContact(customer: ClientStruct) {
+        if let index = customers.firstIndex(where: {$0.id == customer.id}) {
+            customers[index] = customer.changeLastContact(date: Date())
+        }
     }
     
     func deleteItem(indexSet: IndexSet) {
@@ -439,5 +445,18 @@ class ViewModel: ObservableObject {
         return events.filter { event in
             event.date == day
         }.first
+    }
+    
+    func getNextContactDate(component: Components, lastContact: Date, interval: Int) -> Date {
+        switch component {
+        case .day:
+            return Calendar.current.date(byAdding: Calendar.Component.day, value: interval, to: lastContact)!
+        case .week:
+            return Calendar.current.date(byAdding: Calendar.Component.day, value: (interval * 7), to: lastContact)!
+        case .month:
+            return Calendar.current.date(byAdding: Calendar.Component.month, value: interval, to: lastContact)!
+        case .year:
+            return Calendar.current.date(byAdding: Calendar.Component.year, value: interval, to: lastContact)!
+        }
     }
 }

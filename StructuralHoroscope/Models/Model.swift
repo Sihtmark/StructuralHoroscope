@@ -9,6 +9,29 @@ import Foundation
 
 let sampleUser = ClientStruct(name: "Ганибал Лектор", birthday: Date(), sex: .male, annualSignStruct: horseSign, month: .february, isFavorite: false)
 
+var sampleClient = ClientStruct(
+    name: "Зинаида",
+    birthday: Date(),
+    sex: .male,
+    annualSignStruct: ViewModel().getAnnualSign(date: Date()) ?? horseSign,
+    month: ViewModel().getZodiacSign(date: Date()) ?? .february,
+    isFavorite: false,
+    contact: Contact(distance: 3, component: Components.day, lastContact: Date(), reminder: true)
+)
+
+
+struct MainCustomerStruct: Identifiable, Codable, Equatable, Hashable {
+    var id = UUID()
+    var birthday: Date
+    var sex: Sex
+    var annualSignStruct: AnnualSignStruct
+    var month: MonthEnum
+    
+    func updateInfo(sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum) -> MainCustomerStruct {
+        return MainCustomerStruct(birthday: birthday, sex: sex, annualSignStruct: sign, month: month)
+    }
+}
+
 struct ClientStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     var name: String
@@ -17,9 +40,30 @@ struct ClientStruct: Identifiable, Codable, Equatable, Hashable {
     var annualSignStruct: AnnualSignStruct
     var month: MonthEnum
     var isFavorite: Bool
+    var contact: Contact?
     
     func updateInfo(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum, isFavorite: Bool) -> ClientStruct {
-        return ClientStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: sign, month: month, isFavorite: isFavorite)
+        return ClientStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: sign, month: month, isFavorite: isFavorite, contact: contact)
+    }
+    
+    func changeLastContact(date: Date) -> ClientStruct {
+        return ClientStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite, contact: contact!.updateLastContact(lastContact: date))
+    }
+}
+
+struct Contact: Identifiable, Codable, Equatable, Hashable {
+    var id = UUID()
+    var distance: Int
+    var component: Components
+    var lastContact: Date
+    var reminder: Bool
+    
+    func updateInfo(distance: Int, component: Components, lastContact: Date, reminder: Bool) -> Contact {
+        return Contact(distance: distance, component: component, lastContact: lastContact, reminder: reminder)
+    }
+    
+    func updateLastContact(lastContact: Date) -> Contact {
+        return Contact(distance: distance, component: component, lastContact: lastContact, reminder: reminder)
     }
 }
 
@@ -148,6 +192,7 @@ enum Tab {
     case home
     case info
     case calendar
+    case settings
 }
 
 struct DayType: Codable, Hashable, Identifiable {
@@ -282,11 +327,9 @@ enum Sex: String, Codable, CaseIterable, Hashable {
     case female = "женщины"
 }
 
-var sampleClient = ClientStruct(
-    name: "Зинаида",
-    birthday: Date(),
-    sex: .male,
-    annualSignStruct: ViewModel().getAnnualSign(date: Date()) ?? horseSign,
-    month: ViewModel().getZodiacSign(date: Date()) ?? .february,
-    isFavorite: false
-)
+enum Components: String, Codable, CaseIterable, Hashable {
+    case day = "дней"
+    case week = "недель"
+    case month = "месяцев"
+    case year = "лет"
+}

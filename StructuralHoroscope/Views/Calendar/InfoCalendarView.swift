@@ -35,7 +35,7 @@ struct InfoCalendarView: View {
                         .foregroundColor(.theme.accent)
                         .font(.headline)
                 } footer: {
-                    Text("Цветной круг - здесь разум надо отключить и дать поработать сердцу (душе)")
+                    Text("Цветное сердце - разум надо отключить и дать поработать сердцу (душе)")
                         .foregroundColor(.theme.secondaryText)
                         .font(.callout)
                 }

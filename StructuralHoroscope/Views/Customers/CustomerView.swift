@@ -94,12 +94,6 @@ extension CustomerView {
                 .foregroundColor(.theme.standard)
             Text("🎂 Дата рождения: \(dateFormatter.string(from: customer.birthday))")
                 .foregroundColor(.theme.standard)
-            NavigationLink {
-                AgeView(ageStruct: ages[vm.getAgeType(birthdate: selectedDate)]!)
-            } label: {
-                Text("💫 Возраст: \(vm.getAgeType(birthdate: selectedDate).rawValue)")
-                    .foregroundColor(.theme.standard)
-            }
         } header: {
             Text("Личные данные:")
                 .foregroundColor(.theme.accent)
@@ -115,6 +109,7 @@ extension CustomerView {
                 TextField("Введите новое имя", text: $name)
                     .foregroundColor(.theme.standard)
                     .textFieldStyle(.roundedBorder)
+                    .autocorrectionDisabled()
             }
             HStack(spacing: 30) {
                 Text("⚧️ Пол:")
@@ -169,6 +164,12 @@ extension CustomerView {
                     Text("Виртуальный знак: \(customer.annualSignStruct.socialSigns[customer.month]!.socialSign.rawValue)")
                         .foregroundColor(.theme.standard)
                 }
+            }
+            NavigationLink {
+                AgeView(ageStruct: ages[vm.getAgeType(birthdate: selectedDate)]!)
+            } label: {
+                Text("💫 Возраст: \(vm.getAgeType(birthdate: selectedDate).rawValue)")
+                    .foregroundColor(.theme.standard)
             }
         } header: {
             Text("Знаки:")
