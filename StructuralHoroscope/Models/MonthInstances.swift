@@ -1,10 +1,3 @@
-//
-//  ZodiacInstances.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 14.05.2023.
-//
-
 import Foundation
 
 

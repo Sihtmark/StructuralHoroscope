@@ -1,10 +1,3 @@
-//
-//  FateInstances.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 15.04.2023.
-//
-
 import Foundation
 
 let fatalistSigns = [ratSign, tigerSign, dogSign]

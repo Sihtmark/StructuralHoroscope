@@ -1,13 +1,6 @@
-//
-//  CreateCustomerView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 21.04.2023.
-//
-
 import SwiftUI
 
-struct CreateCustomerView: View {
+struct AddNewContactView: View {
     
     @EnvironmentObject private var vm: ViewModel
     @State private var name = ""
@@ -61,19 +54,19 @@ struct CreateCustomerView: View {
 struct CreateCustomerView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            CreateCustomerView()
+            AddNewContactView()
                 .preferredColorScheme(.dark)
         }
         .environmentObject(ViewModel())
         NavigationStack {
-            CreateCustomerView()
+            AddNewContactView()
                 .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }
 }
 
-extension CreateCustomerView {
+extension AddNewContactView {
     var mainSection: some View {
         VStack(alignment: .leading, spacing: 30) {
             TextField("Имя", text: $name)
@@ -132,7 +125,7 @@ extension CreateCustomerView {
         HStack {
             Spacer()
             Button("Сохранить") {
-                vm.createNewCustomer(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, meetingTracker: meetingTracker)
+                vm.createNewContact(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, meetingTracker: meetingTracker)
                 dismiss()
             }
             .buttonStyle(.borderedProminent)

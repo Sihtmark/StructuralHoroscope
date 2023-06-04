@@ -1,10 +1,3 @@
-//
-//  CalendarView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 23.05.2023.
-//
-
 import SwiftUI
 
 struct CalendarView: View {
@@ -124,7 +117,7 @@ extension CalendarView {
                     Text(vm.extractDate(date: event.date, format: "EEE"))
                         .environment(\.locale, Locale.init(identifier: "ru"))
                         .font(.system(size: 14))
-                    Text(event.signs[vm.mainUser!.annualSignStruct.annualSign]!.emoji)
+                    Text(event.signs[vm.user!.annualSignStruct.annualSign]!.emoji)
                         .font(.caption)
                 }
                 .foregroundColor(vm.isToday(date: event.date, pickedDate: day) ? .white : .theme.secondaryText)
@@ -150,7 +143,7 @@ extension CalendarView {
     
     var signDayType: some View {
             List {
-                ForEach(vm.customers, id: \.self) { customer in
+                ForEach(vm.contacts, id: \.self) { customer in
                     if events.contains(where: { event in
                         event.date == day
                     }) {

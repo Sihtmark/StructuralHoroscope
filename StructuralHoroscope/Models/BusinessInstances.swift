@@ -1,10 +1,3 @@
-//
-//  BusinessInstances.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 19.04.2023.
-//
-
 import Foundation
 
 let businessSigns: [BusinessEnum:BusinessStruct] = [.vectorHost: vectorHost, .vectorServant: vectorServant, .clone: clone, .companion: companion, .subordinate: subordinate, .adviser: adviser]

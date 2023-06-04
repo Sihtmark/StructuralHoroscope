@@ -1,13 +1,6 @@
-//
-//  MainCustomerView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 15.05.2023.
-//
-
 import SwiftUI
 
-struct MainCustomerView: View {
+struct UserView: View {
     
     @EnvironmentObject var vm: ViewModel
     @State private var isEditing = false
@@ -52,15 +45,15 @@ struct MainCustomerView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(isEditing ? "Сохранить" : "Изменить") {
                     if isEditing {
-                        vm.updateMainUser(sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!)
+                        vm.updateUser(sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!)
                     }
                     isEditing.toggle()
                 }
             }
         }
         .onAppear {
-            selectedDate = vm.mainUser!.birthday
-            sex = vm.mainUser!.sex
+            selectedDate = vm.user!.birthday
+            sex = vm.user!.sex
         }
     }
 }
@@ -68,24 +61,24 @@ struct MainCustomerView: View {
 struct MainCustomerView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            MainCustomerView()
+            UserView()
                 .preferredColorScheme(.dark)
         }
         .environmentObject(ViewModel())
         NavigationStack {
-            MainCustomerView()
+            UserView()
                 .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }
 }
 
-extension MainCustomerView {
+extension UserView {
     var customerInfo: some View {
         Section {
-            Text(vm.mainUser!.sex == .male ? "⚧️ Пол: мужской" : "⚧️ Пол: женский")
+            Text(vm.user!.sex == .male ? "⚧️ Пол: мужской" : "⚧️ Пол: женский")
                 .foregroundColor(.theme.standard)
-            Text("🎂 Дата рождения: \(dateFormatter.string(from: vm.mainUser!.birthday))")
+            Text("🎂 Дата рождения: \(dateFormatter.string(from: vm.user!.birthday))")
                 .foregroundColor(.theme.standard)
             NavigationLink {
                 AgeView(ageStruct: ages[vm.getAgeType(birthdate: selectedDate)]!)
@@ -137,11 +130,11 @@ extension MainCustomerView {
                 annualSignDescription
             } label: {
                 HStack {
-                    Image("\(vm.mainUser!.annualSignStruct.annualSign)")
+                    Image("\(vm.user!.annualSignStruct.annualSign)")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 20, height: 20)
-                    Text("Годовой знак: \(vm.mainUser!.annualSignStruct.annualSign.rawValue)")
+                    Text("Годовой знак: \(vm.user!.annualSignStruct.annualSign.rawValue)")
                         .foregroundColor(.theme.standard)
                 }
             }
@@ -149,11 +142,11 @@ extension MainCustomerView {
                 virtualSignDescription
             } label: {
                 HStack {
-                    Text(vm.mainUser!.annualSignStruct.socialSigns[vm.mainUser!.month]!.emoji.rawValue)
+                    Text(vm.user!.annualSignStruct.socialSigns[vm.user!.month]!.emoji.rawValue)
                         .foregroundColor(.theme.standard)
                         .fixedSize()
                         .frame(width: 20, height: 20)
-                    Text("Виртуальный знак: \(vm.mainUser!.annualSignStruct.socialSigns[vm.mainUser!.month]!.socialSign.rawValue)")
+                    Text("Виртуальный знак: \(vm.user!.annualSignStruct.socialSigns[vm.user!.month]!.socialSign.rawValue)")
                         .foregroundColor(.theme.standard)
                 }
             }
@@ -169,31 +162,31 @@ extension MainCustomerView {
             NavigationLink {
                 ideologicDescription
             } label: {
-                Text("Тип мышления: \((vm.mainUser!.annualSignStruct.ideologicalType[vm.mainUser!.sex]!.ideologicalType.rawValue))")
+                Text("Тип мышления: \((vm.user!.annualSignStruct.ideologicalType[vm.user!.sex]!.ideologicalType.rawValue))")
                     .foregroundColor(.theme.standard)
             }
             NavigationLink {
                 socialDescription
             } label: {
-                Text("Социальный тип: \(vm.mainUser!.annualSignStruct.socialType.socialType.rawValue)")
+                Text("Социальный тип: \(vm.user!.annualSignStruct.socialType.socialType.rawValue)")
                     .foregroundColor(.theme.standard)
             }
             NavigationLink {
                 psychologicalDescription
             } label: {
-                Text("Психологический тип: \(vm.mainUser!.annualSignStruct.psychologicalType.psychologicalType.rawValue)")
+                Text("Психологический тип: \(vm.user!.annualSignStruct.psychologicalType.psychologicalType.rawValue)")
                     .foregroundColor(.theme.standard)
             }
             NavigationLink {
                 energyDescription
             } label: {
-                Text("Энергетический тип:\n\(vm.mainUser!.annualSignStruct.temperament.energyType.rawValue)")
+                Text("Энергетический тип:\n\(vm.user!.annualSignStruct.temperament.energyType.rawValue)")
                     .foregroundColor(.theme.standard)
             }
             NavigationLink {
                 fateDescription
             } label: {
-                Text("Тип судьбы: \(vm.mainUser!.annualSignStruct.fateType.fateType.rawValue)")
+                Text("Тип судьбы: \(vm.user!.annualSignStruct.fateType.fateType.rawValue)")
                     .foregroundColor(.theme.standard)
             }
         } header: {
@@ -208,42 +201,42 @@ extension MainCustomerView {
             NavigationLink {
                 vectorHostDescription
             } label: {
-                Text("Векторный хозяин:\n\(vm.mainUser!.annualSignStruct.vectorHost.rawValue)")
+                Text("Векторный хозяин:\n\(vm.user!.annualSignStruct.vectorHost.rawValue)")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 vectorServantDescription
             } label: {
-                Text("Векторный слуга:\n\(vm.mainUser!.annualSignStruct.vectorServant.rawValue)")
+                Text("Векторный слуга:\n\(vm.user!.annualSignStruct.vectorServant.rawValue)")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 cloneDescription
             } label: {
-                Text("Клоны:\n\(vm.mainUser!.annualSignStruct.clones.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Клоны:\n\(vm.user!.annualSignStruct.clones.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 companionDescription
             } label: {
-                Text("Соратники:\n\(vm.mainUser!.annualSignStruct.companions.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Соратники:\n\(vm.user!.annualSignStruct.companions.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 subordinateDescription
             } label: {
-                Text("Подчиненные:\n\(vm.mainUser!.annualSignStruct.subordinates.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Подчиненные:\n\(vm.user!.annualSignStruct.subordinates.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 adviserDescription
             } label: {
-                Text("Советники:\n\(vm.mainUser!.annualSignStruct.advisers.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Советники:\n\(vm.user!.annualSignStruct.advisers.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
@@ -259,35 +252,35 @@ extension MainCustomerView {
             NavigationLink {
                 vectorMarriageDescription
             } label: {
-                Text("Векторный брак:\n\(vm.mainUser!.annualSignStruct.vectorHost.rawValue), \(vm.mainUser!.annualSignStruct.vectorServant.rawValue)")
+                Text("Векторный брак:\n\(vm.user!.annualSignStruct.vectorHost.rawValue), \(vm.user!.annualSignStruct.vectorServant.rawValue)")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 romanticMarriageDescription
             } label: {
-                Text("Романтический брак:\n\(vm.mainUser!.annualSignStruct.romanticMarriage.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Романтический брак:\n\(vm.user!.annualSignStruct.romanticMarriage.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 patriarchalMarriageDescription
             } label: {
-                Text("Патриархальный брак:\n\(vm.mainUser!.annualSignStruct.patriarchalMarriage.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Патриархальный брак:\n\(vm.user!.annualSignStruct.patriarchalMarriage.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 spiritualMarriageDescription
             } label: {
-                Text("Духовный брак:\n\(vm.mainUser!.annualSignStruct.spiritualMarriage.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Духовный брак:\n\(vm.user!.annualSignStruct.spiritualMarriage.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 equalMarriageDescription
             } label: {
-                Text("Равный брак:\n\(vm.mainUser!.annualSignStruct.equalMarriage.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Равный брак:\n\(vm.user!.annualSignStruct.equalMarriage.map{$0.rawValue}.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
@@ -303,19 +296,19 @@ extension MainCustomerView {
             ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
-                    Image("\(vm.mainUser!.annualSignStruct.annualSign)")
+                    Image("\(vm.user!.annualSignStruct.annualSign)")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 35, height: 35)
                         .padding(.trailing,12)
-                    Text(vm.mainUser!.annualSignStruct.annualSign.rawValue)
+                    Text(vm.user!.annualSignStruct.annualSign.rawValue)
                         .foregroundColor(.theme.standard)
                         .font(.title)
                         .bold()
                     Spacer()
                 }
                 .padding(.bottom, 15)
-                ForEach(vm.mainUser!.annualSignStruct.blocks.sorted(by: <), id: \.key) { title, text in
+                ForEach(vm.user!.annualSignStruct.blocks.sorted(by: <), id: \.key) { title, text in
                     VStack(alignment: .leading, spacing: 20) {
                         HStack {
                             Spacer()
@@ -340,14 +333,14 @@ extension MainCustomerView {
             ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
-                    Text("\(vm.mainUser!.annualSignStruct.socialSigns[vm.mainUser!.month]!.emoji.rawValue) \(vm.mainUser!.annualSignStruct.socialSigns[vm.mainUser!.month]!.socialSign.rawValue)")
+                    Text("\(vm.user!.annualSignStruct.socialSigns[vm.user!.month]!.emoji.rawValue) \(vm.user!.annualSignStruct.socialSigns[vm.user!.month]!.socialSign.rawValue)")
                         .foregroundColor(.theme.standard)
                         .font(.title)
                         .bold()
                     Spacer()
                 }
                 .padding(.bottom, 15)
-                ForEach(vm.mainUser!.annualSignStruct.socialSigns[vm.mainUser!.month]!.blocks.sorted(by: <), id: \.key) { title, text in
+                ForEach(vm.user!.annualSignStruct.socialSigns[vm.user!.month]!.blocks.sorted(by: <), id: \.key) { title, text in
                     VStack(alignment: .leading) {
                         HStack {
                             Spacer()
@@ -372,7 +365,7 @@ extension MainCustomerView {
             ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
-                    Text(vm.mainUser!.annualSignStruct.ideologicalType[vm.mainUser!.sex]!.title)
+                    Text(vm.user!.annualSignStruct.ideologicalType[vm.user!.sex]!.title)
                         .foregroundColor(.theme.standard)
                         .font(.headline)
                         .bold()
@@ -380,7 +373,7 @@ extension MainCustomerView {
                     Spacer()
                 }
                 .padding(.bottom, 15)
-                Text(vm.mainUser!.annualSignStruct.ideologicalType[vm.mainUser!.sex]!.text)
+                Text(vm.user!.annualSignStruct.ideologicalType[vm.user!.sex]!.text)
                     .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }
@@ -393,7 +386,7 @@ extension MainCustomerView {
             ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
-                    Text(vm.mainUser!.annualSignStruct.socialType.title)
+                    Text(vm.user!.annualSignStruct.socialType.title)
                         .foregroundColor(.theme.standard)
                         .font(.headline)
                         .bold()
@@ -401,7 +394,7 @@ extension MainCustomerView {
                     Spacer()
                 }
                 .padding(.bottom, 15)
-                Text(vm.mainUser!.annualSignStruct.socialType.text)
+                Text(vm.user!.annualSignStruct.socialType.text)
                     .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }
@@ -414,7 +407,7 @@ extension MainCustomerView {
             ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
-                    Text(vm.mainUser!.annualSignStruct.psychologicalType.title)
+                    Text(vm.user!.annualSignStruct.psychologicalType.title)
                         .foregroundColor(.theme.standard)
                         .font(.headline)
                         .bold()
@@ -422,7 +415,7 @@ extension MainCustomerView {
                     Spacer()
                 }
                 .padding(.bottom, 15)
-                Text(vm.mainUser!.annualSignStruct.psychologicalType.text)
+                Text(vm.user!.annualSignStruct.psychologicalType.text)
                     .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }
@@ -435,7 +428,7 @@ extension MainCustomerView {
             ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
-                    Text(vm.mainUser!.annualSignStruct.temperament.title)
+                    Text(vm.user!.annualSignStruct.temperament.title)
                         .foregroundColor(.theme.standard)
                         .font(.headline)
                         .bold()
@@ -443,7 +436,7 @@ extension MainCustomerView {
                     Spacer()
                 }
                 .padding(.bottom, 15)
-                Text(vm.mainUser!.annualSignStruct.temperament.text)
+                Text(vm.user!.annualSignStruct.temperament.text)
                     .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }
@@ -456,7 +449,7 @@ extension MainCustomerView {
             ScrollView(showsIndicators: false) {
                 HStack {
                     Spacer()
-                    Text(vm.mainUser!.annualSignStruct.fateType.title)
+                    Text(vm.user!.annualSignStruct.fateType.title)
                         .foregroundColor(.theme.standard)
                         .font(.headline)
                         .bold()
@@ -464,7 +457,7 @@ extension MainCustomerView {
                     Spacer()
                 }
                 .padding(.bottom, 15)
-                Text(vm.mainUser!.annualSignStruct.fateType.text)
+                Text(vm.user!.annualSignStruct.fateType.text)
                     .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }

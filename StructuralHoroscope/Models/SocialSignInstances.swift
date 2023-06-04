@@ -1,10 +1,3 @@
-//
-//  VirtualSignInstances.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 13.04.2023.
-//
-
 import Foundation
 
 let socialSigns: [SocialSignStruct] = [kingSign, vectorSign, jesterSign, knightSign, aristocratSign, professorSign, leaderSign]

@@ -1,16 +1,9 @@
-//
-//  CustomerCellView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 13.05.2023.
-//
-
 import SwiftUI
 
-struct CustomerCellView: View {
+struct ContactCellView: View {
     
     @EnvironmentObject private var vm: ViewModel
-    let customer: ClientStruct
+    let contact: ContactStruct
     
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -21,18 +14,18 @@ struct CustomerCellView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 3) {
-                Text(customer.name)
+                Text(contact.name)
                     .bold()
                     .font(.headline)
                     .foregroundColor(.theme.standard)
                 HStack {
-                    Text("\(vm.returnBusinessSing(sign: vm.ourBusinessRelationship(customer: customer)))")
+                    Text("\(vm.returnBusinessSing(sign: vm.ourBusinessRelationship(customer: contact)))")
                         .font(.callout)
                         .foregroundColor(.theme.secondaryText)
                     Spacer()
-                    if let contact = customer.contact {
+                    if let contact = contact.contact {
                         Text("Общались \(dateFormatter.string(from: contact.lastContact))")
-                            .foregroundColor(vm.getNextContactDate(component: contact.component, lastContact: contact.lastContact, interval: contact.distance) > Date() ? .theme.green : .theme.red)
+                            .foregroundColor(vm.getNextEventDate(component: contact.component, lastContact: contact.lastContact, interval: contact.distance) > Date() ? .theme.green : .theme.red)
                             .font(.caption)
                             .bold()
                             .padding(.trailing)
@@ -41,7 +34,7 @@ struct CustomerCellView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             if let actualDayType = vm.actualDayType {
-                Text(actualDayType.signs[customer.annualSignStruct.annualSign]!.emoji)
+                Text(actualDayType.signs[contact.annualSignStruct.annualSign]!.emoji)
             }
         }
     }
@@ -49,10 +42,10 @@ struct CustomerCellView: View {
 
 struct CustomerCellView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomerCellView(customer: sampleClient)
+        ContactCellView(contact: sampleContact)
             .environmentObject(ViewModel())
             .preferredColorScheme(.dark)
-        CustomerCellView(customer: sampleClient)
+        ContactCellView(contact: sampleContact)
             .environmentObject(ViewModel())
             .preferredColorScheme(.light)
     }

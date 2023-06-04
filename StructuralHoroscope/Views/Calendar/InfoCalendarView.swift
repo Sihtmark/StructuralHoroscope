@@ -1,10 +1,3 @@
-//
-//  InfoCalendarView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 26.05.2023.
-//
-
 import SwiftUI
 
 struct InfoCalendarView: View {

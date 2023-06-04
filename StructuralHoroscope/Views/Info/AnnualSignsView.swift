@@ -1,10 +1,3 @@
-//
-//  AnnualSignsView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 29.04.2023.
-//
-
 import SwiftUI
 
 struct AnnualSignsView: View {

@@ -1,16 +1,9 @@
-//
-//  ContentView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 31.03.2023.
-//
-
 import SwiftUI
 
-struct CustomerView: View {
+struct ContactView: View {
     
     @EnvironmentObject var vm: ViewModel
-    @State var customer: ClientStruct
+    @State var customer: ContactStruct
     @State private var isEditing = false
     @State private var name = ""
     @State private var selectedDate = Date()
@@ -54,8 +47,8 @@ struct CustomerView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(isEditing ? "Сохранить" : "Изменить") {
                     if isEditing {
-                        vm.updateCustomer(client: customer, name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!)
-                        customer = customer.updateInfo(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getZodiacSign(date: selectedDate)!, isFavorite: false)
+                        vm.updateContact(client: customer, name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!)
+                        customer = customer.updateInfo(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: false)
                     }
                     isEditing.toggle()
                 }
@@ -73,19 +66,19 @@ struct CustomerView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            CustomerView(customer: sampleClient)
+            ContactView(customer: sampleContact)
                 .preferredColorScheme(.dark)
         }
         .environmentObject(ViewModel())
         NavigationStack {
-            CustomerView(customer: sampleClient)
+            ContactView(customer: sampleContact)
                 .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())
     }
 }
 
-extension CustomerView {
+extension ContactView {
     var customerInfo: some View {
         Section {
             Text("🪪 Имя: \(customer.name)")

@@ -1,10 +1,3 @@
-//
-//  StartingView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 09.05.2023.
-//
-
 import SwiftUI
 
 struct StartingView: View {
@@ -48,7 +41,7 @@ struct StartingView: View {
                     .foregroundColor(.theme.accent)
             }
             .onTapGesture {
-                vm.updateMainUser(sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!)
+                vm.updateUser(sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!)
             }
             Spacer()
         }

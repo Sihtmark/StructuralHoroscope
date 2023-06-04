@@ -1,10 +1,3 @@
-//
-//  HapticManager.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 23.05.2023.
-//
-
 import SwiftUI
 
 class HapticManager {

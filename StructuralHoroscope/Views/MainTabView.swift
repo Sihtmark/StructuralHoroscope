@@ -1,10 +1,3 @@
-//
-//  MainTabView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 27.04.2023.
-//
-
 import SwiftUI
 
 struct MainTabView: View {
@@ -14,7 +7,7 @@ struct MainTabView: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            AllCustomersView()
+            ContactListView()
                 .tabItem {
                     Image(systemName: "house")
                     Text("Главная")

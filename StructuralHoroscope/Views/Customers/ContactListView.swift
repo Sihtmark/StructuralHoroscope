@@ -1,13 +1,6 @@
-//
-//  AllCustomersView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 24.04.2023.
-//
-
 import SwiftUI
 
-struct AllCustomersView: View {
+struct ContactListView: View {
     
     @EnvironmentObject private var vm: ViewModel
     
@@ -15,19 +8,19 @@ struct AllCustomersView: View {
         NavigationStack {
             List {
                 ZStack(alignment: .leading) {
-                    MainCustomerCellView()
+                    UserCellView()
                     NavigationLink {
-                        MainCustomerView()
+                        UserView()
                     } label: {
                         EmptyView()
                     }
                     .opacity(0.0)
                 }
-                ForEach(vm.customers) { customer in
+                ForEach(vm.contacts) { customer in
                     ZStack(alignment: .leading) {
-                        CustomerCellView(customer: customer)
+                        ContactCellView(contact: customer)
                         NavigationLink {
-                            CustomerView(customer: customer)
+                            ContactView(customer: customer)
                         } label: {
                             EmptyView()
                         }
@@ -36,7 +29,7 @@ struct AllCustomersView: View {
                     .swipeActions(edge: .leading, allowsFullSwipe: true) {
                         if customer.contact != nil {
                             Button {
-                                vm.updateCustomersContact(customer: customer)
+                                vm.updateEvent(contact: customer)
                             } label: {
                                 Label("Общение", systemImage: "checkmark.square")
                             }
@@ -45,8 +38,8 @@ struct AllCustomersView: View {
                     }
 //                    .listRowSeparator(.hidden)
                 }
-                .onDelete(perform: vm.deleteItem)
-                .onMove(perform: vm.moveItem)
+                .onDelete(perform: vm.deleteContact)
+                .onMove(perform: vm.moveContact)
             }
             .padding(.horizontal, 10)
             .scrollIndicators(ScrollIndicatorVisibility.hidden)
@@ -60,7 +53,7 @@ struct AllCustomersView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
-                        CreateCustomerView()
+                        AddNewContactView()
                     } label: {
                         Image(systemName: "plus")
                     }
@@ -73,12 +66,12 @@ struct AllCustomersView: View {
 struct AllCustomersView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            AllCustomersView()
+            ContactListView()
                 .preferredColorScheme(.dark)
         }
         .environmentObject(ViewModel())
         NavigationStack {
-            AllCustomersView()
+            ContactListView()
                 .preferredColorScheme(.light)
         }
         .environmentObject(ViewModel())

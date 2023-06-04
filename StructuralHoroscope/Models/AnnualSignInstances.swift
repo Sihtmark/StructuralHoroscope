@@ -1,10 +1,3 @@
-//
-//  AnnualSignInstances.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 13.04.2023.
-//
-
 import Foundation
 
 let annualSigns: [AnnualEnum:AnnualSignStruct] = [.rat: ratSign, .bull: bullSign, .tiger: tigerSign, .cat: catSign, .dragon: dragonSign, .snake: snakeSign, .horse: horseSign, .goat: goatSign, .monkey: monkeySign, .rooster: roosterSign, .dog: dogSign, .boar: boarSign]

@@ -1,10 +1,3 @@
-//
-//  CalendarInstances.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 05.05.2023.
-//
-
 import Foundation
 
 let days = [firstDay, secondDay, thirdDay, fourthDay, fifthDay, sixthDay, seventhDay, eighthDay, ninthDay, tenthDay, eleventhDay, twelveDay]

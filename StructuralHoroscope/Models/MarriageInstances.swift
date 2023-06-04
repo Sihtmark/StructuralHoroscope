@@ -1,10 +1,3 @@
-//
-//  MarriageInstances.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 19.04.2023.
-//
-
 import Foundation
 
 let marriages = [vectorMarriage, romanticMarriage, patriarchalMarriage, equalMarriage, spiritualMarriage]

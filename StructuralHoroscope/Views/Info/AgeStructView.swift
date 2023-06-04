@@ -1,10 +1,3 @@
-//
-//  AgeStructView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 01.05.2023.
-//
-
 import SwiftUI
 
 struct AgeStructView: View {

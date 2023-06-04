@@ -1,13 +1,6 @@
-//
-//  MainCustomerCellView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 15.05.2023.
-//
-
 import SwiftUI
 
-struct MainCustomerCellView: View {
+struct UserCellView: View {
     
     @EnvironmentObject private var vm: ViewModel
     
@@ -21,7 +14,7 @@ struct MainCustomerCellView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             Spacer()
             if let actualDayType = vm.actualDayType {
-                Text("\(actualDayType.signs[vm.mainUser!.annualSignStruct.annualSign]!.emoji)")
+                Text("\(actualDayType.signs[vm.user!.annualSignStruct.annualSign]!.emoji)")
                     .foregroundColor(.theme.secondaryText)
             }
         }
@@ -30,10 +23,10 @@ struct MainCustomerCellView: View {
 
 struct MainCustomerCellView_Previews: PreviewProvider {
     static var previews: some View {
-        MainCustomerCellView()
+        UserCellView()
             .environmentObject(ViewModel())
             .preferredColorScheme(.dark)
-        MainCustomerCellView()
+        UserCellView()
             .environmentObject(ViewModel())
             .preferredColorScheme(.light)
     }

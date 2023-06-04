@@ -1,38 +1,30 @@
-//
-//  Model.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 31.03.2023.
-//
-
 import Foundation
 
-let sampleUser = ClientStruct(name: "Ганибал Лектор", birthday: Date(), sex: .male, annualSignStruct: horseSign, month: .february, isFavorite: false)
+let sampleUser = ContactStruct(name: "Ганибал Лектор", birthday: Date(), sex: .male, annualSignStruct: horseSign, month: .february, isFavorite: false)
 
-var sampleClient = ClientStruct(
+var sampleContact = ContactStruct(
     name: "Зинаида",
     birthday: Date(),
     sex: .male,
     annualSignStruct: ViewModel().getAnnualSign(date: Date()) ?? horseSign,
-    month: ViewModel().getZodiacSign(date: Date()) ?? .february,
+    month: ViewModel().getMonth(date: Date()) ?? .february,
     isFavorite: false,
-    contact: Contact(distance: 3, component: Components.day, lastContact: Date(), reminder: true)
+    contact: EventStruct(distance: 3, component: Components.day, lastContact: Date(), reminder: true)
 )
 
-
-struct MainCustomerStruct: Identifiable, Codable, Equatable, Hashable {
+struct UserStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     var birthday: Date
     var sex: Sex
     var annualSignStruct: AnnualSignStruct
     var month: MonthEnum
     
-    func updateInfo(sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum) -> MainCustomerStruct {
-        return MainCustomerStruct(birthday: birthday, sex: sex, annualSignStruct: sign, month: month)
+    func updateInfo(sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum) -> UserStruct {
+        return UserStruct(birthday: birthday, sex: sex, annualSignStruct: sign, month: month)
     }
 }
 
-struct ClientStruct: Identifiable, Codable, Equatable, Hashable {
+struct ContactStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     var name: String
     var birthday: Date
@@ -40,30 +32,30 @@ struct ClientStruct: Identifiable, Codable, Equatable, Hashable {
     var annualSignStruct: AnnualSignStruct
     var month: MonthEnum
     var isFavorite: Bool
-    var contact: Contact?
+    var contact: EventStruct?
     
-    func updateInfo(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum, isFavorite: Bool) -> ClientStruct {
-        return ClientStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: sign, month: month, isFavorite: isFavorite, contact: contact)
+    func updateInfo(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum, isFavorite: Bool) -> ContactStruct {
+        return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: sign, month: month, isFavorite: isFavorite, contact: contact)
     }
     
-    func changeLastContact(date: Date) -> ClientStruct {
-        return ClientStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite, contact: contact!.updateLastContact(lastContact: date))
+    func changeLastContact(date: Date) -> ContactStruct {
+        return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite, contact: contact!.updateLastContact(lastContact: date))
     }
 }
 
-struct Contact: Identifiable, Codable, Equatable, Hashable {
+struct EventStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     var distance: Int
     var component: Components
     var lastContact: Date
     var reminder: Bool
     
-    func updateInfo(distance: Int, component: Components, lastContact: Date, reminder: Bool) -> Contact {
-        return Contact(distance: distance, component: component, lastContact: lastContact, reminder: reminder)
+    func updateInfo(distance: Int, component: Components, lastContact: Date, reminder: Bool) -> EventStruct {
+        return EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder)
     }
     
-    func updateLastContact(lastContact: Date) -> Contact {
-        return Contact(distance: distance, component: component, lastContact: lastContact, reminder: reminder)
+    func updateLastContact(lastContact: Date) -> EventStruct {
+        return EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder)
     }
 }
 

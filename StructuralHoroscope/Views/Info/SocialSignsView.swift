@@ -1,10 +1,3 @@
-//
-//  SocialSignsView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 27.04.2023.
-//
-
 import SwiftUI
 
 struct SocialSignsView: View {
