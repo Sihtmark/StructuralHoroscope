@@ -20,7 +20,11 @@ struct ContactListView: View {
                     ZStack(alignment: .leading) {
                         ContactCellView(contact: customer)
                         NavigationLink {
-                            ContactView(customer: customer)
+                            if customer.contact != nil {
+                                ContactView(contact: customer)
+                            } else {
+                                ContactInfoView(contact: customer)
+                            }
                         } label: {
                             EmptyView()
                         }
@@ -36,7 +40,7 @@ struct ContactListView: View {
                             .tint(.green)
                         }
                     }
-//                    .listRowSeparator(.hidden)
+                    .listRowSeparator(.hidden)
                 }
                 .onDelete(perform: vm.deleteContact)
                 .onMove(perform: vm.moveContact)
@@ -45,7 +49,7 @@ struct ContactListView: View {
             .scrollIndicators(ScrollIndicatorVisibility.hidden)
             .frame(maxWidth: 550)
             .listStyle(.inset)
-            .navigationTitle("Мой список")
+            .navigationTitle("Контакты")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

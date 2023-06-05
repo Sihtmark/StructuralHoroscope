@@ -12,6 +12,8 @@ struct AddNewContactView: View {
     @State private var component = Components.week
     @State private var distance = 2
     @State private var reminder = true
+    @State private var feeling = Feelings.notTooBad
+    @State private var describe = ""
     
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -31,23 +33,19 @@ struct AddNewContactView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 30) {
-            mainSection
-            if meetingTracker {
-                meetingTrackerSection
+        ScrollView {
+            VStack(alignment: .leading, spacing: 30) {
+                mainSection
+                if meetingTracker {
+                    meetingTrackerSection
+                }
+                saveButton
             }
-            saveButton
-            Spacer()
         }
         .frame(maxWidth: 550)
         .padding()
         .navigationTitle("Новый пользователь")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                
-            }
-        }
     }
 }
 
@@ -83,53 +81,80 @@ extension AddNewContactView {
             DatePicker("День рождения:", selection: $selectedDate, in: dateRange, displayedComponents: .date)
                 .environment(\.locale, Locale.init(identifier: "ru"))
                 .foregroundColor(.theme.standard)
-            Toggle("Следить как часто общаетесь?", isOn: $meetingTracker)
+            Toggle("Отслеживать общение", isOn: $meetingTracker)
                 .foregroundColor(.theme.standard)
+                .padding(.trailing, 5)
         }
     }
     var meetingTrackerSection: some View {
         VStack(alignment: .leading, spacing: 30) {
-            DatePicker("Последнее ваше общение:", selection: $lastMeeting, in: dateRange, displayedComponents: .date)
+            DatePicker("Общались последний раз:", selection: $lastMeeting, in: dateRange, displayedComponents: .date)
                 .environment(\.locale, Locale.init(identifier: "ru"))
                 .foregroundColor(.theme.standard)
-            HStack(spacing: 15) {
-                Picker("", selection: $distance) {
-                    ForEach(1..<31) { item in
-                        Text(String(item)).tag(item)
+            VStack {
+                Picker("", selection: $feeling) {
+                    ForEach(Feelings.allCases, id: \.self) { feeling in
+                        Text(feeling.rawValue).tag(feeling)
                     }
                 }
-                .pickerStyle(.wheel)
-                .padding(.horizontal, 5)
-                .background(
-                    RoundedRectangle(cornerRadius: 15)
-                        .fill(Color(uiColor: .secondarySystemFill))
-                )
-                Picker("", selection: $component) {
-                    ForEach(Components.allCases, id: \.hashValue) { item in
-                        Text(item.rawValue).tag(item)
-                    }
-                }
-                .pickerStyle(.wheel)
-                .padding(.horizontal, 5)
-                .background(
-                    RoundedRectangle(cornerRadius: 15)
-                        .fill(Color(uiColor: .secondarySystemFill))
-                )
+                .pickerStyle(.segmented)
             }
-            .frame(height: 120)
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Заметки или описание встречи:")
+                    .foregroundColor(.theme.standard)
+                TextEditor(text: $describe)
+                    .frame(height: 100)
+                    .foregroundColor(.theme.secondaryText)
+                    .padding(10)
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color(uiColor: .secondarySystemFill))
+                            .allowsHitTesting(false)
+                }
+            }
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Как часто хотите общаться:")
+                    .foregroundColor(.theme.standard)
+                HStack(spacing: 15) {
+                    Picker("", selection: $distance) {
+                        ForEach(1..<31) { item in
+                            Text(String(item)).tag(item)
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                    .padding(.horizontal, 5)
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color(uiColor: .secondarySystemFill))
+                    )
+                    Picker("", selection: $component) {
+                        ForEach(Components.allCases, id: \.hashValue) { item in
+                            Text(item.rawValue).tag(item)
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                    .padding(.horizontal, 5)
+                    .background(
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(Color(uiColor: .secondarySystemFill))
+                    )
+                }
+                .frame(height: 120)
+            }
             Toggle("Отправлять напоминание", isOn: $reminder)
                 .foregroundColor(.theme.standard)
+                .padding(.trailing, 5)
         }
     }
     var saveButton: some View {
         HStack {
             Spacer()
             Button("Сохранить") {
-                vm.createNewContact(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, meetingTracker: meetingTracker)
+                vm.createNewContact(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, meetingTracker: meetingTracker, feeling: feeling, describe: describe)
                 dismiss()
             }
             .buttonStyle(.borderedProminent)
-        .disabled(name.count < 1)
+            .disabled(name.count < 1)
             Spacer()
         }
     }

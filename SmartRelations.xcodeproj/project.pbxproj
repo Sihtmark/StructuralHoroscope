@@ -22,6 +22,8 @@
 		A03AD26629F01D1C00EE061C /* BusinessInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD26529F01D1C00EE061C /* BusinessInstances.swift */; };
 		A03AD26A29F03C1F00EE061C /* MarriageInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03AD26929F03C1F00EE061C /* MarriageInstances.swift */; };
 		A03CF2DA29D716CD005BE95D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CF2D929D716CD005BE95D /* Model.swift */; };
+		A040BD4E2A2CDF0600F4E7A5 /* ChangeContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040BD4D2A2CDF0600F4E7A5 /* ChangeContactView.swift */; };
+		A040BD502A2DB74A00F4E7A5 /* ContactInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040BD4F2A2DB74A00F4E7A5 /* ContactInfoView.swift */; };
 		A04E66992A166B9300A0B7A9 /* FateStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04E66982A166B9300A0B7A9 /* FateStructView.swift */; };
 		A0576AFB29FA951700F4D9EF /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0576AFA29FA951700F4D9EF /* MainTabView.swift */; };
 		A0576AFD29FA954700F4D9EF /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0576AFC29FA954700F4D9EF /* InfoView.swift */; };
@@ -72,6 +74,8 @@
 		A03AD26929F03C1F00EE061C /* MarriageInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarriageInstances.swift; sourceTree = "<group>"; };
 		A03CF2D929D716CD005BE95D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A040A6C72A08FE5400B614D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A040BD4D2A2CDF0600F4E7A5 /* ChangeContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeContactView.swift; sourceTree = "<group>"; };
+		A040BD4F2A2DB74A00F4E7A5 /* ContactInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoView.swift; sourceTree = "<group>"; };
 		A04E66982A166B9300A0B7A9 /* FateStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FateStructView.swift; sourceTree = "<group>"; };
 		A0576AFA29FA951700F4D9EF /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A0576AFC29FA954700F4D9EF /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
@@ -126,12 +130,12 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		A02990702A1C92DF00B850DB /* Helpers */ = {
+		A02990702A1C92DF00B850DB /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				A02990712A1C92F300B850DB /* HapticManager.swift */,
 			);
-			path = Helpers;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		A0CB9D8A29E7073D007C8595 /* Views */ = {
@@ -204,10 +208,10 @@
 		A0E0722F29D701BF0010E128 /* StructuralHoroscope */ = {
 			isa = PBXGroup;
 			children = (
-				A02990702A1C92DF00B850DB /* Helpers */,
 				A040A6C72A08FE5400B614D3 /* Info.plist */,
 				A0E0723029D701BF0010E128 /* StructuralHoroscopeApp.swift */,
 				A0CB9D8E29E707AE007C8595 /* Extensions */,
+				A02990702A1C92DF00B850DB /* Managers */,
 				A0CB9D8D29E70779007C8595 /* Models */,
 				A0CB9D8C29E7076F007C8595 /* ViewModels */,
 				A0CB9D8A29E7073D007C8595 /* Views */,
@@ -234,8 +238,10 @@
 				A03385D52A1202C2002153EF /* UserCellView.swift */,
 				A033682B2A0FC66A00F2F597 /* ContactCellView.swift */,
 				A086548829F2F7F600E8300D /* AddNewContactView.swift */,
+				A040BD4D2A2CDF0600F4E7A5 /* ChangeContactView.swift */,
 				A03385D32A11FE4A002153EF /* UserView.swift */,
 				A0E0723229D701BF0010E128 /* ContactView.swift */,
+				A040BD4F2A2DB74A00F4E7A5 /* ContactInfoView.swift */,
 				A010D0A22A0038E900289B8B /* AgeView.swift */,
 			);
 			path = Customers;
@@ -340,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A07141D029FFB8E70011FB0A /* BusinessStructview.swift in Sources */,
+				A040BD502A2DB74A00F4E7A5 /* ContactInfoView.swift in Sources */,
 				A0B645B12A10C77E0061718F /* MonthInstances.swift in Sources */,
 				A08993FC29F6C44600174590 /* ContactListView.swift in Sources */,
 				A033682C2A0FC66A00F2F597 /* ContactCellView.swift in Sources */,
@@ -365,6 +372,7 @@
 				A0576AFB29FA951700F4D9EF /* MainTabView.swift in Sources */,
 				A0F2FA8929EAE709002A58BC /* SocialInstances.swift in Sources */,
 				A03CF2DA29D716CD005BE95D /* Model.swift in Sources */,
+				A040BD4E2A2CDF0600F4E7A5 /* ChangeContactView.swift in Sources */,
 				A03AD26629F01D1C00EE061C /* BusinessInstances.swift in Sources */,
 				A07141D429FFD1C70011FB0A /* AgeInstances.swift in Sources */,
 				A086548929F2F7F600E8300D /* AddNewContactView.swift in Sources */,

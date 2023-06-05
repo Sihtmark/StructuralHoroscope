@@ -1,6 +1,6 @@
 import Foundation
 
-let sampleUser = ContactStruct(name: "Ганибал Лектор", birthday: Date(), sex: .male, annualSignStruct: horseSign, month: .february, isFavorite: false)
+let sampleUser = UserStruct(birthday: Date(), sex: .male, annualSignStruct: horseSign, month: .february)
 
 var sampleContact = ContactStruct(
     name: "Зинаида",
@@ -9,7 +9,16 @@ var sampleContact = ContactStruct(
     annualSignStruct: ViewModel().getAnnualSign(date: Date()) ?? horseSign,
     month: ViewModel().getMonth(date: Date()) ?? .february,
     isFavorite: false,
-    contact: EventStruct(distance: 3, component: Components.day, lastContact: Date(), reminder: true)
+    contact: EventStruct(
+        distance: 3,
+        component: Components.day,
+        lastContact: Date(),
+        reminder: true,
+        allEvents: [
+            Meeting(date: Date(timeIntervalSinceNow: 1038576.0), feeling: Feelings.veryGood, describe: "посидели в Метрополь кафе на последнем этаже. Классно пообщались, обсудили все темы"),
+            Meeting(date: Date(timeIntervalSinceNow: 8330984.0), feeling: Feelings.notTooBad, describe: "поговорили по телефону, узнали что у друг друга нового, договорились в следующий раз попить кофе в Старбаксе на набережной")
+        ]
+    )
 )
 
 struct UserStruct: Identifiable, Codable, Equatable, Hashable {
@@ -34,12 +43,25 @@ struct ContactStruct: Identifiable, Codable, Equatable, Hashable {
     var isFavorite: Bool
     var contact: EventStruct?
     
-    func updateInfo(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum, isFavorite: Bool) -> ContactStruct {
-        return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: sign, month: month, isFavorite: isFavorite, contact: contact)
+    func updateInfo(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum, isFavorite: Bool, distance: Int, component: Components, reminder: Bool) -> ContactStruct {
+        return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: sign, month: month, isFavorite: isFavorite, contact: contact?.updateInfo(distance: distance, component: component, reminder: reminder))
+    }
+    
+    func updateWithoutEvent(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum, isFavorite: Bool) -> ContactStruct {
+        return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite)
     }
     
     func changeLastContact(date: Date) -> ContactStruct {
         return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite, contact: contact!.updateLastContact(lastContact: date))
+    }
+    
+    func updateAndCreateEvent(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum, isFavorite: Bool, distance: Int, component: Components, lastContact: Date, reminder: Bool, feeling: Feelings, describe: String) -> ContactStruct {
+        let newContact = EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder, allEvents: [Meeting(date: lastContact, feeling: feeling, describe: describe)])
+        return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite, contact: newContact)
+    }
+    
+    func updateInfoAndDeleteEvent(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum, isFavorite: Bool) -> ContactStruct {
+        return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite, contact: nil)
     }
 }
 
@@ -49,14 +71,22 @@ struct EventStruct: Identifiable, Codable, Equatable, Hashable {
     var component: Components
     var lastContact: Date
     var reminder: Bool
+    var allEvents: [Meeting]
     
-    func updateInfo(distance: Int, component: Components, lastContact: Date, reminder: Bool) -> EventStruct {
-        return EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder)
+    func updateInfo(distance: Int, component: Components, reminder: Bool) -> EventStruct {
+        return EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder, allEvents: allEvents)
     }
     
     func updateLastContact(lastContact: Date) -> EventStruct {
-        return EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder)
+        return EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder, allEvents: allEvents)
     }
+}
+
+struct Meeting: Identifiable, Codable, Equatable, Hashable {
+    var id = UUID()
+    var date: Date
+    var feeling: Feelings
+    var describe: String
 }
 
 struct SocialSignStruct: Identifiable, Codable, Equatable, Hashable {
@@ -324,4 +354,12 @@ enum Components: String, Codable, CaseIterable, Hashable {
     case week = "недель"
     case month = "месяцев"
     case year = "лет"
+}
+
+enum Feelings: String, Codable, CaseIterable, Hashable {
+    case veryBad = "😡"
+    case bad = "🙁"
+    case notTooBad = "🤔"
+    case good = "🙂"
+    case veryGood = "😀"
 }

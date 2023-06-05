@@ -65,8 +65,18 @@ class ViewModel: ObservableObject {
         user = newMainUser
     }
     
-    func createNewContact(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum, distance: Int, component: Components, lastContact: Date, reminder: Bool, meetingTracker: Bool) {
-        let newContact = EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder)
+    func createNewContact(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum, distance: Int, component: Components, lastContact: Date, reminder: Bool, meetingTracker: Bool, feeling: Feelings, describe: String) {
+        let newContact = EventStruct(
+            distance: distance,
+            component: component,
+            lastContact: lastContact,
+            reminder: reminder,
+            allEvents: [ Meeting(
+                date: lastContact,
+                feeling: feeling,
+                describe: describe)
+            ]
+        )
         let newCustomer = ContactStruct(
             name: name,
             birthday: birthday,
@@ -87,10 +97,23 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func updateContact(client: ContactStruct, name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum) {
+    func updateContact(client: ContactStruct, name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum, isFavorite: Bool, distance: Int, component: Components, lastContact: Date, reminder: Bool, meetingTracker: Bool, feeling: Feelings, describe: String) {
         if let index = contacts.firstIndex(where: {$0.id == client.id}) {
-            contacts[index] = client.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: false)
-            saveContacts()
+            if meetingTracker {
+                if client.contact != nil {
+                    contacts[index] = client.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite, distance: distance, component: component, reminder: reminder)
+                    saveContacts()
+                } else {
+                    contacts[index] = client.updateAndCreateEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite, distance: distance, component: component, lastContact: lastContact, reminder: reminder, feeling: feeling, describe: describe)
+                    saveContacts()
+                }
+            } else {
+                if client.contact != nil {
+                    contacts[index] = client.updateInfoAndDeleteEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite)
+                } else {
+                    contacts[index] = client.updateWithoutEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite)
+                }
+            }
         }
         fetchContacts()
     }
@@ -450,6 +473,27 @@ class ViewModel: ObservableObject {
             return Calendar.current.date(byAdding: Calendar.Component.month, value: interval, to: lastContact)!
         case .year:
             return Calendar.current.date(byAdding: Calendar.Component.year, value: interval, to: lastContact)!
+        }
+    }
+    
+    func daysFromLastEvent(lastEvent: Date) -> String {
+        let calendar = Calendar.current
+        let distance = calendar.dateComponents([.day], from: lastEvent, to: Date())
+        let days = distance.day!
+        var dayReminder: Int {
+            if days < 10 {
+                return days
+            } else {
+                return days % 10
+            }
+        }
+        switch dayReminder {
+        case 1, 21:
+            return "Прошел \(days) день"
+        case 2...4, 22...24:
+            return "Прошло \(days) дня"
+        default:
+            return "Прошло \(days) дней"
         }
     }
 }
