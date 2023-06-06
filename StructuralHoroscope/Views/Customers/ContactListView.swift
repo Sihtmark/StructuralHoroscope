@@ -3,6 +3,21 @@ import SwiftUI
 struct ContactListView: View {
     
     @EnvironmentObject private var vm: ViewModel
+    @State private var isAdding: ContactStruct?
+    @State private var date = Date()
+    @State private var feeling = Feelings.notTooBad
+    @State private var describe = ""
+    
+    var dateRange: ClosedRange<Date> {
+        var dateComponents = DateComponents()
+        dateComponents.year = 1850
+        dateComponents.month = 1
+        dateComponents.day = 1
+        let calendar = Calendar(identifier: .gregorian)
+        let min = calendar.date(from: dateComponents)!
+        let max = Date()
+        return min...max
+    }
     
     var body: some View {
         NavigationStack {
@@ -33,7 +48,7 @@ struct ContactListView: View {
                     .swipeActions(edge: .leading, allowsFullSwipe: true) {
                         if customer.contact != nil {
                             Button {
-                                vm.updateEvent(contact: customer)
+                                isAdding = customer
                             } label: {
                                 Label("Общение", systemImage: "checkmark.square")
                             }
@@ -63,6 +78,9 @@ struct ContactListView: View {
                     }
                 }
             }
+            .sheet(item: $isAdding) { contact in
+                sheetView
+            }
         }
     }
 }
@@ -82,3 +100,69 @@ struct AllCustomersView_Previews: PreviewProvider {
     }
 }
 
+extension ContactListView {
+    var sheetView: some View {
+        VStack {
+            HStack {
+                Button {
+                    isAdding = nil
+                } label: {
+                    Label("Назад", systemImage: "chevron.left")
+                }
+                Spacer()
+            }
+            .padding(.top, 20)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 30) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(.gray.opacity(0.2))
+                            .frame(width: 310, height: 180)
+                        DatePicker(selection: $date, in: dateRange, displayedComponents: .date) {}
+                            .foregroundColor(.theme.accent)
+                            .datePickerStyle(.wheel)
+                            .padding(.trailing, 40)
+                    }
+                    Picker("", selection: $feeling) {
+                        ForEach(Feelings.allCases, id: \.self) { feeling in
+                            Text(feeling.rawValue).tag(feeling)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    TextEditor(text: $describe)
+                        .frame(height: 200)
+                        .foregroundColor(.theme.secondaryText)
+                        .padding(10)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(.gray.opacity(0.2))
+                                .allowsHitTesting(false)
+                        }
+                    HStack {
+                        Spacer()
+                        Button {
+                            vm.addMeeting(contact: isAdding!, date: date, feeling: feeling, describe: describe)
+                            isAdding!.contact!.lastContact = isAdding!.contact!.allEvents.map{$0.date}.max()!
+                            if let i = vm.contacts.firstIndex(where: {$0.id == isAdding!.id}) {
+                                vm.contacts[i].contact!.lastContact = isAdding!.contact!.allEvents.map{$0.date}.max()!
+                            }
+                            isAdding = nil
+                            date = Date()
+                            feeling = .notTooBad
+                            describe = ""
+                        } label: {
+                            Text("Сохранить")
+                                .bold()
+                                .padding(10)
+                                .padding(.horizontal)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        Spacer()
+                    }
+                    Spacer()
+                }
+            }
+        }
+        .padding(.horizontal)
+    }
+}

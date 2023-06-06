@@ -24,6 +24,7 @@
 		A03CF2DA29D716CD005BE95D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CF2D929D716CD005BE95D /* Model.swift */; };
 		A040BD4E2A2CDF0600F4E7A5 /* ChangeContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040BD4D2A2CDF0600F4E7A5 /* ChangeContactView.swift */; };
 		A040BD502A2DB74A00F4E7A5 /* ContactInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040BD4F2A2DB74A00F4E7A5 /* ContactInfoView.swift */; };
+		A046DC072A2EFD8200EC0BE2 /* MeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A046DC062A2EFD8200EC0BE2 /* MeetingView.swift */; };
 		A04E66992A166B9300A0B7A9 /* FateStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04E66982A166B9300A0B7A9 /* FateStructView.swift */; };
 		A0576AFB29FA951700F4D9EF /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0576AFA29FA951700F4D9EF /* MainTabView.swift */; };
 		A0576AFD29FA954700F4D9EF /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0576AFC29FA954700F4D9EF /* InfoView.swift */; };
@@ -76,6 +77,7 @@
 		A040A6C72A08FE5400B614D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A040BD4D2A2CDF0600F4E7A5 /* ChangeContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeContactView.swift; sourceTree = "<group>"; };
 		A040BD4F2A2DB74A00F4E7A5 /* ContactInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoView.swift; sourceTree = "<group>"; };
+		A046DC062A2EFD8200EC0BE2 /* MeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingView.swift; sourceTree = "<group>"; };
 		A04E66982A166B9300A0B7A9 /* FateStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FateStructView.swift; sourceTree = "<group>"; };
 		A0576AFA29FA951700F4D9EF /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A0576AFC29FA954700F4D9EF /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				A040BD4D2A2CDF0600F4E7A5 /* ChangeContactView.swift */,
 				A03385D32A11FE4A002153EF /* UserView.swift */,
 				A0E0723229D701BF0010E128 /* ContactView.swift */,
+				A046DC062A2EFD8200EC0BE2 /* MeetingView.swift */,
 				A040BD4F2A2DB74A00F4E7A5 /* ContactInfoView.swift */,
 				A010D0A22A0038E900289B8B /* AgeView.swift */,
 			);
@@ -387,6 +390,7 @@
 				A09892092A16578B0060B872 /* PsychologicalInstances.swift in Sources */,
 				A02990762A1CC6CD00B850DB /* CalendarView.swift in Sources */,
 				A098920B2A1657A40060B872 /* PsychologicalStructView.swift in Sources */,
+				A046DC072A2EFD8200EC0BE2 /* MeetingView.swift in Sources */,
 				A098920D2A165C9E0060B872 /* EnergyStructView.swift in Sources */,
 				A04E66992A166B9300A0B7A9 /* FateStructView.swift in Sources */,
 				A0E0724129D702820010E128 /* Model.xcdatamodeld in Sources */,

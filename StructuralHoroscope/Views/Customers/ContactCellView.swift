@@ -24,7 +24,7 @@ struct ContactCellView: View {
                         .foregroundColor(.theme.secondaryText)
                     Spacer()
                     if let contact = contact.contact {
-                        Text(vm.daysFromLastEvent(lastEvent: contact.lastContact).replacingOccurrences(of: "Прошло ", with: ""))
+                        Text(vm.daysFromLastEventCell(lastEvent: contact.lastContact))
                             .foregroundColor(vm.getNextEventDate(component: contact.component, lastContact: contact.lastContact, interval: contact.distance) > Date() ? .theme.green : .theme.red)
                             .font(.caption)
                             .bold()

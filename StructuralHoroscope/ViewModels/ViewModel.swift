@@ -481,19 +481,70 @@ class ViewModel: ObservableObject {
         let distance = calendar.dateComponents([.day], from: lastEvent, to: Date())
         let days = distance.day!
         var dayReminder: Int {
-            if days < 10 {
+            if days < 20 {
                 return days
             } else {
                 return days % 10
             }
         }
         switch dayReminder {
-        case 1, 21:
+        case 1:
             return "Прошел \(days) день"
-        case 2...4, 22...24:
+        case 2...4:
             return "Прошло \(days) дня"
+        case 11...19:
+            return "Прошло \(days) дней"
         default:
             return "Прошло \(days) дней"
+        }
+    }
+    
+    func daysFromLastEventCell(lastEvent: Date) -> String {
+        let calendar = Calendar.current
+        let distance = calendar.dateComponents([.day], from: lastEvent, to: Date())
+        let days = distance.day!
+        var dayReminder: Int {
+            if days < 20 {
+                return days
+            } else {
+                return days % 10
+            }
+        }
+        switch dayReminder {
+        case 1:
+            return "\(days) день"
+        case 2...4:
+            return "\(days) дня"
+        case 11...19:
+            return "\(days) дней"
+        default:
+            return "\(days) дней"
+        }
+    }
+    
+    func updateMeeting(contact: ContactStruct, meeting: Meeting, date: Date, feeling: Feelings, describe: String) {
+        if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
+            if let i = contacts[index].contact!.allEvents.firstIndex(where: {$0.id == meeting.id}) {
+                contacts[index].contact!.allEvents[i].date = date
+                contacts[index].contact!.allEvents[i].feeling = feeling
+                contacts[index].contact!.allEvents[i].describe = describe
+            }
+        }
+    }
+    
+    func deleteMeeting(contact: ContactStruct, meeting: Meeting) {
+        if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
+            if let i = contacts[index].contact!.allEvents.firstIndex(where: {$0.id == meeting.id}) {
+                contacts[index].contact!.allEvents.remove(at: i)
+            }
+        }
+    }
+    
+    func addMeeting(contact: ContactStruct, date: Date, feeling: Feelings, describe: String) {
+        let newMeeting = Meeting(date: date, feeling: feeling, describe: describe)
+        if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
+            contacts[index].contact!.allEvents.append(Meeting(date: date, feeling: feeling, describe: describe))
+            contacts[index].contact!.lastContact = contacts[index].contact!.lastContact < date ? date : contacts[index].contact!.lastContact
         }
     }
 }

@@ -63,6 +63,11 @@ struct ContactStruct: Identifiable, Codable, Equatable, Hashable {
     func updateInfoAndDeleteEvent(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum, isFavorite: Bool) -> ContactStruct {
         return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite, contact: nil)
     }
+    
+    func addMeeting(contact: EventStruct, date: Date, feeling: Feelings, describe: String) -> ContactStruct {
+        let updatedContact = contact.addMeeting(date: date, feeling: feeling, describe: describe)
+        return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite, contact: updatedContact)
+    }
 }
 
 struct EventStruct: Identifiable, Codable, Equatable, Hashable {
@@ -80,6 +85,13 @@ struct EventStruct: Identifiable, Codable, Equatable, Hashable {
     func updateLastContact(lastContact: Date) -> EventStruct {
         return EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder, allEvents: allEvents)
     }
+    
+    func addMeeting(date: Date, feeling: Feelings, describe: String) -> EventStruct {
+        var newMeeting = Meeting(date: date, feeling: feeling, describe: describe)
+        var arr = allEvents
+        arr.append(newMeeting)
+        return EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder, allEvents: arr)
+    }
 }
 
 struct Meeting: Identifiable, Codable, Equatable, Hashable {
@@ -87,6 +99,10 @@ struct Meeting: Identifiable, Codable, Equatable, Hashable {
     var date: Date
     var feeling: Feelings
     var describe: String
+    
+    func updateMeeting(date: Date, feeling: Feelings, describe: String) -> Meeting {
+        return Meeting(date: date, feeling: feeling, describe: describe)
+    }
 }
 
 struct SocialSignStruct: Identifiable, Codable, Equatable, Hashable {
@@ -350,10 +366,10 @@ enum Sex: String, Codable, CaseIterable, Hashable {
 }
 
 enum Components: String, Codable, CaseIterable, Hashable {
-    case day = "дней"
-    case week = "недель"
-    case month = "месяцев"
-    case year = "лет"
+    case day = "день"
+    case week = "неделя"
+    case month = "месяц"
+    case year = "год"
 }
 
 enum Feelings: String, Codable, CaseIterable, Hashable {

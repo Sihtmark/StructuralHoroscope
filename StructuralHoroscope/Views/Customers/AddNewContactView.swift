@@ -149,9 +149,14 @@ extension AddNewContactView {
     var saveButton: some View {
         HStack {
             Spacer()
-            Button("Сохранить") {
+            Button {
                 vm.createNewContact(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, meetingTracker: meetingTracker, feeling: feeling, describe: describe)
                 dismiss()
+            } label: {
+                Text("Сохранить")
+                    .bold()
+                    .padding(10)
+                    .padding(.horizontal)
             }
             .buttonStyle(.borderedProminent)
             .disabled(name.count < 1)

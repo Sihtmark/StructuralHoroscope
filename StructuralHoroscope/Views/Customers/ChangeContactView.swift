@@ -43,7 +43,7 @@ struct ChangeContactView: View {
                 }
                 Spacer()
             }
-            .padding(.horizontal)
+            .padding(.top, 20)
             ScrollView {
                 VStack(alignment: .leading, spacing: 30) {
                     mainSection
@@ -211,7 +211,7 @@ extension ChangeContactView {
     var saveButton: some View {
         HStack {
             Spacer()
-            Button("Сохранить") {
+            Button {
                 vm.updateContact(client: contact, name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!, isFavorite: false, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, meetingTracker: meetingTracker, feeling: feeling, describe: describe)
                 if meetingTracker {
                     if contact.contact != nil {
@@ -227,6 +227,11 @@ extension ChangeContactView {
                     }
                 }
                 dismiss()
+            } label: {
+                Text("Сохранить")
+                    .bold()
+                    .padding(10)
+                    .padding(.horizontal)
             }
             .buttonStyle(.borderedProminent)
             .disabled(name.count < 1)
