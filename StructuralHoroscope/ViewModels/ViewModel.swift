@@ -543,8 +543,23 @@ class ViewModel: ObservableObject {
     func addMeeting(contact: ContactStruct, date: Date, feeling: Feelings, describe: String) {
         let newMeeting = Meeting(date: date, feeling: feeling, describe: describe)
         if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
-            contacts[index].contact!.allEvents.append(Meeting(date: date, feeling: feeling, describe: describe))
+            contacts[index].contact!.allEvents.append(newMeeting)
             contacts[index].contact!.lastContact = contacts[index].contact!.lastContact < date ? date : contacts[index].contact!.lastContact
+        }
+    }
+    
+    func listOrder(order: FilterMainView) -> [ContactStruct] {
+        switch order {
+        case .standardOrder:
+            return contacts
+        case .alphabeticalOrder:
+            return contacts.sorted(by: {$0.name > $1.name})
+        case .dueDateOrder:
+            return contacts.filter{$0.contact != nil}.sorted(by: {$0.contact!.getNextEventDate() < $1.contact!.getNextEventDate()})
+        case .favoritesOrder:
+            return contacts.filter{$0.isFavorite}
+        case .withoutTracker:
+            return contacts.filter{$0.contact == nil}
         }
     }
 }

@@ -12,30 +12,37 @@ struct ContactCellView: View {
     }
     
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 3) {
-                Text(contact.name)
-                    .bold()
-                    .font(.headline)
-                    .foregroundColor(.theme.standard)
-                HStack {
-                    Text("\(vm.returnBusinessSing(sign: vm.ourBusinessRelationship(customer: contact)))")
-                        .font(.callout)
-                        .foregroundColor(.theme.secondaryText)
-                    Spacer()
-                    if let contact = contact.contact {
-                        Text(vm.daysFromLastEventCell(lastEvent: contact.lastContact))
-                            .foregroundColor(vm.getNextEventDate(component: contact.component, lastContact: contact.lastContact, interval: contact.distance) > Date() ? .theme.green : .theme.red)
+        ZStack {
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(Color.theme.accent, lineWidth: 0.4)
+                .frame(maxWidth: .infinity)
+                .frame(height: 70)
+            HStack {
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(contact.name)
+                        .bold()
+                        .font(.headline)
+                        .foregroundColor(.theme.standard)
+                    HStack {
+                        Text("\(vm.returnBusinessSing(sign: vm.ourBusinessRelationship(customer: contact)))")
                             .font(.caption)
                             .bold()
-                            .padding(.trailing)
+                            .foregroundColor(.theme.secondaryText)
                     }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                if let contact = contact.contact {
+                    Text(vm.daysFromLastEventCell(lastEvent: contact.lastContact))
+                        .foregroundColor(vm.getNextEventDate(component: contact.component, lastContact: contact.lastContact, interval: contact.distance) > Date() ? .theme.green : .theme.red)
+                        .font(.caption)
+                        .bold()
+                        .padding(.trailing)
+                }
+                if let actualDayType = vm.actualDayType {
+                    Text(actualDayType.signs[contact.annualSignStruct.annualSign]!.emoji)
+                }
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            if let actualDayType = vm.actualDayType {
-                Text(actualDayType.signs[contact.annualSignStruct.annualSign]!.emoji)
-            }
+            .padding(.horizontal, 20)
         }
     }
 }

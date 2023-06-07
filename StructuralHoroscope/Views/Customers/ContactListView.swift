@@ -7,6 +7,8 @@ struct ContactListView: View {
     @State private var date = Date()
     @State private var feeling = Feelings.notTooBad
     @State private var describe = ""
+    @State private var filter: FilterMainView = .standardOrder
+    @State private var showAlert = false
     
     var dateRange: ClosedRange<Date> {
         var dateComponents = DateComponents()
@@ -31,7 +33,8 @@ struct ContactListView: View {
                     }
                     .opacity(0.0)
                 }
-                ForEach(vm.contacts) { customer in
+                .listRowSeparator(.hidden)
+                ForEach(vm.listOrder(order: filter)) { customer in
                     ZStack(alignment: .leading) {
                         ContactCellView(contact: customer)
                         NavigationLink {
@@ -45,6 +48,7 @@ struct ContactListView: View {
                         }
                         .opacity(0.0)
                     }
+                    .listRowSeparator(.hidden)
                     .swipeActions(edge: .leading, allowsFullSwipe: true) {
                         if customer.contact != nil {
                             Button {
@@ -60,13 +64,33 @@ struct ContactListView: View {
                 .onDelete(perform: vm.deleteContact)
                 .onMove(perform: vm.moveContact)
             }
-            .padding(.horizontal, 10)
             .scrollIndicators(ScrollIndicatorVisibility.hidden)
             .frame(maxWidth: 550)
             .listStyle(.inset)
             .navigationTitle("Контакты")
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        CalendarView()
+                    } label: {
+                        Image(systemName: "calendar")
+                    }
+
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink {
+                        InfoView()
+                    } label: {
+                        Image(systemName: "list.clipboard")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showAlert.toggle()
+                    } label: {
+                        Image(systemName: "slider.vertical.3")
+                    }
+                }
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
@@ -78,6 +102,23 @@ struct ContactListView: View {
                     }
                 }
             }
+            .alert("Фильтр контактов", isPresented: $showAlert, actions: {
+                Button("Все по алфавиту") {
+                    filter = .alphabeticalOrder
+                }
+                Button("По дате общения") {
+                    filter = .dueDateOrder
+                }
+                Button("Только избранные") {
+                    filter = .favoritesOrder
+                }
+                Button("Без отслеживания") {
+                    filter = .withoutTracker
+                }
+                Button("Без фильтра", role: .destructive) {
+                    filter = .standardOrder
+                }
+            })
             .sheet(item: $isAdding) { contact in
                 sheetView
             }

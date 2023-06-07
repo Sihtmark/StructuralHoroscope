@@ -87,10 +87,23 @@ struct EventStruct: Identifiable, Codable, Equatable, Hashable {
     }
     
     func addMeeting(date: Date, feeling: Feelings, describe: String) -> EventStruct {
-        var newMeeting = Meeting(date: date, feeling: feeling, describe: describe)
+        let newMeeting = Meeting(date: date, feeling: feeling, describe: describe)
         var arr = allEvents
         arr.append(newMeeting)
         return EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder, allEvents: arr)
+    }
+    
+    func getNextEventDate() -> Date {
+        switch component {
+        case .day:
+            return Calendar.current.date(byAdding: Calendar.Component.day, value: distance, to: lastContact)!
+        case .week:
+            return Calendar.current.date(byAdding: Calendar.Component.day, value: (distance * 7), to: lastContact)!
+        case .month:
+            return Calendar.current.date(byAdding: Calendar.Component.month, value: distance, to: lastContact)!
+        case .year:
+            return Calendar.current.date(byAdding: Calendar.Component.year, value: distance, to: lastContact)!
+        }
     }
 }
 
@@ -378,4 +391,12 @@ enum Feelings: String, Codable, CaseIterable, Hashable {
     case notTooBad = "🤔"
     case good = "🙂"
     case veryGood = "😀"
+}
+
+enum FilterMainView: String, Codable, CaseIterable, Hashable {
+    case standardOrder = "Без фильтра"
+    case alphabeticalOrder = "По алфавиту"
+    case dueDateOrder = "По дате общения"
+    case favoritesOrder = "Избранные"
+    case withoutTracker = "Без отслеживания"
 }

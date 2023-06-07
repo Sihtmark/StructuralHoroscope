@@ -7,6 +7,7 @@ struct CalendarView: View {
     @State private var pickedDate = Date()
     @State private var day = Date()
     @State private var showAlert = false
+    @State private var list: Bool = false
     
     var dateRange: ClosedRange<Date> {
         var dateComponents = DateComponents()
@@ -40,6 +41,13 @@ struct CalendarView: View {
                 day = newValue
             }
             .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        list.toggle()
+                    } label: {
+                        Text(list ? "Контакты" : "Знаки")
+                    }
+                }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         showAlert.toggle()
@@ -142,7 +150,8 @@ extension CalendarView {
     }
     
     var signDayType: some View {
-            List {
+        List {
+            if list {
                 ForEach(vm.contacts, id: \.self) { customer in
                     if events.contains(where: { event in
                         event.date == day
@@ -171,6 +180,21 @@ extension CalendarView {
                     }
                 }
                 .listRowSeparator(.hidden)
+            } else {
+                ForEach(AnnualEnum.allCases, id: \.self) { sign in
+                    HStack {
+                        Text(events.first(where: {$0.date == day})!.signs[sign]!.emoji)
+                        Text(sign.rawValue)
+                            .foregroundColor(.theme.standard)
+                            .bold()
+                        Spacer()
+                        Text(events.first(where: {$0.date == day})!.signs[sign]!.title)
+                            .foregroundColor(.theme.standard)
+                            .frame(width: 110, alignment: .leading)
+                    }
+                }
+                .listRowSeparator(.hidden)
+            }
         }
         .listStyle(.plain)
         .scrollIndicators(ScrollIndicatorVisibility.hidden)

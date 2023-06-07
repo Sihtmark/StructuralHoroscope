@@ -25,6 +25,7 @@ struct StartingView: View {
             HStack {
                 Text("Пол:")
                     .padding(.trailing, 30)
+                    .foregroundColor(.theme.standard)
                 Picker(selection: $sex) {
                     Text("Мужской").tag(Sex.male)
                     Text("Женский").tag(Sex.female)
@@ -33,15 +34,39 @@ struct StartingView: View {
                 }
                 .pickerStyle(.segmented)
             }
-            DatePicker("Дата рождения:", selection: $selectedDate, in: dateRange, displayedComponents: .date)
-            NavigationLink {
-                MainTabView()
-            } label: {
-                Text("Сохранить")
-                    .foregroundColor(.theme.accent)
+            VStack(spacing: -10) {
+                Text("Дата рождения")
+                    .foregroundColor(.theme.standard)
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(.gray.opacity(0.2))
+                        .frame(width: 310, height: 180)
+                    DatePicker(selection: $selectedDate, in: dateRange, displayedComponents: .date) {}
+                        .foregroundColor(.theme.accent)
+                        .datePickerStyle(.wheel)
+                        .padding(.trailing, 20)
+                }
             }
-            .onTapGesture {
-                vm.updateUser(sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!)
+            HStack {
+                Spacer()
+                NavigationLink {
+                    ContactListView()
+                } label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(.gray.opacity(0.25))
+                            .frame(width: 150, height: 60)
+                        Text("Сохранить")
+                            .foregroundColor(.theme.accent)
+                            .bold()
+                            .padding(10)
+                        .padding(.horizontal)
+                    }
+                }
+                .onTapGesture {
+                    vm.updateUser(sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!)
+                }
+                Spacer()
             }
             Spacer()
         }

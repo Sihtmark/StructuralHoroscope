@@ -34,7 +34,7 @@ struct ContactView: View {
     var body: some View {
         ScrollView {
             titleSection
-                .padding(.top, 40)
+                .padding(.top, 20)
             if contact.contact != nil {
                 eventsSection
             }
@@ -80,7 +80,7 @@ struct ContentView_Previews: PreviewProvider {
 
 extension ContactView {
     var titleSection: some View {
-        VStack(alignment: .center, spacing: 20) {
+        VStack(spacing: 15) {
             NavigationLink {
                 ContactInfoView(contact: contact)
             } label: {
@@ -98,7 +98,7 @@ extension ContactView {
                         .frame(width: 45, height: 45)
                 }
             }
-            VStack(spacing: 5) {
+            VStack {
                 Text(contact.name)
                     .font(.title)
                     .foregroundColor(.theme.standard)
@@ -119,6 +119,7 @@ extension ContactView {
                     Label("Добавить", systemImage: "plus")
                 }
                 .buttonStyle(.bordered)
+                .padding(.top, 5)
             }
         }
     }
@@ -139,13 +140,14 @@ extension ContactView {
                                 .foregroundColor(.theme.accent)
                         }
                         Text(event.describe)
-                            .lineLimit(2)
                             .foregroundColor(.theme.secondaryText)
                             .font(.callout)
+                            .multilineTextAlignment(.leading)
                     }
                     .padding()
                 }
-                .padding(10)
+                .padding(.horizontal, 10)
+                .padding(.top, 10)
             }
         }
     }

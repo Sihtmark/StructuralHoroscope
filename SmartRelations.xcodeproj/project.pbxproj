@@ -143,7 +143,6 @@
 		A0CB9D8A29E7073D007C8595 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A0C1A2362A0A39FD00490239 /* StartingView.swift */,
 				A0576AFA29FA951700F4D9EF /* MainTabView.swift */,
 				A08600532A1525C800B69FDF /* AnnualSignView.swift */,
 				A0E2299F29FA97EC0021648C /* Customers */,
@@ -239,6 +238,7 @@
 				A08993FB29F6C44600174590 /* ContactListView.swift */,
 				A03385D52A1202C2002153EF /* UserCellView.swift */,
 				A033682B2A0FC66A00F2F597 /* ContactCellView.swift */,
+				A0C1A2362A0A39FD00490239 /* StartingView.swift */,
 				A086548829F2F7F600E8300D /* AddNewContactView.swift */,
 				A040BD4D2A2CDF0600F4E7A5 /* ChangeContactView.swift */,
 				A03385D32A11FE4A002153EF /* UserView.swift */,
