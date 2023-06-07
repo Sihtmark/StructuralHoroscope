@@ -6,8 +6,10 @@ struct CalendarView: View {
     @State private var events = [DayStruct]()
     @State private var pickedDate = Date()
     @State private var day = Date()
-    @State private var showAlert = false
+    @State private var showSyncAlert = false
     @State private var list: Bool = false
+    @State private var filter: FilterMainView = .standardOrder
+    @State private var showFilterAlert = false
     
     var dateRange: ClosedRange<Date> {
         var dateComponents = DateComponents()
@@ -31,7 +33,6 @@ struct CalendarView: View {
             }
             .frame(maxWidth: 550)
             .navigationTitle("Календарь")
-            .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal)
             .onAppear {
                 events = vm.eventsByPickedDate(pickedDate: day)
@@ -41,18 +42,27 @@ struct CalendarView: View {
                 day = newValue
             }
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        showSyncAlert.toggle()
+                    } label: {
+                        Image(systemName: "arrow.triangle.2.circlepath.circle")
+                    }
+                }
+                if list {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showFilterAlert.toggle()
+                        } label: {
+                            Image(systemName: "slider.vertical.3")
+                        }
+                    }
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         list.toggle()
                     } label: {
-                        Text(list ? "Контакты" : "Знаки")
-                    }
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        showAlert.toggle()
-                    } label: {
-                        Image(systemName: "arrow.triangle.2.circlepath.circle")
+                        Text(list ? "Знаки" : "Контакты")
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -63,7 +73,24 @@ struct CalendarView: View {
                     }
                 }
             }
-            .alert("Добавить гороскоп в ваш календарь?", isPresented: $showAlert) {
+            .alert("Фильтр контактов", isPresented: $showFilterAlert, actions: {
+                Button("Все по алфавиту") {
+                    filter = .alphabeticalOrder
+                }
+                Button("По дате общения") {
+                    filter = .dueDateOrder
+                }
+                Button("Только избранные") {
+                    filter = .favoritesOrder
+                }
+                Button("Без отслеживания") {
+                    filter = .withoutTracker
+                }
+                Button("Без фильтра", role: .destructive) {
+                    filter = .standardOrder
+                }
+            })
+            .alert("Добавить гороскоп в ваш календарь?", isPresented: $showSyncAlert) {
                 Button("Добавить") {
                     vm.addAllEventsToCalendar()
                     HapticManager.instance.notification(type: .success)
@@ -99,6 +126,7 @@ extension CalendarView {
         HStack {
             DatePicker("Выбрать дату:", selection: $pickedDate, in: dateRange, displayedComponents: .date)
                 .environment(\.locale, Locale.init(identifier: "ru"))
+                .foregroundColor(.theme.standard)
             Button {
                 pickedDate = Date()
                 day = Date()
@@ -152,7 +180,7 @@ extension CalendarView {
     var signDayType: some View {
         List {
             if list {
-                ForEach(vm.contacts, id: \.self) { customer in
+                ForEach(vm.listOrder(order: filter)) { customer in
                     if events.contains(where: { event in
                         event.date == day
                     }) {
@@ -182,15 +210,40 @@ extension CalendarView {
                 .listRowSeparator(.hidden)
             } else {
                 ForEach(AnnualEnum.allCases, id: \.self) { sign in
-                    HStack {
-                        Text(events.first(where: {$0.date == day})!.signs[sign]!.emoji)
-                        Text(sign.rawValue)
-                            .foregroundColor(.theme.standard)
-                            .bold()
-                        Spacer()
-                        Text(events.first(where: {$0.date == day})!.signs[sign]!.title)
-                            .foregroundColor(.theme.standard)
-                            .frame(width: 110, alignment: .leading)
+                    if events.contains(where: { event in
+                        event.date == day
+                    }) {
+                        HStack {
+                            Image("\(sign)Circle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                            Text(sign.rawValue)
+                                .bold()
+                                .padding(.leading, 20)
+                                .frame(width: 110, alignment: .leading)
+                            Text(events.first(where: {$0.date == day})!.signs[sign]!.title)
+                            Spacer()
+                            Text(events.first(where: {$0.date == day})!.signs[sign]!.emoji)
+                                .font(.caption)
+                        }
+                    } else {
+                        HStack {
+                            Image("\(sign)Circle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                            Text(sign.rawValue)
+                                .foregroundColor(.theme.standard)
+                                .bold()
+                                .padding(.leading, 20)
+                                .frame(width: 110, alignment: .leading)
+                            Text(events[3].signs[sign]!.title)
+                                .foregroundColor(.theme.standard)
+                            Spacer()
+                            Text(events[3].signs[sign]!.emoji)
+                                .font(.caption)
+                        }
                     }
                 }
                 .listRowSeparator(.hidden)
