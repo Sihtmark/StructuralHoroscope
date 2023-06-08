@@ -9,6 +9,7 @@ struct ContactListView: View {
     @State private var describe = ""
     @State private var filter: FilterMainView = .standardOrder
     @State private var showAlert = false
+    @State private var notifications = false
     
     var dateRange: ClosedRange<Date> {
         var dateComponents = DateComponents()
@@ -69,13 +70,25 @@ struct ContactListView: View {
             .listStyle(.inset)
             .navigationTitle("Контакты")
             .toolbar {
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    Button {
+//                        notifications.toggle()
+//                        if notifications {
+//                            NotificationManager.instance.requestAuthorization()
+//                            NotificationManager.instance.scheduleNotification()
+//                        } else {
+//                            NotificationManager.instance.cancelNotification()
+//                        }
+//                    } label: {
+//                        Image(systemName: notifications ? "bell" : "bell.slash")
+//                    }
+//                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
                         CalendarView()
                     } label: {
                         Image(systemName: "calendar")
                     }
-
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {

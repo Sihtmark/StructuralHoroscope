@@ -203,9 +203,14 @@ extension ChangeContactView {
                 }
                 .frame(height: 120)
             }
-            Toggle("Отправлять напоминание", isOn: $reminder)
-                .foregroundColor(.theme.standard)
+            VStack {
+                Toggle("Отправлять напоминание", isOn: $reminder)
+                    .foregroundColor(.theme.standard)
                 .padding(.trailing, 5)
+                Text("Оставьте включенным если хотите чтобы вам приходило уведомление когда подойдет срок снова пообщаться с этим контактом. Если в настройках уведомления будут отключены, тогда по всем подключенным контактам вам не будут приходить уведомления до момента когда вы снова подключите уведомления на главном экране приложения или в настройках.")
+                    .foregroundColor(.theme.secondaryText)
+                    .font(.caption)
+            }
         }
     }
     var saveButton: some View {
