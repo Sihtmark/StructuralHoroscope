@@ -68,10 +68,6 @@ struct ContactStruct: Identifiable, Codable, Equatable, Hashable {
         let updatedContact = contact.addMeeting(date: date, feeling: feeling, describe: describe)
         return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite, contact: updatedContact)
     }
-    
-    func setReminderID(reminderID: String) -> ContactStruct {
-        return ContactStruct(id: id, name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite, contact: contact?.setReminderID(reminderID: reminderID))
-    }
 }
 
 struct EventStruct: Identifiable, Codable, Equatable, Hashable {
@@ -81,7 +77,6 @@ struct EventStruct: Identifiable, Codable, Equatable, Hashable {
     var lastContact: Date
     var reminder: Bool
     var allEvents: [Meeting]
-    var reminderID: String?
     
     func updateInfo(distance: Int, component: Components, reminder: Bool) -> EventStruct {
         return EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder, allEvents: allEvents)
@@ -109,10 +104,6 @@ struct EventStruct: Identifiable, Codable, Equatable, Hashable {
         case .year:
             return Calendar.current.date(byAdding: Calendar.Component.year, value: distance, to: lastContact)!
         }
-    }
-    
-    func setReminderID(reminderID: String) -> EventStruct {
-        return EventStruct(id: id, distance: distance, component: component, lastContact: lastContact, reminder: reminder, allEvents: allEvents, reminderID: reminderID)
     }
 }
 

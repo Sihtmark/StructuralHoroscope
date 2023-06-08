@@ -72,9 +72,6 @@ struct StartingView: View {
         }
         .frame(maxWidth: 550)
         .padding()
-        .onDisappear {
-            NotificationManager.instance.requestAuthorization()
-        }
     }
 }
 

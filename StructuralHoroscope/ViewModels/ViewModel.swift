@@ -67,7 +67,7 @@ class ViewModel: ObservableObject {
     }
     
     func createNewContact(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum, distance: Int, component: Components, lastContact: Date, reminder: Bool, meetingTracker: Bool, feeling: Feelings, describe: String) {
-        var newContact = EventStruct(
+        let newContact = EventStruct(
             distance: distance,
             component: component,
             lastContact: lastContact,
@@ -78,7 +78,7 @@ class ViewModel: ObservableObject {
                 describe: describe)
             ]
         )
-        var newCustomer = ContactStruct(
+        let newCustomer = ContactStruct(
             name: name,
             birthday: birthday,
             sex: sex,
@@ -87,11 +87,6 @@ class ViewModel: ObservableObject {
             isFavorite: false,
             contact: meetingTracker ? newContact : nil
         )
-        if reminder && meetingTracker {
-            if newCustomer.contact != nil {
-                newCustomer.contact!.reminderID = setNotification(contact: newCustomer)
-            }
-        }
         contacts.append(newCustomer)
     }
     
@@ -118,26 +113,6 @@ class ViewModel: ObservableObject {
                     contacts[index] = client.updateInfoAndDeleteEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite)
                 } else {
                     contacts[index] = client.updateWithoutEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite)
-                }
-            }
-        }
-        fetchContacts()
-        if reminder && meetingTracker {
-            if client.contact == nil {
-                if let index = contacts.firstIndex(where: {$0.id == client.id}) {
-                    if client.contact!.reminderID == nil {
-                        contacts[index] = client.setReminderID(reminderID: setNotification(contact: client))
-                    }
-                }
-            }
-        } else {
-            if client.contact != nil {
-                if client.contact!.reminderID != nil {
-                    UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [client.contact!.reminderID!])
-                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [client.contact!.reminderID!])
-                    if let index = contacts.firstIndex(where: {$0.id == client.id}) {
-                        contacts[index].contact!.reminderID = nil
-                    }
                 }
             }
         }
@@ -587,15 +562,5 @@ class ViewModel: ObservableObject {
         case .withoutTracker:
             return contacts.filter{$0.contact == nil}
         }
-    }
-    
-    func setNotification(contact: ContactStruct) -> String {
-        var id = ""
-        if let _ = actualDayType {
-            id = NotificationManager.instance.scheduleNotification(name: contact.name)
-        } else {
-            print("We couldn't send you notification because actualDayType was nil!!!")
-        }
-        return id
     }
 }
