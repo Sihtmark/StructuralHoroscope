@@ -1,10 +1,3 @@
-//
-//  Color.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 15.05.2023.
-//
-
 import Foundation
 import SwiftUI
 

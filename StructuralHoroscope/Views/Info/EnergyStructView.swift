@@ -1,10 +1,3 @@
-//
-//  EnergyStructView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 30.04.2023.
-//
-
 import SwiftUI
 
 struct EnergyStructView: View {

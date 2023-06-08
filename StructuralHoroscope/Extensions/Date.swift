@@ -1,10 +1,3 @@
-//
-//  Date.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 11.04.2023.
-//
-
 import Foundation
 import SwiftUI
 

@@ -1,10 +1,3 @@
-//
-//  EnergyInstances.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 15.04.2023.
-//
-
 import Foundation
 
 let dramaticSigns = [goatSign, ratSign, snakeSign]

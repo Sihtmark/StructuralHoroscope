@@ -1,19 +1,11 @@
-//
-//  AnnualSignInstances.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 13.04.2023.
-//
-
 import Foundation
 
-let annualSigns: [AnnualEnum:SignStruct] = [.rat: ratSign, .bull: bullSign, .tiger: tigerSign, .cat: catSign, .dragon: dragonSign, .snake: snakeSign, .horse: horseSign, .goat: goatSign, .monkey: monkeySign, .rooster: roosterSign, .dog: dogSign, .boar: boarSign]
+let annualSigns: [AnnualEnum:AnnualSignStruct] = [.rat: ratSign, .bull: bullSign, .tiger: tigerSign, .cat: catSign, .dragon: dragonSign, .snake: snakeSign, .horse: horseSign, .goat: goatSign, .monkey: monkeySign, .rooster: roosterSign, .dog: dogSign, .boar: boarSign]
 
-let annualSignArray: [SignStruct] = [ratSign, bullSign, tigerSign, catSign, dragonSign, snakeSign, horseSign, goatSign, monkeySign, roosterSign, dogSign, boarSign]
+let annualSignArray: [AnnualSignStruct] = [ratSign, bullSign, tigerSign, catSign, dragonSign, snakeSign, horseSign, goatSign, monkeySign, roosterSign, dogSign, boarSign]
 
-let ratSign = SignStruct(
+let ratSign = AnnualSignStruct(
     annualSign: .rat,
-    emoji: "🐀",
     ideologicalType: [.male: mysticMale, .female: realistFemale],
     socialType: openedSocialStruct,
     psychologicalType: maturityPsychologicalStruct,
@@ -31,19 +23,19 @@ let ratSign = SignStruct(
     companions: [.dragon],
     subordinates: [.cat, .goat, .boar],
     advisers: [.bull, .snake, .rooster],
-    virtualSigns: [
-        .capricorn: aristocratSign,
-        .aquarius: knightSign,
-        .pisces: jesterSign,
-        .aries: kingSign,
-        .taurus: jesterSign,
-        .gemini: knightSign,
-        .cancer: aristocratSign,
-        .leo: professorSign,
-        .virgo: leaderSign,
-        .libra: vectorSign,
-        .scorpio: leaderSign,
-        .sagittarius: vectorSign,
+    socialSigns: [
+        .january: aristocratSign,
+        .february: knightSign,
+        .march: jesterSign,
+        .april: kingSign,
+        .may: jesterSign,
+        .june: knightSign,
+        .july: aristocratSign,
+        .augest: professorSign,
+        .september: leaderSign,
+        .october: vectorSign,
+        .november: leaderSign,
+        .december: vectorSign,
     ],
     businessStruct: [
         .rat: .clone,
@@ -72,9 +64,8 @@ let ratSign = SignStruct(
     years: [1854, 1866, 1878, 1900, 1912, 1924, 1936, 1948, 1960, 1972, 1984, 1996, 2008, 2020, 2032, 2044, 2056, 2068, 2080]
 )
 
-let bullSign = SignStruct(
+let bullSign = AnnualSignStruct(
     annualSign: .bull,
-    emoji: "🐂",
     ideologicalType: [.male: logicMale, .female: strongWilledFemale],
     socialType: orthodocsSocialStruct,
     psychologicalType: maturityPsychologicalStruct,
@@ -92,19 +83,19 @@ let bullSign = SignStruct(
     companions: [.goat, .rooster, .boar],
     subordinates: [.rat, .dragon, .monkey],
     advisers: [.horse],
-    virtualSigns: [
-        .capricorn: professorSign,
-        .aquarius: vectorSign,
-        .pisces: knightSign,
-        .aries: jesterSign,
-        .taurus: kingSign,
-        .gemini: vectorSign,
-        .cancer: knightSign,
-        .leo: aristocratSign,
-        .virgo: professorSign,
-        .libra: leaderSign,
-        .scorpio: aristocratSign,
-        .sagittarius: leaderSign
+    socialSigns: [
+        .january: professorSign,
+        .february: vectorSign,
+        .march: knightSign,
+        .april: jesterSign,
+        .may: kingSign,
+        .june: vectorSign,
+        .july: knightSign,
+        .augest: aristocratSign,
+        .september: professorSign,
+        .october: leaderSign,
+        .november: aristocratSign,
+        .december: leaderSign
     ],
     businessStruct: [
         .rat: .subordinate,
@@ -132,9 +123,8 @@ let bullSign = SignStruct(
     years: [1853, 1865, 1877, 1889, 1901, 1913, 1925, 1937, 1949, 1961, 1973, 1985, 1997, 2009, 2021, 2033, 2045, 2057, 2069, 2081]
 )
 
-let tigerSign = SignStruct(
+let tigerSign = AnnualSignStruct(
     annualSign: .tiger,
-    emoji: "🐅",
     ideologicalType: [.male: strongWilledMale, .female: logicFemale],
     socialType: closedSocialStruct,
     psychologicalType: dreamerPsychologicalStruct,
@@ -152,19 +142,19 @@ let tigerSign = SignStruct(
     companions: [.dragon, .horse, .monkey],
     subordinates: [.snake, .rooster],
     advisers: [.cat, .boar],
-    virtualSigns: [
-        .capricorn: leaderSign,
-        .aquarius: professorSign,
-        .pisces: aristocratSign,
-        .aries: knightSign,
-        .taurus: vectorSign,
-        .gemini: kingSign,
-        .cancer: jesterSign,
-        .leo: knightSign,
-        .virgo: aristocratSign,
-        .libra: professorSign,
-        .scorpio: vectorSign,
-        .sagittarius: aristocratSign
+    socialSigns: [
+        .january: leaderSign,
+        .february: professorSign,
+        .march: aristocratSign,
+        .april: knightSign,
+        .may: vectorSign,
+        .june: kingSign,
+        .july: jesterSign,
+        .augest: knightSign,
+        .september: aristocratSign,
+        .october: professorSign,
+        .november: vectorSign,
+        .december: aristocratSign
     ],
     businessStruct: [
         .rat: .clone,
@@ -191,9 +181,8 @@ let tigerSign = SignStruct(
     ], years: [1856, 1868, 1890, 1902, 1914, 1926, 1938, 1950, 1962, 1974, 1986, 1998, 2010, 2022, 2034, 2046, 2048, 2060, 2072, 2084]
 )
 
-let catSign = SignStruct(
+let catSign = AnnualSignStruct(
     annualSign: .cat,
-    emoji: "🐈",
     ideologicalType: [.male: realistMale, .female: mysticFemale],
     socialType: openedSocialStruct,
     psychologicalType: dreamerPsychologicalStruct,
@@ -211,19 +200,19 @@ let catSign = SignStruct(
     companions: [.goat, .boar],
     subordinates: [.tiger, .horse, .dog],
     advisers: [.rat, .monkey],
-    virtualSigns: [
-        .capricorn: vectorSign,
-        .aquarius: leaderSign,
-        .pisces: professorSign,
-        .aries: aristocratSign,
-        .taurus: knightSign,
-        .gemini: jesterSign,
-        .cancer: kingSign,
-        .leo: vectorSign,
-        .virgo: knightSign,
-        .libra: aristocratSign,
-        .scorpio: professorSign,
-        .sagittarius: leaderSign
+    socialSigns: [
+        .january: vectorSign,
+        .february: leaderSign,
+        .march: professorSign,
+        .april: aristocratSign,
+        .may: knightSign,
+        .june: jesterSign,
+        .july: kingSign,
+        .augest: vectorSign,
+        .september: knightSign,
+        .october: aristocratSign,
+        .november: professorSign,
+        .december: leaderSign
     ],
     businessStruct: [
         .rat: .adviser,
@@ -251,9 +240,8 @@ let catSign = SignStruct(
     ], years: [1843, 1855, 1867, 1879, 1891, 1903, 1915, 1927, 1939, 1951, 1963, 1975, 1987, 1999, 2011, 2023, 2035, 2047, 2059, 2071, 2083]
 )
 
-let dragonSign = SignStruct(
+let dragonSign = AnnualSignStruct(
     annualSign: .dragon,
-    emoji: "🐉",
     ideologicalType: [.male: mysticMale, .female: realistFemale],
     socialType: orthodocsSocialStruct,
     psychologicalType: dreamerPsychologicalStruct,
@@ -271,19 +259,19 @@ let dragonSign = SignStruct(
     companions: [.rat, .tiger, .dog],
     subordinates: [.goat],
     advisers: [.bull, .snake, .rooster],
-    virtualSigns: [
-        .capricorn: leaderSign,
-        .aquarius: aristocratSign,
-        .pisces: vectorSign,
-        .aries: professorSign,
-        .taurus: aristocratSign,
-        .gemini: knightSign,
-        .cancer: vectorSign,
-        .leo: kingSign,
-        .virgo: jesterSign,
-        .libra: knightSign,
-        .scorpio: aristocratSign,
-        .sagittarius: professorSign
+    socialSigns: [
+        .january: leaderSign,
+        .february: aristocratSign,
+        .march: vectorSign,
+        .april: professorSign,
+        .may: aristocratSign,
+        .june: knightSign,
+        .july: vectorSign,
+        .augest: kingSign,
+        .september: jesterSign,
+        .october: knightSign,
+        .november: aristocratSign,
+        .december: professorSign
     ],
     businessStruct: [
         .rat: .companion,
@@ -312,9 +300,8 @@ let dragonSign = SignStruct(
     ], years: [1844, 1856, 1868, 1880, 1892, 1904, 1916, 1928, 1940, 1952, 1964, 1976, 1988, 2000, 2012, 2024, 2036, 2048, 2060, 2072, 2084]
 )
 
-let snakeSign = SignStruct(
+let snakeSign = AnnualSignStruct(
     annualSign: .snake,
-    emoji: "🐍",
     ideologicalType: [.male: logicMale, .female: strongWilledFemale],
     socialType: closedSocialStruct,
     psychologicalType: sensitivePsychologicalStruct,
@@ -332,19 +319,19 @@ let snakeSign = SignStruct(
     companions: [.rooster, .boar],
     subordinates: [.rat, .dragon],
     advisers: [.tiger, .horse, .dog],
-    virtualSigns: [
-        .capricorn: professorSign,
-        .aquarius: leaderSign,
-        .pisces: aristocratSign,
-        .aries: leaderSign,
-        .taurus: professorSign,
-        .gemini: aristocratSign,
-        .cancer: knightSign,
-        .leo: jesterSign,
-        .virgo: kingSign,
-        .libra: jesterSign,
-        .scorpio: vectorSign,
-        .sagittarius: vectorSign
+    socialSigns: [
+        .january: professorSign,
+        .february: leaderSign,
+        .march: aristocratSign,
+        .april: leaderSign,
+        .may: professorSign,
+        .june: aristocratSign,
+        .july: knightSign,
+        .augest: jesterSign,
+        .september: kingSign,
+        .october: jesterSign,
+        .november: vectorSign,
+        .december: vectorSign
     ],
     businessStruct: [
         .rat: .subordinate,
@@ -372,9 +359,8 @@ let snakeSign = SignStruct(
     ], years: [1845, 1857, 1869, 1881, 1893, 1905, 1917, 1929, 1941, 1953, 1965, 1977, 1989, 2001, 2013, 2025, 2037, 2049, 2061, 2073, 2085]
 )
 
-let horseSign = SignStruct(
+let horseSign = AnnualSignStruct(
     annualSign: .horse,
-    emoji: "🐎",
     ideologicalType: [.male: strongWilledMale, .female: logicFemale],
     socialType: openedSocialStruct,
     psychologicalType: sensitivePsychologicalStruct,
@@ -392,19 +378,19 @@ let horseSign = SignStruct(
     companions: [.tiger, .dog],
     subordinates: [.bull, .snake, .rooster],
     advisers: [.cat, .goat],
-    virtualSigns: [
-        .capricorn: aristocratSign,
-        .aquarius: professorSign,
-        .pisces: vectorSign,
-        .aries: vectorSign,
-        .taurus: leaderSign,
-        .gemini: professorSign,
-        .cancer: aristocratSign,
-        .leo: knightSign,
-        .virgo: jesterSign,
-        .libra: kingSign,
-        .scorpio: jesterSign,
-        .sagittarius: knightSign
+    socialSigns: [
+        .january: aristocratSign,
+        .february: professorSign,
+        .march: vectorSign,
+        .april: vectorSign,
+        .may: leaderSign,
+        .june: professorSign,
+        .july: aristocratSign,
+        .augest: knightSign,
+        .september: jesterSign,
+        .october: kingSign,
+        .november: jesterSign,
+        .december: knightSign
     ],
     businessStruct: [
         .rat: .vectorHost,
@@ -432,9 +418,8 @@ let horseSign = SignStruct(
     ], years: [1846, 1858, 1870, 1882, 1894, 1906, 1918, 1930, 1942, 1954, 1966, 1978, 1990, 2002, 2014, 2026, 2038, 2050, 2062, 2074, 2086]
 )
 
-let goatSign = SignStruct(
+let goatSign = AnnualSignStruct(
     annualSign: .goat,
-    emoji: "🐐",
     ideologicalType: [.male: realistMale, .female: mysticFemale],
     socialType: orthodocsSocialStruct,
     psychologicalType: sensitivePsychologicalStruct,
@@ -452,19 +437,19 @@ let goatSign = SignStruct(
     companions: [.bull, .cat],
     subordinates: [.horse, .dog],
     advisers: [.rat, .dragon, .monkey],
-    virtualSigns: [
-        .capricorn: knightSign,
-        .aquarius: aristocratSign,
-        .pisces: professorSign,
-        .aries: leaderSign,
-        .taurus: aristocratSign,
-        .gemini: vectorSign,
-        .cancer: professorSign,
-        .leo: aristocratSign,
-        .virgo: vectorSign,
-        .libra: jesterSign,
-        .scorpio: kingSign,
-        .sagittarius: jesterSign
+    socialSigns: [
+        .january: knightSign,
+        .february: aristocratSign,
+        .march: professorSign,
+        .april: leaderSign,
+        .may: aristocratSign,
+        .june: vectorSign,
+        .july: professorSign,
+        .augest: aristocratSign,
+        .september: vectorSign,
+        .october: jesterSign,
+        .november: kingSign,
+        .december: jesterSign
     ],
     businessStruct: [
         .rat: .adviser,
@@ -492,9 +477,8 @@ let goatSign = SignStruct(
     ], years: [1847, 1859, 1871, 1883, 1895, 1907, 1919, 1931, 1943, 1955, 1967, 1979, 1991, 2003, 2015, 2027, 2039, 2051, 2063, 2075, 2087]
 )
 
-let monkeySign = SignStruct(
+let monkeySign = AnnualSignStruct(
     annualSign: .monkey,
-    emoji: "🐒",
     ideologicalType: [.male: mysticMale, .female: realistFemale],
     socialType: closedSocialStruct,
     psychologicalType: groundedPsychologicalStruct,
@@ -512,19 +496,19 @@ let monkeySign = SignStruct(
     companions: [.tiger, .dog],
     subordinates: [.cat, .goat, .boar],
     advisers: [.bull, .rooster],
-    virtualSigns: [
-        .capricorn: jesterSign,
-        .aquarius: knightSign,
-        .pisces: aristocratSign,
-        .aries: vectorSign,
-        .taurus: leaderSign,
-        .gemini: aristocratSign,
-        .cancer: leaderSign,
-        .leo: professorSign,
-        .virgo: vectorSign,
-        .libra: knightSign,
-        .scorpio: jesterSign,
-        .sagittarius: kingSign
+    socialSigns: [
+        .january: jesterSign,
+        .february: knightSign,
+        .march: aristocratSign,
+        .april: vectorSign,
+        .may: leaderSign,
+        .june: aristocratSign,
+        .july: leaderSign,
+        .augest: professorSign,
+        .september: vectorSign,
+        .october: knightSign,
+        .november: jesterSign,
+        .december: kingSign
     ],
     businessStruct: [
         .rat: .vectorServant,
@@ -551,9 +535,8 @@ let monkeySign = SignStruct(
     ], years: [1848, 1860, 1872, 1884, 1896, 1908, 1920, 1932, 1944, 1956, 1968, 1980, 1992, 2004, 2016, 2028, 2040, 2052, 2064, 2076, 2088]
 )
 
-let roosterSign = SignStruct(
+let roosterSign = AnnualSignStruct(
     annualSign: .rooster,
-    emoji: "🐓",
     ideologicalType: [.male: logicMale, .female: strongWilledFemale],
     socialType: openedSocialStruct,
     psychologicalType: groundedPsychologicalStruct,
@@ -571,19 +554,19 @@ let roosterSign = SignStruct(
     companions: [.bull, .snake],
     subordinates: [.rat, .dragon, .monkey],
     advisers: [.tiger, .horse],
-    virtualSigns: [
-        .capricorn: kingSign,
-        .aquarius: vectorSign,
-        .pisces: knightSign,
-        .aries: aristocratSign,
-        .taurus: professorSign,
-        .gemini: leaderSign,
-        .cancer: vectorSign,
-        .leo: leaderSign,
-        .virgo: professorSign,
-        .libra: aristocratSign,
-        .scorpio: knightSign,
-        .sagittarius: jesterSign
+    socialSigns: [
+        .january: kingSign,
+        .february: vectorSign,
+        .march: knightSign,
+        .april: aristocratSign,
+        .may: professorSign,
+        .june: leaderSign,
+        .july: vectorSign,
+        .augest: leaderSign,
+        .september: professorSign,
+        .october: aristocratSign,
+        .november: knightSign,
+        .december: jesterSign
     ],
     businessStruct: [
         .rat: .subordinate,
@@ -611,9 +594,8 @@ let roosterSign = SignStruct(
     ], years: [1849, 1861, 1873, 1885, 1897, 1909, 1921, 1933, 1945, 1957, 1969, 1981, 1993, 2005, 2017, 2029, 2041, 2053, 2065, 2077, 2089]
 )
 
-let dogSign = SignStruct(
+let dogSign = AnnualSignStruct(
     annualSign: .dog,
-    emoji: "🐕",
     ideologicalType: [.male: strongWilledMale, .female: logicFemale],
     socialType: orthodocsSocialStruct,
     psychologicalType: groundedPsychologicalStruct,
@@ -631,19 +613,19 @@ let dogSign = SignStruct(
     companions: [.dragon, .horse, .monkey],
     subordinates: [.snake],
     advisers: [.cat, .goat, .boar],
-    virtualSigns: [
-        .capricorn: vectorSign,
-        .aquarius: kingSign,
-        .pisces: jesterSign,
-        .aries: knightSign,
-        .taurus: vectorSign,
-        .gemini: professorSign,
-        .cancer: leaderSign,
-        .leo: aristocratSign,
-        .virgo: leaderSign,
-        .libra: professorSign,
-        .scorpio: aristocratSign,
-        .sagittarius: knightSign
+    socialSigns: [
+        .january: vectorSign,
+        .february: kingSign,
+        .march: jesterSign,
+        .april: knightSign,
+        .may: vectorSign,
+        .june: professorSign,
+        .july: leaderSign,
+        .augest: aristocratSign,
+        .september: leaderSign,
+        .october: professorSign,
+        .november: aristocratSign,
+        .december: knightSign
     ],
     businessStruct: [
         .rat: .clone,
@@ -671,9 +653,8 @@ let dogSign = SignStruct(
     ], years: [1838, 1850, 1862, 1874, 1886, 1898, 1910, 1922, 1934, 1946, 1958, 1970, 1982, 1994, 2006, 2018, 2030, 2042, 2054, 2066, 2078, 2090]
 )
 
-let boarSign = SignStruct(
+let boarSign = AnnualSignStruct(
     annualSign: .boar,
-    emoji: "🐗",
     ideologicalType: [.male: realistMale, .female: mysticFemale],
     socialType: closedSocialStruct,
     psychologicalType: maturityPsychologicalStruct,
@@ -691,19 +672,19 @@ let boarSign = SignStruct(
     companions: [.bull, .cat, .snake],
     subordinates: [.tiger, .dog],
     advisers: [.rat, .monkey],
-    virtualSigns: [
-        .capricorn: knightSign,
-        .aquarius: jesterSign,
-        .pisces: kingSign,
-        .aries: jesterSign,
-        .taurus: knightSign,
-        .gemini: aristocratSign,
-        .cancer: professorSign,
-        .leo: vectorSign,
-        .virgo: aristocratSign,
-        .libra: vectorSign,
-        .scorpio: professorSign,
-        .sagittarius: aristocratSign
+    socialSigns: [
+        .january: knightSign,
+        .february: jesterSign,
+        .march: kingSign,
+        .april: jesterSign,
+        .may: knightSign,
+        .june: aristocratSign,
+        .july: professorSign,
+        .augest: vectorSign,
+        .september: aristocratSign,
+        .october: vectorSign,
+        .november: professorSign,
+        .december: aristocratSign
     ],
     businessStruct: [
         .rat: .adviser,

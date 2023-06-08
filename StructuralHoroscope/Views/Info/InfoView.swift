@@ -1,39 +1,21 @@
-//
-//  InfoView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 27.04.2023.
-//
-
 import SwiftUI
 
 struct InfoView: View {
     
     @EnvironmentObject private var vm: ViewModel
-    @AppStorage("isDarkMode") private var isDarkMode = false
     
     var body: some View {
         NavigationStack {
             List {
                 mainView
-                annualStructureSection
-                zodiacStructureSection
                 assistantSection
+                annualStructureSection
             }
             .scrollIndicators(ScrollIndicatorVisibility.hidden)
             .frame(maxWidth: 550)
             .listStyle(.inset)
             .navigationTitle("Информация")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isDarkMode.toggle()
-                    } label: {
-                        Image(systemName: isDarkMode ? "sun.max" : "moon.stars")
-                    }
-                }
-            }
         }
     }
 }
@@ -63,7 +45,7 @@ extension InfoView {
                     .foregroundColor(.theme.standard)
             }
             NavigationLink {
-                VirtualSignsView()
+                SocialSignsView()
             } label: {
                 Text("Виртуальные знаки")
                     .foregroundColor(.theme.standard)
@@ -77,9 +59,9 @@ extension InfoView {
     var annualStructureSection: some View {
         Section {
             NavigationLink {
-                VectorRingView()
+                VectorPareView()
             } label: {
-                Text("Векторное кольцо")
+                Text("Векторные пары")
                     .foregroundColor(.theme.standard)
             }
             NavigationLink {
@@ -113,33 +95,7 @@ extension InfoView {
                     .foregroundColor(.theme.standard)
             }
         } header: {
-            Text("Годовые структуры")
-                .foregroundColor(.theme.accent)
-        }
-        .listRowSeparator(.hidden)
-    }
-    var zodiacStructureSection: some View {
-        Section {
-            NavigationLink {
-                SensualityStructView()
-            } label: {
-                Text("Структура чувственности")
-                    .foregroundColor(.theme.standard)
-            }
-            NavigationLink {
-                ElementStructView()
-            } label: {
-                Text("Структура стихий")
-                    .foregroundColor(.theme.standard)
-            }
-            NavigationLink {
-                SmallVectorRingView()
-            } label: {
-                Text("Малое векторное кольцо")
-                    .foregroundColor(.theme.standard)
-            }
-        } header: {
-            Text("Зодиакальные структуры")
+            Text("Cтруктуры")
                 .foregroundColor(.theme.accent)
         }
         .listRowSeparator(.hidden)
@@ -165,7 +121,7 @@ extension InfoView {
                     .foregroundColor(.theme.standard)
             }
         } header: {
-            Text("Структура отношений")
+            Text("Отношения")
                 .foregroundColor(.theme.accent)
         }
         .listRowSeparator(.hidden)

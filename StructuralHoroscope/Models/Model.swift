@@ -1,37 +1,142 @@
-//
-//  Model.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 31.03.2023.
-//
-
 import Foundation
 
-struct ClientStruct: Identifiable, Codable, Equatable, Hashable {
+let sampleUser = UserStruct(birthday: Date(), sex: .male, annualSignStruct: horseSign, month: .february)
+
+var sampleContact = ContactStruct(
+    name: "Зинаида",
+    birthday: Date(),
+    sex: .male,
+    annualSignStruct: ViewModel().getAnnualSign(date: Date()) ?? horseSign,
+    month: ViewModel().getMonth(date: Date()) ?? .february,
+    isFavorite: false,
+    contact: EventStruct(
+        distance: 3,
+        component: Components.day,
+        lastContact: Date(),
+        reminder: true,
+        allEvents: [
+            Meeting(date: Date(timeIntervalSinceNow: 1038576.0), feeling: Feelings.veryGood, describe: "посидели в Метрополь кафе на последнем этаже. Классно пообщались, обсудили все темы"),
+            Meeting(date: Date(timeIntervalSinceNow: 8330984.0), feeling: Feelings.notTooBad, describe: "поговорили по телефону, узнали что у друг друга нового, договорились в следующий раз попить кофе в Старбаксе на набережной")
+        ]
+    )
+)
+
+struct UserStruct: Identifiable, Codable, Equatable, Hashable {
+    var id = UUID()
+    var birthday: Date
+    var sex: Sex
+    var annualSignStruct: AnnualSignStruct
+    var month: MonthEnum
+    
+    func updateInfo(sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum) -> UserStruct {
+        return UserStruct(birthday: birthday, sex: sex, annualSignStruct: sign, month: month)
+    }
+}
+
+struct ContactStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     var name: String
     var birthday: Date
     var sex: Sex
-    var annualSignStruct: SignStruct
-    var zodiacSign: ZodiacEnum
+    var annualSignStruct: AnnualSignStruct
+    var month: MonthEnum
     var isFavorite: Bool
+    var contact: EventStruct?
     
-    func updateInfo(name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum, isFavorite: Bool) -> ClientStruct {
-        return ClientStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: sign, zodiacSign: zodiacSign, isFavorite: isFavorite)
+    func updateInfo(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum, isFavorite: Bool, distance: Int, component: Components, reminder: Bool) -> ContactStruct {
+        return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: sign, month: month, isFavorite: isFavorite, contact: contact?.updateInfo(distance: distance, component: component, reminder: reminder))
+    }
+    
+    func updateWithoutEvent(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum, isFavorite: Bool) -> ContactStruct {
+        return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite)
+    }
+    
+    func changeLastContact(date: Date) -> ContactStruct {
+        return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite, contact: contact!.updateLastContact(lastContact: date))
+    }
+    
+    func updateAndCreateEvent(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum, isFavorite: Bool, distance: Int, component: Components, lastContact: Date, reminder: Bool, feeling: Feelings, describe: String) -> ContactStruct {
+        let newContact = EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder, allEvents: [Meeting(date: lastContact, feeling: feeling, describe: describe)])
+        return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite, contact: newContact)
+    }
+    
+    func updateInfoAndDeleteEvent(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum, isFavorite: Bool) -> ContactStruct {
+        return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite, contact: nil)
+    }
+    
+    func addMeeting(contact: EventStruct, date: Date, feeling: Feelings, describe: String) -> ContactStruct {
+        let updatedContact = contact.addMeeting(date: date, feeling: feeling, describe: describe)
+        return ContactStruct(name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite, contact: updatedContact)
+    }
+    
+    func setReminderID(reminderID: String) -> ContactStruct {
+        return ContactStruct(id: id, name: name, birthday: birthday, sex: sex, annualSignStruct: annualSignStruct, month: month, isFavorite: isFavorite, contact: contact?.setReminderID(reminderID: reminderID))
     }
 }
 
-struct VirtualSignStruct: Identifiable, Codable, Equatable, Hashable {
+struct EventStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
-    let virtualSign: VirtualEnum
-    let emoji: VirtualEmojiEnum
+    var distance: Int
+    var component: Components
+    var lastContact: Date
+    var reminder: Bool
+    var allEvents: [Meeting]
+    var reminderID: String?
+    
+    func updateInfo(distance: Int, component: Components, reminder: Bool) -> EventStruct {
+        return EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder, allEvents: allEvents)
+    }
+    
+    func updateLastContact(lastContact: Date) -> EventStruct {
+        return EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder, allEvents: allEvents)
+    }
+    
+    func addMeeting(date: Date, feeling: Feelings, describe: String) -> EventStruct {
+        let newMeeting = Meeting(date: date, feeling: feeling, describe: describe)
+        var arr = allEvents
+        arr.append(newMeeting)
+        return EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder, allEvents: arr)
+    }
+    
+    func getNextEventDate() -> Date {
+        switch component {
+        case .day:
+            return Calendar.current.date(byAdding: Calendar.Component.day, value: distance, to: lastContact)!
+        case .week:
+            return Calendar.current.date(byAdding: Calendar.Component.day, value: (distance * 7), to: lastContact)!
+        case .month:
+            return Calendar.current.date(byAdding: Calendar.Component.month, value: distance, to: lastContact)!
+        case .year:
+            return Calendar.current.date(byAdding: Calendar.Component.year, value: distance, to: lastContact)!
+        }
+    }
+    
+    func setReminderID(reminderID: String) -> EventStruct {
+        return EventStruct(id: id, distance: distance, component: component, lastContact: lastContact, reminder: reminder, allEvents: allEvents, reminderID: reminderID)
+    }
+}
+
+struct Meeting: Identifiable, Codable, Equatable, Hashable {
+    var id = UUID()
+    var date: Date
+    var feeling: Feelings
+    var describe: String
+    
+    func updateMeeting(date: Date, feeling: Feelings, describe: String) -> Meeting {
+        return Meeting(date: date, feeling: feeling, describe: describe)
+    }
+}
+
+struct SocialSignStruct: Identifiable, Codable, Equatable, Hashable {
+    var id = UUID()
+    let socialSign: SocialSignEnum
+    let emoji: SocialEmojiEnum
     let blocks: [String:String]
 }
 
-struct SignStruct: Identifiable, Codable, Equatable, Hashable {
+struct AnnualSignStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     let annualSign: AnnualEnum
-    let emoji: String
     let ideologicalType: [Sex: IdeologicalStruct]
     let socialType: SocialStruct
     let psychologicalType: PsychologicalStruct
@@ -49,15 +154,15 @@ struct SignStruct: Identifiable, Codable, Equatable, Hashable {
     let companions: [AnnualEnum]
     let subordinates: [AnnualEnum]
     let advisers: [AnnualEnum]
-    let virtualSigns: [ZodiacEnum:VirtualSignStruct]
+    let socialSigns: [MonthEnum:SocialSignStruct]
     let businessStruct: [AnnualEnum: BusinessEnum]
     let blocks: [String:String]
     let years: [Int]
 }
 
-struct ZodiacStruct: Identifiable, Codable, Equatable, Hashable {
+struct MonthStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
-    let sign: ZodiacEnum
+    let sign: MonthEnum
     let days: [Int: ClosedRange<Int>]
 }
 
@@ -106,7 +211,7 @@ struct BusinessStruct: Identifiable, Codable, Equatable, Hashable {
     let type: BusinessEnum
     let value: String
     let text: String
-    let signs: [AnnualEnum: [SignStruct]]
+    let signs: [AnnualEnum: [AnnualSignStruct]]
 }
 
 struct MarriageStruct: Identifiable, Codable, Equatable, Hashable {
@@ -114,15 +219,7 @@ struct MarriageStruct: Identifiable, Codable, Equatable, Hashable {
     let type: MarriageEnum
     let title: String
     let text: String
-    let signs: [AnnualEnum: [SignStruct]]
-}
-
-struct SensualityStruct: Identifiable, Codable, Equatable, Hashable {
-    var id = UUID()
-    let department: SensualityEnum
-    let zodiacs: [ZodiacEnum]
-    let title: String
-    let text: String
+    let signs: [AnnualEnum: [AnnualSignStruct]]
 }
 
 struct AgeStruct: Identifiable, Codable, Equatable, Hashable {
@@ -131,13 +228,6 @@ struct AgeStruct: Identifiable, Codable, Equatable, Hashable {
     let title: String
     let ageTitle: String
     let ageСommandments: String
-    let text: String
-}
-
-struct ElementStruct: Identifiable, Codable, Equatable, Hashable {
-    var id = UUID()
-    let element: ElementEnum
-    let zodiacs: [ZodiacEnum]
     let text: String
 }
 
@@ -172,20 +262,6 @@ struct DayType: Codable, Hashable, Identifiable {
     let text: String?
 }
 
-enum ElementEnum: String, Codable, CaseIterable, Hashable {
-    case fire = "Революционеры (Огонь)"
-    case water = "Консерваторы (Вода)"
-    case air = "Небожители (Воздух)"
-    case earth = "Землепашцы (Земля)"
-}
-
-enum SensualityEnum: String, Codable, CaseIterable, Hashable {
-    case coach = "Тренеры (Садо)"
-    case athlete = "Спортсмены (Мазо)"
-    case altruist = "Альтруисты (Повара)"
-    case sybarite = "Сибариты (Гурманы)"
-}
-
 enum AnnualEnum: String, Codable, CaseIterable, Hashable {
     case snake = "Змея"
     case horse = "Лошадь"
@@ -201,22 +277,22 @@ enum AnnualEnum: String, Codable, CaseIterable, Hashable {
     case dragon = "Дракон"
 }
 
-enum ZodiacEnum: String, Codable, CaseIterable, Hashable {
-    case aries = "Овен"
-    case taurus = "Телец"
-    case gemini = "Близнецы"
-    case cancer = "Рак"
-    case leo = "Лев"
-    case virgo = "Дева"
-    case libra = "Весы"
-    case scorpio = "Скорпион"
-    case sagittarius = "Стрелец"
-    case capricorn = "Козерог"
-    case aquarius = "Водолей"
-    case pisces = "Рыбы"
+enum MonthEnum: Codable, CaseIterable, Hashable {
+    case april
+    case may
+    case june
+    case july
+    case augest
+    case september
+    case october
+    case november
+    case december
+    case january
+    case february
+    case march
 }
 
-enum VirtualEnum: String, CaseIterable, Codable, Hashable {
+enum SocialSignEnum: String, CaseIterable, Codable, Hashable {
     case king = "Король"
     case vector = "Вектор"
     case jester = "Шут"
@@ -226,7 +302,7 @@ enum VirtualEnum: String, CaseIterable, Codable, Hashable {
     case leader = "Вождь"
 }
 
-enum VirtualEmojiEnum: String, CaseIterable, Codable, Hashable {
+enum SocialEmojiEnum: String, CaseIterable, Codable, Hashable {
     case king = "👑"
     case vector = "↔️"
     case jester = "🤡"
@@ -234,21 +310,6 @@ enum VirtualEmojiEnum: String, CaseIterable, Codable, Hashable {
     case aristocrat = "🎩"
     case professor = "👨‍🏫"
     case leader = "🗽"
-}
-
-enum AnnualEmojiEnum: String, CaseIterable, Codable, Hashable {
-    case rat = "🐀"
-    case bull = "🐂"
-    case tiger = "🐅"
-    case cat = "🐈"
-    case dragon = "🐉"
-    case snake = "🐍"
-    case horse = "🐎"
-    case goat = "🐐"
-    case monkey = "🐒"
-    case rooster = "🐓"
-    case dog = "🐕"
-    case boar = "🐗"
 }
 
 enum BusinessEnum: String, Codable, CaseIterable, Hashable {
@@ -326,11 +387,25 @@ enum Sex: String, Codable, CaseIterable, Hashable {
     case female = "женщины"
 }
 
-var sampleClient = ClientStruct(
-    name: "Зинаида",
-    birthday: Date(),
-    sex: .male,
-    annualSignStruct: ViewModel().getAnnualSign(date: Date()) ?? horseSign,
-    zodiacSign: ViewModel().getZodiacSign(date: Date()) ?? .cancer,
-    isFavorite: false
-)
+enum Components: String, Codable, CaseIterable, Hashable {
+    case day = "день"
+    case week = "неделя"
+    case month = "месяц"
+    case year = "год"
+}
+
+enum Feelings: String, Codable, CaseIterable, Hashable {
+    case veryBad = "😡"
+    case bad = "🙁"
+    case notTooBad = "🤔"
+    case good = "🙂"
+    case veryGood = "😀"
+}
+
+enum FilterMainView: String, Codable, CaseIterable, Hashable {
+    case standardOrder = "Без фильтра"
+    case alphabeticalOrder = "По алфавиту"
+    case dueDateOrder = "По дате общения"
+    case favoritesOrder = "Избранные"
+    case withoutTracker = "Без отслеживания"
+}

@@ -1,17 +1,8 @@
-//
-//  StartingView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 09.05.2023.
-//
-
 import SwiftUI
 
 struct StartingView: View {
     
     @EnvironmentObject private var vm: ViewModel
-    @AppStorage("isDarkMode") private var isDarkMode = false
-    @State private var name = ""
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
     
@@ -28,51 +19,72 @@ struct StartingView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
-            HStack {
-                Text("Новый пользователь")
-                    .font(.largeTitle)
-                Spacer()
-                Button {
-                    isDarkMode.toggle()
-                } label: {
-                    Image(systemName: isDarkMode ? "sun.max" : "moon.stars")
-                }
-                .padding(.trailing)
-            }
-            TextField("Введите ваше имя", text: $name)
-                .textFieldStyle(.roundedBorder)
+            Text("Новый пользователь")
+                .foregroundColor(.theme.standard)
+                .font(.largeTitle)
             HStack {
                 Text("Пол:")
                     .padding(.trailing, 30)
+                    .foregroundColor(.theme.standard)
                 Picker(selection: $sex) {
                     Text("Мужской").tag(Sex.male)
                     Text("Женский").tag(Sex.female)
                 } label: {
                     Text("Пол")
-                        .foregroundColor(.theme.accent)
                 }
                 .pickerStyle(.segmented)
             }
-            DatePicker("Дата рождения:", selection: $selectedDate, in: dateRange, displayedComponents: .date)
-            NavigationLink {
-                MainTabView()
-            } label: {
-                Text("Сохранить")
-                    .foregroundColor(.theme.accent)
+            VStack(spacing: -10) {
+                Text("Дата рождения")
+                    .foregroundColor(.theme.standard)
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(.gray.opacity(0.2))
+                        .frame(width: 310, height: 180)
+                    DatePicker(selection: $selectedDate, in: dateRange, displayedComponents: .date) {}
+                        .foregroundColor(.theme.accent)
+                        .datePickerStyle(.wheel)
+                        .padding(.trailing, 20)
+                }
             }
-            .onTapGesture {
-                vm.updateMainUser(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getZodiacSign(date: selectedDate)!)
+            HStack {
+                Spacer()
+                NavigationLink {
+                    ContactListView()
+                } label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(.gray.opacity(0.25))
+                            .frame(width: 150, height: 60)
+                        Text("Сохранить")
+                            .foregroundColor(.theme.accent)
+                            .bold()
+                            .padding(10)
+                        .padding(.horizontal)
+                    }
+                }
+                .onTapGesture {
+                    vm.updateUser(sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!)
+                }
+                Spacer()
             }
-            .disabled(name.count < 3)
             Spacer()
         }
         .frame(maxWidth: 550)
         .padding()
+        .onDisappear {
+            NotificationManager.instance.requestAuthorization()
+        }
     }
 }
 
 struct StartingView_Previews: PreviewProvider {
     static var previews: some View {
         StartingView()
+            .environmentObject(ViewModel())
+            .preferredColorScheme(.dark)
+        StartingView()
+            .environmentObject(ViewModel())
+            .preferredColorScheme(.light)
     }
 }

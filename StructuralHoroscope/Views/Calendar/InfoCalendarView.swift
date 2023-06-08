@@ -1,10 +1,3 @@
-//
-//  InfoCalendarView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 26.05.2023.
-//
-
 import SwiftUI
 
 struct InfoCalendarView: View {
@@ -35,7 +28,7 @@ struct InfoCalendarView: View {
                         .foregroundColor(.theme.accent)
                         .font(.headline)
                 } footer: {
-                    Text("Цветной круг - здесь разум надо отключить и дать поработать сердцу (душе)")
+                    Text("Цветное сердце - разум надо отключить и дать поработать сердцу (душе)")
                         .foregroundColor(.theme.secondaryText)
                         .font(.callout)
                 }

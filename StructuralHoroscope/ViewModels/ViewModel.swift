@@ -1,44 +1,38 @@
-//
-//  ViewModel.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 12.04.2023.
-//
-
 import Foundation
+import UserNotifications
 import EventKit
 
 class ViewModel: ObservableObject {
     
     @Published var actualDayType: DayStruct?
-    @Published var mainUser: ClientStruct? = nil {
+    @Published var user: UserStruct? = nil {
         didSet {
-            saveMainUser()
+            saveUser()
         }
     }
-    @Published var customers = [ClientStruct]() {
+    @Published var contacts = [ContactStruct]() {
         didSet {
-            saveItems()
+            saveContacts()
         }
     }
     
-    let itemsKey = "items_list"
-    let mainUserKey = "main_user"
+    let contactsKey = "items_list"
+    let userKey = "main_user"
     
     init() {
-        fetchMainUser()
-        fetchCustomers()
+        fetchUser()
+        fetchContacts()
         getActualDayType()
     }
     
-    func fetchMainUser() {
-        guard let mainUserData = UserDefaults.standard.data(forKey: mainUserKey), let savedMainUser = try? JSONDecoder().decode(ClientStruct.self, from: mainUserData) else {return}
-        self.mainUser = savedMainUser
+    func fetchUser() {
+        guard let mainUserData = UserDefaults.standard.data(forKey: userKey), let savedMainUser = try? JSONDecoder().decode(UserStruct.self, from: mainUserData) else {return}
+        self.user = savedMainUser
     }
     
-    func fetchCustomers() {
-        guard let data = UserDefaults.standard.data(forKey: itemsKey), let savedItems = try? JSONDecoder().decode([ClientStruct].self, from: data) else {return}
-        self.customers = savedItems
+    func fetchContacts() {
+        guard let data = UserDefaults.standard.data(forKey: contactsKey), let savedItems = try? JSONDecoder().decode([ContactStruct].self, from: data) else {return}
+        self.contacts = savedItems
     }
     
     func startingDate(day: Int) -> Date {
@@ -50,195 +44,121 @@ class ViewModel: ObservableObject {
         return calendar.date(from: dateComponents)!
     }
     
-    func saveMainUser() {
-        if let encodedData = try? JSONEncoder().encode(mainUser) {
-            UserDefaults.standard.set(encodedData, forKey: mainUserKey)
+    func saveUser() {
+        if let encodedData = try? JSONEncoder().encode(user) {
+            UserDefaults.standard.set(encodedData, forKey: userKey)
         }
     }
     
-    func saveItems() {
-        if let encodedData = try? JSONEncoder().encode(customers) {
-            UserDefaults.standard.set(encodedData, forKey: itemsKey)
+    func saveContacts() {
+        if let encodedData = try? JSONEncoder().encode(contacts) {
+            UserDefaults.standard.set(encodedData, forKey: contactsKey)
         }
     }
     
-    func createMainUser(name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum) {
-        let newMainUser = ClientStruct(
+    func createUser(sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum) {
+        let newMainUser = UserStruct(
+            birthday: birthday,
+            sex: sex,
+            annualSignStruct: sign,
+            month: sampleContact.month
+        )
+        user = newMainUser
+    }
+    
+    func createNewContact(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum, distance: Int, component: Components, lastContact: Date, reminder: Bool, meetingTracker: Bool, feeling: Feelings, describe: String) {
+        var newContact = EventStruct(
+            distance: distance,
+            component: component,
+            lastContact: lastContact,
+            reminder: reminder,
+            allEvents: [ Meeting(
+                date: lastContact,
+                feeling: feeling,
+                describe: describe)
+            ]
+        )
+        var newCustomer = ContactStruct(
             name: name,
             birthday: birthday,
             sex: sex,
             annualSignStruct: sign,
-            zodiacSign: sampleClient.zodiacSign,
-            isFavorite: false
+            month: zodiacSign,
+            isFavorite: false,
+            contact: meetingTracker ? newContact : nil
         )
-        mainUser = newMainUser
+        if reminder && meetingTracker {
+            if newCustomer.contact != nil {
+                newCustomer.contact!.reminderID = setNotification(contact: newCustomer)
+            }
+        }
+        contacts.append(newCustomer)
     }
     
-    func createNewCustomer(name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum) {
-        let newCustomer = ClientStruct(
-            name: name,
-            birthday: birthday,
-            sex: sex,
-            annualSignStruct: sign,
-            zodiacSign: zodiacSign,
-            isFavorite: false
-        )
-        customers.append(newCustomer)
-    }
-    
-    func updateMainUser(name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum) {
-        if mainUser == nil {
-            createMainUser(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign)
+    func updateUser(sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum) {
+        if user == nil {
+            createUser(sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign)
         } else {
-            mainUser = mainUser!.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign, isFavorite: false)
+            user = user!.updateInfo(sex: sex, birthday: birthday, sign: sign, month: zodiacSign)
         }
     }
     
-    func updateCustomer(client: ClientStruct, name: String, sex: Sex, birthday: Date, sign: SignStruct, zodiacSign: ZodiacEnum) {
-        if let index = customers.firstIndex(where: {$0.id == client.id}) {
-            customers[index] = client.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign, isFavorite: false)
-            saveItems()
-        }
-        fetchCustomers()
-    }
-    
-    func deleteItem(indexSet: IndexSet) {
-        customers.remove(atOffsets: indexSet)
-    }
-    
-    func moveItem(from: IndexSet, to: Int) {
-        customers.move(fromOffsets: from, toOffset: to)
-    }
-    
-    func hostString(sign: AnnualEnum) -> String {
-        var str = ""
-        for i in AnnualEmojiEnum.allCases {
-            if "\(i)" == "\(sign)" {
-                str = "\(i.rawValue)\(sign.rawValue)"
-            }
-        }
-        return str
-    }
-    
-    func servantString(sign: AnnualEnum) -> String {
-        var str = ""
-        for i in AnnualEmojiEnum.allCases {
-            if "\(i)" == "\(sign)" {
-                str = "\(i.rawValue)\(sign.rawValue)"
-            }
-        }
-        return str
-    }
-    
-    func clones(sign: SignStruct) -> String {
-        var dict = [AnnualEmojiEnum: AnnualEnum]()
-        for i in sign.clones {
-            for e in AnnualEmojiEnum.allCases {
-                if "\(e)" == "\(i)" {
-                    dict[e] = i
+    func updateContact(client: ContactStruct, name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum, isFavorite: Bool, distance: Int, component: Components, lastContact: Date, reminder: Bool, meetingTracker: Bool, feeling: Feelings, describe: String) {
+        if let index = contacts.firstIndex(where: {$0.id == client.id}) {
+            if meetingTracker {
+                if client.contact != nil {
+                    contacts[index] = client.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite, distance: distance, component: component, reminder: reminder)
+                    saveContacts()
+                } else {
+                    contacts[index] = client.updateAndCreateEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite, distance: distance, component: component, lastContact: lastContact, reminder: reminder, feeling: feeling, describe: describe)
+                    saveContacts()
+                }
+            } else {
+                if client.contact != nil {
+                    contacts[index] = client.updateInfoAndDeleteEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite)
+                } else {
+                    contacts[index] = client.updateWithoutEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite)
                 }
             }
         }
-        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
-    }
-    
-    func companions(sign: SignStruct) -> String {
-        var dict = [AnnualEmojiEnum: AnnualEnum]()
-        for i in sign.companions {
-            for e in AnnualEmojiEnum.allCases {
-                if "\(e)" == "\(i)" {
-                    dict[e] = i
+        fetchContacts()
+        if reminder && meetingTracker {
+            if client.contact == nil {
+                if let index = contacts.firstIndex(where: {$0.id == client.id}) {
+                    if client.contact!.reminderID == nil {
+                        contacts[index] = client.setReminderID(reminderID: setNotification(contact: client))
+                    }
+                }
+            }
+        } else {
+            if client.contact != nil {
+                if client.contact!.reminderID != nil {
+                    UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [client.contact!.reminderID!])
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [client.contact!.reminderID!])
+                    if let index = contacts.firstIndex(where: {$0.id == client.id}) {
+                        contacts[index].contact!.reminderID = nil
+                    }
                 }
             }
         }
-        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
+        fetchContacts()
     }
     
-    func subordinates(sign: SignStruct) -> String {
-        var dict = [AnnualEmojiEnum: AnnualEnum]()
-        for i in sign.subordinates {
-            for e in AnnualEmojiEnum.allCases {
-                if "\(e)" == "\(i)" {
-                    dict[e] = i
-                }
-            }
+    func updateEvent(contact: ContactStruct) {
+        if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
+            contacts[index] = contact.changeLastContact(date: Date())
         }
-        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
     }
     
-    func advisers(sign: SignStruct) -> String {
-        var dict = [AnnualEmojiEnum: AnnualEnum]()
-        for i in sign.advisers {
-            for e in AnnualEmojiEnum.allCases {
-                if "\(e)" == "\(i)" {
-                    dict[e] = i
-                }
-            }
-        }
-        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
+    func deleteContact(indexSet: IndexSet) {
+        contacts.remove(atOffsets: indexSet)
     }
     
-    func vectorMarriage(sign: SignStruct) -> String {
-        var dict = [AnnualEmojiEnum: AnnualEnum]()
-        for i in sign.vectorMarriage {
-            for e in AnnualEmojiEnum.allCases {
-                if "\(e)" == "\(i)" {
-                    dict[e] = i
-                }
-            }
-        }
-        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
+    func moveContact(from: IndexSet, to: Int) {
+        contacts.move(fromOffsets: from, toOffset: to)
     }
     
-    func romanticMarriage(sign: SignStruct) -> String {
-        var dict = [AnnualEmojiEnum: AnnualEnum]()
-        for i in sign.romanticMarriage {
-            for e in AnnualEmojiEnum.allCases {
-                if "\(e)" == "\(i)" {
-                    dict[e] = i
-                }
-            }
-        }
-        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
-    }
-    
-    func equalMarriage(sign: SignStruct) -> String {
-        var dict = [AnnualEmojiEnum: AnnualEnum]()
-        for i in sign.equalMarriage {
-            for e in AnnualEmojiEnum.allCases {
-                if "\(e)" == "\(i)" {
-                    dict[e] = i
-                }
-            }
-        }
-        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
-    }
-    
-    func spiritualMarriage(sign: SignStruct) -> String {
-        var dict = [AnnualEmojiEnum: AnnualEnum]()
-        for i in sign.spiritualMarriage {
-            for e in AnnualEmojiEnum.allCases {
-                if "\(e)" == "\(i)" {
-                    dict[e] = i
-                }
-            }
-        }
-        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
-    }
-    
-    func patriarchalMarriage(sign: SignStruct) -> String {
-        var dict = [AnnualEmojiEnum: AnnualEnum]()
-        for i in sign.patriarchalMarriage {
-            for e in AnnualEmojiEnum.allCases {
-                if "\(e)" == "\(i)" {
-                    dict[e] = i
-                }
-            }
-        }
-        return dict.map{"\($0.key.rawValue)\($0.value.rawValue)"}.joined(separator: ", ")
-    }
-    
-    func socialSigns(socialEnum: SocialEnum) -> [SignStruct] {
+    func socialSigns(socialEnum: SocialEnum) -> [AnnualSignStruct] {
         switch socialEnum {
         case .opened:
             return [ratSign, catSign, horseSign, roosterSign]
@@ -249,7 +169,7 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func ideologicalSigns(ideologicalEnum: IdeologicalEnum) -> [SignStruct] {
+    func ideologicalSigns(ideologicalEnum: IdeologicalEnum) -> [AnnualSignStruct] {
         switch ideologicalEnum {
         case .logicalMale:
             return [bullSign, snakeSign, roosterSign]
@@ -270,7 +190,7 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func psychologicalSigns(psychologicalEnum: PsychologicalEnum) -> [SignStruct] {
+    func psychologicalSigns(psychologicalEnum: PsychologicalEnum) -> [AnnualSignStruct] {
         switch psychologicalEnum {
         case .maturity:
             return [boarSign, ratSign, bullSign]
@@ -283,7 +203,7 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func energySigns(energy: EnergyEnum) -> [SignStruct] {
+    func energySigns(energy: EnergyEnum) -> [AnnualSignStruct] {
         switch energy {
         case .dramatic:
             return [goatSign, ratSign, snakeSign]
@@ -296,7 +216,7 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func fateSigns(fate: FateEnum) -> [SignStruct] {
+    func fateSigns(fate: FateEnum) -> [AnnualSignStruct] {
         switch fate {
         case .fatalist:
             return [ratSign, tigerSign, dogSign]
@@ -309,11 +229,11 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func ourBusinessRelationship(customer: ClientStruct) -> BusinessEnum {
-        return mainUser!.annualSignStruct.businessStruct.filter{$0.key == customer.annualSignStruct.annualSign}.first!.value
+    func ourBusinessRelationship(customer: ContactStruct) -> BusinessEnum {
+        return user!.annualSignStruct.businessStruct.filter{$0.key == customer.annualSignStruct.annualSign}.first!.value
     }
     
-    func getAnnualSign(date: Date) -> SignStruct? {
+    func getAnnualSign(date: Date) -> AnnualSignStruct? {
         let birthDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
         let year = birthDateComponents.year!
         let month = birthDateComponents.month!
@@ -359,12 +279,12 @@ class ViewModel: ObservableObject {
         return nil
     }
     
-    func getZodiacSign(date: Date) -> ZodiacEnum? {
+    func getMonth(date: Date) -> MonthEnum? {
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
         let day = dateComponents.day
         let month = dateComponents.month
         
-        for i in zodiacArray {
+        for i in months {
             for e in i.days {
                 if e.key == month && e.value.contains(day!) {
                     return i.sign
@@ -446,19 +366,19 @@ class ViewModel: ObservableObject {
     
     func addAllEventsToCalendar() {
         let endDate = Date().adding(.year, value: 50)
-        addEventToCalendar(title: "\(firstDay[mainUser!.annualSignStruct.annualSign]!.emoji) \(firstDay[mainUser!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: firstDay), startDate: startingDate(day: 9), endDate: endDate)
-        addEventToCalendar(title: "\(secondDay[mainUser!.annualSignStruct.annualSign]!.emoji) \(secondDay[mainUser!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: secondDay), startDate: startingDate(day: 10), endDate: endDate)
-        addEventToCalendar(title: "\(thirdDay[mainUser!.annualSignStruct.annualSign]!.emoji) \(thirdDay[mainUser!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: thirdDay), startDate: startingDate(day: 11), endDate: endDate)
-        addEventToCalendar(title: "\(fourthDay[mainUser!.annualSignStruct.annualSign]!.emoji) \(fourthDay[mainUser!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: fourthDay), startDate: startingDate(day: 12), endDate: endDate)
-        addEventToCalendar(title: "\(fifthDay[mainUser!.annualSignStruct.annualSign]!.emoji) \(fifthDay[mainUser!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: fifthDay), startDate: startingDate(day: 13), endDate: endDate)
-        addEventToCalendar(title: "\(sixthDay[mainUser!.annualSignStruct.annualSign]!.emoji) \(sixthDay[mainUser!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: sixthDay), startDate: startingDate(day: 14), endDate: endDate)
+        addEventToCalendar(title: "\(firstDay[user!.annualSignStruct.annualSign]!.emoji) \(firstDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: firstDay), startDate: startingDate(day: 9), endDate: endDate)
+        addEventToCalendar(title: "\(secondDay[user!.annualSignStruct.annualSign]!.emoji) \(secondDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: secondDay), startDate: startingDate(day: 10), endDate: endDate)
+        addEventToCalendar(title: "\(thirdDay[user!.annualSignStruct.annualSign]!.emoji) \(thirdDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: thirdDay), startDate: startingDate(day: 11), endDate: endDate)
+        addEventToCalendar(title: "\(fourthDay[user!.annualSignStruct.annualSign]!.emoji) \(fourthDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: fourthDay), startDate: startingDate(day: 12), endDate: endDate)
+        addEventToCalendar(title: "\(fifthDay[user!.annualSignStruct.annualSign]!.emoji) \(fifthDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: fifthDay), startDate: startingDate(day: 13), endDate: endDate)
+        addEventToCalendar(title: "\(sixthDay[user!.annualSignStruct.annualSign]!.emoji) \(sixthDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: sixthDay), startDate: startingDate(day: 14), endDate: endDate)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.addEventToCalendar(title: "\(seventhDay[self.mainUser!.annualSignStruct.annualSign]!.emoji) \(seventhDay[self.mainUser!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: seventhDay), startDate: self.startingDate(day: 15), endDate: endDate)
-            self.addEventToCalendar(title: "\(eighthDay[self.mainUser!.annualSignStruct.annualSign]!.emoji) \(eighthDay[self.mainUser!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: eighthDay), startDate: self.startingDate(day: 16), endDate: endDate)
-            self.addEventToCalendar(title: "\(ninthDay[self.mainUser!.annualSignStruct.annualSign]!.emoji) \(ninthDay[self.mainUser!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: ninthDay), startDate: self.startingDate(day: 17), endDate: endDate)
-            self.addEventToCalendar(title: "\(tenthDay[self.mainUser!.annualSignStruct.annualSign]!.emoji) \(tenthDay[self.mainUser!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: tenthDay), startDate: self.startingDate(day: 18), endDate: endDate)
-            self.addEventToCalendar(title: "\(eleventhDay[self.mainUser!.annualSignStruct.annualSign]!.emoji) \(eleventhDay[self.mainUser!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: eleventhDay), startDate: self.startingDate(day: 19), endDate: endDate)
-            self.addEventToCalendar(title: "\(twelveDay[self.mainUser!.annualSignStruct.annualSign]!.emoji) \(twelveDay[self.mainUser!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: twelveDay), startDate: self.startingDate(day: 20), endDate: endDate)
+            self.addEventToCalendar(title: "\(seventhDay[self.user!.annualSignStruct.annualSign]!.emoji) \(seventhDay[self.user!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: seventhDay), startDate: self.startingDate(day: 15), endDate: endDate)
+            self.addEventToCalendar(title: "\(eighthDay[self.user!.annualSignStruct.annualSign]!.emoji) \(eighthDay[self.user!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: eighthDay), startDate: self.startingDate(day: 16), endDate: endDate)
+            self.addEventToCalendar(title: "\(ninthDay[self.user!.annualSignStruct.annualSign]!.emoji) \(ninthDay[self.user!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: ninthDay), startDate: self.startingDate(day: 17), endDate: endDate)
+            self.addEventToCalendar(title: "\(tenthDay[self.user!.annualSignStruct.annualSign]!.emoji) \(tenthDay[self.user!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: tenthDay), startDate: self.startingDate(day: 18), endDate: endDate)
+            self.addEventToCalendar(title: "\(eleventhDay[self.user!.annualSignStruct.annualSign]!.emoji) \(eleventhDay[self.user!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: eleventhDay), startDate: self.startingDate(day: 19), endDate: endDate)
+            self.addEventToCalendar(title: "\(twelveDay[self.user!.annualSignStruct.annualSign]!.emoji) \(twelveDay[self.user!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: twelveDay), startDate: self.startingDate(day: 20), endDate: endDate)
         }
     }
     
@@ -567,5 +487,115 @@ class ViewModel: ObservableObject {
         return events.filter { event in
             event.date == day
         }.first
+    }
+    
+    func getNextEventDate(component: Components, lastContact: Date, interval: Int) -> Date {
+        switch component {
+        case .day:
+            return Calendar.current.date(byAdding: Calendar.Component.day, value: interval, to: lastContact)!
+        case .week:
+            return Calendar.current.date(byAdding: Calendar.Component.day, value: (interval * 7), to: lastContact)!
+        case .month:
+            return Calendar.current.date(byAdding: Calendar.Component.month, value: interval, to: lastContact)!
+        case .year:
+            return Calendar.current.date(byAdding: Calendar.Component.year, value: interval, to: lastContact)!
+        }
+    }
+    
+    func daysFromLastEvent(lastEvent: Date) -> String {
+        let calendar = Calendar.current
+        let distance = calendar.dateComponents([.day], from: lastEvent, to: Date())
+        let days = distance.day!
+        var dayReminder: Int {
+            if days < 20 {
+                return days
+            } else {
+                return days % 10
+            }
+        }
+        switch dayReminder {
+        case 1:
+            return "Прошел \(days) день"
+        case 2...4:
+            return "Прошло \(days) дня"
+        case 11...19:
+            return "Прошло \(days) дней"
+        default:
+            return "Прошло \(days) дней"
+        }
+    }
+    
+    func daysFromLastEventCell(lastEvent: Date) -> String {
+        let calendar = Calendar.current
+        let distance = calendar.dateComponents([.day], from: lastEvent, to: Date())
+        let days = distance.day!
+        var dayReminder: Int {
+            if days < 20 {
+                return days
+            } else {
+                return days % 10
+            }
+        }
+        switch dayReminder {
+        case 1:
+            return "\(days) день"
+        case 2...4:
+            return "\(days) дня"
+        case 11...19:
+            return "\(days) дней"
+        default:
+            return "\(days) дней"
+        }
+    }
+    
+    func updateMeeting(contact: ContactStruct, meeting: Meeting, date: Date, feeling: Feelings, describe: String) {
+        if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
+            if let i = contacts[index].contact!.allEvents.firstIndex(where: {$0.id == meeting.id}) {
+                contacts[index].contact!.allEvents[i].date = date
+                contacts[index].contact!.allEvents[i].feeling = feeling
+                contacts[index].contact!.allEvents[i].describe = describe
+            }
+        }
+    }
+    
+    func deleteMeeting(contact: ContactStruct, meeting: Meeting) {
+        if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
+            if let i = contacts[index].contact!.allEvents.firstIndex(where: {$0.id == meeting.id}) {
+                contacts[index].contact!.allEvents.remove(at: i)
+            }
+        }
+    }
+    
+    func addMeeting(contact: ContactStruct, date: Date, feeling: Feelings, describe: String) {
+        let newMeeting = Meeting(date: date, feeling: feeling, describe: describe)
+        if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
+            contacts[index].contact!.allEvents.append(newMeeting)
+            contacts[index].contact!.lastContact = contacts[index].contact!.lastContact < date ? date : contacts[index].contact!.lastContact
+        }
+    }
+    
+    func listOrder(order: FilterMainView) -> [ContactStruct] {
+        switch order {
+        case .standardOrder:
+            return contacts
+        case .alphabeticalOrder:
+            return contacts.sorted(by: {$0.name > $1.name})
+        case .dueDateOrder:
+            return contacts.filter{$0.contact != nil}.sorted(by: {$0.contact!.getNextEventDate() < $1.contact!.getNextEventDate()})
+        case .favoritesOrder:
+            return contacts.filter{$0.isFavorite}
+        case .withoutTracker:
+            return contacts.filter{$0.contact == nil}
+        }
+    }
+    
+    func setNotification(contact: ContactStruct) -> String {
+        var id = ""
+        if let _ = actualDayType {
+            id = NotificationManager.instance.scheduleNotification(name: contact.name)
+        } else {
+            print("We couldn't send you notification because actualDayType was nil!!!")
+        }
+        return id
     }
 }

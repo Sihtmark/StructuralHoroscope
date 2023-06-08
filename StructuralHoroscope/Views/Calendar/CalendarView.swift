@@ -1,20 +1,15 @@
-//
-//  CalendarView.swift
-//  StructuralHoroscope
-//
-//  Created by Sergei Poluboiarinov on 23.05.2023.
-//
-
 import SwiftUI
 
 struct CalendarView: View {
     
     @EnvironmentObject private var vm: ViewModel
-    @AppStorage("isDarkMode") private var isDarkMode = false
     @State private var events = [DayStruct]()
     @State private var pickedDate = Date()
     @State private var day = Date()
-    @State private var showAlert = false
+    @State private var showSyncAlert = false
+    @State private var list: Bool = false
+    @State private var filter: FilterMainView = .standardOrder
+    @State private var showFilterAlert = false
     
     var dateRange: ClosedRange<Date> {
         var dateComponents = DateComponents()
@@ -38,7 +33,6 @@ struct CalendarView: View {
             }
             .frame(maxWidth: 550)
             .navigationTitle("Календарь")
-            .navigationBarTitleDisplayMode(.inline)
             .padding(.horizontal)
             .onAppear {
                 events = vm.eventsByPickedDate(pickedDate: day)
@@ -50,16 +44,25 @@ struct CalendarView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        showAlert.toggle()
+                        showSyncAlert.toggle()
                     } label: {
                         Image(systemName: "arrow.triangle.2.circlepath.circle")
                     }
                 }
+                if list {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            showFilterAlert.toggle()
+                        } label: {
+                            Image(systemName: "slider.vertical.3")
+                        }
+                    }
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        isDarkMode.toggle()
+                        list.toggle()
                     } label: {
-                        Image(systemName: isDarkMode ? "sun.max" : "moon.stars")
+                        Text(list ? "Знаки" : "Контакты")
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -70,7 +73,24 @@ struct CalendarView: View {
                     }
                 }
             }
-            .alert("Добавить гороскоп в ваш календарь?", isPresented: $showAlert) {
+            .alert("Фильтр контактов", isPresented: $showFilterAlert, actions: {
+                Button("Все по алфавиту") {
+                    filter = .alphabeticalOrder
+                }
+                Button("По дате общения") {
+                    filter = .dueDateOrder
+                }
+                Button("Только избранные") {
+                    filter = .favoritesOrder
+                }
+                Button("Без отслеживания") {
+                    filter = .withoutTracker
+                }
+                Button("Без фильтра", role: .destructive) {
+                    filter = .standardOrder
+                }
+            })
+            .alert("Добавить гороскоп в ваш календарь?", isPresented: $showSyncAlert) {
                 Button("Добавить") {
                     vm.addAllEventsToCalendar()
                     HapticManager.instance.notification(type: .success)
@@ -106,6 +126,7 @@ extension CalendarView {
         HStack {
             DatePicker("Выбрать дату:", selection: $pickedDate, in: dateRange, displayedComponents: .date)
                 .environment(\.locale, Locale.init(identifier: "ru"))
+                .foregroundColor(.theme.standard)
             Button {
                 pickedDate = Date()
                 day = Date()
@@ -132,7 +153,7 @@ extension CalendarView {
                     Text(vm.extractDate(date: event.date, format: "EEE"))
                         .environment(\.locale, Locale.init(identifier: "ru"))
                         .font(.system(size: 14))
-                    Text(event.signs[vm.mainUser!.annualSignStruct.annualSign]!.emoji)
+                    Text(event.signs[vm.user!.annualSignStruct.annualSign]!.emoji)
                         .font(.caption)
                 }
                 .foregroundColor(vm.isToday(date: event.date, pickedDate: day) ? .white : .theme.secondaryText)
@@ -158,44 +179,75 @@ extension CalendarView {
     
     var signDayType: some View {
         List {
-            ForEach(AnnualEnum.allCases, id: \.self) { sign in
-                if events.contains(where: { event in
-                    event.date == day
-                }) {
-                    HStack {
-                        Image("\(sign)Circle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 30, height: 30)
-                        Text(sign.rawValue)
-                            .bold()
-                            .padding(.leading, 20)
-                            .frame(width: 110, alignment: .leading)
-                        Text(events.first(where: {$0.date == day})!.signs[sign]!.title)
-                        Spacer()
-                        Text(events.first(where: {$0.date == day})!.signs[sign]!.emoji)
-                            .font(.caption)
-                    }
-                } else {
-                    HStack {
-                        Image("\(sign)Circle")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 30, height: 30)
-                        Text(sign.rawValue)
-                            .foregroundColor(.theme.standard)
-                            .bold()
-                            .padding(.leading, 20)
-                            .frame(width: 110, alignment: .leading)
-                        Text(events[3].signs[sign]!.title)
-                            .foregroundColor(.theme.standard)
-                        Spacer()
-                        Text(events[3].signs[sign]!.emoji)
-                            .font(.caption)
+            if list {
+                ForEach(vm.listOrder(order: filter)) { customer in
+                    if events.contains(where: { event in
+                        event.date == day
+                    }) {
+                        HStack {
+                            Text(events.first(where: {$0.date == day})!.signs[customer.annualSignStruct.annualSign]!.emoji)
+                            Text(customer.name)
+                                .foregroundColor(.theme.standard)
+                                .bold()
+                            Spacer()
+                            Text(events.first(where: {$0.date == day})!.signs[customer.annualSignStruct.annualSign]!.title)
+                                .foregroundColor(.theme.standard)
+                                .frame(width: 110, alignment: .leading)
+                        }
+                    } else {
+                        HStack {
+                            Text(events[3].signs[customer.annualSignStruct.annualSign]!.emoji)
+                            Text(customer.name)
+                                .foregroundColor(.theme.standard)
+                                .bold()
+                            Spacer()
+                            Text(events[3].signs[customer.annualSignStruct.annualSign]!.title)
+                                .foregroundColor(.theme.standard)
+                                .frame(width: 110, alignment: .leading)
+                        }
                     }
                 }
+                .listRowSeparator(.hidden)
+            } else {
+                ForEach(AnnualEnum.allCases, id: \.self) { sign in
+                    if events.contains(where: { event in
+                        event.date == day
+                    }) {
+                        HStack {
+                            Image("\(sign)Circle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                            Text(sign.rawValue)
+                                .bold()
+                                .padding(.leading, 20)
+                                .frame(width: 110, alignment: .leading)
+                            Text(events.first(where: {$0.date == day})!.signs[sign]!.title)
+                            Spacer()
+                            Text(events.first(where: {$0.date == day})!.signs[sign]!.emoji)
+                                .font(.caption)
+                        }
+                    } else {
+                        HStack {
+                            Image("\(sign)Circle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                            Text(sign.rawValue)
+                                .foregroundColor(.theme.standard)
+                                .bold()
+                                .padding(.leading, 20)
+                                .frame(width: 110, alignment: .leading)
+                            Text(events[3].signs[sign]!.title)
+                                .foregroundColor(.theme.standard)
+                            Spacer()
+                            Text(events[3].signs[sign]!.emoji)
+                                .font(.caption)
+                        }
+                    }
+                }
+                .listRowSeparator(.hidden)
             }
-            .listRowSeparator(.hidden)
         }
         .listStyle(.plain)
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
