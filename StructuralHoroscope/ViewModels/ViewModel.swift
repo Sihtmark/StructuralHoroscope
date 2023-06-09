@@ -491,6 +491,10 @@ class ViewModel: ObservableObject {
         var dayReminder: Int {
             if days < 20 {
                 return days
+            } else if days % 1000 >= 1 {
+                return days % 1000
+            } else if days % 100 >= 1 {
+                return days % 100
             } else {
                 return days % 10
             }
