@@ -25,6 +25,15 @@ struct ContactListView: View {
     var body: some View {
         NavigationStack {
             List {
+                if vm.contacts.count == 0 {
+                    Text("В вашем списке пока-что нет ни одного контакта 🧐\n\nНажмите '+' в правом верхнем углу, чтобы добавить ваш первый контакт.")
+                        .frame(maxWidth: 550, alignment: .center)
+                        .multilineTextAlignment(.center)
+                        .font(.title3)
+                        .foregroundColor(.theme.secondaryText)
+                        .padding(.top, 40)
+                    
+                }
                 ForEach(vm.listOrder(order: filter)) { customer in
                     ZStack(alignment: .leading) {
                         ContactCellView(contact: customer)
