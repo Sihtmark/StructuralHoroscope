@@ -6,7 +6,7 @@ import CoreLocation
 class NotificationManager {
     
     func requestAuthorization() {
-        let options: UNAuthorizationOptions = [.alert, .badge, .sound]
+        let options: UNAuthorizationOptions = [.alert, .sound]
         UNUserNotificationCenter.current()
             .requestAuthorization(options: options) { success, error in
                 if let error = error {
@@ -21,7 +21,6 @@ class NotificationManager {
         let content = UNMutableNotificationContent()
         content.title = "\(contact.name) ждет общения! ⏰"
         content.sound = .default
-        content.badge = 1
 
         var dateComponents = DateComponents()
         dateComponents.year = year
