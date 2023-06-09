@@ -37,14 +37,20 @@ struct StartingView: View {
             VStack(spacing: -10) {
                 Text("Дата рождения")
                     .foregroundColor(.theme.standard)
-                ZStack {
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(.gray.opacity(0.2))
-                        .frame(width: 310, height: 180)
+                    .padding(.bottom, 15)
+                HStack {
+                    Spacer()
                     DatePicker(selection: $selectedDate, in: dateRange, displayedComponents: .date) {}
                         .foregroundColor(.theme.accent)
                         .datePickerStyle(.wheel)
-                        .padding(.trailing, 20)
+                        .frame(width: 320, height: 180)
+                        .padding(.trailing, 7.5)
+                        .overlay(alignment: .bottom) {
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(.gray.opacity(0.2))
+                                .allowsHitTesting(false)
+                    }
+                    Spacer()
                 }
             }
             HStack {

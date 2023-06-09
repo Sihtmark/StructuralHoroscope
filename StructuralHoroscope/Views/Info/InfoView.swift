@@ -12,6 +12,7 @@ struct InfoView: View {
                 assistantSection
                 annualStructureSection
             }
+            .ignoresSafeArea(edges: .bottom)
             .scrollIndicators(ScrollIndicatorVisibility.hidden)
             .frame(maxWidth: 550)
             .listStyle(.inset)

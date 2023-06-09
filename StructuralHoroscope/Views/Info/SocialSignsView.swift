@@ -13,6 +13,7 @@ struct SocialSignsView: View {
                 .frame(maxWidth: 900)
                 .padding()
         }
+        .ignoresSafeArea(edges: .bottom)
         .navigationTitle("Виртуальные знаки")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

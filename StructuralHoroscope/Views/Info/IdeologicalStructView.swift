@@ -11,6 +11,7 @@ struct IdeologicalStructView: View {
             picker
             mainSection
         }
+        .ignoresSafeArea(edges: .bottom)
         .frame(maxWidth: 900)
         .padding(.horizontal)
         .navigationTitle("Идеологическая структура")

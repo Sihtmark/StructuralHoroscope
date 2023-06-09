@@ -24,14 +24,19 @@ struct MeetingView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 30) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(.gray.opacity(0.2))
-                        .frame(width: 310, height: 180)
+                HStack {
+                    Spacer()
                     DatePicker(selection: $date, in: dateRange, displayedComponents: .date) {}
                         .foregroundColor(.theme.accent)
                         .datePickerStyle(.wheel)
-                        .padding(.trailing, 40)
+                        .frame(width: 320, height: 180)
+                        .padding(.trailing, 7.5)
+                        .overlay(alignment: .bottom) {
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(.gray.opacity(0.2))
+                                .allowsHitTesting(false)
+                        }
+                    Spacer()
                 }
                 Picker("", selection: $feeling) {
                     ForEach(Feelings.allCases, id: \.self) { feeling in
@@ -88,12 +93,13 @@ struct MeetingView: View {
                 }
                 Spacer()
             }
-            .padding()
-            .onAppear {
-                date = meeting.date
-                feeling = meeting.feeling
-                describe = meeting.describe
-            }
+        }
+        .ignoresSafeArea(edges: .bottom)
+        .padding()
+        .onAppear {
+            date = meeting.date
+            feeling = meeting.feeling
+            describe = meeting.describe
         }
     }
 }

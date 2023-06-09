@@ -25,6 +25,7 @@ struct AgeView: View {
                 }
             }
         }
+        .ignoresSafeArea(edges: .bottom)
         .frame(maxWidth: 900)
         .padding(.horizontal)
         .navigationTitle("Возрасты")

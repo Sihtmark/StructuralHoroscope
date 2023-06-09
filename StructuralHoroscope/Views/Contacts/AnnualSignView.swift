@@ -12,6 +12,7 @@ struct AnnualSignView: View {
             businessSection
             marriageSection
         }
+        .ignoresSafeArea(edges: .bottom)
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
         .frame(maxWidth: 550)
         .listStyle(.inset)

@@ -40,6 +40,7 @@ struct ContactView: View {
                 eventsSection
             }
         }
+        .ignoresSafeArea(edges: .bottom)
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
         .frame(maxWidth: 550)
         .toolbar {
@@ -179,15 +180,21 @@ extension ContactView {
             .padding(.top, 20)
             ScrollView {
                 VStack(alignment: .leading, spacing: 30) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(.gray.opacity(0.2))
-                            .frame(width: 310, height: 180)
+                    HStack {
+                        Spacer()
                         DatePicker(selection: $date, in: dateRange, displayedComponents: .date) {}
                             .foregroundColor(.theme.accent)
                             .datePickerStyle(.wheel)
-                            .padding(.trailing, 40)
+                            .frame(width: 320, height: 180)
+                            .padding(.trailing, 7.5)
+                            .overlay(alignment: .bottom) {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(.gray.opacity(0.2))
+                                    .allowsHitTesting(false)
+                        }
+                        Spacer()
                     }
+                    .padding(.top, 20)
                     Picker("", selection: $feeling) {
                         ForEach(Feelings.allCases, id: \.self) { feeling in
                             Text(feeling.rawValue).tag(feeling)

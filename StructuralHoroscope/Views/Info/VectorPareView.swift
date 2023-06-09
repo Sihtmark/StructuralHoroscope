@@ -9,6 +9,7 @@ struct VectorPareView: View {
         ScrollView(showsIndicators: false) {
             signsSection
         }
+        .ignoresSafeArea(edges: .bottom)
         .padding(.horizontal)
         .navigationTitle("Векторные пары")
         .navigationBarTitleDisplayMode(.inline)

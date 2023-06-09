@@ -47,6 +47,8 @@ struct AddNewContactView: View {
         .padding()
         .navigationTitle("Новый пользователь")
         .navigationBarTitleDisplayMode(.inline)
+        .scrollIndicators(ScrollIndicatorVisibility.hidden)
+        .ignoresSafeArea(edges: .bottom)
     }
 }
 
