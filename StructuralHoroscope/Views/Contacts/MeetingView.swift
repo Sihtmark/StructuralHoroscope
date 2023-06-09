@@ -9,6 +9,7 @@ struct MeetingView: View {
     @State private var date = Date()
     @State private var feeling = Feelings.notTooBad
     @State private var describe = ""
+    @FocusState private var describeInFocus: Bool
     
     var dateRange: ClosedRange<Date> {
         var dateComponents = DateComponents()
@@ -44,7 +45,14 @@ struct MeetingView: View {
                     }
                 }
                 .pickerStyle(.segmented)
+                if describeInFocus {
+                    Text("Дважды коснитесь экрана в свободном месте чтобы убрать клавиатуру")
+                        .font(.caption)
+                        .bold()
+                        .foregroundColor(.theme.secondaryText)
+                }
                 TextEditor(text: $describe)
+                    .focused($describeInFocus)
                     .frame(height: 200)
                     .foregroundColor(.theme.secondaryText)
                     .padding(10)
@@ -101,6 +109,11 @@ struct MeetingView: View {
             date = meeting.date
             feeling = meeting.feeling
             describe = meeting.describe
+        }
+        .onTapGesture(count: 2) {
+            if describeInFocus {
+                describeInFocus = false
+            }
         }
     }
 }

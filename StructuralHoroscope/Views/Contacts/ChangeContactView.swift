@@ -15,6 +15,7 @@ struct ChangeContactView: View {
     @State private var reminder = true
     @State private var feeling = Feelings.notTooBad
     @State private var describe = ""
+    @FocusState private var inFocus: Bool
     
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -76,6 +77,11 @@ struct ChangeContactView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 
+            }
+        }
+        .onTapGesture(count: 2) {
+            if inFocus {
+                inFocus = false
             }
         }
     }
@@ -162,7 +168,14 @@ extension ChangeContactView {
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Заметки или описание встречи:")
                         .foregroundColor(.theme.standard)
+                    if inFocus {
+                        Text("Дважды коснитесь экрана в свободном месте чтобы убрать клавиатуру")
+                            .font(.caption)
+                            .bold()
+                            .foregroundColor(.theme.secondaryText)
+                    }
                     TextEditor(text: $describe)
+                        .focused($inFocus)
                         .frame(height: 100)
                         .foregroundColor(.theme.secondaryText)
                         .padding(10)

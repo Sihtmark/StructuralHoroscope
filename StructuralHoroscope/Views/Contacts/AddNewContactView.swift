@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct AddNewContactView: View {
     
@@ -15,6 +16,8 @@ struct AddNewContactView: View {
     @State private var feeling = Feelings.notTooBad
     @State private var describe = ""
     @State private var isFavorite = false
+    @FocusState private var nameInFocus: Bool
+    @FocusState private var describeInFocus: Bool
     
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -49,6 +52,16 @@ struct AddNewContactView: View {
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
         .ignoresSafeArea(edges: .bottom)
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                self.nameInFocus = true
+            }
+        }
+        .onTapGesture(count: 2) {
+            if describeInFocus {
+                describeInFocus = false
+            }
+        }
     }
 }
 
@@ -74,7 +87,8 @@ extension AddNewContactView {
                 TextField("Имя", text: $name)
                     .foregroundColor(.theme.standard)
                     .textFieldStyle(.roundedBorder)
-                .autocorrectionDisabled()
+                    .focused($nameInFocus)
+                    .autocorrectionDisabled()
                 Button {
                     isFavorite.toggle()
                 } label: {
@@ -116,7 +130,14 @@ extension AddNewContactView {
             VStack(alignment: .leading, spacing: 10) {
                 Text("Заметки или описание встречи:")
                     .foregroundColor(.theme.standard)
+                if describeInFocus {
+                    Text("Дважды коснитесь экрана в свободном месте чтобы убрать клавиатуру")
+                        .font(.caption)
+                        .bold()
+                        .foregroundColor(.theme.secondaryText)
+                }
                 TextEditor(text: $describe)
+                    .focused($describeInFocus)
                     .frame(height: 100)
                     .foregroundColor(.theme.secondaryText)
                     .padding(10)
@@ -124,7 +145,7 @@ extension AddNewContactView {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color(uiColor: .secondarySystemFill))
                             .allowsHitTesting(false)
-                }
+                    }
             }
             VStack(alignment: .leading, spacing: 10) {
                 Text("Как часто хотите общаться:")
@@ -158,7 +179,7 @@ extension AddNewContactView {
             VStack {
                 Toggle("Напоминание когда придет время снова общаться с этим контактом", isOn: $reminder)
                     .foregroundColor(.theme.standard)
-                .padding(.trailing, 5)
+                    .padding(.trailing, 5)
             }
         }
     }
