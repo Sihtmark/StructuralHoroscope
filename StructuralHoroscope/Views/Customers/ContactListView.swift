@@ -50,16 +50,27 @@ struct ContactListView: View {
                         .opacity(0.0)
                     }
                     .listRowSeparator(.hidden)
-                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                    .swipeActions(edge: .leading, allowsFullSwipe: false) {
                         if customer.contact != nil {
                             Button {
                                 isAdding = customer
                             } label: {
-                                Label("Общение", systemImage: "checkmark.square")
+                                Label("Контакт", systemImage: "person.fill.checkmark")
                             }
                             .tint(.green)
                         }
                     }
+                    .swipeActions(edge: .leading, allowsFullSwipe: false, content: {
+                        Button {
+                            if let index = vm.contacts.firstIndex(where: {$0.id == customer.id}) {
+                                vm.contacts[index].isFavorite.toggle()
+                            }
+                        } label: {
+//                            Image(systemName: customer.isFavorite ? "star.slash" : "star.fill")
+                            Label(customer.isFavorite ? "Убрать" : "Добавить", systemImage: customer.isFavorite ? "star.slash" : "star.fill")
+                        }
+                        .tint(.yellow)
+                    })
                     .listRowSeparator(.hidden)
                 }
                 .onDelete(perform: vm.deleteContact)

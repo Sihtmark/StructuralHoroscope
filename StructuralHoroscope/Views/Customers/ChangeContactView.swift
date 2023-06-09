@@ -217,18 +217,18 @@ extension ChangeContactView {
         HStack {
             Spacer()
             Button {
-                vm.updateContact(client: contact, name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!, isFavorite: false, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, meetingTracker: meetingTracker, feeling: feeling, describe: describe)
+                vm.updateContact(client: contact, name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, meetingTracker: meetingTracker, feeling: feeling, describe: describe)
                 if meetingTracker {
                     if contact.contact != nil {
-                        contact = contact.updateInfo(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: false, distance: distance, component: component, reminder: reminder)
+                        contact = contact.updateInfo(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite, distance: distance, component: component, reminder: reminder)
                     } else {
-                        contact = contact.updateAndCreateEvent(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: false, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, feeling: feeling, describe: describe)
+                        contact = contact.updateAndCreateEvent(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, feeling: feeling, describe: describe)
                     }
                 } else {
                     if contact.contact != nil {
-                        contact = contact.updateInfoAndDeleteEvent(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: false)
+                        contact = contact.updateInfoAndDeleteEvent(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite)
                     } else {
-                        contact = contact.updateWithoutEvent(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: false)
+                        contact = contact.updateWithoutEvent(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite)
                     }
                 }
                 dismiss()

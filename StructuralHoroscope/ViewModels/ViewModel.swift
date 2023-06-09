@@ -66,7 +66,7 @@ class ViewModel: ObservableObject {
         user = newMainUser
     }
     
-    func createNewContact(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum, distance: Int, component: Components, lastContact: Date, reminder: Bool, meetingTracker: Bool, feeling: Feelings, describe: String) {
+    func createNewContact(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum, distance: Int, component: Components, lastContact: Date, reminder: Bool, meetingTracker: Bool, feeling: Feelings, describe: String, isFavorite: Bool) {
         let newContact = EventStruct(
             distance: distance,
             component: component,
@@ -84,7 +84,7 @@ class ViewModel: ObservableObject {
             sex: sex,
             annualSignStruct: sign,
             month: zodiacSign,
-            isFavorite: false,
+            isFavorite: isFavorite,
             contact: meetingTracker ? newContact : nil
         )
         contacts.append(newCustomer)
@@ -538,6 +538,12 @@ class ViewModel: ObservableObject {
             if let i = contacts[index].contact!.allEvents.firstIndex(where: {$0.id == meeting.id}) {
                 contacts[index].contact!.allEvents.remove(at: i)
             }
+        }
+    }
+    
+    func toggleFavorite(contact: ContactStruct) {
+        if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
+            contacts[index].isFavorite.toggle()
         }
     }
     

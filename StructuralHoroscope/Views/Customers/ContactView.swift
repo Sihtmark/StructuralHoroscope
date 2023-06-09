@@ -13,6 +13,7 @@ struct ContactView: View {
     @State private var date = Date()
     @State private var feeling = Feelings.notTooBad
     @State private var describe = ""
+    @State private var isFavorite = false
     
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -59,6 +60,7 @@ struct ContactView: View {
             name = contact.name
             selectedDate = contact.birthday
             sex = contact.sex
+            isFavorite = contact.isFavorite
         }
     }
 }
@@ -113,13 +115,25 @@ extension ContactView {
                 }
                 .font(.callout)
                 .foregroundColor(vm.getNextEventDate(component: contact.component, lastContact: contact.lastContact, interval: contact.distance) > Date() ? .theme.green : .theme.red)
-                Button {
-                    isAdding.toggle()
-                } label: {
-                    Label("Добавить", systemImage: "plus")
-                }
-                .buttonStyle(.bordered)
+                ZStack {
+                    Button {
+                        isFavorite.toggle()
+                        vm.toggleFavorite(contact: self.contact)
+                    } label: {
+                        ZStack {
+                            Image(systemName: isFavorite ? "star.fill" : "star")
+                                .foregroundColor(.yellow)
+                        }
+                    }
+                    .offset(x: 100)
+                    Button {
+                        isAdding.toggle()
+                    } label: {
+                        Label("Добавить", systemImage: "plus")
+                    }
+                    .buttonStyle(.bordered)
                 .padding(.top, 5)
+                }
             }
         }
     }

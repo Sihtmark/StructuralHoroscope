@@ -38,8 +38,15 @@ struct ContactCellView: View {
                         .bold()
                         .padding(.trailing)
                 }
-                if let actualDayType = vm.actualDayType {
-                    Text(actualDayType.signs[contact.annualSignStruct.annualSign]!.emoji)
+                VStack {
+                    if let actualDayType = vm.actualDayType {
+                        Text(actualDayType.signs[contact.annualSignStruct.annualSign]!.emoji)
+                            .padding(.bottom, 5)
+                    }
+                    if contact.isFavorite {
+                        Image(systemName: "star.fill")
+                            .foregroundColor(.yellow)
+                    }
                 }
             }
             .padding(.horizontal, 20)

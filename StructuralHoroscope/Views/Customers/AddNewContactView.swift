@@ -14,6 +14,7 @@ struct AddNewContactView: View {
     @State private var reminder = true
     @State private var feeling = Feelings.notTooBad
     @State private var describe = ""
+    @State private var isFavorite = false
     
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -67,10 +68,21 @@ struct CreateCustomerView_Previews: PreviewProvider {
 extension AddNewContactView {
     var mainSection: some View {
         VStack(alignment: .leading, spacing: 30) {
-            TextField("Имя", text: $name)
-                .foregroundColor(.theme.standard)
-                .textFieldStyle(.roundedBorder)
+            HStack {
+                TextField("Имя", text: $name)
+                    .foregroundColor(.theme.standard)
+                    .textFieldStyle(.roundedBorder)
                 .autocorrectionDisabled()
+                Button {
+                    isFavorite.toggle()
+                } label: {
+                    ZStack {
+                        Image(systemName: isFavorite ? "star.fill" : "star")
+                            .foregroundColor(.yellow)
+                    }
+                }
+                .padding(.horizontal, 5)
+            }
             Picker(selection: $sex) {
                 Text("Мужчина").tag(Sex.male)
                 Text("Женщина").tag(Sex.female)
@@ -155,7 +167,7 @@ extension AddNewContactView {
         HStack {
             Spacer()
             Button {
-                vm.createNewContact(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, meetingTracker: meetingTracker, feeling: feeling, describe: describe)
+                vm.createNewContact(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, meetingTracker: meetingTracker, feeling: feeling, describe: describe, isFavorite: isFavorite)
                 dismiss()
             } label: {
                 Text("Сохранить")
