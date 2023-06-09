@@ -95,6 +95,7 @@ struct MeetingView: View {
             }
         }
         .ignoresSafeArea(edges: .bottom)
+        .frame(maxWidth: 550)
         .padding()
         .onAppear {
             date = meeting.date
