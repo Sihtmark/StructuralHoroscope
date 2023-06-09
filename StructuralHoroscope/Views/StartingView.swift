@@ -72,6 +72,9 @@ struct StartingView: View {
         }
         .frame(maxWidth: 550)
         .padding()
+        .onDisappear {
+            vm.nm.requestAuthorization()
+        }
     }
 }
 

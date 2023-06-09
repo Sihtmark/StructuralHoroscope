@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A00BFEBD2A29B5CD00590374 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00BFEBC2A29B5CD00590374 /* SettingsView.swift */; };
 		A010D0A12A00340000289B8B /* AgeStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010D0A02A00340000289B8B /* AgeStructView.swift */; };
 		A010D0A32A0038E900289B8B /* AgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010D0A22A0038E900289B8B /* AgeView.swift */; };
 		A0193D0529FD6241007C06A1 /* AnnualSignsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0193D0429FD6241007C06A1 /* AnnualSignsView.swift */; };
@@ -26,7 +25,6 @@
 		A040BD502A2DB74A00F4E7A5 /* ContactInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040BD4F2A2DB74A00F4E7A5 /* ContactInfoView.swift */; };
 		A046DC072A2EFD8200EC0BE2 /* MeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A046DC062A2EFD8200EC0BE2 /* MeetingView.swift */; };
 		A04E66992A166B9300A0B7A9 /* FateStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04E66982A166B9300A0B7A9 /* FateStructView.swift */; };
-		A0576AFB29FA951700F4D9EF /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0576AFA29FA951700F4D9EF /* MainTabView.swift */; };
 		A0576AFD29FA954700F4D9EF /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0576AFC29FA954700F4D9EF /* InfoView.swift */; };
 		A07141D029FFB8E70011FB0A /* BusinessStructview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141CF29FFB8E70011FB0A /* BusinessStructview.swift */; };
 		A07141D229FFC8C30011FB0A /* MarriageStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07141D129FFC8C30011FB0A /* MarriageStructView.swift */; };
@@ -40,6 +38,7 @@
 		A098920B2A1657A40060B872 /* PsychologicalStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A098920A2A1657A40060B872 /* PsychologicalStructView.swift */; };
 		A098920D2A165C9E0060B872 /* EnergyStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A098920C2A165C9E0060B872 /* EnergyStructView.swift */; };
 		A09C8BF12A0564BB00893C07 /* CalendarInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09C8BF02A0564BB00893C07 /* CalendarInstances.swift */; };
+		A0A457B72A33302B0052E87B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A457B62A33302B0052E87B /* NotificationManager.swift */; };
 		A0B645B12A10C77E0061718F /* MonthInstances.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B645B02A10C77E0061718F /* MonthInstances.swift */; };
 		A0C1A2372A0A39FD00490239 /* StartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C1A2362A0A39FD00490239 /* StartingView.swift */; };
 		A0CB9D7729E6908F007C8595 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB9D7629E6908F007C8595 /* ViewModel.swift */; };
@@ -59,7 +58,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A00BFEBC2A29B5CD00590374 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A010D0A02A00340000289B8B /* AgeStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeStructView.swift; sourceTree = "<group>"; };
 		A010D0A22A0038E900289B8B /* AgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeView.swift; sourceTree = "<group>"; };
 		A0193D0429FD6241007C06A1 /* AnnualSignsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualSignsView.swift; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 		A040BD4F2A2DB74A00F4E7A5 /* ContactInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoView.swift; sourceTree = "<group>"; };
 		A046DC062A2EFD8200EC0BE2 /* MeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingView.swift; sourceTree = "<group>"; };
 		A04E66982A166B9300A0B7A9 /* FateStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FateStructView.swift; sourceTree = "<group>"; };
-		A0576AFA29FA951700F4D9EF /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A0576AFC29FA954700F4D9EF /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		A07141CF29FFB8E70011FB0A /* BusinessStructview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessStructview.swift; sourceTree = "<group>"; };
 		A07141D129FFC8C30011FB0A /* MarriageStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarriageStructView.swift; sourceTree = "<group>"; };
@@ -93,6 +90,7 @@
 		A098920A2A1657A40060B872 /* PsychologicalStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsychologicalStructView.swift; sourceTree = "<group>"; };
 		A098920C2A165C9E0060B872 /* EnergyStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyStructView.swift; sourceTree = "<group>"; };
 		A09C8BF02A0564BB00893C07 /* CalendarInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarInstances.swift; sourceTree = "<group>"; };
+		A0A457B62A33302B0052E87B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		A0B645B02A10C77E0061718F /* MonthInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthInstances.swift; sourceTree = "<group>"; };
 		A0C1A2362A0A39FD00490239 /* StartingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingView.swift; sourceTree = "<group>"; };
 		A0CB9D7629E6908F007C8595 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -124,18 +122,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A00BFEBB2A29B59900590374 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				A00BFEBC2A29B5CD00590374 /* SettingsView.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
 		A02990702A1C92DF00B850DB /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 				A02990712A1C92F300B850DB /* HapticManager.swift */,
+				A0A457B62A33302B0052E87B /* NotificationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -144,12 +135,10 @@
 			isa = PBXGroup;
 			children = (
 				A0C1A2362A0A39FD00490239 /* StartingView.swift */,
-				A0576AFA29FA951700F4D9EF /* MainTabView.swift */,
-				A08600532A1525C800B69FDF /* AnnualSignView.swift */,
-				A0E2299F29FA97EC0021648C /* Customers */,
+				A08993FB29F6C44600174590 /* ContactListView.swift */,
+				A0E2299F29FA97EC0021648C /* Contacts */,
 				A0E229A029FA98040021648C /* Info */,
 				A0E229A129FA98180021648C /* Calendar */,
-				A00BFEBB2A29B59900590374 /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,10 +222,9 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		A0E2299F29FA97EC0021648C /* Customers */ = {
+		A0E2299F29FA97EC0021648C /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
-				A08993FB29F6C44600174590 /* ContactListView.swift */,
 				A03385D52A1202C2002153EF /* UserCellView.swift */,
 				A033682B2A0FC66A00F2F597 /* ContactCellView.swift */,
 				A086548829F2F7F600E8300D /* AddNewContactView.swift */,
@@ -245,9 +233,10 @@
 				A0E0723229D701BF0010E128 /* ContactView.swift */,
 				A046DC062A2EFD8200EC0BE2 /* MeetingView.swift */,
 				A040BD4F2A2DB74A00F4E7A5 /* ContactInfoView.swift */,
+				A08600532A1525C800B69FDF /* AnnualSignView.swift */,
 				A010D0A22A0038E900289B8B /* AgeView.swift */,
 			);
-			path = Customers;
+			path = Contacts;
 			sourceTree = "<group>";
 		};
 		A0E229A029FA98040021648C /* Info */ = {
@@ -370,9 +359,8 @@
 				A07141D229FFC8C30011FB0A /* MarriageStructView.swift in Sources */,
 				A03385D82A1236F6002153EF /* AnnualSignInstances.swift in Sources */,
 				A0F2FA9129EB01A3002A58BC /* FateInstances.swift in Sources */,
-				A00BFEBD2A29B5CD00590374 /* SettingsView.swift in Sources */,
+				A0A457B72A33302B0052E87B /* NotificationManager.swift in Sources */,
 				A0E53E8329E8283A0065F227 /* SocialSignInstances.swift in Sources */,
-				A0576AFB29FA951700F4D9EF /* MainTabView.swift in Sources */,
 				A0F2FA8929EAE709002A58BC /* SocialInstances.swift in Sources */,
 				A03CF2DA29D716CD005BE95D /* Model.swift in Sources */,
 				A040BD4E2A2CDF0600F4E7A5 /* ChangeContactView.swift in Sources */,

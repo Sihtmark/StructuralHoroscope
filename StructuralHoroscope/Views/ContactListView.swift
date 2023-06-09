@@ -25,16 +25,6 @@ struct ContactListView: View {
     var body: some View {
         NavigationStack {
             List {
-                ZStack(alignment: .leading) {
-                    UserCellView()
-                    NavigationLink {
-                        UserView()
-                    } label: {
-                        EmptyView()
-                    }
-                    .opacity(0.0)
-                }
-                .listRowSeparator(.hidden)
                 ForEach(vm.listOrder(order: filter)) { customer in
                     ZStack(alignment: .leading) {
                         ContactCellView(contact: customer)
@@ -66,7 +56,6 @@ struct ContactListView: View {
                                 vm.contacts[index].isFavorite.toggle()
                             }
                         } label: {
-//                            Image(systemName: customer.isFavorite ? "star.slash" : "star.fill")
                             Label(customer.isFavorite ? "Убрать" : "Добавить", systemImage: customer.isFavorite ? "star.slash" : "star.fill")
                         }
                         .tint(.yellow)
@@ -81,19 +70,6 @@ struct ContactListView: View {
             .listStyle(.inset)
             .navigationTitle("Контакты")
             .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    Button {
-//                        notifications.toggle()
-//                        if notifications {
-//                            NotificationManager.instance.requestAuthorization()
-//                            NotificationManager.instance.scheduleNotification()
-//                        } else {
-//                            NotificationManager.instance.cancelNotification()
-//                        }
-//                    } label: {
-//                        Image(systemName: notifications ? "bell" : "bell.slash")
-//                    }
-//                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink {
                         CalendarView()

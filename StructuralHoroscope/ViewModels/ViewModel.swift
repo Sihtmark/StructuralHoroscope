@@ -1,8 +1,9 @@
 import Foundation
-import UserNotifications
 import EventKit
 
 class ViewModel: ObservableObject {
+    
+    let nm = NotificationManager()
     
     @Published var actualDayType: DayStruct?
     @Published var user: UserStruct? = nil {
@@ -67,6 +68,7 @@ class ViewModel: ObservableObject {
     }
     
     func createNewContact(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum, distance: Int, component: Components, lastContact: Date, reminder: Bool, meetingTracker: Bool, feeling: Feelings, describe: String, isFavorite: Bool) {
+        
         let newContact = EventStruct(
             distance: distance,
             component: component,
@@ -78,6 +80,7 @@ class ViewModel: ObservableObject {
                 describe: describe)
             ]
         )
+        
         let newCustomer = ContactStruct(
             name: name,
             birthday: birthday,
@@ -87,6 +90,10 @@ class ViewModel: ObservableObject {
             isFavorite: isFavorite,
             contact: meetingTracker ? newContact : nil
         )
+        
+        if meetingTracker && reminder {
+            setNotification(contactStruct: newCustomer)
+        }
         contacts.append(newCustomer)
     }
     
@@ -552,6 +559,9 @@ class ViewModel: ObservableObject {
         if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
             contacts[index].contact!.allEvents.append(newMeeting)
             contacts[index].contact!.lastContact = contacts[index].contact!.lastContact < date ? date : contacts[index].contact!.lastContact
+            if contacts[index].contact!.reminder {
+                setNotification(contactStruct: contacts[index])
+            }
         }
     }
     
@@ -567,6 +577,22 @@ class ViewModel: ObservableObject {
             return contacts.filter{$0.isFavorite}
         case .withoutTracker:
             return contacts.filter{$0.contact == nil}
+        }
+    }
+    
+    func deleteNotification(contactStruct: ContactStruct) {
+        nm.cancelNotification(id: contactStruct.id)
+    }
+    
+    func setNotification(contactStruct: ContactStruct) {
+        nm.cancelNotification(id: contactStruct.id)
+        if let contact = contactStruct.contact {
+            let date = getNextEventDate(component: contact.component, lastContact: contact.lastContact, interval: contact.distance)
+            let calendar = Calendar.current
+            let year = calendar.component(.year, from: date)
+            let month = calendar.component(.month, from: date)
+            let day = calendar.component(.day, from: date)
+            nm.scheduleNotification(contact: contactStruct, year: year, month: month, day: day)
         }
     }
 }
