@@ -7,7 +7,7 @@ struct CalendarView: View {
     @State private var pickedDate = Date()
     @State private var day = Date()
     @State private var showSyncAlert = false
-    @State private var list: Bool = false
+    @State private var list: Bool = true
     @State private var filter: FilterMainView = .standardOrder
     @State private var showFilterAlert = false
     
@@ -185,25 +185,38 @@ extension CalendarView {
                         event.date == day
                     }) {
                         HStack {
-                            Text(events.first(where: {$0.date == day})!.signs[customer.annualSignStruct.annualSign]!.emoji)
+                            Image("\(customer.annualSignStruct.annualSign)Circle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
                             Text(customer.name)
                                 .foregroundColor(.theme.standard)
                                 .bold()
+                                .frame(alignment: .leading)
                             Spacer()
                             Text(events.first(where: {$0.date == day})!.signs[customer.annualSignStruct.annualSign]!.title)
                                 .foregroundColor(.theme.standard)
-                                .frame(width: 110, alignment: .leading)
+                                .frame(alignment: .trailing)
+                                .padding(.trailing, 10)
+                            Text(events.first(where: {$0.date == day})!.signs[customer.annualSignStruct.annualSign]!.emoji)
                         }
                     } else {
                         HStack {
-                            Text(events[3].signs[customer.annualSignStruct.annualSign]!.emoji)
+                            Image("\(customer.annualSignStruct.annualSign)Circle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                                .padding(.trailing, 5)
                             Text(customer.name)
                                 .foregroundColor(.theme.standard)
                                 .bold()
+                                .frame(alignment: .leading)
                             Spacer()
                             Text(events[3].signs[customer.annualSignStruct.annualSign]!.title)
                                 .foregroundColor(.theme.standard)
-                                .frame(width: 110, alignment: .leading)
+                                .frame(alignment: .trailing)
+                                .padding(.trailing, 5)
+                                Text(events[3].signs[customer.annualSignStruct.annualSign]!.emoji)
                         }
                     }
                 }
