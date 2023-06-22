@@ -35,27 +35,18 @@ struct ChangeContactView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 30) {
-            HStack {
-                Button {
-                    dismiss()
-                } label: {
-                    Label("Назад", systemImage: "chevron.left")
+        ScrollView {
+            VStack(alignment: .leading, spacing: 30) {
+                mainSection
+                if meetingTracker {
+                    meetingTrackerSection
                 }
+                saveButton
                 Spacer()
             }
-            .padding(.top, 20)
-            ScrollView {
-                VStack(alignment: .leading, spacing: 30) {
-                    mainSection
-                    if meetingTracker {
-                        meetingTrackerSection
-                    }
-                    saveButton
-                    Spacer()
-                }
-            }
         }
+        .padding()
+        .padding(.vertical, 20)
         .onAppear {
             name = contact.name
             selectedDate = contact.birthday
@@ -71,14 +62,8 @@ struct ChangeContactView: View {
             }
         }
         .frame(maxWidth: 550)
-        .padding()
         .navigationTitle("Новый пользователь")
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                
-            }
-        }
         .onTapGesture(count: 2) {
             if inFocus {
                 inFocus = false
@@ -87,20 +72,20 @@ struct ChangeContactView: View {
     }
 }
 
-//struct ChangeContactView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationStack {
-//            ChangeContactView(contact: )
-//                .preferredColorScheme(.dark)
-//        }
-//        .environmentObject(ViewModel())
-//        NavigationStack {
-//            ChangeContactView(contact: sampleContact)
-//                .preferredColorScheme(.light)
-//        }
-//        .environmentObject(ViewModel())
-//    }
-//}
+struct ChangeContactView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            ChangeContactView(contact: .constant(sampleContact))
+                .preferredColorScheme(.dark)
+        }
+        .environmentObject(ViewModel())
+        NavigationStack {
+            ChangeContactView(contact: .constant(sampleContact))
+                .preferredColorScheme(.light)
+        }
+        .environmentObject(ViewModel())
+    }
+}
 
 extension ChangeContactView {
     var mainSection: some View {
@@ -142,8 +127,14 @@ extension ChangeContactView {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Заметки или описание встречи:")
                             .foregroundColor(.theme.standard)
+                        if inFocus {
+                            Text("Дважды коснитесь экрана в свободном месте чтобы убрать клавиатуру")
+                                .font(.caption)
+                                .bold()
+                                .foregroundColor(.theme.secondaryText)
+                        }
                         TextEditor(text: $describe)
-                            .frame(height: 100)
+                            .frame(minHeight: 30)
                             .foregroundColor(.theme.secondaryText)
                             .padding(10)
                             .overlay {
@@ -176,7 +167,7 @@ extension ChangeContactView {
                     }
                     TextEditor(text: $describe)
                         .focused($inFocus)
-                        .frame(height: 100)
+                        .frame(minHeight: 50)
                         .foregroundColor(.theme.secondaryText)
                         .padding(10)
                         .overlay {
@@ -187,9 +178,13 @@ extension ChangeContactView {
                 }
             }
             VStack(spacing: 5) {
-                Text("Как часто хотите общаться?")
-                    .font(.headline)
+                HStack {
+                    Text("Как часто хотите общаться?")
+                        .font(.headline)
+                        .fontWeight(.regular)
                     .foregroundColor(.theme.standard)
+                    Spacer()
+                }
                 HStack(spacing: 15) {
                     Picker("", selection: $distance) {
                         ForEach(1..<31) { item in

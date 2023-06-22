@@ -1,11 +1,17 @@
+//
+//  AddMeetingView.swift
+//  SmartRelations
+//
+//  Created by Sergei Poluboiarinov on 22.06.2023.
+//
+
 import SwiftUI
 
-struct MeetingView: View {
+struct AddMeetingView: View {
     
     @EnvironmentObject private var vm: ViewModel
     @Environment(\.dismiss) private var dismiss
-    let meeting: Meeting
-    @Binding var contact: ContactStruct
+    @State var contact: ContactStruct
     @State private var date = Date()
     @State private var feeling = Feelings.notTooBad
     @State private var describe = ""
@@ -68,15 +74,12 @@ struct MeetingView: View {
                 HStack {
                     Spacer()
                     Button {
-                        vm.updateMeeting(contact: contact, meeting: meeting, date: date, feeling: feeling, describe: describe)
-                        if let index = contact.contact!.allEvents.firstIndex(where: {$0.id == meeting.id}) {
-                            contact.contact!.allEvents[index] = contact.contact!.allEvents[index].updateMeeting(date: date, feeling: feeling, describe: describe)
-                        }
+                        vm.addMeeting(contact: contact, date: date, feeling: feeling, describe: describe)
                         contact.contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
-                        dismiss()
                         if let i = vm.contacts.firstIndex(where: {$0.id == contact.id}) {
                             vm.contacts[i].contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
                         }
+                        dismiss()
                     } label: {
                         Text("Сохранить")
                             .bold()
@@ -86,50 +89,27 @@ struct MeetingView: View {
                     .buttonStyle(.borderedProminent)
                     Spacer()
                 }
-                HStack {
-                    Spacer()
-                    Button(role: .destructive) {
-                        vm.deleteMeeting(contact: contact, meeting: meeting)
-                        if let index = contact.contact!.allEvents.firstIndex(where: {$0.id == meeting.id}) {
-                            contact.contact!.allEvents.remove(at: index)
-                        }
-                        contact.contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
-                        if let i = vm.contacts.firstIndex(where: {$0.id == contact.id}) {
-                            vm.contacts[i].contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
-                        }
-                        dismiss()
-                    } label: {
-                        Text("Удалить")
-                    }
-                    .disabled(contact.contact!.allEvents.count < 2)
-                    Spacer()
-                }
                 Spacer()
             }
-        }
-        .ignoresSafeArea(edges: .bottom)
-        .frame(maxWidth: 550)
-        .padding()
-        .padding(.vertical, 20)
-        .onAppear {
-            date = meeting.date
-            feeling = meeting.feeling
-            describe = meeting.describe
-        }
-        .onTapGesture(count: 2) {
-            if describeInFocus {
-                describeInFocus = false
+            .padding(.top, 20)
+            .ignoresSafeArea(edges: .bottom)
+            .frame(maxWidth: 550)
+            .padding()
+            .onTapGesture(count: 2) {
+                if describeInFocus {
+                    describeInFocus = false
+                }
             }
         }
     }
 }
 
-struct EventView_Previews: PreviewProvider {
+struct AddMeetingView_Previews: PreviewProvider {
     static var previews: some View {
-        MeetingView(meeting: sampleContact.contact!.allEvents.first!, contact: .constant(sampleContact))
+        AddMeetingView(contact: sampleContact)
             .environmentObject(ViewModel())
             .preferredColorScheme(.light)
-        MeetingView(meeting: sampleContact.contact!.allEvents.first!, contact: .constant(sampleContact))
+        AddMeetingView(contact: sampleContact)
             .environmentObject(ViewModel())
             .preferredColorScheme(.dark)
     }

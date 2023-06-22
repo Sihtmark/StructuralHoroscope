@@ -7,7 +7,6 @@ struct InfoView: View {
     var body: some View {
         NavigationStack {
             List {
-                myProfile
                 mainView
                 assistantSection
                 annualStructureSection
@@ -38,21 +37,6 @@ struct InfoView_Previews: PreviewProvider {
 }
 
 extension InfoView {
-    
-    var myProfile: some View {
-        Section {
-            ZStack(alignment: .leading) {
-                UserCellView()
-                NavigationLink {
-                    UserView()
-                } label: {
-                    EmptyView()
-                }
-                .opacity(0.0)
-            }
-            .listRowSeparator(.hidden)
-        }
-    }
     
     var mainView: some View {
         Section {

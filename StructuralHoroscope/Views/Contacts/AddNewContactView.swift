@@ -138,7 +138,7 @@ extension AddNewContactView {
                 }
                 TextEditor(text: $describe)
                     .focused($describeInFocus)
-                    .frame(height: 100)
+                    .frame(minHeight: 50)
                     .foregroundColor(.theme.secondaryText)
                     .padding(10)
                     .overlay {

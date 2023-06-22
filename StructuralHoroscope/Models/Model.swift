@@ -6,17 +6,17 @@ var sampleContact = ContactStruct(
     name: "Зинаида",
     birthday: Date(),
     sex: .male,
-    annualSignStruct: ViewModel().getAnnualSign(date: Date()) ?? horseSign,
-    month: ViewModel().getMonth(date: Date()) ?? .february,
+    annualSignStruct: horseSign,
+    month: MonthEnum.april,
     isFavorite: false,
     contact: EventStruct(
         distance: 3,
         component: Components.day,
         lastContact: Date(),
-        reminder: true,
+        reminder: false,
         allEvents: [
-            Meeting(date: Date(timeIntervalSinceNow: 1038576.0), feeling: Feelings.veryGood, describe: "посидели в Метрополь кафе на последнем этаже. Классно пообщались, обсудили все темы"),
-            Meeting(date: Date(timeIntervalSinceNow: 8330984.0), feeling: Feelings.notTooBad, describe: "поговорили по телефону, узнали что у друг друга нового, договорились в следующий раз попить кофе в Старбаксе на набережной")
+            Meeting(date: Date(), feeling: Feelings.veryGood, describe: "посидели в Метрополь кафе на последнем этаже. Классно пообщались, обсудили все темы"),
+            Meeting(date: Date(), feeling: Feelings.notTooBad, describe: "поговорили по телефону, узнали что у друг друга нового, договорились в следующий раз попить кофе в Старбаксе на набережной")
         ]
     )
 )
