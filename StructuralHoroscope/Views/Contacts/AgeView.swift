@@ -41,6 +41,8 @@ struct AgeView: View {
         }
         .sheet(isPresented: $showDescription) {
             description
+                .presentationDragIndicator(.visible)
+                .ignoresSafeArea(edges: .bottom)
         }
     }
 }
@@ -98,15 +100,6 @@ extension AgeView {
     
     var description: some View {
         VStack {
-            HStack {
-                Button {
-                    showDescription = false
-                } label: {
-                    Label("Назад", systemImage: "chevron.left")
-                }
-                Spacer()
-            }
-            .padding()
             VStack {
                 Text("Что такое структура возрастов?")
                     .foregroundColor(.theme.standard)
@@ -119,5 +112,6 @@ extension AgeView {
             }
         }
         .padding()
+        .padding(.vertical)
     }
 }

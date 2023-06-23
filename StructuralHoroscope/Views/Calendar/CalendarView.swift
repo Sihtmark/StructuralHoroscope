@@ -51,11 +51,25 @@ struct CalendarView: View {
                 }
                 if list {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            showFilterAlert.toggle()
-                        } label: {
+                        Menu(content: {
+                            Button("Все по алфавиту") {
+                                filter = .alphabeticalOrder
+                            }
+                            Button("По дате общения") {
+                                filter = .dueDateOrder
+                            }
+                            Button("Только избранные") {
+                                filter = .favoritesOrder
+                            }
+                            Button("Без отслеживания") {
+                                filter = .withoutTracker
+                            }
+                            Button("Без фильтра", role: .destructive) {
+                                filter = .standardOrder
+                            }
+                        }, label: {
                             Image(systemName: "slider.vertical.3")
-                        }
+                        })
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -73,23 +87,6 @@ struct CalendarView: View {
                     }
                 }
             }
-            .alert("Фильтр контактов", isPresented: $showFilterAlert, actions: {
-                Button("Все по алфавиту") {
-                    filter = .alphabeticalOrder
-                }
-                Button("По дате общения") {
-                    filter = .dueDateOrder
-                }
-                Button("Только избранные") {
-                    filter = .favoritesOrder
-                }
-                Button("Без отслеживания") {
-                    filter = .withoutTracker
-                }
-                Button("Без фильтра", role: .destructive) {
-                    filter = .standardOrder
-                }
-            })
             .alert("Добавить гороскоп в ваш календарь?", isPresented: $showSyncAlert) {
                 Button("Добавить") {
                     vm.addAllEventsToCalendar()
@@ -235,10 +232,9 @@ extension CalendarView {
                                 .bold()
                                 .padding(.leading, 20)
                                 .frame(width: 110, alignment: .leading)
-                            Text(events.first(where: {$0.date == day})!.signs[sign]!.title)
                             Spacer()
+                            Text(events.first(where: {$0.date == day})!.signs[sign]!.title)
                             Text(events.first(where: {$0.date == day})!.signs[sign]!.emoji)
-                                .font(.caption)
                         }
                     } else {
                         HStack {
@@ -251,11 +247,10 @@ extension CalendarView {
                                 .bold()
                                 .padding(.leading, 20)
                                 .frame(width: 110, alignment: .leading)
+                            Spacer()
                             Text(events[3].signs[sign]!.title)
                                 .foregroundColor(.theme.standard)
-                            Spacer()
                             Text(events[3].signs[sign]!.emoji)
-                                .font(.caption)
                         }
                     }
                 }

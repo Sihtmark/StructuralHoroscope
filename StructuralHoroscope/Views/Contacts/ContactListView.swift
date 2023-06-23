@@ -31,11 +31,6 @@ struct ContactListView: View {
                 contactsList
             }
             .navigationDestination(for: ContactStruct.self) { contact in
-//                if contact.contact != nil {
-//                    ContactView(contact: contact)
-//                } else {
-//                    ContactInfoView(contact: contact)
-//                }
                 MainContactView(contact: contact)
             }
             .ignoresSafeArea(edges: .bottom)
@@ -44,20 +39,6 @@ struct ContactListView: View {
             .listStyle(.inset)
             .navigationTitle("Контакты")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink {
-                        CalendarView()
-                    } label: {
-                        Image(systemName: "calendar")
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink {
-                        InfoView()
-                    } label: {
-                        Image(systemName: "list.clipboard")
-                    }
-                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu(content: {
                         Button("Все по алфавиту") {

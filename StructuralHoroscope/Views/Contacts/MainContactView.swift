@@ -109,31 +109,34 @@ extension MainContactView {
                 ContactInfoView(contact: contact)
             } label: {
                 ZStack {
-                    Circle()
-                        .fill(.white)
-                        .frame(width: 80)
-                        .shadow(radius: 3)
-                    Circle()
-                        .fill(Color(uiColor: .secondarySystemFill))
-                        .frame(width: 77)
-                    Image("\(contact.annualSignStruct.annualSign)")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 45, height: 45)
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.theme.accent, lineWidth: 0.4)
+                        .frame(maxWidth: .infinity)
+                    VStack {
+                        Image("\(contact.annualSignStruct.annualSign)Circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                            .shadow(radius: 3)
+                        Text(contact.annualSignStruct.annualSign.rawValue)
+                        Text(vm.returnBusinessSing(sign: vm.ourBusinessRelationship(customer: contact)))
+                            .font(.callout)
+                            .foregroundColor(.theme.secondaryText)
+                    }
+                    .padding(.vertical)
                 }
+                .frame(width: 200)
             }
             VStack {
                 Text(contact.name)
                     .font(.title)
                     .foregroundColor(.theme.standard)
-                Text("\(vm.returnBusinessSing(sign: vm.ourBusinessRelationship(customer: contact)))")
-                    .font(.callout)
-                    .foregroundColor(.theme.secondaryText)
+                
             }
             if let contact = contact.contact {
                 VStack(spacing: 5) {
                     Text("Последнее общение \(dateFormatter.string(from: contact.lastContact))")
-                    Text(vm.daysFromLastEvent(lastEvent: contact.lastContact))
+                    Text(vm.daysFromLastEvent(lastEvent: contact.lastContact, component: contact.component, lastContact: contact.lastContact, Interval: contact.distance))
                 }
                 .font(.callout)
                 .foregroundColor(vm.getNextEventDate(component: contact.component, lastContact: contact.lastContact, interval: contact.distance) > Date() ? .theme.green : .theme.red)

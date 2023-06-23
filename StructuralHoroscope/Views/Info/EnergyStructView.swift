@@ -6,10 +6,9 @@ struct EnergyStructView: View {
     @State private var shownStruct: EnergyStruct = dramaticEnergeticStruct
     
     var body: some View {
-        VStack {
+        ScrollView(showsIndicators: false) {
             picker
             infoSection
-            Spacer()
         }
         .frame(maxWidth: 550)
         .navigationTitle("Энергетическая структура")

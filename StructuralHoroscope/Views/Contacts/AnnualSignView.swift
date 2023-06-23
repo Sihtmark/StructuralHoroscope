@@ -29,6 +29,8 @@ struct AnnualSignView: View {
         }
         .sheet(isPresented: $showAnnualSignDescription) {
             annualSignDescription
+                .presentationDragIndicator(.visible)
+                .ignoresSafeArea(edges: .bottom)
         }
     }
 }
@@ -193,36 +195,26 @@ extension AnnualSignView {
     }
     
     var annualSignDescription: some View {
-        VStack {
-            HStack {
-                Button {
-                    showAnnualSignDescription.toggle()
-                } label: {
-                    Label("Назад", systemImage: "chevron.left")
+        ScrollView(showsIndicators: false) {
+            ForEach(sign.blocks.sorted(by: <), id: \.key) { title, text in
+                VStack(alignment: .leading, spacing: 20) {
+                    HStack {
+                        Spacer()
+                        Text(title)
+                            .foregroundColor(.theme.standard)
+                            .multilineTextAlignment(.center)
+                            .font(.headline)
+                            .bold()
+                        Spacer()
+                    }
+                    Text(text)
+                        .foregroundColor(.theme.secondaryText)
                 }
-                Spacer()
+                .padding(.bottom, 20)
             }
             .padding()
-            ScrollView(showsIndicators: false) {
-                ForEach(sign.blocks.sorted(by: <), id: \.key) { title, text in
-                    VStack(alignment: .leading, spacing: 20) {
-                        HStack {
-                            Spacer()
-                            Text(title)
-                                .foregroundColor(.theme.standard)
-                                .multilineTextAlignment(.center)
-                                .font(.headline)
-                                .bold()
-                            Spacer()
-                        }
-                        Text(text)
-                            .foregroundColor(.theme.secondaryText)
-                    }
-                    .padding(.bottom, 20)
-                }
-            }
+            .padding(.vertical)
         }
-        .padding(.horizontal)
     }
     
     var maleIdeologicDescription: some View {

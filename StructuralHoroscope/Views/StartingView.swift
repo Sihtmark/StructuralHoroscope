@@ -56,7 +56,7 @@ struct StartingView: View {
             HStack {
                 Spacer()
                 NavigationLink {
-                    ContactListView()
+                    TabBarView()
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)

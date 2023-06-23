@@ -31,6 +31,8 @@ struct BusinessStructview: View {
         }
         .sheet(isPresented: $showDescription) {
             description
+                .presentationDragIndicator(.visible)
+                .ignoresSafeArea(edges: .bottom)
         }
     }
 }
@@ -137,16 +139,7 @@ extension BusinessStructview {
     }
     
     var description: some View {
-        VStack {
-            HStack {
-                Button {
-                    showDescription = false
-                } label: {
-                    Label("Назад", systemImage: "chevron.left")
-                }
-                Spacer()
-            }
-            .padding()
+        ScrollView(showsIndicators: false) {
             VStack {
                 Text("Что такое построение коллектива")
                     .foregroundColor(.theme.standard)
@@ -157,7 +150,8 @@ extension BusinessStructview {
                     .foregroundColor(.theme.secondaryText)
                 Spacer()
             }
+            .padding()
+            .padding(.vertical)
         }
-        .padding()
     }
 }

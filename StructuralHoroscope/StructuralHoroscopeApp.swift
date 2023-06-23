@@ -15,7 +15,7 @@ struct StructuralHoroscopeApp: App {
             if vm.user == nil {
                 StartingView().environmentObject(vm)
             } else {
-                ContactListView().environmentObject(vm)
+                TabBarView().environmentObject(vm)
             }
         }
     }

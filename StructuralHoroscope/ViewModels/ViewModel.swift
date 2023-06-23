@@ -484,7 +484,29 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func daysFromLastEvent(lastEvent: Date) -> String {
+    func getDayCountFromLastContactToNext(component: Components, lastContact: Date, interval: Int) -> Int {
+        let calendar = Calendar.current
+        switch component {
+        case .day:
+            let nextContactDay = calendar.date(byAdding: Calendar.Component.day, value: interval, to: lastContact)!
+            let distance = calendar.dateComponents([.day], from: lastContact, to: nextContactDay)
+            return distance.day!
+        case .week:
+            let nextContactDay = calendar.date(byAdding: Calendar.Component.day, value: (interval * 7), to: lastContact)!
+            let distance = calendar.dateComponents([.day], from: lastContact, to: nextContactDay)
+            return distance.day!
+        case .month:
+            let nextContactDay = calendar.date(byAdding: Calendar.Component.month, value: interval, to: lastContact)!
+            let distance = calendar.dateComponents([.day], from: lastContact, to: nextContactDay)
+            return distance.day!
+        case .year:
+            let nextContactDay = calendar.date(byAdding: Calendar.Component.year, value: interval, to: lastContact)!
+            let distance = calendar.dateComponents([.day], from: lastContact, to: nextContactDay)
+            return distance.day!
+        }
+    }
+    
+    func daysFromLastEvent(lastEvent: Date, component: Components, lastContact: Date, Interval: Int) -> String {
         let calendar = Calendar.current
         let distance = calendar.dateComponents([.day], from: lastEvent, to: Date())
         let days = distance.day!
@@ -501,37 +523,21 @@ class ViewModel: ObservableObject {
         }
         switch dayReminder {
         case 1:
-            return "Прошел \(days) день"
+            return "Прошел \(days) день из \(getDayCountFromLastContactToNext(component: component, lastContact: lastContact, interval: Interval))"
         case 2...4:
-            return "Прошло \(days) дня"
+            return "Прошло \(days) дня из \(getDayCountFromLastContactToNext(component: component, lastContact: lastContact, interval: Interval))"
         case 11...19:
-            return "Прошло \(days) дней"
+            return "Прошло \(days) дней из \(getDayCountFromLastContactToNext(component: component, lastContact: lastContact, interval: Interval))"
         default:
-            return "Прошло \(days) дней"
+            return "Прошло \(days) дней из \(getDayCountFromLastContactToNext(component: component, lastContact: lastContact, interval: Interval))"
         }
     }
     
-    func daysFromLastEventCell(lastEvent: Date) -> String {
+    func daysFromLastEventCell(lastEvent: Date, component: Components, lastContact: Date, Interval: Int) -> String {
         let calendar = Calendar.current
         let distance = calendar.dateComponents([.day], from: lastEvent, to: Date())
         let days = distance.day!
-        var dayReminder: Int {
-            if days < 20 {
-                return days
-            } else {
-                return days % 10
-            }
-        }
-        switch dayReminder {
-        case 1:
-            return "\(days) день"
-        case 2...4:
-            return "\(days) дня"
-        case 11...19:
-            return "\(days) дней"
-        default:
-            return "\(days) дней"
-        }
+        return "\(days) / \(getDayCountFromLastContactToNext(component: component, lastContact: lastContact, interval: Interval))"
     }
     
     func updateMeeting(contact: ContactStruct, meeting: Meeting, date: Date, feeling: Feelings, describe: String) {

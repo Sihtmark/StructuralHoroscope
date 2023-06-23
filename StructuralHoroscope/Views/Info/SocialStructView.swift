@@ -26,6 +26,8 @@ struct SocialStructView: View {
         }
         .sheet(isPresented: $showDescription) {
             vectorDescription
+                .presentationDragIndicator(.visible)
+                .ignoresSafeArea(edges: .bottom)
         }
     }
 }
@@ -84,17 +86,8 @@ extension SocialStructView {
     }
     
     var vectorDescription: some View {
-        VStack {
-            HStack {
-                Button {
-                    showDescription = false
-                } label: {
-                    Label("Назад", systemImage: "chevron.left")
-                }
-                Spacer()
-            }
-            .padding()
-            ScrollView(showsIndicators: false) {
+        ScrollView(showsIndicators: false) {
+            VStack {
                 Text("Что такое социальная структура?")
                     .foregroundColor(.theme.standard)
                     .font(.headline)
@@ -103,7 +96,8 @@ extension SocialStructView {
                 Text("Социальная структура объясняет как взаимодействует человек с пространством (сжимается, растекается или желает сохранить сферу обитания стабильной). И второе: как относиться к обществу, быть выше его, подчиняться его запросам, либо быть с ним заодно.\n\nОбщение человека или говоря по-научному социальная и пространственная ориентация, отсылают нас к то ли к социологии, то ли к юнговской соционической доктрине, которые чрезвычайно переоценивают момент общения. На самом же деле социальная ориентация не имеет слишком ярких внешних проявлений, действует в ограниченном спектре творческих занятий. Кроме того, социальность знаков разная на Востоке, на Западе и в государствах с имперским ритмом. Но при всех этих оговорках общение важнее психологии, что само по себе уже не мало.\n\nКлассические наименования введены Юнгом и хорошо известны: интроверт и экстраверт. Однако Юнг прозевал третий вариант - ортодокс. Интроверты, - закрытые знаки, экстраверты - открытые. Ортодоксы - те, кто охраняют ограниченную территорию, стабильность своего положения.")
                     .foregroundColor(.theme.secondaryText)
             }
+            .padding()
+            .padding(.vertical)
         }
-        .padding()
     }
 }

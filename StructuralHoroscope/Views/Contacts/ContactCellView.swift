@@ -31,22 +31,23 @@ struct ContactCellView: View {
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                if let contact = contact.contact {
-                    Text(vm.daysFromLastEventCell(lastEvent: contact.lastContact))
-                        .foregroundColor(vm.getNextEventDate(component: contact.component, lastContact: contact.lastContact, interval: contact.distance) > Date() ? .theme.green : .theme.red)
-                        .font(.caption)
-                        .bold()
-                        .padding(.trailing)
-                }
-                VStack {
-                    if let actualDayType = vm.actualDayType {
-                        Text(actualDayType.signs[contact.annualSignStruct.annualSign]!.emoji)
-                            .padding(.bottom, 5)
+                HStack(alignment: .bottom, spacing: 10) {
+                    if let contact = contact.contact {
+                        Text(vm.daysFromLastEventCell(lastEvent: contact.lastContact, component: contact.component, lastContact: contact.lastContact, Interval: contact.distance))
+                            .foregroundColor(vm.getNextEventDate(component: contact.component, lastContact: contact.lastContact, interval: contact.distance) > Date() ? .theme.green : .theme.red)
+                            .font(.caption)
+                            .bold()
                     }
-                    if contact.isFavorite {
-                        Image(systemName: "star.fill")
-                            .foregroundColor(.yellow)
+                    VStack(spacing: 10) {
+                        if contact.isFavorite {
+                            Image(systemName: "star.fill")
+                                .foregroundColor(.yellow)
+                        }
+                        if let actualDayType = vm.actualDayType {
+                            Text(actualDayType.signs[contact.annualSignStruct.annualSign]!.emoji)
+                        }
                     }
+                    
                 }
             }
             .padding(.horizontal, 20)

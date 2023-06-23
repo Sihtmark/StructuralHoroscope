@@ -10,6 +10,7 @@
 		A010D0A12A00340000289B8B /* AgeStructView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010D0A02A00340000289B8B /* AgeStructView.swift */; };
 		A010D0A32A0038E900289B8B /* AgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A010D0A22A0038E900289B8B /* AgeView.swift */; };
 		A0193D0529FD6241007C06A1 /* AnnualSignsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0193D0429FD6241007C06A1 /* AnnualSignsView.swift */; };
+		A01E564C2A459E8D0007E2E1 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01E564B2A459E8D0007E2E1 /* TabBarView.swift */; };
 		A02990722A1C92F300B850DB /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02990712A1C92F300B850DB /* HapticManager.swift */; };
 		A02990762A1CC6CD00B850DB /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02990752A1CC6CD00B850DB /* CalendarView.swift */; };
 		A033682C2A0FC66A00F2F597 /* ContactCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A033682B2A0FC66A00F2F597 /* ContactCellView.swift */; };
@@ -62,6 +63,7 @@
 		A010D0A02A00340000289B8B /* AgeStructView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeStructView.swift; sourceTree = "<group>"; };
 		A010D0A22A0038E900289B8B /* AgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeView.swift; sourceTree = "<group>"; };
 		A0193D0429FD6241007C06A1 /* AnnualSignsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualSignsView.swift; sourceTree = "<group>"; };
+		A01E564B2A459E8D0007E2E1 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		A02990712A1C92F300B850DB /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		A02990752A1CC6CD00B850DB /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		A033682B2A0FC66A00F2F597 /* ContactCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCellView.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				A0C1A2362A0A39FD00490239 /* StartingView.swift */,
+				A01E564B2A459E8D0007E2E1 /* TabBarView.swift */,
 				A0E2299F29FA97EC0021648C /* Contacts */,
 				A0E229A029FA98040021648C /* Info */,
 				A0E229A129FA98180021648C /* Calendar */,
@@ -374,6 +377,7 @@
 				A0CB9D7729E6908F007C8595 /* ViewModel.swift in Sources */,
 				A04BA80B2A4443F100CE2EDE /* AddMeetingView.swift in Sources */,
 				A010D0A32A0038E900289B8B /* AgeView.swift in Sources */,
+				A01E564C2A459E8D0007E2E1 /* TabBarView.swift in Sources */,
 				A08600542A1525C800B69FDF /* AnnualSignView.swift in Sources */,
 				A0FDF20F2A163EC700DD1716 /* SocialSignsView.swift in Sources */,
 				A0FDF2112A163EF000DD1716 /* VectorPareView.swift in Sources */,
