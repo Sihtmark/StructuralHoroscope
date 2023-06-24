@@ -24,8 +24,8 @@ struct ContactInfoView: View {
             typeSection
             businessSection
             marriageSection
+                .padding(.bottom, 30)
         }
-        .ignoresSafeArea(edges: .bottom)
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
         .frame(maxWidth: 550)
         .listStyle(.inset)

@@ -3,12 +3,13 @@ import SwiftUI
 struct ContactListView: View {
     
     @EnvironmentObject private var vm: ViewModel
-    @State private var isAdding: ContactStruct?
+    @State private var contactToAddMeeting: ContactStruct?
     @State private var date = Date()
     @State private var feeling = Feelings.notTooBad
     @State private var describe = ""
     @State private var filter: FilterMainView = .standardOrder
     @State private var notifications = false
+    @State private var isAddingNewContact = false
     
     var dateRange: ClosedRange<Date> {
         var dateComponents = DateComponents()
@@ -33,7 +34,6 @@ struct ContactListView: View {
             .navigationDestination(for: ContactStruct.self) { contact in
                 MainContactView(contact: contact)
             }
-            .ignoresSafeArea(edges: .bottom)
             .scrollIndicators(ScrollIndicatorVisibility.hidden)
             .frame(maxWidth: 550)
             .listStyle(.inset)
@@ -64,17 +64,21 @@ struct ContactListView: View {
                     EditButton()
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink {
-                        AddNewContactView()
+                    Button {
+                        isAddingNewContact.toggle()
                     } label: {
                         Image(systemName: "plus")
                     }
                 }
             }
-            .sheet(item: $isAdding) { contact in
+            .sheet(item: $contactToAddMeeting) { contact in
                 AddMeetingView(contact: contact)
                     .presentationDragIndicator(.visible)
                     .presentationDetents([.fraction(0.7), .large])
+            }
+            .sheet(isPresented: $isAddingNewContact) {
+                AddNewContactView()
+                    .presentationDragIndicator(.visible)
             }
         }
     }
@@ -134,7 +138,7 @@ extension ContactListView {
             .swipeActions(edge: .leading, allowsFullSwipe: false) {
                 if customer.contact != nil {
                     Button {
-                        isAdding = customer
+                        contactToAddMeeting = customer
                     } label: {
                         Label("Контакт", systemImage: "person.fill.checkmark")
                     }

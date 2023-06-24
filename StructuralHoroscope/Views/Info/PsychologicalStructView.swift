@@ -27,7 +27,6 @@ struct PsychologicalStructView: View {
         .sheet(isPresented: $showDescription) {
             description
                 .presentationDragIndicator(.visible)
-                .ignoresSafeArea(edges: .bottom)
         }
     }
 }

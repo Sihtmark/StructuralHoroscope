@@ -44,9 +44,9 @@ struct ChangeContactView: View {
                 saveButton
                 Spacer()
             }
+            .padding(.vertical, 30)
         }
-        .padding()
-        .padding(.vertical, 20)
+        .padding(.horizontal)
         .onAppear {
             name = contact.name
             selectedDate = contact.birthday

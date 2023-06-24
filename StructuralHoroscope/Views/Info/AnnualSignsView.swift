@@ -9,10 +9,9 @@ struct AnnualSignsView: View {
     var body: some View {
         VStack {
             annualSigns
-                .padding(.top, 15)
             AnnualSignView(sign: shownAnnualSign)
-                .frame(maxWidth: 550)
         }
+        .frame(maxWidth: 550)
         .navigationTitle("Годовые знаки")
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -55,5 +54,6 @@ extension AnnualSignsView {
                 }
             }
         }
+        .padding(.top, 15)
     }
 }

@@ -24,8 +24,8 @@ struct AgeView: View {
                     ageСommandmentsSection
                 }
             }
+            .padding(.bottom, 30)
         }
-        .ignoresSafeArea(edges: .bottom)
         .frame(maxWidth: 900)
         .padding(.horizontal)
         .navigationTitle("Возрасты")
@@ -42,7 +42,6 @@ struct AgeView: View {
         .sheet(isPresented: $showDescription) {
             description
                 .presentationDragIndicator(.visible)
-                .ignoresSafeArea(edges: .bottom)
         }
     }
 }

@@ -13,7 +13,6 @@ struct SocialSignsView: View {
                 .frame(maxWidth: 900)
                 .padding()
         }
-        .ignoresSafeArea(edges: .bottom)
         .navigationTitle("Виртуальные знаки")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -28,7 +27,6 @@ struct SocialSignsView: View {
         .sheet(isPresented: $showVirtualSignDescription) {
             virtualSignDescription
                 .presentationDragIndicator(.visible)
-                .ignoresSafeArea(edges: .bottom)
         }
     }
 }

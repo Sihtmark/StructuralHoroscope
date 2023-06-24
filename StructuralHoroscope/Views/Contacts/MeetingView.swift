@@ -56,7 +56,7 @@ struct MeetingView: View {
                     }
                     TextEditor(text: $describe)
                         .focused($describeInFocus)
-                        .frame(minHeight: 30)
+                        .frame(minHeight: 100)
                         .foregroundColor(.theme.secondaryText)
                         .padding(10)
                         .overlay {
@@ -106,11 +106,10 @@ struct MeetingView: View {
                 }
                 Spacer()
             }
+            .padding()
+            .padding(.vertical, 20)
         }
-        .ignoresSafeArea(edges: .bottom)
         .frame(maxWidth: 550)
-        .padding()
-        .padding(.vertical, 20)
         .onAppear {
             date = meeting.date
             feeling = meeting.feeling

@@ -11,7 +11,6 @@ struct IdeologicalStructView: View {
             picker
             mainSection
         }
-        .ignoresSafeArea(edges: .bottom)
         .frame(maxWidth: 900)
         .padding(.horizontal)
         .navigationTitle("Идеологическая структура")
@@ -28,7 +27,6 @@ struct IdeologicalStructView: View {
         .sheet(isPresented: $showDescription) {
             vectorDescription
                 .presentationDragIndicator(.visible)
-                .ignoresSafeArea(edges: .bottom)
         }
     }
 }

@@ -99,7 +99,7 @@
 		A0B645B02A10C77E0061718F /* MonthInstances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthInstances.swift; sourceTree = "<group>"; };
 		A0C1A2362A0A39FD00490239 /* StartingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingView.swift; sourceTree = "<group>"; };
 		A0CB9D7629E6908F007C8595 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		A0E0722D29D701BF0010E128 /* SmartRelations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartRelations.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0E0722D29D701BF0010E128 /* StructuralHoroscope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StructuralHoroscope.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0E0723029D701BF0010E128 /* StructuralHoroscopeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructuralHoroscopeApp.swift; sourceTree = "<group>"; };
 		A0E0723429D701C00010E128 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0E0723629D701C00010E128 /* StructuralHoroscope.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StructuralHoroscope.entitlements; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 		A0E0722E29D701BF0010E128 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A0E0722D29D701BF0010E128 /* SmartRelations.app */,
+				A0E0722D29D701BF0010E128 /* StructuralHoroscope.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -276,9 +276,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A0E0722C29D701BF0010E128 /* SmartRelations */ = {
+		A0E0722C29D701BF0010E128 /* StructuralHoroscope */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A0E0723C29D701C00010E128 /* Build configuration list for PBXNativeTarget "SmartRelations" */;
+			buildConfigurationList = A0E0723C29D701C00010E128 /* Build configuration list for PBXNativeTarget "StructuralHoroscope" */;
 			buildPhases = (
 				A0E0722929D701BF0010E128 /* Sources */,
 				A0E0722A29D701BF0010E128 /* Frameworks */,
@@ -288,9 +288,9 @@
 			);
 			dependencies = (
 			);
-			name = SmartRelations;
+			name = StructuralHoroscope;
 			productName = StructuralHoroscope;
-			productReference = A0E0722D29D701BF0010E128 /* SmartRelations.app */;
+			productReference = A0E0722D29D701BF0010E128 /* StructuralHoroscope.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -308,7 +308,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A0E0722829D701BF0010E128 /* Build configuration list for PBXProject "SmartRelations" */;
+			buildConfigurationList = A0E0722829D701BF0010E128 /* Build configuration list for PBXProject "StructuralHoroscope" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = ru;
 			hasScannedForEncodings = 0;
@@ -321,7 +321,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A0E0722C29D701BF0010E128 /* SmartRelations */,
+				A0E0722C29D701BF0010E128 /* StructuralHoroscope */,
 			);
 		};
 /* End PBXProject section */
@@ -523,7 +523,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StructuralHoroscope/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "На связи";
+				INFOPLIST_KEY_CFBundleDisplayName = "Структурный гороскоп";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "This allows the app to modify the calendar";
 				INFOPLIST_KEY_NSContactsUsageDescription = "This allowas the app to see your contacts";
@@ -570,7 +570,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StructuralHoroscope/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "На связи";
+				INFOPLIST_KEY_CFBundleDisplayName = "Структурный гороскоп";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "This allows the app to modify the calendar";
 				INFOPLIST_KEY_NSContactsUsageDescription = "This allowas the app to see your contacts";
@@ -605,7 +605,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A0E0722829D701BF0010E128 /* Build configuration list for PBXProject "SmartRelations" */ = {
+		A0E0722829D701BF0010E128 /* Build configuration list for PBXProject "StructuralHoroscope" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0E0723A29D701C00010E128 /* Debug */,
@@ -614,7 +614,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A0E0723C29D701C00010E128 /* Build configuration list for PBXNativeTarget "SmartRelations" */ = {
+		A0E0723C29D701C00010E128 /* Build configuration list for PBXNativeTarget "StructuralHoroscope" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0E0723D29D701C00010E128 /* Debug */,

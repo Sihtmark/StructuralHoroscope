@@ -27,7 +27,6 @@ struct SocialStructView: View {
         .sheet(isPresented: $showDescription) {
             vectorDescription
                 .presentationDragIndicator(.visible)
-                .ignoresSafeArea(edges: .bottom)
         }
     }
 }

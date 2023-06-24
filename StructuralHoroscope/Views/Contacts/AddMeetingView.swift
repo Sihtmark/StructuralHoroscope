@@ -92,7 +92,6 @@ struct AddMeetingView: View {
                 Spacer()
             }
             .padding(.top, 20)
-            .ignoresSafeArea(edges: .bottom)
             .frame(maxWidth: 550)
             .padding()
             .onTapGesture(count: 2) {

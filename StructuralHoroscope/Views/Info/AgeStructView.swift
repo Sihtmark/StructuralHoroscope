@@ -40,7 +40,6 @@ struct AgeStructView: View {
         .sheet(isPresented: $showDescription) {
             description
                 .presentationDragIndicator(.visible)
-                .ignoresSafeArea(edges: .bottom)
         }
     }
 }

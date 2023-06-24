@@ -15,7 +15,6 @@ struct BusinessStructview: View {
             signSection
             textSection
         }
-        
         .frame(maxWidth: 550)
         .padding(.horizontal)
         .navigationTitle("Построение коллектива")
@@ -32,7 +31,6 @@ struct BusinessStructview: View {
         .sheet(isPresented: $showDescription) {
             description
                 .presentationDragIndicator(.visible)
-                .ignoresSafeArea(edges: .bottom)
         }
     }
 }

@@ -57,7 +57,6 @@ struct MainContactView: View {
                 .navigationTitle(contact.name)
             }
         }
-        .ignoresSafeArea(edges: .bottom)
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
         .frame(maxWidth: 550)
         .toolbar {
@@ -75,6 +74,7 @@ struct MainContactView: View {
         .sheet(isPresented: $isAdding, content: {
             addMeetingSheet
                 .presentationDragIndicator(.visible)
+                .presentationDetents([.fraction(0.7), .large])
         })
         .sheet(item: $isEditingMeeting, content: { meeting in
             MeetingView(meeting: meeting, contact: $contact)

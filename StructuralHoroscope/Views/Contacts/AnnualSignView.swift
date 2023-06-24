@@ -11,8 +11,8 @@ struct AnnualSignView: View {
             typeSection
             businessSection
             marriageSection
+            Spacer().frame(height: 30).listRowSeparator(.hidden)
         }
-        .ignoresSafeArea(edges: .bottom)
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
         .frame(maxWidth: 550)
         .listStyle(.inset)
@@ -30,7 +30,6 @@ struct AnnualSignView: View {
         .sheet(isPresented: $showAnnualSignDescription) {
             annualSignDescription
                 .presentationDragIndicator(.visible)
-                .ignoresSafeArea(edges: .bottom)
         }
     }
 }
@@ -209,6 +208,7 @@ extension AnnualSignView {
                     }
                     Text(text)
                         .foregroundColor(.theme.secondaryText)
+                        .padding(.bottom, 30)
                 }
                 .padding(.bottom, 20)
             }
@@ -231,7 +231,7 @@ extension AnnualSignView {
                 .padding(.bottom, 15)
                 Text(sign.ideologicalType[.male]!.text)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom)
+                    .padding(.bottom, 30)
             }
         }
         .padding(.horizontal)
@@ -251,7 +251,7 @@ extension AnnualSignView {
                 .padding(.bottom, 15)
                 Text(sign.ideologicalType[.female]!.text)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom)
+                    .padding(.bottom, 30)
             }
         }
         .padding(.horizontal)
@@ -271,7 +271,7 @@ extension AnnualSignView {
                 .padding(.bottom, 15)
                 Text(sign.socialType.text)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom)
+                    .padding(.bottom, 30)
             }
         }
         .padding(.horizontal)
@@ -291,7 +291,7 @@ extension AnnualSignView {
                 .padding(.bottom, 15)
                 Text(sign.psychologicalType.text)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom)
+                    .padding(.bottom, 30)
             }
         }
         .padding(.horizontal)
@@ -311,7 +311,7 @@ extension AnnualSignView {
                 .padding(.bottom, 15)
                 Text(sign.temperament.text)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom)
+                    .padding(.bottom, 30)
             }
         }
         .padding(.horizontal)
@@ -331,7 +331,7 @@ extension AnnualSignView {
                 .padding(.bottom, 15)
                 Text(sign.fateType.text)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom)
+                    .padding(.bottom, 30)
             }
         }
         .padding(.horizontal)
@@ -356,7 +356,7 @@ extension AnnualSignView {
             }
             Text(vectorHost.text)
                 .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
+                .padding(.bottom, 30)
             Spacer()
         }
         .padding(.horizontal)
@@ -381,7 +381,7 @@ extension AnnualSignView {
             }
             Text(vectorServant.text)
                 .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
+                .padding(.bottom, 30)
             Spacer()
         }
         .padding(.horizontal)
@@ -406,7 +406,7 @@ extension AnnualSignView {
             }
             Text(clone.text)
                 .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
+                .padding(.bottom, 30)
             Spacer()
         }
         .padding(.horizontal)
@@ -431,7 +431,7 @@ extension AnnualSignView {
             }
             Text(companion.text)
                 .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
+                .padding(.bottom, 30)
             Spacer()
         }
         .padding(.horizontal)
@@ -456,7 +456,7 @@ extension AnnualSignView {
             }
             Text(subordinate.text)
                 .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
+                .padding(.bottom, 30)
             Spacer()
         }
         .padding(.horizontal)
@@ -481,7 +481,7 @@ extension AnnualSignView {
             }
             Text(adviser.text)
                 .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
+                .padding(.bottom, 30)
             Spacer()
         }
         .padding(.horizontal)
@@ -500,8 +500,7 @@ extension AnnualSignView {
             .padding(.bottom, 15)
             Text(vectorMarriage.text)
                 .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
-            Spacer()
+                .padding(.bottom, 30)
         }
         .padding(.horizontal)
     }
@@ -519,8 +518,7 @@ extension AnnualSignView {
             .padding(.bottom, 15)
             Text(romanticMarriage.text)
                 .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
-            Spacer()
+                .padding(.bottom, 30)
         }
         .padding(.horizontal)
     }
@@ -538,8 +536,7 @@ extension AnnualSignView {
             .padding(.bottom, 15)
             Text(patriarchalMarriage.text)
                 .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
-            Spacer()
+                .padding(.bottom, 30)
         }
         .padding(.horizontal)
     }
@@ -557,8 +554,7 @@ extension AnnualSignView {
             .padding(.bottom, 15)
             Text(spiritualMarriage.text)
                 .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
-            Spacer()
+                .padding(.bottom, 30)
         }
         .padding(.horizontal)
     }
@@ -576,8 +572,7 @@ extension AnnualSignView {
             .padding(.bottom, 15)
             Text(equalMarriage.text)
                 .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
-            Spacer()
+                .padding(.bottom, 30)
         }
         .padding(.horizontal)
     }

@@ -4,10 +4,10 @@ import UIKit
 struct AddNewContactView: View {
     
     @EnvironmentObject private var vm: ViewModel
+    @Environment(\.dismiss) var dismiss
     @State private var name = ""
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
-    @Environment(\.dismiss) var dismiss
     @State private var lastMeeting = Date()
     @State private var meetingTracker = true
     @State private var component = Components.week
@@ -45,13 +45,13 @@ struct AddNewContactView: View {
                 }
                 saveButton
             }
+            .padding(.vertical, 30)
         }
         .frame(maxWidth: 550)
-        .padding()
+        .padding(.horizontal)
         .navigationTitle("Новый пользователь")
         .navigationBarTitleDisplayMode(.inline)
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
-        .ignoresSafeArea(edges: .bottom)
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                 self.nameInFocus = true
