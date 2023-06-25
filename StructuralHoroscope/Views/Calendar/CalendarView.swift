@@ -89,8 +89,10 @@ struct CalendarView: View {
             }
             .alert("Добавить гороскоп в ваш календарь?", isPresented: $showSyncAlert) {
                 Button("Добавить") {
-                    vm.addAllEventsToCalendar()
-                    HapticManager.instance.notification(type: .success)
+                    Task {
+                        await vm.addAllEventsToCalendar()
+                        HapticManager.instance.notification(type: .success)
+                    }
                 }
                 Button(role: .cancel) {
                     HapticManager.instance.notification(type: .error)

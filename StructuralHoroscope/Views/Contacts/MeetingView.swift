@@ -4,7 +4,7 @@ struct MeetingView: View {
     
     @EnvironmentObject private var vm: ViewModel
     @Environment(\.dismiss) private var dismiss
-    let meeting: Meeting
+    let meeting: MeetingStruct
     @Binding var contact: ContactStruct
     @State private var date = Date()
     @State private var feeling = Feelings.notTooBad
@@ -70,7 +70,7 @@ struct MeetingView: View {
                     Button {
                         vm.updateMeeting(contact: contact, meeting: meeting, date: date, feeling: feeling, describe: describe)
                         if let index = contact.contact!.allEvents.firstIndex(where: {$0.id == meeting.id}) {
-                            contact.contact!.allEvents[index] = contact.contact!.allEvents[index].updateMeeting(date: date, feeling: feeling, describe: describe)
+                            contact.contact!.allEvents[index].updateMeeting(date: date, feeling: feeling, describe: describe)
                         }
                         contact.contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
                         dismiss()

@@ -20,7 +20,7 @@ struct MainContactView: View {
     @State private var feeling = Feelings.notTooBad
     @State private var describe = ""
     @State private var isFavorite = false
-    @State private var isEditingMeeting: Meeting? = nil
+    @State private var isEditingMeeting: MeetingStruct? = nil
     
     var dateRange: ClosedRange<Date> {
         var dateComponents = DateComponents()
@@ -228,7 +228,7 @@ extension MainContactView {
                     Spacer()
                     Button {
                         vm.addMeeting(contact: contact, date: date, feeling: feeling, describe: describe)
-                        contact = contact.addMeeting(contact: contact.contact!, date: date, feeling: feeling, describe: describe)
+                        contact.addMeeting(contact: contact.contact!, date: date, feeling: feeling, describe: describe)
                         contact.contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
                         if let i = vm.contacts.firstIndex(where: {$0.id == contact.id}) {
                             vm.contacts[i].contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!

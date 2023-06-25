@@ -225,9 +225,9 @@ extension ChangeContactView {
                 vm.updateContact(client: contact, name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, meetingTracker: meetingTracker, feeling: feeling, describe: describe)
                 if meetingTracker {
                     if contact.contact != nil {
-                        contact = contact.updateInfo(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite, distance: distance, component: component, reminder: reminder)
+                        contact.updateInfo(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite, distance: distance, component: component, reminder: reminder)
                     } else {
-                        contact = contact.updateAndCreateEvent(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, feeling: feeling, describe: describe)
+                        contact.updateAndCreateEvent(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, feeling: feeling, describe: describe)
                     }
                     if reminder && meetingTracker {
                         vm.setNotification(contactStruct: contact)
@@ -236,9 +236,9 @@ extension ChangeContactView {
                     }
                 } else {
                     if contact.contact != nil {
-                        contact = contact.updateInfoAndDeleteEvent(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite)
+                        contact.updateInfoAndDeleteEvent(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite)
                     } else {
-                        contact = contact.updateWithoutEvent(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite)
+                        contact.updateWithoutEvent(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite)
                     }
                     vm.deleteNotification(contactStruct: contact)
                 }

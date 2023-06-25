@@ -74,7 +74,7 @@ class ViewModel: ObservableObject {
             component: component,
             lastContact: lastContact,
             reminder: reminder,
-            allEvents: [ Meeting(
+            allEvents: [ MeetingStruct(
                 date: lastContact,
                 feeling: feeling,
                 describe: describe)
@@ -101,7 +101,7 @@ class ViewModel: ObservableObject {
         if user == nil {
             createUser(sex: sex, birthday: birthday, sign: sign, zodiacSign: zodiacSign)
         } else {
-            user = user!.updateInfo(sex: sex, birthday: birthday, sign: sign, month: zodiacSign)
+            user!.updateInfo(sex: sex, birthday: birthday, sign: sign, month: zodiacSign)
         }
     }
     
@@ -109,17 +109,17 @@ class ViewModel: ObservableObject {
         if let index = contacts.firstIndex(where: {$0.id == client.id}) {
             if meetingTracker {
                 if client.contact != nil {
-                    contacts[index] = client.updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite, distance: distance, component: component, reminder: reminder)
+                    contacts[index].updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite, distance: distance, component: component, reminder: reminder)
                     saveContacts()
                 } else {
-                    contacts[index] = client.updateAndCreateEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite, distance: distance, component: component, lastContact: lastContact, reminder: reminder, feeling: feeling, describe: describe)
+                    contacts[index].updateAndCreateEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite, distance: distance, component: component, lastContact: lastContact, reminder: reminder, feeling: feeling, describe: describe)
                     saveContacts()
                 }
             } else {
                 if client.contact != nil {
-                    contacts[index] = client.updateInfoAndDeleteEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite)
+                    contacts[index].updateInfoAndDeleteEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite)
                 } else {
-                    contacts[index] = client.updateWithoutEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite)
+                    contacts[index].updateWithoutEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite)
                 }
             }
         }
@@ -128,7 +128,7 @@ class ViewModel: ObservableObject {
     
     func updateEvent(contact: ContactStruct) {
         if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
-            contacts[index] = contact.changeLastContact(date: Date())
+            contacts[index].changeLastContact(date: Date())
         }
     }
     
@@ -346,7 +346,7 @@ class ViewModel: ObservableObject {
         return dayType.map{"\($0.value.emoji)   \($0.key.rawValue)"}.joined(separator: "\n")
     }
     
-    func addAllEventsToCalendar() {
+    func addAllEventsToCalendar() async {
         let endDate = Date().adding(.year, value: 50)
         addEventToCalendar(title: "\(firstDay[user!.annualSignStruct.annualSign]!.emoji) \(firstDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: firstDay), startDate: startingDate(day: 9), endDate: endDate)
         addEventToCalendar(title: "\(secondDay[user!.annualSignStruct.annualSign]!.emoji) \(secondDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: secondDay), startDate: startingDate(day: 10), endDate: endDate)
@@ -354,14 +354,13 @@ class ViewModel: ObservableObject {
         addEventToCalendar(title: "\(fourthDay[user!.annualSignStruct.annualSign]!.emoji) \(fourthDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: fourthDay), startDate: startingDate(day: 12), endDate: endDate)
         addEventToCalendar(title: "\(fifthDay[user!.annualSignStruct.annualSign]!.emoji) \(fifthDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: fifthDay), startDate: startingDate(day: 13), endDate: endDate)
         addEventToCalendar(title: "\(sixthDay[user!.annualSignStruct.annualSign]!.emoji) \(sixthDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: sixthDay), startDate: startingDate(day: 14), endDate: endDate)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.addEventToCalendar(title: "\(seventhDay[self.user!.annualSignStruct.annualSign]!.emoji) \(seventhDay[self.user!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: seventhDay), startDate: self.startingDate(day: 15), endDate: endDate)
-            self.addEventToCalendar(title: "\(eighthDay[self.user!.annualSignStruct.annualSign]!.emoji) \(eighthDay[self.user!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: eighthDay), startDate: self.startingDate(day: 16), endDate: endDate)
-            self.addEventToCalendar(title: "\(ninthDay[self.user!.annualSignStruct.annualSign]!.emoji) \(ninthDay[self.user!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: ninthDay), startDate: self.startingDate(day: 17), endDate: endDate)
-            self.addEventToCalendar(title: "\(tenthDay[self.user!.annualSignStruct.annualSign]!.emoji) \(tenthDay[self.user!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: tenthDay), startDate: self.startingDate(day: 18), endDate: endDate)
-            self.addEventToCalendar(title: "\(eleventhDay[self.user!.annualSignStruct.annualSign]!.emoji) \(eleventhDay[self.user!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: eleventhDay), startDate: self.startingDate(day: 19), endDate: endDate)
-            self.addEventToCalendar(title: "\(twelveDay[self.user!.annualSignStruct.annualSign]!.emoji) \(twelveDay[self.user!.annualSignStruct.annualSign]!.title)", description: self.eventDescription(dayType: twelveDay), startDate: self.startingDate(day: 20), endDate: endDate)
-        }
+        addEventToCalendar(title: "\(seventhDay[user!.annualSignStruct.annualSign]!.emoji) \(seventhDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: seventhDay), startDate: startingDate(day: 15), endDate: endDate)
+        addEventToCalendar(title: "\(eighthDay[user!.annualSignStruct.annualSign]!.emoji) \(eighthDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: eighthDay), startDate: startingDate(day: 16), endDate: endDate)
+        addEventToCalendar(title: "\(ninthDay[user!.annualSignStruct.annualSign]!.emoji) \(ninthDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: ninthDay), startDate: startingDate(day: 17), endDate: endDate)
+        addEventToCalendar(title: "\(tenthDay[user!.annualSignStruct.annualSign]!.emoji) \(tenthDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: tenthDay), startDate: startingDate(day: 18), endDate: endDate)
+        try? await Task.sleep(for: .seconds(3))
+        addEventToCalendar(title: "\(eleventhDay[user!.annualSignStruct.annualSign]!.emoji) \(eleventhDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: eleventhDay), startDate: startingDate(day: 19), endDate: endDate)
+        addEventToCalendar(title: "\(twelveDay[user!.annualSignStruct.annualSign]!.emoji) \(twelveDay[user!.annualSignStruct.annualSign]!.title)", description: eventDescription(dayType: twelveDay), startDate: startingDate(day: 20), endDate: endDate)
     }
     
     func addEventToCalendar(title: String, description: String?, startDate: Date, endDate: Date, completion: ((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
@@ -540,7 +539,7 @@ class ViewModel: ObservableObject {
         return "\(days) / \(getDayCountFromLastContactToNext(component: component, lastContact: lastContact, interval: Interval))"
     }
     
-    func updateMeeting(contact: ContactStruct, meeting: Meeting, date: Date, feeling: Feelings, describe: String) {
+    func updateMeeting(contact: ContactStruct, meeting: MeetingStruct, date: Date, feeling: Feelings, describe: String) {
         if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
             if let i = contacts[index].contact!.allEvents.firstIndex(where: {$0.id == meeting.id}) {
                 contacts[index].contact!.allEvents[i].date = date
@@ -550,7 +549,7 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func deleteMeeting(contact: ContactStruct, meeting: Meeting) {
+    func deleteMeeting(contact: ContactStruct, meeting: MeetingStruct) {
         if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
             if let i = contacts[index].contact!.allEvents.firstIndex(where: {$0.id == meeting.id}) {
                 contacts[index].contact!.allEvents.remove(at: i)
@@ -565,7 +564,7 @@ class ViewModel: ObservableObject {
     }
     
     func addMeeting(contact: ContactStruct, date: Date, feeling: Feelings, describe: String) {
-        let newMeeting = Meeting(date: date, feeling: feeling, describe: describe)
+        let newMeeting = MeetingStruct(date: date, feeling: feeling, describe: describe)
         if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
             contacts[index].contact!.allEvents.append(newMeeting)
             contacts[index].contact!.lastContact = contacts[index].contact!.lastContact < date ? date : contacts[index].contact!.lastContact
