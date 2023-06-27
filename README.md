@@ -10,7 +10,7 @@ The application is written using SwiftUI with MVVM. There is no way to put this 
 
 **[YouTube short video](https://youtube.com/shorts/HyhO8wLdERA?feature=share)**
 
-### Minimum deployments: iOS 16.4
+Minimum deployments: iOS 16.4
 
 ## **App contains:**
 - notifications
