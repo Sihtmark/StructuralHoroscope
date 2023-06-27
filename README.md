@@ -8,7 +8,7 @@ Structural Horoscope allows you to see what day you and your contacts have today
 
 The application is written using SwiftUI with MVVM. There is no way to put this app to the AppStore due to Guideline 4.3 - Design - Spam. It can be downloaded using Xcode
 
-**[YouTube](https://youtube.com/shorts/HyhO8wLdERA?feature=share)**
+**[YouTube short video](https://youtube.com/shorts/HyhO8wLdERA?feature=share)**
 
 ### Minimum deployments: iOS 16.4
 
