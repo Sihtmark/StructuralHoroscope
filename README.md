@@ -1,6 +1,6 @@
 # **StructuralHoroscope**
-### iOS & iPadOS application
-## For Russian speaking users
+## iOS & iPadOS application
+### For Russian speaking users
 
 First time user enters the date of birth and gender. Then he goes to the main screen with his card and contact list. User can add new contacts and filter them as he wants. It is possible to specify when was the last communication with contact and select the frequency of communications in the future. The application will remind user when the next communication comes.
 
