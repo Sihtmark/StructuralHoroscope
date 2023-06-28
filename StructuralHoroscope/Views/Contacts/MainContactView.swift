@@ -230,6 +230,7 @@ extension MainContactView {
                         vm.addMeeting(contact: contact, date: date, feeling: feeling, describe: describe)
                         contact.addMeeting(contact: contact.contact!, date: date, feeling: feeling, describe: describe)
                         contact.contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
+                        vm.setNotification(contactStruct: contact)
                         if let i = vm.contacts.firstIndex(where: {$0.id == contact.id}) {
                             vm.contacts[i].contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
                         }

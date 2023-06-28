@@ -73,10 +73,11 @@ struct MeetingView: View {
                             contact.contact!.allEvents[index].updateMeeting(date: date, feeling: feeling, describe: describe)
                         }
                         contact.contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
-                        dismiss()
+                        vm.setNotification(contactStruct: contact)
                         if let i = vm.contacts.firstIndex(where: {$0.id == contact.id}) {
                             vm.contacts[i].contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
                         }
+                        dismiss()
                     } label: {
                         Text("Сохранить")
                             .bold()
@@ -94,6 +95,7 @@ struct MeetingView: View {
                             contact.contact!.allEvents.remove(at: index)
                         }
                         contact.contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
+                        vm.setNotification(contactStruct: contact)
                         if let i = vm.contacts.firstIndex(where: {$0.id == contact.id}) {
                             vm.contacts[i].contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
                         }

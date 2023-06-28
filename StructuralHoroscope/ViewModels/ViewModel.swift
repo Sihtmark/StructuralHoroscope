@@ -135,6 +135,7 @@ class ViewModel: ObservableObject {
     func updateEvent(contact: ContactStruct) {
         if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
             contacts[index].changeLastContact(date: Date())
+            setNotification(contactStruct: contact)
         }
     }
     
