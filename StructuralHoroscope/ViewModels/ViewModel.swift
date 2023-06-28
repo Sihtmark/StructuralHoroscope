@@ -115,12 +115,18 @@ class ViewModel: ObservableObject {
                     contacts[index].updateAndCreateEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite, distance: distance, component: component, lastContact: lastContact, reminder: reminder, feeling: feeling, describe: describe)
                     saveContacts()
                 }
+                if reminder {
+                    setNotification(contactStruct: client)
+                } else {
+                    deleteNotification(contactStruct: client)
+                }
             } else {
                 if client.contact != nil {
                     contacts[index].updateInfoAndDeleteEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite)
                 } else {
                     contacts[index].updateWithoutEvent(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite)
                 }
+                deleteNotification(contactStruct: client)
             }
         }
         fetchContacts()

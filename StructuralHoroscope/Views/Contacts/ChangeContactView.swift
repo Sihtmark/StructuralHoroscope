@@ -223,25 +223,6 @@ extension ChangeContactView {
             Spacer()
             Button {
                 vm.updateContact(client: contact, name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, zodiacSign: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, meetingTracker: meetingTracker, feeling: feeling, describe: describe)
-                if meetingTracker {
-                    if contact.contact != nil {
-                        contact.updateInfo(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite, distance: distance, component: component, reminder: reminder)
-                    } else {
-                        contact.updateAndCreateEvent(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite, distance: distance, component: component, lastContact: lastMeeting, reminder: reminder, feeling: feeling, describe: describe)
-                    }
-                    if reminder && meetingTracker {
-                        vm.setNotification(contactStruct: contact)
-                    } else {
-                        vm.deleteNotification(contactStruct: contact)
-                    }
-                } else {
-                    if contact.contact != nil {
-                        contact.updateInfoAndDeleteEvent(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite)
-                    } else {
-                        contact.updateWithoutEvent(name: name, sex: sex, birthday: selectedDate, sign: vm.getAnnualSign(date: selectedDate)!, month: vm.getMonth(date: selectedDate)!, isFavorite: contact.isFavorite)
-                    }
-                    vm.deleteNotification(contactStruct: contact)
-                }
                 dismiss()
             } label: {
                 Text("Сохранить")
