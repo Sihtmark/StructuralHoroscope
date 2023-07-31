@@ -1,4 +1,30 @@
+//
+//  IdeologicalStruct.swift
+//  StructuralHoroscope
+//
+//  Created by sihtmark on 31.07.2023.
+//
+
 import Foundation
+
+enum IdeologicalEnum: String, Codable, CaseIterable, Hashable {
+    case logicalMale = "Мужская логика"
+    case logicalFemale = "Женская логика"
+    case strongWilledMale = "Мужская воля"
+    case strongWilledFemale = "Женская воля"
+    case mysticalMale = "Мужская мистика"
+    case mysticalFemale = "Женская мистика"
+    case realisticMale = "Мужской реализм"
+    case realisticFemale = "Женский реализм"
+}
+
+struct IdeologicalStruct: Identifiable, Codable, Equatable, Hashable {
+    var id = UUID()
+    let ideologicalType: IdeologicalEnum
+    let title: String
+    let text: String
+    let signs: [AnnualEnum]
+}
 
 let mysticMales = [ratSign, monkeySign, dragonSign]
 let mysticFemales = [catSign, goatSign, boarSign]

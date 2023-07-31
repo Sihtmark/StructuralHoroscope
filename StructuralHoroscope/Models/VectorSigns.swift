@@ -1,4 +1,40 @@
+//
+//  SocialSignStruct.swift
+//  StructuralHoroscope
+//
+//  Created by sihtmark on 31.07.2023.
+//
+
 import Foundation
+
+
+
+enum SocialSignEnum: String, CaseIterable, Codable, Hashable {
+    case king = "Король"
+    case vector = "Вектор"
+    case jester = "Шут"
+    case knight = "Рыцарь"
+    case aristocrat = "Аристократ"
+    case professor = "Профессор"
+    case leader = "Вождь"
+}
+
+enum SocialEmojiEnum: String, CaseIterable, Codable, Hashable {
+    case king = "👑"
+    case vector = "↔️"
+    case jester = "🤡"
+    case knight = "⚔️"
+    case aristocrat = "🎩"
+    case professor = "👨‍🏫"
+    case leader = "🗽"
+}
+
+struct SocialSignStruct: Identifiable, Codable, Equatable, Hashable {
+    var id = UUID()
+    let socialSign: SocialSignEnum
+    let emoji: SocialEmojiEnum
+    let blocks: [String:String]
+}
 
 let socialSigns: [SocialSignStruct] = [kingSign, vectorSign, jesterSign, knightSign, aristocratSign, professorSign, leaderSign]
 

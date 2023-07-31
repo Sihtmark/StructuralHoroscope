@@ -1,4 +1,53 @@
+//
+//  AnnualSignStruct.swift
+//  StructuralHoroscope
+//
+//  Created by sihtmark on 31.07.2023.
+//
+
 import Foundation
+
+enum AnnualEnum: String, Codable, CaseIterable, Hashable {
+    case snake = "Змея"
+    case horse = "Лошадь"
+    case goat = "Коза"
+    case monkey = "Обезьяна"
+    case rooster = "Петух"
+    case dog = "Собака"
+    case boar = "Кабан"
+    case rat = "Крыса"
+    case bull = "Бык"
+    case tiger = "Тигр"
+    case cat = "Кот"
+    case dragon = "Дракон"
+}
+
+struct AnnualSignStruct: Identifiable, Codable, Equatable, Hashable {
+    var id = UUID()
+    let annualSign: AnnualEnum
+    let ideologicalType: [Sex: IdeologicalStruct]
+    let socialType: SocialStruct
+    let psychologicalType: PsychologicalStruct
+    let temperament: EnergyStruct
+    let fateType: FateStruct
+    let ageType: AgeEnum
+    let vectorHost: AnnualEnum
+    let vectorServant: AnnualEnum
+    let vectorMarriage: [AnnualEnum]
+    let romanticMarriage: [AnnualEnum]
+    let patriarchalMarriage: [AnnualEnum]
+    let equalMarriage: [AnnualEnum]
+    let spiritualMarriage: [AnnualEnum]
+    let clones: [AnnualEnum]
+    let companions: [AnnualEnum]
+    let subordinates: [AnnualEnum]
+    let advisers: [AnnualEnum]
+    let socialSigns: [MonthEnum:SocialSignStruct]
+    let businessStruct: [AnnualEnum: BusinessEnum]
+    let blocks: [String:String]
+    let years: [Int]
+}
+
 
 let annualSigns: [AnnualEnum:AnnualSignStruct] = [.rat: ratSign, .bull: bullSign, .tiger: tigerSign, .cat: catSign, .dragon: dragonSign, .snake: snakeSign, .horse: horseSign, .goat: goatSign, .monkey: monkeySign, .rooster: roosterSign, .dog: dogSign, .boar: boarSign]
 

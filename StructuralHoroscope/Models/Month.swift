@@ -1,5 +1,32 @@
+//
+//  MonthStruct.swift
+//  StructuralHoroscope
+//
+//  Created by sihtmark on 31.07.2023.
+//
+
 import Foundation
 
+enum MonthEnum: Codable, CaseIterable, Hashable {
+    case april
+    case may
+    case june
+    case july
+    case augest
+    case september
+    case october
+    case november
+    case december
+    case january
+    case february
+    case march
+}
+
+struct MonthStruct: Identifiable, Codable, Equatable, Hashable {
+    var id = UUID()
+    let sign: MonthEnum
+    let days: [Int: ClosedRange<Int>]
+}
 
 let months: [MonthStruct] = [april, may, june, july, august, september, october, november, december, january, february, march]
 

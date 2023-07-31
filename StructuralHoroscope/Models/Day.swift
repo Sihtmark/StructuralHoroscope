@@ -1,8 +1,40 @@
+//
+//  DayStruct.swift
+//  StructuralHoroscope
+//
+//  Created by sihtmark on 31.07.2023.
+//
+
 import Foundation
+
+struct DayStruct: Identifiable, Codable, Hashable {
+    var id = UUID()
+    let date: Date
+    let signs: [AnnualEnum: DayType]
+    
+    var dateComponents: DateComponents {
+        var dateComponents = Calendar.current.dateComponents(
+            [.month,
+             .day,
+             .year],
+            from: date)
+        dateComponents.timeZone = TimeZone.current
+        dateComponents.calendar = Calendar(identifier: .gregorian)
+        return dateComponents
+    }
+}
+
+struct DayType: Codable, Hashable, Identifiable {
+    var id = UUID()
+    let title: String
+    let emoji: String
+    let text: String?
+}
 
 let days = [firstDay, secondDay, thirdDay, fourthDay, fifthDay, sixthDay, seventhDay, eighthDay, ninthDay, tenthDay, eleventhDay, twelveDay]
 
 let coloredDays = [green, red, blue, yellow, orange]
+
 let mindDays = [easier, harder, rest, hangOut]
 
 let green = DayType(

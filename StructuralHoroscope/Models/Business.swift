@@ -1,4 +1,28 @@
+//
+//  BusinessStruct.swift
+//  StructuralHoroscope
+//
+//  Created by sihtmark on 31.07.2023.
+//
+
 import Foundation
+
+enum BusinessEnum: String, Codable, CaseIterable, Hashable {
+    case vectorHost = "Векторный хозяин"
+    case vectorServant = "Векторный слуга"
+    case clone = "Клоны"
+    case companion = "Соратники"
+    case subordinate = "Подчиненные"
+    case adviser = "Советники"
+}
+
+struct BusinessStruct: Identifiable, Codable, Equatable, Hashable {
+    var id = UUID()
+    let type: BusinessEnum
+    let value: String
+    let text: String
+    let signs: [AnnualEnum: [AnnualSignStruct]]
+}
 
 let businessSigns: [BusinessEnum:BusinessStruct] = [.vectorHost: vectorHost, .vectorServant: vectorServant, .clone: clone, .companion: companion, .subordinate: subordinate, .adviser: adviser]
 

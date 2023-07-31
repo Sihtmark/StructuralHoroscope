@@ -1,3 +1,27 @@
+//
+//  FateStruct.swift
+//  StructuralHoroscope
+//
+//  Created by sihtmark on 31.07.2023.
+//
+
+import Foundation
+
+enum FateEnum: String, Codable, CaseIterable, Hashable {
+    case fatalist = "Фаталист"
+    case lucky = "Везунчик"
+    case doItYourself = "Самодельщик"
+    case pioneer = "Пионер"
+}
+
+struct FateStruct: Identifiable, Codable, Equatable, Hashable {
+    var id = UUID()
+    let fateType: FateEnum
+    let signs: [AnnualEnum]
+    let title: String
+    let text: String
+}
+
 import Foundation
 
 let fatalistSigns = [ratSign, tigerSign, dogSign]

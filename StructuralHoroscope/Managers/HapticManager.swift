@@ -8,8 +8,8 @@ class HapticManager {
         generator.notificationOccurred(type)
     }
     
-    func impact(style: UIImpactFeedbackGenerator.FeedbackStyle) {
-        let generator = UIImpactFeedbackGenerator(style: style)
-        generator.impactOccurred()
-    }
+//    func impact(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+//        let generator = UIImpactFeedbackGenerator(style: style)
+//        generator.impactOccurred()
+//    }
 }

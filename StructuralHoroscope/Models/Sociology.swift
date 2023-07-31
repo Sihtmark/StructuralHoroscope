@@ -1,4 +1,25 @@
+//
+//  SocialStruct.swift
+//  StructuralHoroscope
+//
+//  Created by sihtmark on 31.07.2023.
+//
+
 import Foundation
+
+enum SocialEnum: String, Codable, CaseIterable, Hashable {
+    case closed = "Закрытый"
+    case opened = "Открытый"
+    case orthodox = "Ортодокс"
+}
+
+struct SocialStruct: Identifiable, Codable, Equatable, Hashable {
+    var id = UUID()
+    let socialType: SocialEnum
+    let signs: [AnnualEnum]
+    let title: String
+    let text: String
+}
 
 let openedSigns = [ratSign, catSign, horseSign, roosterSign]
 let closedSigns = [tigerSign, snakeSign, monkeySign, boarSign]

@@ -1,4 +1,26 @@
+//
+//  EnergyStruct.swift
+//  StructuralHoroscope
+//
+//  Created by sihtmark on 31.07.2023.
+//
+
 import Foundation
+
+enum EnergyEnum: String, Codable, CaseIterable, Hashable {
+    case dramatic = "Драматический"
+    case sanguine = "Природный оптимист"
+    case phlegmatic = "Космический оптимист"
+    case melancholic = "Скептик"
+}
+
+struct EnergyStruct: Identifiable, Codable, Equatable, Hashable {
+    var id = UUID()
+    let energyType: EnergyEnum
+    let signs: [AnnualEnum]
+    let title: String
+    let text: String
+}
 
 let dramaticSigns = [goatSign, ratSign, snakeSign]
 let sanguineSigns = [bullSign, horseSign, boarSign]

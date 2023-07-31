@@ -1,4 +1,26 @@
+//
+//  PsychologicalStruct.swift
+//  StructuralHoroscope
+//
+//  Created by sihtmark on 31.07.2023.
+//
+
 import Foundation
+
+enum PsychologicalEnum: String, Codable, CaseIterable, Hashable {
+    case maturity = "Возмужания"
+    case dreamer = "Взлетый"
+    case sensitive = "Чувствительный"
+    case grounded = "Приземленный"
+}
+
+struct PsychologicalStruct: Identifiable, Codable, Equatable, Hashable {
+    var id = UUID()
+    let psychologicalType: PsychologicalEnum
+    let signs: [AnnualEnum]
+    let title: String
+    let text: String
+}
 
 let maturitySigns = [boarSign, ratSign, bullSign]
 let dreamerSigns = [tigerSign, catSign, dragonSign]
