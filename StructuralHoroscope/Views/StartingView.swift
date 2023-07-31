@@ -6,17 +6,6 @@ struct StartingView: View {
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
     
-    var dateRange: ClosedRange<Date> {
-        var dateComponents = DateComponents()
-        dateComponents.year = 1850
-        dateComponents.month = 1
-        dateComponents.day = 1
-        let calendar = Calendar(identifier: .gregorian)
-        let min = calendar.date(from: dateComponents)!
-        let max = Date()
-        return min...max
-    }
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
             Text("Новый пользователь")
@@ -40,7 +29,7 @@ struct StartingView: View {
                     .padding(.bottom, 15)
                 HStack {
                     Spacer()
-                    DatePicker(selection: $selectedDate, in: dateRange, displayedComponents: .date) {}
+                    DatePicker(selection: $selectedDate, in: DateManager.instance.dateRange, displayedComponents: .date) {}
                         .foregroundColor(.theme.accent)
                         .datePickerStyle(.wheel)
                         .frame(width: 320, height: 180)

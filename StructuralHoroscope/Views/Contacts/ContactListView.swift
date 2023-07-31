@@ -11,17 +11,6 @@ struct ContactListView: View {
     @State private var notifications = false
     @State private var isAddingNewContact = false
     
-    var dateRange: ClosedRange<Date> {
-        var dateComponents = DateComponents()
-        dateComponents.year = 1850
-        dateComponents.month = 1
-        dateComponents.day = 1
-        let calendar = Calendar(identifier: .gregorian)
-        let min = calendar.date(from: dateComponents)!
-        let max = Date()
-        return min...max
-    }
-    
     var body: some View {
         NavigationStack {
             List {

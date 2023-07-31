@@ -22,23 +22,6 @@ struct MainContactView: View {
     @State private var isFavorite = false
     @State private var isEditingMeeting: MeetingStruct? = nil
     
-    var dateRange: ClosedRange<Date> {
-        var dateComponents = DateComponents()
-        dateComponents.year = 1850
-        dateComponents.month = 1
-        dateComponents.day = 1
-        let calendar = Calendar(identifier: .gregorian)
-        let min = calendar.date(from: dateComponents)!
-        let max = Date()
-        return min...max
-    }
-    
-    private var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
-        return formatter
-    }
-    
     var body: some View {
         VStack {
             if contact.contact != nil {
@@ -135,7 +118,7 @@ extension MainContactView {
             }
             if let contact = contact.contact {
                 VStack(spacing: 5) {
-                    Text("Последнее общение \(dateFormatter.string(from: contact.lastContact))")
+                    Text("Последнее общение \(DateManager.instance.dateFormatter.string(from: contact.lastContact))")
                     Text(vm.daysFromLastEvent(lastEvent: contact.lastContact, component: contact.component, lastContact: contact.lastContact, Interval: contact.distance))
                 }
                 .font(.callout)
@@ -175,7 +158,7 @@ extension MainContactView {
                     VStack(alignment: .leading, spacing: 6) {
                         HStack() {
                             Text(event.feeling.rawValue)
-                            Text(dateFormatter.string(from: event.date))
+                            Text(DateManager.instance.dateFormatter.string(from: event.date))
                                 .foregroundColor(.theme.accent)
                         }
                         Text(event.describe)
@@ -196,7 +179,7 @@ extension MainContactView {
             VStack(alignment: .leading, spacing: 30) {
                 HStack {
                     Spacer()
-                    DatePicker(selection: $date, in: dateRange, displayedComponents: .date) {}
+                    DatePicker(selection: $date, in: DateManager.instance.dateRange, displayedComponents: .date) {}
                         .foregroundColor(.theme.accent)
                         .datePickerStyle(.wheel)
                         .frame(width: 320, height: 180)
@@ -261,7 +244,7 @@ extension MainContactView {
         Section {
             Text(contact.sex == .male ? "⚧️ Пол: мужской" : "⚧️ Пол: женский")
                 .foregroundColor(.theme.standard)
-            Text("🎂 Дата рождения: \(dateFormatter.string(from: contact.birthday))")
+            Text("🎂 Дата рождения: \(DateManager.instance.dateFormatter.string(from: contact.birthday))")
                 .foregroundColor(.theme.standard)
             NavigationLink {
                 annualSignDescription

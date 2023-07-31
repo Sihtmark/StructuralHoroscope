@@ -18,23 +18,6 @@ struct AddNewContactView: View {
     @FocusState private var nameInFocus: Bool
     @FocusState private var describeInFocus: Bool
     
-    private var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
-        return formatter
-    }
-    
-    var dateRange: ClosedRange<Date> {
-        var dateComponents = DateComponents()
-        dateComponents.year = 1850
-        dateComponents.month = 1
-        dateComponents.day = 1
-        let calendar = Calendar(identifier: .gregorian)
-        let min = calendar.date(from: dateComponents)!
-        let max = Date()
-        return min...max
-    }
-    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 30) {
@@ -105,7 +88,7 @@ extension AddNewContactView {
                 Text("Picker")
             }
             .pickerStyle(.segmented)
-            DatePicker("День рождения:", selection: $selectedDate, in: dateRange, displayedComponents: .date)
+            DatePicker("День рождения:", selection: $selectedDate, in: DateManager.instance.dateRange, displayedComponents: .date)
                 .environment(\.locale, Locale.init(identifier: "ru"))
                 .foregroundColor(.theme.standard)
             Toggle("Отслеживать общение", isOn: $meetingTracker)
@@ -115,7 +98,7 @@ extension AddNewContactView {
     }
     var meetingTrackerSection: some View {
         VStack(alignment: .leading, spacing: 30) {
-            DatePicker("Общались последний раз:", selection: $lastMeeting, in: dateRange, displayedComponents: .date)
+            DatePicker("Общались последний раз:", selection: $lastMeeting, in: DateManager.instance.dateRange, displayedComponents: .date)
                 .environment(\.locale, Locale.init(identifier: "ru"))
                 .foregroundColor(.theme.standard)
             VStack {

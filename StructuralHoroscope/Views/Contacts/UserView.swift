@@ -7,23 +7,6 @@ struct UserView: View {
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
     
-    private var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
-        return formatter
-    }
-    
-    var dateRange: ClosedRange<Date> {
-        var dateComponents = DateComponents()
-        dateComponents.year = 1850
-        dateComponents.month = 1
-        dateComponents.day = 1
-        let calendar = Calendar(identifier: .gregorian)
-        let min = calendar.date(from: dateComponents)!
-        let max = Date()
-        return min...max
-    }
-    
     var body: some View {
         List {
             if isEditing {
@@ -78,7 +61,7 @@ extension UserView {
         Section {
             Text(vm.user!.sex == .male ? "⚧️ Пол: мужской" : "⚧️ Пол: женский")
                 .foregroundColor(.theme.standard)
-            Text("🎂 Дата рождения: \(dateFormatter.string(from: vm.user!.birthday))")
+            Text("🎂 Дата рождения: \(DateManager.instance.dateFormatter.string(from: vm.user!.birthday))")
                 .foregroundColor(.theme.standard)
             NavigationLink {
                 AgeView(ageStruct: ages[vm.getAgeType(birthdate: selectedDate)]!)
@@ -108,7 +91,7 @@ extension UserView {
                 }
                 .pickerStyle(.segmented)
             }
-            DatePicker("🎂 Дата рождения:", selection: $selectedDate, in: dateRange, displayedComponents: .date)
+            DatePicker("🎂 Дата рождения:", selection: $selectedDate, in: DateManager.instance.dateRange, displayedComponents: .date)
                 .foregroundColor(.theme.standard)
                 .environment(\.locale, Locale.init(identifier: "ru"))
             NavigationLink {

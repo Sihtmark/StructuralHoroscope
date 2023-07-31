@@ -17,23 +17,6 @@ struct ChangeContactView: View {
     @State private var describe = ""
     @FocusState private var inFocus: Bool
     
-    private var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
-        return formatter
-    }
-    
-    var dateRange: ClosedRange<Date> {
-        var dateComponents = DateComponents()
-        dateComponents.year = 1850
-        dateComponents.month = 1
-        dateComponents.day = 1
-        let calendar = Calendar(identifier: .gregorian)
-        let min = calendar.date(from: dateComponents)!
-        let max = Date()
-        return min...max
-    }
-    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 30) {
@@ -101,7 +84,7 @@ extension ChangeContactView {
                 Text("Picker")
             }
             .pickerStyle(.segmented)
-            DatePicker("День рождения:", selection: $selectedDate, in: dateRange, displayedComponents: .date)
+            DatePicker("День рождения:", selection: $selectedDate, in: DateManager.instance.dateRange, displayedComponents: .date)
                 .environment(\.locale, Locale.init(identifier: "ru"))
                 .foregroundColor(.theme.standard)
             Toggle("Следить как часто общаетесь?", isOn: $meetingTracker)
@@ -113,7 +96,7 @@ extension ChangeContactView {
         VStack(alignment: .leading, spacing: 30) {
             if contact.contact != nil {
                 if contact.contact!.allEvents.isEmpty {
-                    DatePicker("Последнее общение:", selection: $lastMeeting, in: dateRange, displayedComponents: .date)
+                    DatePicker("Последнее общение:", selection: $lastMeeting, in: DateManager.instance.dateRange, displayedComponents: .date)
                         .environment(\.locale, Locale.init(identifier: "ru"))
                         .foregroundColor(.theme.standard)
                     VStack {
@@ -145,7 +128,7 @@ extension ChangeContactView {
                     }
                 }
             } else {
-                DatePicker("Последнее общение:", selection: $lastMeeting, in: dateRange, displayedComponents: .date)
+                DatePicker("Последнее общение:", selection: $lastMeeting, in: DateManager.instance.dateRange, displayedComponents: .date)
                     .environment(\.locale, Locale.init(identifier: "ru"))
                     .foregroundColor(.theme.standard)
                 VStack {

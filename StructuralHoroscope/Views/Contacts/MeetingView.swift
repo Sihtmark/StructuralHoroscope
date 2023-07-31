@@ -11,23 +11,12 @@ struct MeetingView: View {
     @State private var describe = ""
     @FocusState private var describeInFocus: Bool
     
-    var dateRange: ClosedRange<Date> {
-        var dateComponents = DateComponents()
-        dateComponents.year = 1850
-        dateComponents.month = 1
-        dateComponents.day = 1
-        let calendar = Calendar(identifier: .gregorian)
-        let min = calendar.date(from: dateComponents)!
-        let max = Date()
-        return min...max
-    }
-    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 30) {
                 HStack {
                     Spacer()
-                    DatePicker(selection: $date, in: dateRange, displayedComponents: .date) {}
+                    DatePicker(selection: $date, in: DateManager.instance.dateRange, displayedComponents: .date) {}
                         .foregroundColor(.theme.accent)
                         .datePickerStyle(.wheel)
                         .frame(width: 320, height: 180)
