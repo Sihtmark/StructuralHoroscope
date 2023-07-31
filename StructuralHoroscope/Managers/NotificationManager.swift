@@ -1,7 +1,4 @@
 import SwiftUI
-import UserNotifications
-import CoreLocation
-
 
 class NotificationManager {
     
