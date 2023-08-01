@@ -24,7 +24,6 @@ struct ContactStruct: Identifiable, Codable, Equatable, Hashable {
         self.annualSignStruct = sign
         self.month = month
         self.isFavorite = isFavorite
-//        self.contact = contact?.updateInfo(distance: distance, component: component, reminder: reminder)
         self.contact?.updateInfo(distance: distance, component: component, reminder: reminder)
     }
     
@@ -38,7 +37,6 @@ struct ContactStruct: Identifiable, Codable, Equatable, Hashable {
     }
     
     mutating func changeLastContact(date: Date) {
-//        self.contact = contact!.updateLastContact(lastContact: date)
         self.contact?.updateLastContact(lastContact: date)
     }
     
@@ -65,9 +63,6 @@ struct ContactStruct: Identifiable, Codable, Equatable, Hashable {
     
     mutating func addMeeting(contact: EventStruct, date: Date, feeling: Feelings, describe: String) {
         self.contact?.addMeeting(date: date, feeling: feeling, describe: describe)
-        
-//        let updatedContact = contact.addMeeting(date: date, feeling: feeling, describe: describe)
-//        self.contact = updatedContact
     }
 }
 

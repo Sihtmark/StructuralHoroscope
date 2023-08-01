@@ -611,6 +611,4 @@ class ViewModel: ObservableObject {
             nm.scheduleNotification(contact: contactStruct, year: year, month: month, day: day)
         }
     }
-    
-    
 }
