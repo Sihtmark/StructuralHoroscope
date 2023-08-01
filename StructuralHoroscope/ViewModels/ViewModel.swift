@@ -611,4 +611,12 @@ class ViewModel: ObservableObject {
             nm.scheduleNotification(contact: contactStruct, year: year, month: month, day: day)
         }
     }
+    
+    func businessSigns(business: BusinessStruct, sign: AnnualEnum) -> String {
+        return business.signs[sign]!.map{$0.annualSign.rawValue}.joined(separator: ", ")
+    }
+    
+    func marriageSigns(marriage: MarriageStruct, sign: AnnualEnum) -> String {
+        return marriage.signs[sign]!.map{$0.annualSign.rawValue}.joined(separator: ", ")
+    }
 }

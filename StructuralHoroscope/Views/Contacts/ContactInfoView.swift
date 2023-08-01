@@ -24,7 +24,6 @@ struct ContactInfoView: View {
             typeSection
             businessSection
             marriageSection
-                .padding(.bottom, 30)
         }
         .scrollIndicators(ScrollIndicatorVisibility.hidden)
         .frame(maxWidth: 550)
@@ -133,45 +132,13 @@ extension ContactInfoView {
     
     var businessSection: some View {
         Section {
-            NavigationLink {
-                vectorHostDescription
-            } label: {
-                Text("Векторный хозяин: \(contact.annualSignStruct.vectorHost.rawValue)")
-                    .foregroundColor(.theme.standard)
-            }
-            NavigationLink {
-                vectorServantDescription
-            } label: {
-                Text("Векторный слуга:\(contact.annualSignStruct.vectorServant.rawValue)")
-                    .foregroundColor(.theme.standard)
-            }
-            NavigationLink {
-                cloneDescription
-            } label: {
-                Text("Клоны:\n\(contact.annualSignStruct.clones.map{$0.rawValue}.joined(separator: ", "))")
-                    .foregroundColor(.theme.standard)
-                    .lineSpacing(6)
-            }
-            NavigationLink {
-                companionDescription
-            } label: {
-                Text("Соратники:\n\(contact.annualSignStruct.companions.map{$0.rawValue}.joined(separator: ", "))")
-                    .foregroundColor(.theme.standard)
-                    .lineSpacing(6)
-            }
-            NavigationLink {
-                subordinateDescription
-            } label: {
-                Text("Подчиненные:\n\(contact.annualSignStruct.subordinates.map{$0.rawValue}.joined(separator: ", "))")
-                    .foregroundColor(.theme.standard)
-                    .lineSpacing(6)
-            }
-            NavigationLink {
-                adviserDescription
-            } label: {
-                Text("Советники:\n\(contact.annualSignStruct.advisers.map{$0.rawValue}.joined(separator: ", "))")
-                    .foregroundColor(.theme.standard)
-                    .lineSpacing(6)
+            ForEach(businessArray) { business in
+                NavigationLink {
+                    BusinessView(business: business)
+                } label: {
+                    Text("\(business.type.rawValue):\n\(vm.businessSigns(business: business, sign: contact.annualSignStruct.annualSign))")
+                        .foregroundColor(.theme.standard)
+                }
             }
         } header: {
             Text("Бизнес:")
@@ -182,41 +149,17 @@ extension ContactInfoView {
     
     var marriageSection: some View {
         Section {
-            NavigationLink {
-                vectorMarriageDescription
-            } label: {
-                Text("Векторный:\n\(contact.annualSignStruct.vectorHost.rawValue), \(contact.annualSignStruct.vectorServant.rawValue)")
-                    .foregroundColor(.theme.standard)
-                    .lineSpacing(6)
+            ForEach(marriages) { marriage in
+                NavigationLink {
+                    MarriageView(marriageStruct: marriage)
+                } label: {
+                    Text("\(marriage.type.rawValue):\n\(vm.marriageSigns(marriage: marriage, sign: contact.annualSignStruct.annualSign))")
+                        .foregroundColor(.theme.standard)
+                        .lineSpacing(6)
+                }
             }
-            NavigationLink {
-                romanticMarriageDescription
-            } label: {
-                Text("Романтический:\n\(contact.annualSignStruct.romanticMarriage.map{$0.rawValue}.joined(separator: ", "))")
-                    .foregroundColor(.theme.standard)
-                    .lineSpacing(6)
-            }
-            NavigationLink {
-                patriarchalMarriageDescription
-            } label: {
-                Text("Патриархальный:\n\(contact.annualSignStruct.patriarchalMarriage.map{$0.rawValue}.joined(separator: ", "))")
-                    .foregroundColor(.theme.standard)
-                    .lineSpacing(6)
-            }
-            NavigationLink {
-                spiritualMarriageDescription
-            } label: {
-                Text("Духовный:\n\(contact.annualSignStruct.spiritualMarriage.map{$0.rawValue}.joined(separator: ", "))")
-                    .foregroundColor(.theme.standard)
-                    .lineSpacing(6)
-            }
-            NavigationLink {
-                equalMarriageDescription
-            } label: {
-                Text("Равный:\n\(contact.annualSignStruct.equalMarriage.map{$0.rawValue}.joined(separator: ", "))")
-                    .foregroundColor(.theme.standard)
-                    .lineSpacing(6)
-            }
+            Spacer()
+                .frame(height: 30)
         } header: {
             Text("Брак:")
                 .foregroundColor(.theme.accent)
@@ -397,251 +340,6 @@ extension ContactInfoView {
                     .foregroundColor(.theme.secondaryText)
                     .padding(.bottom)
             }
-        }
-        .padding(.horizontal)
-    }
-    
-    var vectorHostDescription: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Spacer()
-                Text(vectorHost.type.rawValue)
-                    .foregroundColor(.theme.standard)
-                    .font(.headline)
-                    .bold()
-                Spacer()
-            }
-            .padding(.bottom, 15)
-            HStack {
-                Text(vectorHost.value)
-                    .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
-                Spacer()
-            }
-            Text(vectorHost.text)
-                .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
-            Spacer()
-        }
-        .padding(.horizontal)
-    }
-    
-    var vectorServantDescription: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Spacer()
-                Text(vectorServant.type.rawValue)
-                    .foregroundColor(.theme.standard)
-                    .font(.headline)
-                    .bold()
-                Spacer()
-            }
-            .padding(.bottom, 15)
-            HStack {
-                Text(vectorServant.value)
-                    .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
-                Spacer()
-            }
-            Text(vectorServant.text)
-                .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
-            Spacer()
-        }
-        .padding(.horizontal)
-    }
-    
-    var cloneDescription: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Spacer()
-                Text(clone.type.rawValue)
-                    .foregroundColor(.theme.standard)
-                    .font(.headline)
-                    .bold()
-                Spacer()
-            }
-            .padding(.bottom, 15)
-            HStack {
-                Text(clone.value)
-                    .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
-                Spacer()
-            }
-            Text(clone.text)
-                .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
-            Spacer()
-        }
-        .padding(.horizontal)
-    }
-    
-    var companionDescription: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Spacer()
-                Text(companion.type.rawValue)
-                    .foregroundColor(.theme.standard)
-                    .font(.headline)
-                    .bold()
-                Spacer()
-            }
-            .padding(.bottom, 15)
-            HStack {
-                Text(companion.value)
-                    .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
-                Spacer()
-            }
-            Text(companion.text)
-                .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
-            Spacer()
-        }
-        .padding(.horizontal)
-    }
-    
-    var subordinateDescription: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Spacer()
-                Text(subordinate.type.rawValue)
-                    .foregroundColor(.theme.standard)
-                    .font(.headline)
-                    .bold()
-                Spacer()
-            }
-            .padding(.bottom, 15)
-            HStack {
-                Text(subordinate.value)
-                    .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
-                Spacer()
-            }
-            Text(subordinate.text)
-                .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
-            Spacer()
-        }
-        .padding(.horizontal)
-    }
-    
-    var adviserDescription: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Spacer()
-                Text(adviser.type.rawValue)
-                    .foregroundColor(.theme.standard)
-                    .font(.headline)
-                    .bold()
-                Spacer()
-            }
-            .padding(.bottom, 15)
-            HStack {
-                Text(adviser.value)
-                    .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
-                Spacer()
-            }
-            Text(adviser.text)
-                .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
-            Spacer()
-        }
-        .padding(.horizontal)
-    }
-    
-    var vectorMarriageDescription: some View {
-        ScrollView(showsIndicators: false) {
-            HStack {
-                Spacer()
-                Text(vectorMarriage.title)
-                    .foregroundColor(.theme.standard)
-                    .font(.headline)
-                    .bold()
-                Spacer()
-            }
-            .padding(.bottom, 15)
-            Text(vectorMarriage.text)
-                .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
-            Spacer()
-        }
-        .padding(.horizontal)
-    }
-    
-    var romanticMarriageDescription: some View {
-        ScrollView(showsIndicators: false) {
-            HStack {
-                Spacer()
-                Text(romanticMarriage.title)
-                    .foregroundColor(.theme.standard)
-                    .font(.headline)
-                    .bold()
-                Spacer()
-            }
-            .padding(.bottom, 15)
-            Text(romanticMarriage.text)
-                .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
-            Spacer()
-        }
-        .padding(.horizontal)
-    }
-    
-    var patriarchalMarriageDescription: some View {
-        ScrollView(showsIndicators: false) {
-            HStack {
-                Spacer()
-                Text(patriarchalMarriage.title)
-                    .foregroundColor(.theme.standard)
-                    .font(.headline)
-                    .bold()
-                Spacer()
-            }
-            .padding(.bottom, 15)
-            Text(patriarchalMarriage.text)
-                .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
-            Spacer()
-        }
-        .padding(.horizontal)
-    }
-    
-    var spiritualMarriageDescription: some View {
-        ScrollView(showsIndicators: false) {
-            HStack {
-                Spacer()
-                Text(spiritualMarriage.title)
-                    .foregroundColor(.theme.standard)
-                    .font(.headline)
-                    .bold()
-                Spacer()
-            }
-            .padding(.bottom, 15)
-            Text(spiritualMarriage.text)
-                .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
-            Spacer()
-        }
-        .padding(.horizontal)
-    }
-    
-    var equalMarriageDescription: some View {
-        ScrollView(showsIndicators: false) {
-            HStack {
-                Spacer()
-                Text(equalMarriage.title)
-                    .foregroundColor(.theme.standard)
-                    .font(.headline)
-                    .bold()
-                Spacer()
-            }
-            .padding(.bottom, 15)
-            Text(equalMarriage.text)
-                .foregroundColor(.theme.secondaryText)
-                .padding(.bottom)
-            Spacer()
         }
         .padding(.horizontal)
     }
