@@ -1,11 +1,10 @@
 import SwiftUI
 
 class NotificationManager {
-    
     func requestAuthorization() {
         let options: UNAuthorizationOptions = [.alert, .sound]
         UNUserNotificationCenter.current()
-            .requestAuthorization(options: options) { success, error in
+            .requestAuthorization(options: options) { _, error in
                 if let error = error {
                     print("Error: \(error.localizedDescription)")
                 } else {
@@ -35,7 +34,6 @@ class NotificationManager {
     }
     
     func cancelNotification(id: UUID) {
-        
         // will cancel any upcoming notifications
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id.uuidString])
         
