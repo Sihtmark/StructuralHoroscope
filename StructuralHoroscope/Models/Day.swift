@@ -11,13 +11,14 @@ struct DayStruct: Identifiable, Codable, Hashable {
     var id = UUID()
     let date: Date
     let signs: [AnnualEnum: DayType]
-    
+
     var dateComponents: DateComponents {
         var dateComponents = Calendar.current.dateComponents(
             [.month,
              .day,
              .year],
-            from: date)
+            from: date
+        )
         dateComponents.timeZone = TimeZone.current
         dateComponents.calendar = Calendar(identifier: .gregorian)
         return dateComponents
@@ -225,7 +226,6 @@ let ninthDay: [AnnualEnum: DayType] = [
     .dog: harder,
     .boar: yellow
 ]
-
 
 let tenthDay: [AnnualEnum: DayType] = [
     .rat: rest,

@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct AgeStructView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     @State private var showDescription = false
     @State private var ageStruct: AgeStruct = roosterAge
@@ -60,7 +59,6 @@ struct AgeStructView_Previews: PreviewProvider {
 }
 
 extension AgeStructView {
-    
     var structPicker: some View {
         Picker("asdf", selection: $ageStruct) {
             ForEach(ageArray) { item in

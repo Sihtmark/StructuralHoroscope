@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct AddMeetingView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     @Environment(\.dismiss) private var dismiss
     @State var contact: ContactStruct
@@ -16,7 +15,7 @@ struct AddMeetingView: View {
     @State private var feeling = Feelings.notTooBad
     @State private var describe = ""
     @FocusState private var describeInFocus: Bool
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 30) {
@@ -64,10 +63,10 @@ struct AddMeetingView: View {
                     Spacer()
                     Button {
                         vm.addMeeting(contact: contact, date: date, feeling: feeling, describe: describe)
-                        contact.contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
+                        contact.contact!.lastContact = contact.contact!.allEvents.map { $0.date }.max()!
                         vm.setNotification(contactStruct: contact)
-                        if let i = vm.contacts.firstIndex(where: {$0.id == contact.id}) {
-                            vm.contacts[i].contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
+                        if let i = vm.contacts.firstIndex(where: { $0.id == contact.id }) {
+                            vm.contacts[i].contact!.lastContact = contact.contact!.allEvents.map { $0.date }.max()!
                         }
                         dismiss()
                     } label: {

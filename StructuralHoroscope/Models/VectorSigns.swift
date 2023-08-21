@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 enum SocialSignEnum: String, CaseIterable, Codable, Hashable {
     case king = "Король"
     case vector = "Вектор"
@@ -33,7 +31,7 @@ struct SocialSignStruct: Identifiable, Codable, Equatable, Hashable {
     var id = UUID()
     let socialSign: SocialSignEnum
     let emoji: SocialEmojiEnum
-    let blocks: [String:String]
+    let blocks: [String: String]
 }
 
 let socialSigns: [SocialSignStruct] = [kingSign, vectorSign, jesterSign, knightSign, aristocratSign, professorSign, leaderSign]

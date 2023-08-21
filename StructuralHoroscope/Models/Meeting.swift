@@ -12,7 +12,7 @@ struct MeetingStruct: Identifiable, Codable, Equatable, Hashable {
     var date: Date
     var feeling: Feelings
     var describe: String
-    
+
     mutating func updateMeeting(date: Date, feeling: Feelings, describe: String) {
         self.date = date
         self.feeling = feeling

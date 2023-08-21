@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct BusinessStructview: View {
-    
     @EnvironmentObject private var vm: ViewModel
     @State private var shownSign: AnnualEnum = .horse
     @State private var shownStruct: BusinessStruct = clone

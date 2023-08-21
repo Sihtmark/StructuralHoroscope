@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct AnnualSignView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     let sign: AnnualSignStruct
     @State private var showAnnualSignDescription = false
@@ -50,7 +49,6 @@ struct AnnualSignInfo_Previews: PreviewProvider {
 }
 
 extension AnnualSignView {
-    
     var typeSection: some View {
         Section {
             NavigationLink {
@@ -117,28 +115,28 @@ extension AnnualSignView {
             NavigationLink {
                 cloneDescription
             } label: {
-                Text("Клоны:\n\(sign.clones.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Клоны:\n\(sign.clones.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 companionDescription
             } label: {
-                Text("Соратники:\n\(sign.companions.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Соратники:\n\(sign.companions.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 subordinateDescription
             } label: {
-                Text("Подчиненные:\n\(sign.subordinates.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Подчиненные:\n\(sign.subordinates.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 adviserDescription
             } label: {
-                Text("Советники:\n\(sign.advisers.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Советники:\n\(sign.advisers.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
@@ -161,28 +159,28 @@ extension AnnualSignView {
             NavigationLink {
                 romanticMarriageDescription
             } label: {
-                Text("Романтический брак:\n\(sign.romanticMarriage.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Романтический брак:\n\(sign.romanticMarriage.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 patriarchalMarriageDescription
             } label: {
-                Text("Патриархальный брак:\n\(sign.patriarchalMarriage.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Патриархальный брак:\n\(sign.patriarchalMarriage.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 equalMarriageDescription
             } label: {
-                Text("Равный брак:\n\(sign.equalMarriage.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Равный брак:\n\(sign.equalMarriage.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 spiritualMarriageDescription
             } label: {
-                Text("Духовный брак:\n\(sign.spiritualMarriage.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Духовный брак:\n\(sign.spiritualMarriage.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
@@ -351,7 +349,7 @@ extension AnnualSignView {
             HStack {
                 Text(vectorHost.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(vectorHost.text)
@@ -376,7 +374,7 @@ extension AnnualSignView {
             HStack {
                 Text(vectorServant.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(vectorServant.text)
@@ -401,7 +399,7 @@ extension AnnualSignView {
             HStack {
                 Text(clone.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(clone.text)
@@ -426,7 +424,7 @@ extension AnnualSignView {
             HStack {
                 Text(companion.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(companion.text)
@@ -451,7 +449,7 @@ extension AnnualSignView {
             HStack {
                 Text(subordinate.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(subordinate.text)
@@ -476,7 +474,7 @@ extension AnnualSignView {
             HStack {
                 Text(adviser.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(adviser.text)
@@ -577,4 +575,3 @@ extension AnnualSignView {
         .padding(.horizontal)
     }
 }
-

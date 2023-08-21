@@ -24,7 +24,7 @@ struct BusinessStruct: Identifiable, Codable, Equatable, Hashable {
     let signs: [AnnualEnum: [AnnualSignStruct]]
 }
 
-let businessSigns: [BusinessEnum:BusinessStruct] = [.vectorHost: vectorHost, .vectorServant: vectorServant, .clone: clone, .companion: companion, .subordinate: subordinate, .adviser: adviser]
+let businessSigns: [BusinessEnum: BusinessStruct] = [.vectorHost: vectorHost, .vectorServant: vectorServant, .clone: clone, .companion: companion, .subordinate: subordinate, .adviser: adviser]
 
 let businessArray = [vectorHost, vectorServant, clone, companion, subordinate, adviser]
 

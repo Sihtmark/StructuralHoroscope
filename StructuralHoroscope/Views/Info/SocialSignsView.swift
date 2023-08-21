@@ -1,11 +1,10 @@
 import SwiftUI
 
 struct SocialSignsView: View {
-    
     @EnvironmentObject private var VM: ViewModel
     @State private var showVirtualSignDescription = false
     @State private var shownVirtualSign: SocialSignStruct = kingSign
-    
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             signsSection
@@ -76,7 +75,7 @@ extension SocialSignsView {
             }
         }
     }
-    
+
     var virtualSignSection: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text("\(shownVirtualSign.emoji.rawValue) \(shownVirtualSign.socialSign.rawValue)")
@@ -94,7 +93,7 @@ extension SocialSignsView {
             }
         }
     }
-    
+
     var virtualSignDescription: some View {
         ScrollView(showsIndicators: false) {
             VStack {

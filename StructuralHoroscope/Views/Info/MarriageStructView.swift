@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct MarriageStructView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     @State private var shownSign: AnnualEnum = .rat
     @State private var shownStruct: MarriageStruct = vectorMarriage

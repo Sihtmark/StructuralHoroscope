@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContactInfoView: View {
-    
     @EnvironmentObject var vm: ViewModel
     @State var contact: ContactStruct
     
@@ -96,7 +95,7 @@ extension ContactInfoView {
             NavigationLink {
                 ideologicDescription
             } label: {
-                Text("Тип мышления: \((contact.annualSignStruct.ideologicalType[contact.sex]!.ideologicalType.rawValue))")
+                Text("Тип мышления: \(contact.annualSignStruct.ideologicalType[contact.sex]!.ideologicalType.rawValue)")
                     .foregroundColor(.theme.standard)
             }
             NavigationLink {
@@ -176,7 +175,7 @@ extension ContactInfoView {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 35, height: 35)
-                        .padding(.trailing,12)
+                        .padding(.trailing, 12)
                     Text(contact.annualSignStruct.annualSign.rawValue)
                         .foregroundColor(.theme.standard)
                         .font(.title)

@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct BusinessView: View {
-    
     let business: BusinessStruct
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -25,7 +24,7 @@ struct BusinessView: View {
             HStack {
                 Text(business.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(business.text)

@@ -66,7 +66,6 @@ struct InfoCalendarView: View {
                         Spacer()
                     }
                 }
-                
             }
             .listStyle(.inset)
             .scrollIndicators(ScrollIndicatorVisibility.hidden)

@@ -1,10 +1,9 @@
 import SwiftUI
 
 struct VectorPareView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     @State private var showVectorDescription = false
-    
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             signsSection
@@ -108,7 +107,7 @@ extension VectorPareView {
             }
         }
     }
-    
+
     var vectorDescription: some View {
         ScrollView(showsIndicators: false) {
             VStack {

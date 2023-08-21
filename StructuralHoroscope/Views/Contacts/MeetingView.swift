@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct MeetingView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     @Environment(\.dismiss) private var dismiss
     let meeting: MeetingStruct
@@ -10,7 +9,7 @@ struct MeetingView: View {
     @State private var feeling = Feelings.notTooBad
     @State private var describe = ""
     @FocusState private var describeInFocus: Bool
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 30) {
@@ -58,13 +57,13 @@ struct MeetingView: View {
                     Spacer()
                     Button {
                         vm.updateMeeting(contact: contact, meeting: meeting, date: date, feeling: feeling, describe: describe)
-                        if let index = contact.contact!.allEvents.firstIndex(where: {$0.id == meeting.id}) {
+                        if let index = contact.contact!.allEvents.firstIndex(where: { $0.id == meeting.id }) {
                             contact.contact!.allEvents[index].updateMeeting(date: date, feeling: feeling, describe: describe)
                         }
-                        contact.contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
+                        contact.contact!.lastContact = contact.contact!.allEvents.map { $0.date }.max()!
                         vm.setNotification(contactStruct: contact)
-                        if let i = vm.contacts.firstIndex(where: {$0.id == contact.id}) {
-                            vm.contacts[i].contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
+                        if let i = vm.contacts.firstIndex(where: { $0.id == contact.id }) {
+                            vm.contacts[i].contact!.lastContact = contact.contact!.allEvents.map { $0.date }.max()!
                         }
                         dismiss()
                     } label: {
@@ -80,13 +79,13 @@ struct MeetingView: View {
                     Spacer()
                     Button(role: .destructive) {
                         vm.deleteMeeting(contact: contact, meeting: meeting)
-                        if let index = contact.contact!.allEvents.firstIndex(where: {$0.id == meeting.id}) {
+                        if let index = contact.contact!.allEvents.firstIndex(where: { $0.id == meeting.id }) {
                             contact.contact!.allEvents.remove(at: index)
                         }
-                        contact.contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
+                        contact.contact!.lastContact = contact.contact!.allEvents.map { $0.date }.max()!
                         vm.setNotification(contactStruct: contact)
-                        if let i = vm.contacts.firstIndex(where: {$0.id == contact.id}) {
-                            vm.contacts[i].contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
+                        if let i = vm.contacts.firstIndex(where: { $0.id == contact.id }) {
+                            vm.contacts[i].contact!.lastContact = contact.contact!.allEvents.map { $0.date }.max()!
                         }
                         dismiss()
                     } label: {

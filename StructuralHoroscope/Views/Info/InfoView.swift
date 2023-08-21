@@ -1,9 +1,8 @@
 import SwiftUI
 
 struct InfoView: View {
-    
     @EnvironmentObject private var vm: ViewModel
-    
+
     var body: some View {
         NavigationStack {
             List {
@@ -37,7 +36,6 @@ struct InfoView_Previews: PreviewProvider {
 }
 
 extension InfoView {
-    
     var mainView: some View {
         Section {
             NavigationLink {
@@ -58,6 +56,7 @@ extension InfoView {
         }
         .listRowSeparator(.hidden)
     }
+
     var annualStructureSection: some View {
         Section {
             NavigationLink {
@@ -102,6 +101,7 @@ extension InfoView {
         }
         .listRowSeparator(.hidden)
     }
+
     var assistantSection: some View {
         Section {
             NavigationLink {

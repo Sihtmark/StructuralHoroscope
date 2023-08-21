@@ -12,7 +12,7 @@ class NotificationManager {
                 }
             }
     }
-    
+
     func scheduleNotification(contact: ContactStruct, year: Int, month: Int, day: Int) {
         let content = UNMutableNotificationContent()
         content.title = "\(contact.name) ждет общения! ⏰"
@@ -32,11 +32,11 @@ class NotificationManager {
             trigger: calendarTrigger)
         UNUserNotificationCenter.current().add(request)
     }
-    
+
     func cancelNotification(id: UUID) {
         // will cancel any upcoming notifications
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id.uuidString])
-        
+
         // remove from notification-center
         UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [id.uuidString])
     }

@@ -1,11 +1,10 @@
 import SwiftUI
 
 struct StartingView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     @State private var selectedDate = Date()
     @State private var sex: Sex = .male
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
             Text("Новый пользователь")
@@ -38,7 +37,7 @@ struct StartingView: View {
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(.gray.opacity(0.2))
                                 .allowsHitTesting(false)
-                    }
+                        }
                     Spacer()
                 }
             }
@@ -55,7 +54,7 @@ struct StartingView: View {
                             .foregroundColor(.theme.accent)
                             .bold()
                             .padding(10)
-                        .padding(.horizontal)
+                            .padding(.horizontal)
                     }
                 }
                 .onTapGesture {

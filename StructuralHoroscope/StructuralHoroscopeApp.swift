@@ -2,7 +2,6 @@ import SwiftUI
 
 @main
 struct StructuralHoroscopeApp: App {
-    
     @StateObject private var vm = ViewModel()
     
     init() {

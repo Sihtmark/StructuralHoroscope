@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct AgeView: View {
-    
     let ageStruct: AgeStruct
     @EnvironmentObject private var VM: ViewModel
     @State private var showFullDescription1 = false
@@ -62,7 +61,6 @@ struct AgeView_Previews: PreviewProvider {
 }
 
 extension AgeView {
-    
     var textPicker: some View {
         Picker("asdf", selection: $selection) {
             Text("Особенности").tag(Tab.featured)

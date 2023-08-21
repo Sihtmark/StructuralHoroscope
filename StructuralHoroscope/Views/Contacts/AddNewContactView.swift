@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct AddNewContactView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     @Environment(\.dismiss) var dismiss
     @State private var name = ""
@@ -17,7 +16,7 @@ struct AddNewContactView: View {
     @State private var isFavorite = false
     @FocusState private var nameInFocus: Bool
     @FocusState private var describeInFocus: Bool
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 30) {
@@ -89,17 +88,18 @@ extension AddNewContactView {
             }
             .pickerStyle(.segmented)
             DatePicker("День рождения:", selection: $selectedDate, in: DateManager.instance.dateRange, displayedComponents: .date)
-                .environment(\.locale, Locale.init(identifier: "ru"))
+                .environment(\.locale, Locale(identifier: "ru"))
                 .foregroundColor(.theme.standard)
             Toggle("Отслеживать общение", isOn: $meetingTracker)
                 .foregroundColor(.theme.standard)
                 .padding(.trailing, 5)
         }
     }
+
     var meetingTrackerSection: some View {
         VStack(alignment: .leading, spacing: 30) {
             DatePicker("Общались последний раз:", selection: $lastMeeting, in: DateManager.instance.dateRange, displayedComponents: .date)
-                .environment(\.locale, Locale.init(identifier: "ru"))
+                .environment(\.locale, Locale(identifier: "ru"))
                 .foregroundColor(.theme.standard)
             VStack {
                 Picker("", selection: $feeling) {
@@ -134,7 +134,7 @@ extension AddNewContactView {
                     .foregroundColor(.theme.standard)
                 HStack(spacing: 15) {
                     Picker("", selection: $distance) {
-                        ForEach(1..<31) { item in
+                        ForEach(1 ..< 31) { item in
                             Text(String(item)).tag(item)
                         }
                     }
@@ -165,6 +165,7 @@ extension AddNewContactView {
             }
         }
     }
+
     var saveButton: some View {
         HStack {
             Spacer()

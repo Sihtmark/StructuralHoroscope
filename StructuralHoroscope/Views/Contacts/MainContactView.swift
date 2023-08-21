@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MainContactView: View {
-    
     @EnvironmentObject var vm: ViewModel
     @State var contact: ContactStruct
     @State private var isEditing = false
@@ -82,10 +81,9 @@ struct MainContactView_Previews: PreviewProvider {
     }
 }
 
-
 // MARK: if user will track calls and meetings
+
 extension MainContactView {
-    
     var titleSection: some View {
         VStack(spacing: 15) {
             NavigationLink {
@@ -114,7 +112,6 @@ extension MainContactView {
                 Text(contact.name)
                     .font(.title)
                     .foregroundColor(.theme.standard)
-                
             }
             if let contact = contact.contact {
                 VStack(spacing: 5) {
@@ -147,7 +144,7 @@ extension MainContactView {
     }
     
     var eventsSection: some View {
-        ForEach(contact.contact!.allEvents.sorted(by: {$0.date > $1.date})) { event in
+        ForEach(contact.contact!.allEvents.sorted(by: { $0.date > $1.date })) { event in
             Button {
                 isEditingMeeting = event
             } label: {
@@ -156,7 +153,7 @@ extension MainContactView {
                         .stroke(Color.theme.accent, lineWidth: 0.4)
                         .frame(maxWidth: .infinity)
                     VStack(alignment: .leading, spacing: 6) {
-                        HStack() {
+                        HStack {
                             Text(event.feeling.rawValue)
                             Text(DateManager.instance.dateFormatter.string(from: event.date))
                                 .foregroundColor(.theme.accent)
@@ -212,10 +209,10 @@ extension MainContactView {
                     Button {
                         vm.addMeeting(contact: contact, date: date, feeling: feeling, describe: describe)
                         contact.addMeeting(contact: contact.contact!, date: date, feeling: feeling, describe: describe)
-                        contact.contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
+                        contact.contact!.lastContact = contact.contact!.allEvents.map { $0.date }.max()!
                         vm.setNotification(contactStruct: contact)
-                        if let i = vm.contacts.firstIndex(where: {$0.id == contact.id}) {
-                            vm.contacts[i].contact!.lastContact = contact.contact!.allEvents.map{$0.date}.max()!
+                        if let i = vm.contacts.firstIndex(where: { $0.id == contact.id }) {
+                            vm.contacts[i].contact!.lastContact = contact.contact!.allEvents.map { $0.date }.max()!
                         }
                         isAdding.toggle()
                         date = Date()
@@ -235,10 +232,10 @@ extension MainContactView {
         }
         .padding()
     }
-    
 }
 
-//MARK: if user will not track calls and meetings of this contact
+// MARK: if user will not track calls and meetings of this contact
+
 extension MainContactView {
     var customerInfo: some View {
         Section {
@@ -288,7 +285,7 @@ extension MainContactView {
             NavigationLink {
                 ideologicDescription
             } label: {
-                Text("Тип мышления: \((contact.annualSignStruct.ideologicalType[contact.sex]!.ideologicalType.rawValue))")
+                Text("Тип мышления: \(contact.annualSignStruct.ideologicalType[contact.sex]!.ideologicalType.rawValue)")
                     .foregroundColor(.theme.standard)
             }
             NavigationLink {
@@ -339,28 +336,28 @@ extension MainContactView {
             NavigationLink {
                 cloneDescription
             } label: {
-                Text("Клоны:\n\(contact.annualSignStruct.clones.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Клоны:\n\(contact.annualSignStruct.clones.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 companionDescription
             } label: {
-                Text("Соратники:\n\(contact.annualSignStruct.companions.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Соратники:\n\(contact.annualSignStruct.companions.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 subordinateDescription
             } label: {
-                Text("Подчиненные:\n\(contact.annualSignStruct.subordinates.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Подчиненные:\n\(contact.annualSignStruct.subordinates.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 adviserDescription
             } label: {
-                Text("Советники:\n\(contact.annualSignStruct.advisers.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Советники:\n\(contact.annualSignStruct.advisers.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
@@ -383,28 +380,28 @@ extension MainContactView {
             NavigationLink {
                 romanticMarriageDescription
             } label: {
-                Text("Романтический:\n\(contact.annualSignStruct.romanticMarriage.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Романтический:\n\(contact.annualSignStruct.romanticMarriage.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 patriarchalMarriageDescription
             } label: {
-                Text("Патриархальный:\n\(contact.annualSignStruct.patriarchalMarriage.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Патриархальный:\n\(contact.annualSignStruct.patriarchalMarriage.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 spiritualMarriageDescription
             } label: {
-                Text("Духовный:\n\(contact.annualSignStruct.spiritualMarriage.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Духовный:\n\(contact.annualSignStruct.spiritualMarriage.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 equalMarriageDescription
             } label: {
-                Text("Равный:\n\(contact.annualSignStruct.equalMarriage.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Равный:\n\(contact.annualSignStruct.equalMarriage.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
@@ -424,7 +421,7 @@ extension MainContactView {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 35, height: 35)
-                        .padding(.trailing,12)
+                        .padding(.trailing, 12)
                     Text(contact.annualSignStruct.annualSign.rawValue)
                         .foregroundColor(.theme.standard)
                         .font(.title)
@@ -606,7 +603,7 @@ extension MainContactView {
             HStack {
                 Text(vectorHost.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(vectorHost.text)
@@ -631,7 +628,7 @@ extension MainContactView {
             HStack {
                 Text(vectorServant.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(vectorServant.text)
@@ -656,7 +653,7 @@ extension MainContactView {
             HStack {
                 Text(clone.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(clone.text)
@@ -681,7 +678,7 @@ extension MainContactView {
             HStack {
                 Text(companion.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(companion.text)
@@ -706,7 +703,7 @@ extension MainContactView {
             HStack {
                 Text(subordinate.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(subordinate.text)
@@ -731,7 +728,7 @@ extension MainContactView {
             HStack {
                 Text(adviser.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(adviser.text)
@@ -837,4 +834,3 @@ extension MainContactView {
         .padding(.horizontal)
     }
 }
-
