@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct ChangeContactView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     @Binding var contact: ContactStruct
     @Environment(\.dismiss) var dismiss
@@ -16,7 +15,7 @@ struct ChangeContactView: View {
     @State private var feeling = Feelings.notTooBad
     @State private var describe = ""
     @FocusState private var inFocus: Bool
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 30) {
@@ -85,19 +84,20 @@ extension ChangeContactView {
             }
             .pickerStyle(.segmented)
             DatePicker("День рождения:", selection: $selectedDate, in: DateManager.instance.dateRange, displayedComponents: .date)
-                .environment(\.locale, Locale.init(identifier: "ru"))
+                .environment(\.locale, Locale(identifier: "ru"))
                 .foregroundColor(.theme.standard)
             Toggle("Следить как часто общаетесь?", isOn: $meetingTracker)
                 .foregroundColor(.theme.standard)
                 .padding(.trailing, 5)
         }
     }
+
     var meetingTrackerSection: some View {
         VStack(alignment: .leading, spacing: 30) {
             if contact.contact != nil {
                 if contact.contact!.allEvents.isEmpty {
                     DatePicker("Последнее общение:", selection: $lastMeeting, in: DateManager.instance.dateRange, displayedComponents: .date)
-                        .environment(\.locale, Locale.init(identifier: "ru"))
+                        .environment(\.locale, Locale(identifier: "ru"))
                         .foregroundColor(.theme.standard)
                     VStack {
                         Picker("", selection: $feeling) {
@@ -129,7 +129,7 @@ extension ChangeContactView {
                 }
             } else {
                 DatePicker("Последнее общение:", selection: $lastMeeting, in: DateManager.instance.dateRange, displayedComponents: .date)
-                    .environment(\.locale, Locale.init(identifier: "ru"))
+                    .environment(\.locale, Locale(identifier: "ru"))
                     .foregroundColor(.theme.standard)
                 VStack {
                     Picker("", selection: $feeling) {
@@ -165,12 +165,12 @@ extension ChangeContactView {
                     Text("Как часто хотите общаться?")
                         .font(.headline)
                         .fontWeight(.regular)
-                    .foregroundColor(.theme.standard)
+                        .foregroundColor(.theme.standard)
                     Spacer()
                 }
                 HStack(spacing: 15) {
                     Picker("", selection: $distance) {
-                        ForEach(1..<31) { item in
+                        ForEach(1 ..< 31) { item in
                             Text(String(item)).tag(item)
                         }
                     }
@@ -197,10 +197,11 @@ extension ChangeContactView {
             VStack {
                 Toggle("Напоминание когда придет время снова общаться с этим контактом", isOn: $reminder)
                     .foregroundColor(.theme.standard)
-                .padding(.trailing, 5)
+                    .padding(.trailing, 5)
             }
         }
     }
+
     var saveButton: some View {
         HStack {
             Spacer()

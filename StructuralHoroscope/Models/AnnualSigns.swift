@@ -42,14 +42,13 @@ struct AnnualSignStruct: Identifiable, Codable, Equatable, Hashable {
     let companions: [AnnualEnum]
     let subordinates: [AnnualEnum]
     let advisers: [AnnualEnum]
-    let socialSigns: [MonthEnum:SocialSignStruct]
+    let socialSigns: [MonthEnum: SocialSignStruct]
     let businessStruct: [AnnualEnum: BusinessEnum]
-    let blocks: [String:String]
+    let blocks: [String: String]
     let years: [Int]
 }
 
-
-let annualSigns: [AnnualEnum:AnnualSignStruct] = [.rat: ratSign, .bull: bullSign, .tiger: tigerSign, .cat: catSign, .dragon: dragonSign, .snake: snakeSign, .horse: horseSign, .goat: goatSign, .monkey: monkeySign, .rooster: roosterSign, .dog: dogSign, .boar: boarSign]
+let annualSigns: [AnnualEnum: AnnualSignStruct] = [.rat: ratSign, .bull: bullSign, .tiger: tigerSign, .cat: catSign, .dragon: dragonSign, .snake: snakeSign, .horse: horseSign, .goat: goatSign, .monkey: monkeySign, .rooster: roosterSign, .dog: dogSign, .boar: boarSign]
 
 let annualSignArray: [AnnualSignStruct] = [ratSign, bullSign, tigerSign, catSign, dragonSign, snakeSign, horseSign, goatSign, monkeySign, roosterSign, dogSign, boarSign]
 
@@ -66,7 +65,7 @@ let ratSign = AnnualSignStruct(
     vectorMarriage: [.monkey, .horse],
     romanticMarriage: [.dog, .tiger],
     patriarchalMarriage: [.rat, .dragon],
-    equalMarriage: [.cat,.goat,.boar],
+    equalMarriage: [.cat, .goat, .boar],
     spiritualMarriage: [.bull, .snake, .rooster],
     clones: [.rat, .tiger, .dog],
     companions: [.dragon],
@@ -84,7 +83,7 @@ let ratSign = AnnualSignStruct(
         .september: leaderSign,
         .october: vectorSign,
         .november: leaderSign,
-        .december: vectorSign,
+        .december: vectorSign
     ],
     businessStruct: [
         .rat: .clone,

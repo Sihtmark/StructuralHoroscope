@@ -8,7 +8,6 @@
 import Foundation
 
 struct DateManager {
-    
     static let instance = DateManager()
     
     var dateRange: ClosedRange<Date> {

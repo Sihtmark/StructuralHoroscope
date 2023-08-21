@@ -89,4 +89,3 @@ let december = MonthStruct(
     sign: .december,
     days: [11: 22...30, 12: 1...21]
 )
-

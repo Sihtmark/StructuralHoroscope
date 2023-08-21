@@ -1,9 +1,8 @@
 import SwiftUI
 
 struct UserCellView: View {
-    
     @EnvironmentObject private var vm: ViewModel
-    
+
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)

@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct TabBarView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     @State private var selection: Tab = .home
-    
+
     enum Tab {
         case home
         case info
         case calendar
     }
-    
+
     var body: some View {
         TabView(selection: $selection) {
             ContactListView()

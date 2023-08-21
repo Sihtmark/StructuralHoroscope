@@ -41,7 +41,6 @@ struct ContactStruct: Identifiable, Codable, Equatable, Hashable {
     }
     
     mutating func updateAndCreateEvent(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum, isFavorite: Bool, distance: Int, component: Components, lastContact: Date, reminder: Bool, feeling: Feelings, describe: String) {
-        
         let newContact = EventStruct(distance: distance, component: component, lastContact: lastContact, reminder: reminder, allEvents: [MeetingStruct(date: lastContact, feeling: feeling, describe: describe)])
         
         self.name = name

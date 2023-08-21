@@ -1,8 +1,7 @@
-import SwiftUI
 import EventKit
+import SwiftUI
 
 class ViewModel: ObservableObject {
-    
     let nm = NotificationManager()
     
     @Published var actualDayType: DayStruct?
@@ -11,6 +10,7 @@ class ViewModel: ObservableObject {
             saveUser()
         }
     }
+
     @Published var contacts = [ContactStruct]() {
         didSet {
             saveContacts()
@@ -27,13 +27,13 @@ class ViewModel: ObservableObject {
     }
     
     func fetchUser() {
-        guard let mainUserData = UserDefaults.standard.data(forKey: userKey), let savedMainUser = try? JSONDecoder().decode(UserStruct.self, from: mainUserData) else {return}
-        self.user = savedMainUser
+        guard let mainUserData = UserDefaults.standard.data(forKey: userKey), let savedMainUser = try? JSONDecoder().decode(UserStruct.self, from: mainUserData) else { return }
+        user = savedMainUser
     }
     
     func fetchContacts() {
-        guard let data = UserDefaults.standard.data(forKey: contactsKey), let savedItems = try? JSONDecoder().decode([ContactStruct].self, from: data) else {return}
-        self.contacts = savedItems
+        guard let data = UserDefaults.standard.data(forKey: contactsKey), let savedItems = try? JSONDecoder().decode([ContactStruct].self, from: data) else { return }
+        contacts = savedItems
     }
     
     func startingDate(day: Int) -> Date {
@@ -68,17 +68,16 @@ class ViewModel: ObservableObject {
     }
     
     func createNewContact(name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum, distance: Int, component: Components, lastContact: Date, reminder: Bool, meetingTracker: Bool, feeling: Feelings, describe: String, isFavorite: Bool) {
-        
         let newContact = EventStruct(
             distance: distance,
             component: component,
             lastContact: lastContact,
             reminder: reminder,
-            allEvents: [ MeetingStruct(
+            allEvents: [MeetingStruct(
                 date: lastContact,
                 feeling: feeling,
-                describe: describe)
-            ]
+                describe: describe
+            )]
         )
         
         let newCustomer = ContactStruct(
@@ -106,7 +105,7 @@ class ViewModel: ObservableObject {
     }
     
     func updateContact(client: ContactStruct, name: String, sex: Sex, birthday: Date, sign: AnnualSignStruct, zodiacSign: MonthEnum, isFavorite: Bool, distance: Int, component: Components, lastContact: Date, reminder: Bool, meetingTracker: Bool, feeling: Feelings, describe: String) {
-        if let index = contacts.firstIndex(where: {$0.id == client.id}) {
+        if let index = contacts.firstIndex(where: { $0.id == client.id }) {
             if meetingTracker {
                 if client.contact != nil {
                     contacts[index].updateInfo(name: name, sex: sex, birthday: birthday, sign: sign, month: zodiacSign, isFavorite: isFavorite, distance: distance, component: component, reminder: reminder)
@@ -133,7 +132,7 @@ class ViewModel: ObservableObject {
     }
     
     func updateEvent(contact: ContactStruct) {
-        if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
+        if let index = contacts.firstIndex(where: { $0.id == contact.id }) {
             contacts[index].changeLastContact(date: Date())
             setNotification(contactStruct: contact)
         }
@@ -219,7 +218,7 @@ class ViewModel: ObservableObject {
     }
     
     func ourBusinessRelationship(customer: ContactStruct) -> BusinessEnum {
-        return user!.annualSignStruct.businessStruct.filter{$0.key == customer.annualSignStruct.annualSign}.first!.value
+        return user!.annualSignStruct.businessStruct.filter { $0.key == customer.annualSignStruct.annualSign }.first!.value
     }
     
     func getAnnualSign(date: Date) -> AnnualSignStruct? {
@@ -350,7 +349,7 @@ class ViewModel: ObservableObject {
     }
     
     func eventDescription(dayType: [AnnualEnum: DayType]) -> String {
-        return dayType.map{"\($0.value.emoji)   \($0.key.rawValue)"}.joined(separator: "\n")
+        return dayType.map { "\($0.value.emoji)   \($0.key.rawValue)" }.joined(separator: "\n")
     }
     
     func addAllEventsToCalendar() async {
@@ -373,8 +372,8 @@ class ViewModel: ObservableObject {
     func addEventToCalendar(title: String, description: String?, startDate: Date, endDate: Date, completion: ((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
         let eventStore = EKEventStore()
         
-        eventStore.requestAccess(to: .event, completion: { (granted, error) in
-            if (granted) && (error == nil) {
+        eventStore.requestAccess(to: .event, completion: { granted, error in
+            if granted, error == nil {
                 let event = EKEvent(eventStore: eventStore)
                 event.title = title
                 event.startDate = startDate
@@ -384,16 +383,16 @@ class ViewModel: ObservableObject {
                 
                 event.calendar = eventStore.defaultCalendarForNewEvents
                 
-                let recurrenceRule = EKRecurrenceRule.init(
+                let recurrenceRule = EKRecurrenceRule(
                     recurrenceWith: .daily,
                     interval: 12,
-                    daysOfTheWeek: [EKRecurrenceDayOfWeek.init(EKWeekday.monday), EKRecurrenceDayOfWeek.init(EKWeekday.tuesday), EKRecurrenceDayOfWeek.init(EKWeekday.wednesday), EKRecurrenceDayOfWeek.init(EKWeekday.thursday), EKRecurrenceDayOfWeek.init(EKWeekday.friday), EKRecurrenceDayOfWeek.init(EKWeekday.saturday), EKRecurrenceDayOfWeek.init(EKWeekday.sunday)],
+                    daysOfTheWeek: [EKRecurrenceDayOfWeek(EKWeekday.monday), EKRecurrenceDayOfWeek(EKWeekday.tuesday), EKRecurrenceDayOfWeek(EKWeekday.wednesday), EKRecurrenceDayOfWeek(EKWeekday.thursday), EKRecurrenceDayOfWeek(EKWeekday.friday), EKRecurrenceDayOfWeek(EKWeekday.saturday), EKRecurrenceDayOfWeek(EKWeekday.sunday)],
                     daysOfTheMonth: nil,
                     monthsOfTheYear: nil,
                     weeksOfTheYear: nil,
                     daysOfTheYear: nil,
                     setPositions: nil,
-                    end: EKRecurrenceEnd.init(end:endDate)
+                    end: EKRecurrenceEnd(end: endDate)
                 )
                 
                 event.recurrenceRules = [recurrenceRule]
@@ -465,7 +464,6 @@ class ViewModel: ObservableObject {
     }
     
     func isToday(date: Date, pickedDate: Date) -> Bool {
-        
         let calendar = Calendar.current
         
         return calendar.isDate(pickedDate, inSameDayAs: date)
@@ -482,7 +480,7 @@ class ViewModel: ObservableObject {
         case .day:
             return Calendar.current.date(byAdding: Calendar.Component.day, value: interval, to: lastContact)!
         case .week:
-            return Calendar.current.date(byAdding: Calendar.Component.day, value: (interval * 7), to: lastContact)!
+            return Calendar.current.date(byAdding: Calendar.Component.day, value: interval * 7, to: lastContact)!
         case .month:
             return Calendar.current.date(byAdding: Calendar.Component.month, value: interval, to: lastContact)!
         case .year:
@@ -498,7 +496,7 @@ class ViewModel: ObservableObject {
             let distance = calendar.dateComponents([.day], from: lastContact, to: nextContactDay)
             return distance.day!
         case .week:
-            let nextContactDay = calendar.date(byAdding: Calendar.Component.day, value: (interval * 7), to: lastContact)!
+            let nextContactDay = calendar.date(byAdding: Calendar.Component.day, value: interval * 7, to: lastContact)!
             let distance = calendar.dateComponents([.day], from: lastContact, to: nextContactDay)
             return distance.day!
         case .month:
@@ -547,8 +545,8 @@ class ViewModel: ObservableObject {
     }
     
     func updateMeeting(contact: ContactStruct, meeting: MeetingStruct, date: Date, feeling: Feelings, describe: String) {
-        if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
-            if let i = contacts[index].contact!.allEvents.firstIndex(where: {$0.id == meeting.id}) {
+        if let index = contacts.firstIndex(where: { $0.id == contact.id }) {
+            if let i = contacts[index].contact!.allEvents.firstIndex(where: { $0.id == meeting.id }) {
                 contacts[index].contact!.allEvents[i].date = date
                 contacts[index].contact!.allEvents[i].feeling = feeling
                 contacts[index].contact!.allEvents[i].describe = describe
@@ -557,22 +555,22 @@ class ViewModel: ObservableObject {
     }
     
     func deleteMeeting(contact: ContactStruct, meeting: MeetingStruct) {
-        if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
-            if let i = contacts[index].contact!.allEvents.firstIndex(where: {$0.id == meeting.id}) {
+        if let index = contacts.firstIndex(where: { $0.id == contact.id }) {
+            if let i = contacts[index].contact!.allEvents.firstIndex(where: { $0.id == meeting.id }) {
                 contacts[index].contact!.allEvents.remove(at: i)
             }
         }
     }
     
     func toggleFavorite(contact: ContactStruct) {
-        if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
+        if let index = contacts.firstIndex(where: { $0.id == contact.id }) {
             contacts[index].isFavorite.toggle()
         }
     }
     
     func addMeeting(contact: ContactStruct, date: Date, feeling: Feelings, describe: String) {
         let newMeeting = MeetingStruct(date: date, feeling: feeling, describe: describe)
-        if let index = contacts.firstIndex(where: {$0.id == contact.id}) {
+        if let index = contacts.firstIndex(where: { $0.id == contact.id }) {
             contacts[index].contact!.allEvents.append(newMeeting)
             contacts[index].contact!.lastContact = contacts[index].contact!.lastContact < date ? date : contacts[index].contact!.lastContact
             if contacts[index].contact!.reminder {
@@ -586,13 +584,13 @@ class ViewModel: ObservableObject {
         case .standardOrder:
             return contacts
         case .alphabeticalOrder:
-            return contacts.sorted(by: {$0.name > $1.name})
+            return contacts.sorted(by: { $0.name > $1.name })
         case .dueDateOrder:
-            return contacts.filter{$0.contact != nil}.sorted(by: {$0.contact!.getNextEventDate() < $1.contact!.getNextEventDate()})
+            return contacts.filter { $0.contact != nil }.sorted(by: { $0.contact!.getNextEventDate() < $1.contact!.getNextEventDate() })
         case .favoritesOrder:
-            return contacts.filter{$0.isFavorite}
+            return contacts.filter { $0.isFavorite }
         case .withoutTracker:
-            return contacts.filter{$0.contact == nil}
+            return contacts.filter { $0.contact == nil }
         }
     }
     
@@ -613,10 +611,10 @@ class ViewModel: ObservableObject {
     }
     
     func businessSigns(business: BusinessStruct, sign: AnnualEnum) -> String {
-        return business.signs[sign]!.map{$0.annualSign.rawValue}.joined(separator: ", ")
+        return business.signs[sign]!.map { $0.annualSign.rawValue }.joined(separator: ", ")
     }
     
     func marriageSigns(marriage: MarriageStruct, sign: AnnualEnum) -> String {
-        return marriage.signs[sign]!.map{$0.annualSign.rawValue}.joined(separator: ", ")
+        return marriage.signs[sign]!.map { $0.annualSign.rawValue }.joined(separator: ", ")
     }
 }

@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct ContactListView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     @State private var contactToAddMeeting: ContactStruct?
     @State private var date = Date()
@@ -89,7 +88,6 @@ struct AllCustomersView_Previews: PreviewProvider {
 }
 
 extension ContactListView {
-    
     var myProfile: some View {
         Section {
             ZStack(alignment: .leading) {
@@ -136,7 +134,7 @@ extension ContactListView {
             }
             .swipeActions(edge: .leading, allowsFullSwipe: false, content: {
                 Button {
-                    if let index = vm.contacts.firstIndex(where: {$0.id == customer.id}) {
+                    if let index = vm.contacts.firstIndex(where: { $0.id == customer.id }) {
                         vm.contacts[index].isFavorite.toggle()
                     }
                 } label: {
@@ -149,5 +147,4 @@ extension ContactListView {
         .onDelete(perform: vm.deleteContact)
         .onMove(perform: vm.moveContact)
     }
-    
 }

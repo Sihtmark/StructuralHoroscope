@@ -27,7 +27,7 @@ struct EventStruct: Identifiable, Codable, Equatable, Hashable {
     
     mutating func addMeeting(date: Date, feeling: Feelings, describe: String) {
         let newMeeting = MeetingStruct(date: date, feeling: feeling, describe: describe)
-        self.allEvents.append(newMeeting)
+        allEvents.append(newMeeting)
     }
     
     func getNextEventDate() -> Date {
@@ -35,7 +35,7 @@ struct EventStruct: Identifiable, Codable, Equatable, Hashable {
         case .day:
             return Calendar.current.date(byAdding: Calendar.Component.day, value: distance, to: lastContact)!
         case .week:
-            return Calendar.current.date(byAdding: Calendar.Component.day, value: (distance * 7), to: lastContact)!
+            return Calendar.current.date(byAdding: Calendar.Component.day, value: distance * 7, to: lastContact)!
         case .month:
             return Calendar.current.date(byAdding: Calendar.Component.month, value: distance, to: lastContact)!
         case .year:

@@ -1,11 +1,10 @@
 import SwiftUI
 
 struct SocialStructView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     @State private var showDescription = false
     @State private var shownStruct: SocialStruct = openedSocialStruct
-    
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             picker
@@ -54,7 +53,7 @@ extension SocialStructView {
             }
         }
     }
-    
+
     var infoSection: some View {
         VStack {
             HStack {
@@ -83,7 +82,7 @@ extension SocialStructView {
                 .foregroundColor(.theme.secondaryText)
         }
     }
-    
+
     var vectorDescription: some View {
         ScrollView(showsIndicators: false) {
             VStack {

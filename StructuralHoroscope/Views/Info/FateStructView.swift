@@ -1,10 +1,9 @@
 import SwiftUI
 
 struct FateStructView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     @State private var shownStruct: FateStruct = pioneerFateStruct
-    
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             picker
@@ -40,7 +39,7 @@ extension FateStructView {
             }
         }
     }
-    
+
     var infoSection: some View {
         VStack {
             HStack {

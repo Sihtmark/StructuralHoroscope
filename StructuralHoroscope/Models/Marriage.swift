@@ -79,7 +79,7 @@ let patriarchalMarriage = MarriageStruct(
         .horse: [horseSign, dogSign, tigerSign],
         .goat: [catSign, goatSign, boarSign],
         .monkey: [monkeySign, dragonSign],
-        .rooster: [roosterSign, snakeSign,bullSign],
+        .rooster: [roosterSign, snakeSign, bullSign],
         .dog: [tigerSign, horseSign, dogSign],
         .boar: [catSign, goatSign]
     ]

@@ -13,7 +13,7 @@ struct UserStruct: Identifiable, Codable, Equatable, Hashable {
     var sex: Sex
     var annualSignStruct: AnnualSignStruct
     var month: MonthEnum
-    
+
     mutating func updateInfo(sex: Sex, birthday: Date, sign: AnnualSignStruct, month: MonthEnum) {
         self.sex = sex
         self.birthday = birthday

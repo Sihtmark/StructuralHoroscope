@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct ContactCellView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     let contact: ContactStruct
     
@@ -47,7 +46,6 @@ struct ContactCellView: View {
                             Text(actualDayType.signs[contact.annualSignStruct.annualSign]!.emoji)
                         }
                     }
-                    
                 }
             }
             .padding(.horizontal, 20)

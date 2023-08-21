@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct UserView: View {
-    
     @EnvironmentObject var vm: ViewModel
     @State private var isEditing = false
     @State private var selectedDate = Date()
@@ -93,7 +92,7 @@ extension UserView {
             }
             DatePicker("🎂 Дата рождения:", selection: $selectedDate, in: DateManager.instance.dateRange, displayedComponents: .date)
                 .foregroundColor(.theme.standard)
-                .environment(\.locale, Locale.init(identifier: "ru"))
+                .environment(\.locale, Locale(identifier: "ru"))
             NavigationLink {
                 AgeView(ageStruct: ages[vm.getAgeType(birthdate: selectedDate)]!)
             } label: {
@@ -145,7 +144,7 @@ extension UserView {
             NavigationLink {
                 ideologicDescription
             } label: {
-                Text("Тип мышления: \((vm.user!.annualSignStruct.ideologicalType[vm.user!.sex]!.ideologicalType.rawValue))")
+                Text("Тип мышления: \(vm.user!.annualSignStruct.ideologicalType[vm.user!.sex]!.ideologicalType.rawValue)")
                     .foregroundColor(.theme.standard)
             }
             NavigationLink {
@@ -198,28 +197,28 @@ extension UserView {
             NavigationLink {
                 cloneDescription
             } label: {
-                Text("Клоны:\n\(vm.user!.annualSignStruct.clones.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Клоны:\n\(vm.user!.annualSignStruct.clones.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 companionDescription
             } label: {
-                Text("Соратники:\n\(vm.user!.annualSignStruct.companions.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Соратники:\n\(vm.user!.annualSignStruct.companions.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 subordinateDescription
             } label: {
-                Text("Подчиненные:\n\(vm.user!.annualSignStruct.subordinates.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Подчиненные:\n\(vm.user!.annualSignStruct.subordinates.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 adviserDescription
             } label: {
-                Text("Советники:\n\(vm.user!.annualSignStruct.advisers.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Советники:\n\(vm.user!.annualSignStruct.advisers.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
@@ -242,28 +241,28 @@ extension UserView {
             NavigationLink {
                 romanticMarriageDescription
             } label: {
-                Text("Романтический брак:\n\(vm.user!.annualSignStruct.romanticMarriage.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Романтический брак:\n\(vm.user!.annualSignStruct.romanticMarriage.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 patriarchalMarriageDescription
             } label: {
-                Text("Патриархальный брак:\n\(vm.user!.annualSignStruct.patriarchalMarriage.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Патриархальный брак:\n\(vm.user!.annualSignStruct.patriarchalMarriage.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 spiritualMarriageDescription
             } label: {
-                Text("Духовный брак:\n\(vm.user!.annualSignStruct.spiritualMarriage.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Духовный брак:\n\(vm.user!.annualSignStruct.spiritualMarriage.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
             NavigationLink {
                 equalMarriageDescription
             } label: {
-                Text("Равный брак:\n\(vm.user!.annualSignStruct.equalMarriage.map{$0.rawValue}.joined(separator: ", "))")
+                Text("Равный брак:\n\(vm.user!.annualSignStruct.equalMarriage.map { $0.rawValue }.joined(separator: ", "))")
                     .foregroundColor(.theme.standard)
                     .lineSpacing(6)
             }
@@ -283,7 +282,7 @@ extension UserView {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 35, height: 35)
-                        .padding(.trailing,12)
+                        .padding(.trailing, 12)
                     Text(vm.user!.annualSignStruct.annualSign.rawValue)
                         .foregroundColor(.theme.standard)
                         .font(.title)
@@ -462,7 +461,7 @@ extension UserView {
             HStack {
                 Text(vectorHost.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(vectorHost.text)
@@ -487,7 +486,7 @@ extension UserView {
             HStack {
                 Text(vectorServant.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(vectorServant.text)
@@ -512,7 +511,7 @@ extension UserView {
             HStack {
                 Text(clone.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(clone.text)
@@ -537,7 +536,7 @@ extension UserView {
             HStack {
                 Text(companion.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(companion.text)
@@ -562,7 +561,7 @@ extension UserView {
             HStack {
                 Text(subordinate.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(subordinate.text)
@@ -587,7 +586,7 @@ extension UserView {
             HStack {
                 Text(adviser.value)
                     .foregroundColor(.theme.secondaryText)
-                    .padding(.bottom,15)
+                    .padding(.bottom, 15)
                 Spacer()
             }
             Text(adviser.text)

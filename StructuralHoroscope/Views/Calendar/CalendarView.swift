@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct CalendarView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     @State private var events = [DayStruct]()
     @State private var pickedDate = Date()
@@ -88,7 +87,6 @@ struct CalendarView: View {
                 } label: {
                     Text("Отменить")
                 }
-                
             }
         }
     }
@@ -113,7 +111,7 @@ extension CalendarView {
     var datePicker: some View {
         HStack {
             DatePicker("Выбрать дату:", selection: $pickedDate, in: DateManager.instance.calendarDateRange, displayedComponents: .date)
-                .environment(\.locale, Locale.init(identifier: "ru"))
+                .environment(\.locale, Locale(identifier: "ru"))
                 .foregroundColor(.theme.standard)
             Button {
                 pickedDate = Date()
@@ -134,12 +132,11 @@ extension CalendarView {
             ForEach(events) { event in
                 
                 VStack(spacing: 10) {
-                    
                     Text(vm.extractDate(date: event.date, format: "dd"))
                         .font(.system(size: 15))
                         .fontWeight(.semibold)
                     Text(vm.extractDate(date: event.date, format: "EEE"))
-                        .environment(\.locale, Locale.init(identifier: "ru"))
+                        .environment(\.locale, Locale(identifier: "ru"))
                         .font(.system(size: 14))
                     Text(event.signs[vm.user!.annualSignStruct.annualSign]!.emoji)
                         .font(.caption)
@@ -152,7 +149,6 @@ extension CalendarView {
                             Capsule()
                                 .fill(Color.theme.accent)
                         }
-                        
                     }
                 )
                 .contentShape(Capsule())
@@ -182,11 +178,11 @@ extension CalendarView {
                                 .bold()
                                 .frame(alignment: .leading)
                             Spacer()
-                            Text(events.first(where: {$0.date == day})!.signs[customer.annualSignStruct.annualSign]!.title)
+                            Text(events.first(where: { $0.date == day })!.signs[customer.annualSignStruct.annualSign]!.title)
                                 .foregroundColor(.theme.standard)
                                 .frame(alignment: .trailing)
                                 .padding(.trailing, 10)
-                            Text(events.first(where: {$0.date == day})!.signs[customer.annualSignStruct.annualSign]!.emoji)
+                            Text(events.first(where: { $0.date == day })!.signs[customer.annualSignStruct.annualSign]!.emoji)
                         }
                     } else {
                         HStack {
@@ -204,7 +200,7 @@ extension CalendarView {
                                 .foregroundColor(.theme.standard)
                                 .frame(alignment: .trailing)
                                 .padding(.trailing, 5)
-                                Text(events[3].signs[customer.annualSignStruct.annualSign]!.emoji)
+                            Text(events[3].signs[customer.annualSignStruct.annualSign]!.emoji)
                         }
                     }
                 }
@@ -224,8 +220,8 @@ extension CalendarView {
                                 .padding(.leading, 20)
                                 .frame(width: 110, alignment: .leading)
                             Spacer()
-                            Text(events.first(where: {$0.date == day})!.signs[sign]!.title)
-                            Text(events.first(where: {$0.date == day})!.signs[sign]!.emoji)
+                            Text(events.first(where: { $0.date == day })!.signs[sign]!.title)
+                            Text(events.first(where: { $0.date == day })!.signs[sign]!.emoji)
                         }
                     } else {
                         HStack {

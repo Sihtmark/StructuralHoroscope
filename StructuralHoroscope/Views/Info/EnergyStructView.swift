@@ -1,10 +1,9 @@
 import SwiftUI
 
 struct EnergyStructView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     @State private var shownStruct: EnergyStruct = dramaticEnergeticStruct
-    
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             picker
@@ -40,7 +39,7 @@ extension EnergyStructView {
             }
         }
     }
-    
+
     var infoSection: some View {
         VStack {
             HStack {

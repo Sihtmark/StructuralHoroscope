@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct MarriageView: View {
-    
     let marriageStruct: MarriageStruct
-    
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             HStack {

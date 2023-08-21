@@ -1,11 +1,10 @@
 import SwiftUI
 
 struct PsychologicalStructView: View {
-    
     @EnvironmentObject private var vm: ViewModel
     @State private var shownStruct: PsychologicalStruct = maturityPsychologicalStruct
     @State private var showDescription = false
-    
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             picker
@@ -54,7 +53,7 @@ extension PsychologicalStructView {
             }
         }
     }
-    
+
     var infoSection: some View {
         VStack {
             HStack {
@@ -83,7 +82,7 @@ extension PsychologicalStructView {
                 .foregroundColor(.theme.secondaryText)
         }
     }
-    
+
     var description: some View {
         ScrollView(showsIndicators: false) {
             VStack {
